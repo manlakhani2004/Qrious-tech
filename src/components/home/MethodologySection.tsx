@@ -1,84 +1,104 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 import {
-  FileText,
-  Users2,
+  LayoutGrid,
+  Crosshair,
+  BarChart2,
   Code2,
-  CheckCircle,
-  Rocket,
-  ArrowUpRight,
-  ShieldCheck
+  Rocket
 } from "lucide-react";
-import { METHODOLOGY_STEPS } from "@/data/company";
 
 export default function MethodologySection() {
+  const steps = [
+    {
+      id: "01",
+      icon: <Crosshair className="w-5 h-5 text-neutral-800" />,
+      title: "Strategy & Planning",
+      description:
+        "We begin by understanding your brand, audience, and technical goals to craft a clear engineering roadmap that sets the foundation for successful delivery."
+    },
+    {
+      id: "02",
+      icon: <BarChart2 className="w-5 h-5 text-neutral-800" />,
+      title: "Developer Pod Assembly",
+      description:
+        "Our team curates pre-vetted senior developer profiles within 48 hours, screened specifically for your tech stack, domain, and time zone requirements."
+    },
+    {
+      id: "03",
+      icon: <Code2 className="w-5 h-5 text-neutral-800" />,
+      title: "Technical Live Interview",
+      description:
+        "Conduct direct technical interviews and live code reviews with the candidates to validate architectural and cultural alignment before committing."
+    },
+    {
+      id: "04",
+      icon: <Rocket className="w-5 h-5 text-neutral-800" />,
+      title: "Contract Signoff & Sprint Launch",
+      description:
+        "Transparent agreements with zero hidden costs, flexible ramp-up terms, 100% IP ownership, and seamless sprint commencement on agreed timelines."
+    }
+  ];
+
   return (
-    <section className="py-20 lg:py-28 bg-[#f8f8f8] relative border-t border-[#ececec]">
+    <section className="py-20 lg:py-28 bg-white border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column (Sticky in Motive style) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e5e5e5] text-xs font-bold text-[#0c0407] shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-              <span>5 Simple Steps</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0c0407] tracking-tight leading-[1.15]">
-              From strategy to success in <br />
-              <span className="text-orange-500">five steps</span>
-            </h2>
-
-            <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
-              We eliminate offshore hiring friction and technical alignment guesswork. Our refined 5-step operational framework ensures you interview, validate, and deploy dedicated senior engineering talent within days.
-            </p>
-
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center pl-6 pr-2 py-2 text-xs font-bold text-white bg-[#0c0407] hover:bg-orange-500 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <span>Start Your Sprint</span>
-                <div className="w-8 h-8 rounded-full bg-white text-[#0c0407] flex items-center justify-center ml-4 group-hover:rotate-45 group-hover:text-orange-500 transition-transform">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </Link>
-            </div>
-
-            {/* Guarantee Pill */}
-            <div className="p-4 rounded-2xl bg-white border border-[#ececec] text-xs text-[#555555] space-y-1 shadow-xs">
-              <div className="flex items-center font-bold text-[#0c0407]">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 mr-1.5" />
-                <span>Zero Risk Guarantee</span>
-              </div>
-              <p>
-                Conduct technical interviews with developers before signing any engagement contracts.
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Motive Tall Portrait Photo (Screenshot 6) */}
+          <div className="lg:col-span-5 h-full">
+            <div className="relative rounded-[28px] overflow-hidden bg-neutral-100 h-[500px] lg:h-[660px] w-full shadow-lg group">
+              <Image
+                src="/images/resource/IMG_2294.webp"
+                alt="Engineers collaborating at Qrious Tech"
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* Right Column: Step Cards */}
-          <div className="lg:col-span-7 space-y-4">
-            {METHODOLOGY_STEPS.map((step) => (
-              <div
-                key={step.step}
-                className="bg-white border border-[#ececec] rounded-2xl p-6 sm:p-8 hover:shadow-md hover:border-[#d1d5db] transition-all duration-200"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold text-orange-600 bg-orange-50 border border-orange-200 px-3 py-1 rounded-full">
-                    Step {step.step}
-                  </span>
-                  <span className="text-xs text-[#888888] font-medium">Phase {step.step} of 05</span>
+          {/* Right Column: Motive 4 Simple Steps (Screenshot 6) */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Motive Pill Badge (Screenshot 6) */}
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs">
+              <LayoutGrid className="w-3.5 h-3.5 text-neutral-600" />
+              <span>4 Simple Steps</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-[1.12]">
+              From strategy to success <br />
+              in four steps
+            </h2>
+
+            <p className="text-neutral-500 text-sm sm:text-base leading-relaxed">
+              Our approach combines strategy, optimization, and engineering rigor to help your brand grow faster with dependable offshore talent.
+            </p>
+
+            {/* Motive Step Cards Stack (Screenshot 6) */}
+            <div className="space-y-4 pt-2">
+              {steps.map((step) => (
+                <div
+                  key={step.id}
+                  className="bg-[#f8f8f9] rounded-2xl p-6 sm:p-7 hover:shadow-md transition-shadow duration-200 group"
+                >
+                  {/* Circular White Icon Pill (Screenshot 6) */}
+                  <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-xs mb-4 group-hover:scale-105 transition-transform duration-200">
+                    {step.icon}
+                  </div>
+
+                  <h3 className="text-lg font-bold text-black mb-1.5">
+                    {step.title}
+                  </h3>
+
+                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-
-                <h3 className="text-xl font-bold text-[#0c0407]">
-                  {step.title}
-                </h3>
-
-                <p className="mt-2 text-sm text-[#555555] leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

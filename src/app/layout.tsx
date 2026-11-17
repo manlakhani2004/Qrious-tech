@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Qrious Tech Team LLP | Enterprise Software, AI Innovation & Scalable Platforms",
@@ -36,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-[#f8f8f8] text-[#111827] antialiased min-h-screen">
+      <body className={`${plusJakartaSans.className} bg-white text-[#0c0407] antialiased min-h-screen selection:bg-black selection:text-white`}>
         {children}
       </body>
     </html>

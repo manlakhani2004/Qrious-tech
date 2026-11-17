@@ -2,175 +2,103 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Star,
-  CheckCircle2,
-  Sparkles,
-  ShieldCheck
-} from "lucide-react";
-import { COMPANY_STATS, HERO_CONTENT } from "@/data/company";
+import Image from "next/image";
+import { ArrowRight, Star } from "lucide-react";
 
 export default function HeroSection() {
-  const marqueeTech = [
-    "AI / ML Innovation",
-    "Python",
-    "LangChain",
-    "Product Architect",
-    "Power BI",
-    "React 19",
-    "Next.js",
-    "Node.js",
-    "Flutter",
-    "Swift (iOS)",
-    "Kotlin (Android)",
-    "Salesforce Development",
-    "AWS & Google Cloud",
-    "Microservices",
-    "Docker & Kubernetes",
-    "PostgreSQL",
-    "Tableau"
+  const avatarImages = [
+    "/images/staff-headshots/1.webp",
+    "/images/staff-headshots/12.webp",
+    "/images/staff-headshots/24.webp",
+    "/images/staff-headshots/31.webp"
   ];
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-28 bg-[#f8f8f8]">
-      {/* Light subtle grid */}
-      <div className="absolute inset-0 grid-pattern-light pointer-events-none opacity-60"></div>
-      
-      {/* Subtle warm glow orb */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-orange-200/40 via-amber-100/30 to-transparent blur-[120px] rounded-full pointer-events-none"></div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Motive Style Pill Badge with Rating */}
-        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-[#e5e5e5] text-xs font-semibold text-[#0c0407] shadow-sm mb-6">
-          <div className="flex items-center text-amber-500 mr-1">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            <span className="ml-1 font-bold text-[#0c0407]">4.9/5</span>
+    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        {/* Motive Rating Pill Badge with Overlapping Avatars (Screenshot 1) */}
+        <div className="inline-flex items-center space-x-3 mb-8">
+          <div className="flex items-center -space-x-2">
+            {avatarImages.map((src, i) => (
+              <div
+                key={i}
+                className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-neutral-200 relative shadow-2xs"
+              >
+                <Image
+                  src={src}
+                  alt={`Client avatar ${i + 1}`}
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
-          <span className="text-[#cccccc]">•</span>
-          <span className="text-orange-600 font-bold">Qrious Tech Team LLP</span>
-          <span className="text-[#cccccc]">•</span>
-          <span className="text-[#555555]">Over 2 Decades of IT Excellence</span>
+
+          <div className="flex flex-col text-left">
+            <div className="flex items-center space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
+                />
+              ))}
+              <span className="text-xs font-bold text-black ml-1">4.9/5</span>
+            </div>
+            <span className="text-[11px] text-neutral-500 font-medium leading-tight">
+              250+ Global Clients
+            </span>
+          </div>
         </div>
 
-        {/* Big Bold Motive Headline from Old Qrious Tech Site */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0c0407] max-w-5xl mx-auto leading-[1.08]">
-          Pioneering Business Growth with <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-600 to-orange-600">
-            AI Innovation
-          </span>{" "}
-          & Scalable IT Solutions
+        {/* Motive Large Bold Headline (Screenshot 1) */}
+        <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-extrabold tracking-tight text-black max-w-5xl mx-auto leading-[1.08] mb-6">
+          Turn business vision into powerful <br className="hidden sm:inline" />
+          digital growth
         </h1>
 
-        {/* Authentic Subtitle from Old Qrious Tech Site */}
-        <p className="mt-6 text-base sm:text-lg text-[#555555] max-w-3xl mx-auto leading-relaxed font-normal">
-          {HERO_CONTENT.subtitle}
+        {/* Motive Subtitle (Screenshot 1) */}
+        <p className="text-neutral-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal mb-9">
+          Partner with certified senior engineering pods, AI architects, and cloud specialists designed to accelerate your roadmap and unlock new market opportunities.
         </p>
 
-        {/* Motive Dual CTAs with sliding hover arrow */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/case-studies"
-            className="w-full sm:w-auto group inline-flex items-center justify-between sm:justify-center pl-7 pr-2 py-2 text-sm font-bold text-white bg-[#0c0407] hover:bg-orange-500 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-          >
-            <span>Explore 37 Case Studies</span>
-            <div className="w-9 h-9 rounded-full bg-white text-[#0c0407] flex items-center justify-center ml-4 group-hover:rotate-45 group-hover:text-orange-500 transition-transform duration-300">
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </Link>
+        {/* Motive Dual CTAs with Radiant Glow Behind (Screenshot 1) */}
+        <div className="relative inline-flex flex-col sm:flex-row items-center justify-center gap-3.5 z-10">
+          {/* Subtle cyan/blue/purple glow orb exactly matching Motive screenshot */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[220px] bg-gradient-to-r from-cyan-200/50 via-blue-200/40 to-purple-200/50 blur-[90px] rounded-full pointer-events-none -z-10" />
 
+          {/* Primary Solid Black Pill */}
           <Link
             href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold text-[#0c0407] bg-white hover:bg-[#f3f4f6] border border-[#e5e5e5] rounded-full shadow-sm hover:border-[#111111] transition-all duration-200"
+            className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-black text-white text-[14px] font-semibold hover:bg-neutral-800 transition-all duration-200 shadow-md active:scale-95"
           >
-            <span>Book Your Appointment</span>
-            <Sparkles className="w-4 h-4 ml-2 text-orange-500" />
+            <span>Start a call</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+          </Link>
+
+          {/* Secondary White Pill */}
+          <Link
+            href="/case-studies"
+            className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-white text-black border border-neutral-200 hover:border-black transition-all duration-200 text-[14px] font-semibold shadow-2xs active:scale-95"
+          >
+            <span>Book A demo</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
         </div>
 
-        {/* 4 Authentic Value Bullets from Old Qrious Tech Site */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl mx-auto text-left">
-          {HERO_CONTENT.bulletPoints.map((point, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-[#ececec] rounded-2xl p-3.5 flex items-start space-x-2.5 shadow-2xs"
-            >
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
-              <span className="text-xs font-semibold text-[#333333] leading-snug">
-                {point}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Motive Metrics Cards */}
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
-          <div className="bg-white border border-[#ececec] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-3xl sm:text-4xl font-extrabold text-[#0c0407]">
-              {COMPANY_STATS.yearsInBusiness}
-            </div>
-            <div className="text-xs font-bold text-orange-600 uppercase tracking-wider mt-1">
-              Years in Tech
-            </div>
-            <p className="text-xs text-[#777777] mt-1.5">
-              Continuous IT delivery since 2004
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#ececec] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-3xl sm:text-4xl font-extrabold text-[#0c0407]">
-              {COMPANY_STATS.teamSize}
-            </div>
-            <div className="text-xs font-bold text-[#0c0407] uppercase tracking-wider mt-1">
-              Team Members
-            </div>
-            <p className="text-xs text-[#777777] mt-1.5">
-              Certified developers & architects
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#ececec] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-3xl sm:text-4xl font-extrabold text-[#0c0407]">
-              {COMPANY_STATS.projectsCompleted}
-            </div>
-            <div className="text-xs font-bold text-emerald-600 uppercase tracking-wider mt-1">
-              Projects Done
-            </div>
-            <p className="text-xs text-[#777777] mt-1.5">
-              Across global industries & USA
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#ececec] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-3xl sm:text-4xl font-extrabold text-[#0c0407]">
-              {COMPANY_STATS.clientSatisfaction}
-            </div>
-            <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-1">
-              Happy Clients
-            </div>
-            <p className="text-xs text-[#777777] mt-1.5">
-              Long-term client partnerships
-            </p>
-          </div>
-        </div>
-
-        {/* Motive Infinite Running Marquee */}
-        <div className="mt-16 pt-10 border-t border-[#e5e5e5] max-w-6xl mx-auto overflow-hidden">
-          <div className="text-xs font-bold uppercase tracking-widest text-[#777777] mb-6">
-            Technologies @ Qtech
-          </div>
-          <div className="relative w-full overflow-hidden mask-fade-edges">
-            <div className="animate-marquee flex items-center space-x-4">
-              {[...marqueeTech, ...marqueeTech].map((tech, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-white border border-[#e5e5e5] text-xs font-bold text-[#0c0407] shadow-sm hover:border-orange-500 hover:text-orange-600 transition-colors whitespace-nowrap cursor-default"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                  <span>{tech}</span>
-                </div>
-              ))}
-            </div>
+        {/* Motive Large Hero Image Card (Screenshot 1 & 2) */}
+        <div className="mt-14 max-w-5xl mx-auto">
+          <div className="relative rounded-2xl sm:rounded-[32px] overflow-hidden border border-black/[0.08] shadow-2xl bg-neutral-100 aspect-[16/9] sm:aspect-[21/9] group">
+            <Image
+              src="/images/qtech-team.webp"
+              alt="Qrious Tech Team in modern workspace"
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+            />
+            {/* Very soft gradient overlay at bottom edge */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
       </div>

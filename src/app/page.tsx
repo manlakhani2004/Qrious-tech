@@ -1,51 +1,51 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import CaseStudiesSpotlight from "@/components/home/CaseStudiesSpotlight";
+import SocialProofSection from "@/components/home/SocialProofSection";
+import ClientFeedbacksSection from "@/components/home/ClientFeedbacksSection";
+import InlineAvatarBanner from "@/components/home/InlineAvatarBanner";
 import ServicesSection from "@/components/home/ServicesSection";
-import ExecutiveOverview from "@/components/home/ExecutiveOverview";
 import MethodologySection from "@/components/home/MethodologySection";
-import IndustriesSection from "@/components/home/IndustriesSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import ArticlesSection from "@/components/home/ArticlesSection";
+import CaseStudiesSpotlight from "@/components/home/CaseStudiesSpotlight";
 import FAQSection from "@/components/home/FAQSection";
-import ContactCTASection from "@/components/home/ContactCTASection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f8f8f8] text-[#111827] flex flex-col selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen bg-white text-[#0c0407] flex flex-col">
+      {/* Motive Navbar (Screenshot 1) */}
       <Navbar />
+
       <main className="flex-grow">
-        {/* Motive Hero */}
+        {/* Motive Hero with Overlapping Avatars & Glowing Blur (Screenshot 1 & 2) */}
         <HeroSection />
 
-        {/* Motive Latest Works */}
-        <CaseStudiesSpotlight />
+        {/* Motive Social Proof Logos (Screenshot 3) */}
+        <SocialProofSection />
 
-        {/* Motive What We Do */}
+        {/* Motive Client Feedbacks with Top Images (Screenshot 3 & 4) */}
+        <ClientFeedbacksSection />
+
+        {/* Motive Inline-Avatar Statement (Screenshot 4) */}
+        <InlineAvatarBanner />
+
+        {/* Motive Asymmetric 5 Services Grid (Screenshot 5) */}
         <ServicesSection />
 
-        {/* Motive Why Choose Us & CEO Message */}
-        <ExecutiveOverview />
-
-        {/* Motive 5 Simple Steps */}
+        {/* Motive 4 Simple Steps with Portrait Photo (Screenshot 6) */}
         <MethodologySection />
 
-        {/* Motive Industry Verticals */}
-        <IndustriesSection />
-
-        {/* Motive Client Testimonials */}
+        {/* Motive Testimonials Behind Success (Screenshot 7) */}
         <TestimonialsSection />
 
-        {/* Motive Latest News & Insights */}
-        <ArticlesSection />
+        {/* Real Qtech Projects Spotlight (Motive Latest Works) */}
+        <CaseStudiesSpotlight />
 
-        {/* Motive FAQ 2-Column Sticky */}
+        {/* Motive Sticky FAQ */}
         <FAQSection />
-
-        {/* Motive Let's Connect & Appointment Booking */}
-        <ContactCTASection />
       </main>
+
+      {/* Motive Footer (Screenshot 8) */}
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import { ChevronDown, ArrowRight, HelpCircle } from "lucide-react";
 import { FAQS_LIST } from "@/data/company";
 
 export default function FAQSection() {
@@ -13,34 +13,32 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faqs" className="py-20 lg:py-28 bg-[#f8f8f8] relative border-t border-[#ececec]">
+    <section id="faqs" className="py-20 lg:py-28 bg-white border-b border-neutral-100 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column (Sticky in Motive style) */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e5e5e5] text-xs font-bold text-[#0c0407] shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-              <span>FAQ</span>
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs">
+              <HelpCircle className="w-3.5 h-3.5 text-neutral-600" />
+              <span>Frequently Asked Questions</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0c0407] tracking-tight leading-[1.15]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-[1.15]">
               Got questions? <br />
-              <span className="text-orange-500">We&apos;ve got answers.</span>
+              We&apos;ve got answers.
             </h2>
 
-            <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
-              Transparent details regarding intellectual property, agile sprints, developer allocation timelines, and early contract flexibility.
+            <p className="text-neutral-500 text-sm sm:text-base leading-relaxed">
+              Transparent details regarding intellectual property, agile developer allocations, NDA protocols, and sprint trial periods.
             </p>
 
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="group inline-flex items-center pl-6 pr-2 py-2 text-xs font-bold text-white bg-[#0c0407] hover:bg-orange-500 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
+                className="group inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-black text-white text-[14px] font-semibold hover:bg-neutral-800 transition-all duration-200 shadow-sm active:scale-95"
               >
-                <span>Have More Questions?</span>
-                <div className="w-8 h-8 rounded-full bg-white text-[#0c0407] flex items-center justify-center ml-4 group-hover:rotate-45 group-hover:text-orange-500 transition-transform">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
+                <span>Have more questions?</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -52,24 +50,24 @@ export default function FAQSection() {
               return (
                 <div
                   key={idx}
-                  className="bg-white border border-[#ececec] rounded-2xl overflow-hidden transition-all duration-200 shadow-xs"
+                  className="bg-[#f8f8f9] rounded-2xl overflow-hidden transition-all duration-200"
                 >
                   <button
                     onClick={() => toggle(idx)}
-                    className="w-full text-left p-6 flex items-center justify-between space-x-4 hover:bg-[#fafafa] transition-colors"
+                    className="w-full text-left p-6 flex items-center justify-between space-x-4 hover:bg-neutral-200/40 transition-colors"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center space-x-3">
-                      <span className="text-[10px] font-bold text-orange-600 bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded-full shrink-0">
+                      <span className="text-[10px] font-bold text-neutral-800 bg-white border border-neutral-200/70 px-2.5 py-0.5 rounded-full shrink-0 shadow-2xs">
                         {faq.category}
                       </span>
-                      <span className="text-sm sm:text-base font-bold text-[#0c0407]">
+                      <span className="text-sm sm:text-base font-bold text-black">
                         {faq.question}
                       </span>
                     </div>
                     <div
-                      className={`w-7 h-7 rounded-full bg-[#f8f8f8] border border-[#ececec] flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#0c0407] text-white" : "text-[#777777]"
+                      className={`w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 ${
+                        isOpen ? "rotate-180 bg-black text-white" : "text-neutral-500"
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -77,7 +75,7 @@ export default function FAQSection() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 text-sm text-[#555555] leading-relaxed border-t border-[#f0f0f0] pt-4">
+                    <div className="px-6 pb-6 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-neutral-200/60 pt-4">
                       {faq.answer}
                     </div>
                   )}
