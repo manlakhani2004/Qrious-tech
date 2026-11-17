@@ -10,6 +10,8 @@ import {
   Bell,
   ArrowRight
 } from "lucide-react";
+import { motion } from "motion/react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function ServicesSection() {
   const topServices = [
@@ -56,8 +58,8 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Motive Centered Section Header (Screenshot 5) */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Motive Centered Section Header with Scroll Reveal */}
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight mb-4">
             How can we support your <br />
             business growth?
@@ -65,19 +67,27 @@ export default function ServicesSection() {
           <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Whether you&apos;re launching a new digital initiative or modernizing legacy infrastructure, we&apos;re here to create solutions that move your brand forward.
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Motive Asymmetric 5-Card Layout (Screenshot 5) */}
+        {/* Motive Asymmetric 5-Card Layout with Staggered Scroll Animations */}
         <div className="space-y-6">
           {/* Top Row: 2 Wide Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {topServices.map((srv) => (
-              <div
+            {topServices.map((srv, idx) => (
+              <motion.div
                 key={srv.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.65,
+                  delay: idx * 0.15,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 className="bg-[#f8f8f9] rounded-[28px] p-8 sm:p-10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Circular White Icon Pill (Screenshot 5) */}
+                  {/* Circular White Icon Pill */}
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xs mb-6 group-hover:scale-110 transition-transform duration-200">
                     {srv.icon}
                   </div>
@@ -88,19 +98,27 @@ export default function ServicesSection() {
                     {srv.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Bottom Row: 3 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {bottomServices.map((srv) => (
-              <div
+            {bottomServices.map((srv, idx) => (
+              <motion.div
                 key={srv.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.65,
+                  delay: 0.15 + idx * 0.12,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 className="bg-[#f8f8f9] rounded-[28px] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Circular White Icon Pill (Screenshot 5) */}
+                  {/* Circular White Icon Pill */}
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xs mb-6 group-hover:scale-110 transition-transform duration-200">
                     {srv.icon}
                   </div>
@@ -111,13 +129,13 @@ export default function ServicesSection() {
                     {srv.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Explore All Services Link */}
-        <div className="mt-12 text-center">
+        <ScrollReveal delay={0.3} className="mt-12 text-center">
           <Link
             href="/services"
             className="group inline-flex items-center space-x-2 text-sm font-semibold text-black hover:text-neutral-600 transition-colors"
@@ -125,7 +143,7 @@ export default function ServicesSection() {
             <span>Explore full engineering practices & architectures</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

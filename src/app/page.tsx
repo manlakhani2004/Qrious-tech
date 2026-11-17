@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import SocialProofSection from "@/components/home/SocialProofSection";
+import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import ClientFeedbacksSection from "@/components/home/ClientFeedbacksSection";
 import InlineAvatarBanner from "@/components/home/InlineAvatarBanner";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -17,13 +17,13 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Motive Hero with Overlapping Avatars & Glowing Blur (Screenshot 1 & 2) */}
+        {/* Motive Hero with Overlapping Avatars & Scroll Image Expansion (Screenshots 1 & 2) */}
         <HeroSection />
 
-        {/* Motive Social Proof Logos (Screenshot 3) */}
-        <SocialProofSection />
+        {/* Horizontal Auto-Scrolling Technologies of Company */}
+        <TechMarqueeSection />
 
-        {/* Motive Client Feedbacks with Top Images (Screenshot 3 & 4) */}
+        {/* Motive Client Feedbacks with Top Images (Screenshots 3 & 4) */}
         <ClientFeedbacksSection />
 
         {/* Motive Inline-Avatar Statement (Screenshot 4) */}
@@ -32,7 +32,7 @@ export default function Home() {
         {/* Motive Asymmetric 5 Services Grid (Screenshot 5) */}
         <ServicesSection />
 
-        {/* Motive 4 Simple Steps with Portrait Photo (Screenshot 6) */}
+        {/* Motive 4 Simple Steps with Tall Portrait Photo (Screenshot 6) */}
         <MethodologySection />
 
         {/* Motive Testimonials Behind Success (Screenshot 7) */}

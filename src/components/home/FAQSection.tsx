@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ArrowRight, HelpCircle } from "lucide-react";
+import { motion } from "motion/react";
 import { FAQS_LIST } from "@/data/company";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -16,8 +18,8 @@ export default function FAQSection() {
     <section id="faqs" className="py-20 lg:py-28 bg-white border-b border-neutral-100 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column (Sticky in Motive style) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+          {/* Left Column (Sticky in Motive style with Scroll Reveal) */}
+          <ScrollReveal className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs">
               <HelpCircle className="w-3.5 h-3.5 text-neutral-600" />
               <span>Frequently Asked Questions</span>
@@ -41,15 +43,23 @@ export default function FAQSection() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Right Column: Accordion */}
+          {/* Right Column: Accordion with Staggered Scroll Animations */}
           <div className="lg:col-span-7 space-y-3.5">
             {FAQS_LIST.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{
+                    duration: 0.55,
+                    delay: idx * 0.08,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
                   className="bg-[#f8f8f9] rounded-2xl overflow-hidden transition-all duration-200"
                 >
                   <button
@@ -79,7 +89,7 @@ export default function FAQSection() {
                       {faq.answer}
                     </div>
                   )}
-                </div>
+                </motion.div>
               );
             })}
           </div>

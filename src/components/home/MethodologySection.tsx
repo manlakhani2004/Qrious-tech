@@ -9,6 +9,8 @@ import {
   Code2,
   Rocket
 } from "lucide-react";
+import { motion } from "motion/react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function MethodologySection() {
   const steps = [
@@ -46,8 +48,12 @@ export default function MethodologySection() {
     <section className="py-20 lg:py-28 bg-white border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Motive Tall Portrait Photo (Screenshot 6) */}
-          <div className="lg:col-span-5 h-full">
+          {/* Left Column: Motive Tall Portrait Photo with Scroll Reveal (Screenshot 6) */}
+          <ScrollReveal
+            duration={0.7}
+            yOffset={40}
+            className="lg:col-span-5 h-full"
+          >
             <div className="relative rounded-[28px] overflow-hidden bg-neutral-100 h-[500px] lg:h-[660px] w-full shadow-lg group">
               <Image
                 src="/images/resource/IMG_2294.webp"
@@ -58,33 +64,43 @@ export default function MethodologySection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Motive 4 Simple Steps (Screenshot 6) */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Motive Pill Badge (Screenshot 6) */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs">
-              <LayoutGrid className="w-3.5 h-3.5 text-neutral-600" />
-              <span>4 Simple Steps</span>
-            </div>
+            {/* Motive Pill Badge with Scroll Reveal */}
+            <ScrollReveal>
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
+                <LayoutGrid className="w-3.5 h-3.5 text-neutral-600" />
+                <span>4 Simple Steps</span>
+              </div>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-[1.12]">
-              From strategy to success <br />
-              in four steps
-            </h2>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight leading-[1.12] mb-3">
+                From strategy to success <br />
+                in four steps
+              </h2>
 
-            <p className="text-neutral-500 text-sm sm:text-base leading-relaxed">
-              Our approach combines strategy, optimization, and engineering rigor to help your brand grow faster with dependable offshore talent.
-            </p>
+              <p className="text-neutral-500 text-sm sm:text-base leading-relaxed">
+                Our approach combines strategy, optimization, and engineering rigor to help your brand grow faster with dependable offshore talent.
+              </p>
+            </ScrollReveal>
 
-            {/* Motive Step Cards Stack (Screenshot 6) */}
+            {/* Motive Step Cards Stack with Staggered Scroll Reveal */}
             <div className="space-y-4 pt-2">
-              {steps.map((step) => (
-                <div
+              {steps.map((step, idx) => (
+                <motion.div
                   key={step.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{
+                    duration: 0.6,
+                    delay: idx * 0.12,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
                   className="bg-[#f8f8f9] rounded-2xl p-6 sm:p-7 hover:shadow-md transition-shadow duration-200 group"
                 >
-                  {/* Circular White Icon Pill (Screenshot 6) */}
+                  {/* Circular White Icon Pill */}
                   <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-xs mb-4 group-hover:scale-105 transition-transform duration-200">
                     {step.icon}
                   </div>
@@ -96,7 +112,7 @@ export default function MethodologySection() {
                   <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed">
                     {step.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

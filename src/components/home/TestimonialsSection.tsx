@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { Quote } from "lucide-react";
+import { motion } from "motion/react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -40,8 +42,8 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 lg:py-28 bg-[#fafafa] border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Motive Centered Pill Badge (Screenshot 7) */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Motive Centered Pill Badge with Scroll Reveal */}
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
             <Quote className="w-3.5 h-3.5 text-neutral-600" />
             <span>Testimonials</span>
@@ -55,13 +57,21 @@ export default function TestimonialsSection() {
           <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Our clients share how our approach helped them achieve more growth and improved software performance.
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Motive Testimonial Cards Grid (Screenshot 7) */}
+        {/* Motive Testimonial Cards Grid with Staggered Scroll Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((item) => (
-            <div
+          {testimonials.map((item, idx) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.65,
+                delay: idx * 0.15,
+                ease: [0.16, 1, 0.3, 1]
+              }}
               className="bg-white border border-neutral-200/80 rounded-3xl p-8 sm:p-9 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               {/* Header: User Avatar + Name + Subtitle + Logo Mark */}
@@ -88,7 +98,7 @@ export default function TestimonialsSection() {
               <blockquote className="text-neutral-700 text-sm sm:text-base leading-relaxed font-normal">
                 &ldquo;{item.quote}&rdquo;
               </blockquote>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, FolderGit2 } from "lucide-react";
+import { motion } from "motion/react";
 import { CASE_STUDIES, CASE_STUDY_TABS, CaseStudy } from "@/data/projects";
 import CaseStudyModal from "@/components/modals/CaseStudyModal";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function CaseStudiesSpotlight() {
   const [selectedTab, setSelectedTab] = useState("all");
@@ -18,8 +20,8 @@ export default function CaseStudiesSpotlight() {
   return (
     <section className="py-20 lg:py-28 bg-white border-b border-neutral-100 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Motive Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        {/* Motive Header with Scroll Reveal */}
+        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
               <FolderGit2 className="w-3.5 h-3.5 text-neutral-600" />
@@ -39,10 +41,10 @@ export default function CaseStudiesSpotlight() {
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Motive Category Tabs */}
-        <div className="flex flex-wrap gap-2 mb-10 pb-2 border-b border-neutral-100">
+        <ScrollReveal delay={0.1} className="flex flex-wrap gap-2 mb-10 pb-2 border-b border-neutral-100">
           {CASE_STUDY_TABS.map((tab) => (
             <button
               key={tab.id}
@@ -56,13 +58,21 @@ export default function CaseStudiesSpotlight() {
               {tab.label}
             </button>
           ))}
-        </div>
+        </ScrollReveal>
 
-        {/* Motive Grid */}
+        {/* Motive Grid with Staggered Scroll Animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredStudies.map((study) => (
-            <div
+          {filteredStudies.map((study, idx) => (
+            <motion.div
               key={study.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{
+                duration: 0.6,
+                delay: idx * 0.1,
+                ease: [0.16, 1, 0.3, 1]
+              }}
               onClick={() => setActiveModalStudy(study)}
               className="bg-[#f8f8f9] rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between group border border-transparent hover:border-neutral-200"
             >
@@ -111,12 +121,12 @@ export default function CaseStudiesSpotlight() {
                   Inspect Solution &rarr;
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* View All Button */}
-        <div className="mt-12 text-center">
+        <ScrollReveal delay={0.2} className="mt-12 text-center">
           <Link
             href="/case-studies"
             className="group inline-flex items-center space-x-2 px-6 py-3 text-xs sm:text-sm font-semibold text-black bg-white border border-neutral-200 rounded-full hover:border-black transition-all shadow-2xs"
@@ -124,7 +134,7 @@ export default function CaseStudiesSpotlight() {
             <span>Browse Complete Directory of 37 Case Studies</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Detail Modal */}
