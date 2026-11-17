@@ -453,3 +453,4 @@ export const TECH_PRACTICES_CATEGORIES = [
     techs: ["Sales Cloud", "Service Cloud", "Experience Cloud", "Field Service (FSL)", "Salesforce CPQ", "Conga CPQ", "Apex & Lightning Web Components (LWC)"]
   }
 ];
+

@@ -5,7 +5,7 @@ import {
   Palette,
   Gamepad2,
   BookOpen,
-  ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   Sparkles
 } from "lucide-react";
@@ -13,26 +13,27 @@ import { IN_HOUSE_PRODUCTS } from "@/data/company";
 
 export default function ProductsSection() {
   const iconMap: Record<string, React.ReactNode> = {
-    Calculator: <Calculator className="w-5 h-5 text-amber-400" />,
-    Palette: <Palette className="w-5 h-5 text-rose-400" />,
-    Gamepad2: <Gamepad2 className="w-5 h-5 text-emerald-400" />,
-    BookOpen: <BookOpen className="w-5 h-5 text-cyan-400" />
+    Calculator: <Calculator className="w-5 h-5 text-amber-600" />,
+    Palette: <Palette className="w-5 h-5 text-rose-500" />,
+    Gamepad2: <Gamepad2 className="w-5 h-5 text-emerald-600" />,
+    BookOpen: <BookOpen className="w-5 h-5 text-blue-600" />
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#070b14] relative">
+    <section className="py-20 lg:py-28 bg-[#ffffff] relative border-t border-[#ececec]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-xs font-semibold text-orange-400 uppercase tracking-wider mb-4">
-            In-House R&D & Consumer Apps
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#f8f8f8] border border-[#e5e5e5] text-xs font-bold text-[#0c0407] shadow-sm mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+            <span>In-House R&D & Consumer Products</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Proprietary Products Built by <br />
-            <span className="gradient-text-orange">Qrious Tech Engineers</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0c0407] tracking-tight">
+            Proprietary products built by <br />
+            <span className="text-orange-500">Qrious Tech engineers</span>
           </h2>
-          <p className="mt-4 text-base text-slate-300 leading-relaxed">
-            Beyond client engineering, we build, publish, and maintain our own proprietary applications—proving our ability to engineer high-retention, child-safe, and scalable mobile products.
+          <p className="mt-4 text-base text-[#555555] leading-relaxed">
+            Beyond client software, we engineer, publish, and scale our own consumer mobile products—demonstrating our capability to build intuitive, high-retention applications.
           </p>
         </div>
 
@@ -41,49 +42,48 @@ export default function ProductsSection() {
           {IN_HOUSE_PRODUCTS.map((prod) => (
             <div
               key={prod.id}
-              className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 hover:border-orange-500/40 hover:bg-slate-900/80 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-[#f8f8f8] border border-[#ececec] rounded-3xl p-6 hover:shadow-xl hover:border-[#d1d5db] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-slate-800 border border-slate-700/60 flex items-center justify-center">
-                    {iconMap[prod.icon] || <Sparkles className="w-5 h-5 text-orange-400" />}
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#ececec] flex items-center justify-center">
+                    {iconMap[prod.icon] || <Sparkles className="w-5 h-5 text-orange-500" />}
                   </div>
-                  <span className="text-[10px] font-semibold text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700/60">
+                  <span className="text-[10px] font-bold text-[#666666] bg-white px-2.5 py-1 rounded-full border border-[#ececec]">
                     {prod.badge}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-orange-400 transition-colors">
+                  <h3 className="text-lg font-bold text-[#0c0407] group-hover:text-orange-600 transition-colors">
                     {prod.title}
                   </h3>
-                  <div className="text-xs text-orange-400 font-medium mt-0.5">
+                  <div className="text-xs text-orange-600 font-semibold mt-0.5">
                     {prod.subtitle}
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-[#555555] leading-relaxed">
                   {prod.description}
                 </p>
 
                 <div className="pt-2 space-y-1.5">
                   {prod.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-center text-[11px] text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mr-1.5 shrink-0" />
+                    <div key={idx} className="flex items-center text-[11px] text-[#333333]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mr-1.5 shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800/80">
-                <Link
-                  href={`/contact?subject=${encodeURIComponent("Consumer App Engineering: " + prod.title)}`}
-                  className="text-xs font-semibold text-slate-300 hover:text-white flex items-center justify-between"
-                >
-                  <span>Build A Consumer App</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange-400 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="mt-6 pt-4 border-t border-[#e5e5e5] flex items-center justify-between">
+                <span className="text-xs font-bold text-[#0c0407] group-hover:text-orange-600 transition-colors">
+                  Product Overview
+                </span>
+                <div className="w-7 h-7 rounded-full bg-white border border-[#e5e5e5] flex items-center justify-center text-[#0c0407] group-hover:rotate-45 group-hover:bg-[#0c0407] group-hover:text-white transition-all">
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </div>
               </div>
             </div>
           ))}

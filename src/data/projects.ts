@@ -123,3 +123,4 @@ export function getCaseStudyById(id: string): CaseStudy | undefined {
 export function getPortfolioProjectById(id: string): PortfolioProject | undefined {
   return PORTFOLIO_PROJECTS.find((p) => p.id === id);
 }
+

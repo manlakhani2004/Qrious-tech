@@ -14,7 +14,7 @@ import ContactCTASection from "@/components/home/ContactCTASection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen bg-[#f8f8f8] text-[#111827] flex flex-col selection:bg-orange-500 selection:text-white">
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
