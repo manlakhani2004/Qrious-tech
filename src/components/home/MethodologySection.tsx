@@ -13,34 +13,35 @@ import { motion } from "motion/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function MethodologySection() {
+  // Authentic Working Methodology Steps from Legacy Qtech Website (working-methodology.html)
   const steps = [
     {
       id: "01",
       icon: <Crosshair className="w-5 h-5 text-neutral-800" />,
-      title: "Strategy & Planning",
+      title: "Share Your Business Requirements",
       description:
-        "We begin by understanding your brand, audience, and technical goals to craft a clear engineering roadmap that sets the foundation for successful delivery."
+        "Provide us with your technical requirements, goals, and timeline, and we will tailor the best senior resources to meet your exact criteria."
     },
     {
       id: "02",
       icon: <BarChart2 className="w-5 h-5 text-neutral-800" />,
-      title: "Developer Pod Assembly",
+      title: "Shortlist Developer Profiles",
       description:
-        "Our team curates pre-vetted senior developer profiles within 48 hours, screened specifically for your tech stack, domain, and time zone requirements."
+        "Within 48 hours, our talent engine shares pre-vetted senior engineer profiles aligned with your tech stack, domain, and time zone for screening."
     },
     {
       id: "03",
       icon: <Code2 className="w-5 h-5 text-neutral-800" />,
-      title: "Technical Live Interview",
+      title: "Schedule Technical Interview",
       description:
-        "Conduct direct technical interviews and live code reviews with the candidates to validate architectural and cultural alignment before committing."
+        "Conduct direct 1-on-1 technical interviews and live coding assessments with the candidates to validate architectural and cultural alignment."
     },
     {
       id: "04",
       icon: <Rocket className="w-5 h-5 text-neutral-800" />,
-      title: "Contract Signoff & Sprint Launch",
+      title: "Review Contract & Commence Work",
       description:
-        "Transparent agreements with zero hidden costs, flexible ramp-up terms, 100% IP ownership, and seamless sprint commencement on agreed timelines."
+        "Review transparent agreements with 100% IP ownership and zero hidden fees. Upon confirmation, developers commence work on the agreed date."
     }
   ];
 

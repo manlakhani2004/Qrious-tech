@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight, Check } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company";
 
@@ -26,11 +27,27 @@ export default function Footer() {
           {/* Left Column: Brand & Contacts */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <Link href="/" className="text-2xl font-bold tracking-tight text-black">
-                Qrious Tech
+              <Link href="/" className="flex items-center space-x-2.5 group">
+                <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0">
+                  <Image
+                    src="/images/qt-logo/sidebar-logo.png"
+                    alt="Qrious Tech Logo"
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold tracking-tight text-black leading-tight">
+                    Qrious Tech
+                  </span>
+                  <span className="text-[10px] text-neutral-400 font-medium tracking-wider uppercase">
+                    Team LLP
+                  </span>
+                </div>
               </Link>
               <p className="mt-4 text-neutral-500 text-sm leading-relaxed max-w-sm">
-                Start your journey toward better engineering performance. With the right strategy and insights, your brand can achieve more.
+                Pioneering innovative IT solutions and dedicated engineering pods that accelerate enterprise roadmaps with measurable success.
               </p>
             </div>
 
@@ -60,12 +77,12 @@ export default function Footer() {
                 </a>
               </div>
 
-              <div className="flex items-center space-x-3.5">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 shrink-0">
+              <div className="flex items-start space-x-3.5">
+                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="text-sm text-neutral-600">
-                  Ahmedabad, Gujarat, India • Global Client Operations
+                <span className="text-sm text-neutral-600 leading-relaxed max-w-sm">
+                  {COMPANY_INFO.address}
                 </span>
               </div>
             </div>

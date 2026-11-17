@@ -3,55 +3,62 @@
 import React from "react";
 import Link from "next/link";
 import {
-  Palette,
-  Monitor,
-  Smartphone,
-  Search,
-  Bell,
-  ArrowRight
+  Code2,
+  Workflow,
+  BarChart3,
+  CheckCircle2,
+  Cloud,
+  ArrowRight,
+  Layers
 } from "lucide-react";
 import { motion } from "motion/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function ServicesSection() {
+  // Authentic 5 Focus Areas from Legacy Qtech Website (index.html lines 350-575)
   const topServices = [
     {
-      id: "product-architect",
-      icon: <Palette className="w-5 h-5 text-neutral-800" />,
-      title: "Branding and Product Architecture",
+      id: "product-development",
+      href: "/services/product-development",
+      icon: <Code2 className="w-5 h-5 text-neutral-800" />,
+      title: "Product Development",
       description:
-        "We create distinctive software architectures and AI foundations that communicate your enterprise values clearly and build resilient, long-term connections with your users."
+        "Crafting visionary products from concept to reality, our development team turns ideas into impactful solutions for market success."
     },
     {
-      id: "web-development",
-      icon: <Monitor className="w-5 h-5 text-neutral-800" />,
-      title: "Web Design and Development",
+      id: "product-architect",
+      href: "/services/product-architect",
+      icon: <Workflow className="w-5 h-5 text-neutral-800" />,
+      title: "Product Architect",
       description:
-        "Our team designs and develops modern, high-performing websites and web applications that combine beautiful visuals with seamless, cloud-native user experiences."
+        "Product architecture is the strategic design plan orchestrating the arrangement and interaction of components for optimal functionality and user experience."
     }
   ];
 
   const bottomServices = [
     {
-      id: "mobile-development",
-      icon: <Smartphone className="w-5 h-5 text-neutral-800" />,
-      title: "Mobile App Engineering",
-      description:
-        "We craft native iOS, Android, and Flutter mobile applications that increase brand visibility and keep customers engaged anytime, anywhere."
-    },
-    {
       id: "power-bi",
-      icon: <Search className="w-5 h-5 text-neutral-800" />,
-      title: "Power BI & Business Intelligence",
+      href: "/services/data-visualization",
+      icon: <BarChart3 className="w-5 h-5 text-neutral-800" />,
+      title: "Power BI",
       description:
-        "Our focus is on turning disparate operational data into executive dashboards and predictive intelligence, helping your business grow steadily."
+        "Unlock insights at a glance with Power BI. Transform your data into stunning visualizations for smarter decisions."
     },
     {
-      id: "salesforce",
-      icon: <Bell className="w-5 h-5 text-neutral-800" />,
-      title: "Salesforce & Growth Strategy",
+      id: "product-testing",
+      href: "/company#methodology",
+      icon: <CheckCircle2 className="w-5 h-5 text-neutral-800" />,
+      title: "Product Testing",
       description:
-        "We help brands scale through strategic planning, Salesforce CRM multi-cloud workflows, performance insights, and automated sales operations."
+        "Ensure seamless functionality and optimal performance with our rigorous product testing, guaranteeing a flawless user experience for your IT solutions."
+    },
+    {
+      id: "cloud-service",
+      href: "/services",
+      icon: <Cloud className="w-5 h-5 text-neutral-800" />,
+      title: "Cloud Service",
+      description:
+        "Elevate your business to new heights with our cutting-edge Cloud Services, delivering seamless scalability, security, and efficiency for your IT infrastructure."
     }
   ];
 
@@ -60,12 +67,16 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Motive Centered Section Header with Scroll Reveal */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
+            <Layers className="w-3.5 h-3.5 text-neutral-600" />
+            <span>Solutions & Focus Areas</span>
+          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight mb-4">
-            How can we support your <br />
-            business growth?
+            What we do to support <br />
+            your business growth
           </h2>
           <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Whether you&apos;re launching a new digital initiative or modernizing legacy infrastructure, we&apos;re here to create solutions that move your brand forward.
+            We’re ready to discover and unlock your potential with dedicated engineering expertise and scalable IT solutions.
           </p>
         </ScrollReveal>
 

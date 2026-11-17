@@ -485,6 +485,16 @@ export const ARTICLES_LIST: ArticleItem[] = [
 
 export const FAQS_LIST: FAQItem[] = [
   {
+    category: "About Qtech",
+    question: "How long has your company been in business?",
+    answer: "Qrious Tech Team LLP has been proudly serving clients in the IT industry since 2017, backed by executive leadership with over two decades in tech. We have established ourselves as a trusted provider of innovative IT solutions, delivering 500+ successful projects for 200+ clients across healthcare, finance, SaaS, oil & energy, and on-demand platforms."
+  },
+  {
+    category: "Team & Expertise",
+    question: "What qualifications and experience do your developers have?",
+    answer: "At Qrious Tech Team LLP, our senior engineering pods hold industry certifications across AWS, Salesforce, Google Cloud, and AI architectures. They possess extensive hands-on experience in full-stack web, mobile app development (Flutter, iOS, Android), enterprise CRM, and BI data visualization with collaborative Agile delivery."
+  },
+  {
     category: "Staffing",
     question: "How quickly can you allocate additional developers to our project if needed?",
     answer: "At Qrious Tech Team LLP, we prioritize responsiveness and flexibility. If additional developers are required for your project, our resource matching engine identifies qualified senior engineers within 48 hours. Depending on specific tech stack requirements, onboarding typically completes within 3 to 7 business days, ensuring seamless scaling without disrupting current sprints."

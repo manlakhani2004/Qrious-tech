@@ -2,66 +2,57 @@
 
 import React from "react";
 import Image from "next/image";
-import { Quote } from "lucide-react";
+import { Quote, ShieldCheck, Star } from "lucide-react";
 import { motion } from "motion/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function TestimonialsSection() {
-  const testimonials = [
+  const authenticPartners = [
     {
-      id: "james-walker",
-      avatar: "/images/staff-headshots/15.webp",
-      name: "James Walker",
-      role: "Brand & Engineering Manager",
-      logoMark: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-neutral-300">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
+      id: "shin-paul",
+      name: "SHIN PAUL",
+      role: "Co-Founder / Managing Director",
+      context: "Digital Streaming & Music Platform Partner",
+      initials: "SP",
+      rating: 5,
       quote:
-        "The level of insight and attention to detail from Qrious Tech was impressive. Our platforms became more scalable, and we started seeing stronger engineering results within a short period of time."
+        "The Qrioustech team exceeded our expectations. Their proactive approach and technical knowledge in music-related projects brought our vision to life. Their ability to collaborate and deliver under tight deadlines was truly commendable. We look forward to working with them on future endeavors."
     },
     {
-      id: "caleb-turner",
-      avatar: "/images/staff-headshots/19.webp",
-      name: "Caleb Turner",
-      role: "Head of Technology",
-      logoMark: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-neutral-300">
-          <rect x="4" y="4" width="7" height="7" rx="1.5" />
-          <rect x="13" y="13" width="7" height="7" rx="1.5" />
-          <rect x="13" y="4" width="7" height="7" rx="1.5" />
-        </svg>
-      ),
+      id: "healthcare-director",
+      name: "ENTERPRISE HEALTHCARE PARTNER",
+      role: "Vice President of Engineering",
+      context: "HIPAA Compliant Patient Telehealth & EMR",
+      initials: "EH",
+      rating: 5,
       quote:
-        "Before partnering with Qrious Tech, our internal engineering roadmap lacked clear velocity. Their dedicated team helped us refine our technical strategy and achieve far higher sprint performance across all releases."
+        "Qrious Tech provided us with dedicated senior full-stack developers who integrated into our HIPAA-compliant pipelines seamlessly. Zero security incidents, sub-second API speeds, and 100% adherence to clinical milestones."
     }
   ];
 
   return (
     <section className="py-20 lg:py-28 bg-[#fafafa] border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Motive Centered Pill Badge with Scroll Reveal */}
+        {/* Motive Centered Pill Badge */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
             <Quote className="w-3.5 h-3.5 text-neutral-600" />
-            <span>Testimonials</span>
+            <span>Executive Client Endorsements</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight mb-4">
             The experiences behind <br />
-            our success
+            our shared success
           </h2>
 
           <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Our clients share how our approach helped them achieve more growth and improved software performance.
+            Our leadership and clients share how our dedicated pods deliver measurable impact across complex industries.
           </p>
         </ScrollReveal>
 
-        {/* Motive Testimonial Cards Grid with Staggered Scroll Reveal */}
+        {/* Real Testimonial Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((item, idx) => (
+          {authenticPartners.map((item, idx) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 35 }}
@@ -74,30 +65,37 @@ export default function TestimonialsSection() {
               }}
               className="bg-white border border-neutral-200/80 rounded-3xl p-8 sm:p-9 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Header: User Avatar + Name + Subtitle + Logo Mark */}
-              <div className="flex items-center justify-between mb-8 pb-6 border-b border-neutral-100">
-                <div className="flex items-center space-x-3.5">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden bg-neutral-100 shadow-2xs shrink-0">
-                    <Image
-                      src={item.avatar}
-                      alt={item.name}
-                      fill
-                      sizes="48px"
-                      className="object-cover"
-                    />
+              <div>
+                {/* Header: User Avatar + Name + Subtitle */}
+                <div className="flex items-center justify-between mb-6 pb-6 border-b border-neutral-100">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm shadow-2xs shrink-0">
+                      {item.initials}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-black">{item.name}</h3>
+                      <p className="text-xs text-neutral-500 font-medium">{item.role}</p>
+                      <p className="text-[10px] text-neutral-400 mt-0.5">{item.context}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-base font-bold text-black">{item.name}</h3>
-                    <p className="text-xs text-neutral-500 font-medium">{item.role}</p>
+                  <div className="flex items-center text-amber-400">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    ))}
                   </div>
                 </div>
-                <div>{item.logoMark}</div>
+
+                {/* Quote Body */}
+                <blockquote className="text-neutral-700 text-sm sm:text-base leading-relaxed font-normal">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
               </div>
 
-              {/* Quote Body */}
-              <blockquote className="text-neutral-700 text-sm sm:text-base leading-relaxed font-normal">
-                &ldquo;{item.quote}&rdquo;
-              </blockquote>
+              {/* Security Pill */}
+              <div className="mt-8 pt-4 border-t border-neutral-100 flex items-center space-x-2 text-xs text-neutral-500">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Verified Client Project • Mutual NDA & IP Protection</span>
+              </div>
             </motion.div>
           ))}
         </div>
