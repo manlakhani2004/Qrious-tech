@@ -6,29 +6,30 @@ import {
   ArrowUpRight,
   Star,
   CheckCircle2,
-  ShieldCheck,
   Sparkles,
-  ArrowRight
+  ShieldCheck
 } from "lucide-react";
-import { COMPANY_STATS } from "@/data/company";
+import { COMPANY_STATS, HERO_CONTENT } from "@/data/company";
 
 export default function HeroSection() {
   const marqueeTech = [
-    "Next.js",
-    "React 19",
+    "AI / ML Innovation",
     "Python",
-    "LangGraph Multi-Agent",
+    "LangChain",
+    "Product Architect",
+    "Power BI",
+    "React 19",
+    "Next.js",
+    "Node.js",
     "Flutter",
     "Swift (iOS)",
-    "Salesforce Multi-Cloud",
-    "Power BI & Fabric",
-    "Node.js",
-    "Amazon Web Services",
-    "PostgreSQL / pgvector",
     "Kotlin (Android)",
+    "Salesforce Development",
+    "AWS & Google Cloud",
+    "Microservices",
     "Docker & Kubernetes",
-    "NestJS",
-    "Tableau CRM"
+    "PostgreSQL",
+    "Tableau"
   ];
 
   return (
@@ -40,29 +41,33 @@ export default function HeroSection() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-orange-200/40 via-amber-100/30 to-transparent blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Motive Style Pill Badge */}
+        {/* Motive Style Pill Badge with Rating */}
         <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-[#e5e5e5] text-xs font-semibold text-[#0c0407] shadow-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+          <div className="flex items-center text-amber-500 mr-1">
+            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            <span className="ml-1 font-bold text-[#0c0407]">4.9/5</span>
+          </div>
+          <span className="text-[#cccccc]">•</span>
           <span className="text-orange-600 font-bold">Qrious Tech Team LLP</span>
           <span className="text-[#cccccc]">•</span>
-          <span className="text-[#555555]">20+ Years Engineering Excellence</span>
+          <span className="text-[#555555]">Over 2 Decades of IT Excellence</span>
         </div>
 
-        {/* Big Bold Motive Headline */}
+        {/* Big Bold Motive Headline from Old Qrious Tech Site */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0c0407] max-w-5xl mx-auto leading-[1.08]">
-          Engineering Intelligent <br className="hidden sm:inline" />
+          Pioneering Business Growth with <br className="hidden sm:inline" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-600 to-orange-600">
-            Digital Platforms
+            AI Innovation
           </span>{" "}
-          & Modern Software
+          & Scalable IT Solutions
         </h1>
 
-        {/* Motive Subtitle */}
-        <p className="mt-6 text-base sm:text-xl text-[#555555] max-w-3xl mx-auto leading-relaxed font-normal">
-          We partner with ambitious enterprises and high-growth brands to build production-ready AI systems, cloud-native web architectures, fluid mobile apps, and Salesforce multi-cloud ecosystems.
+        {/* Authentic Subtitle from Old Qrious Tech Site */}
+        <p className="mt-6 text-base sm:text-lg text-[#555555] max-w-3xl mx-auto leading-relaxed font-normal">
+          {HERO_CONTENT.subtitle}
         </p>
 
-        {/* Motive CTAs */}
+        {/* Motive Dual CTAs with sliding hover arrow */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/case-studies"
@@ -78,25 +83,24 @@ export default function HeroSection() {
             href="/contact"
             className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold text-[#0c0407] bg-white hover:bg-[#f3f4f6] border border-[#e5e5e5] rounded-full shadow-sm hover:border-[#111111] transition-all duration-200"
           >
-            <span>Book A Free Technical Call</span>
+            <span>Book Your Appointment</span>
             <Sparkles className="w-4 h-4 ml-2 text-orange-500" />
           </Link>
         </div>
 
-        {/* Trust Endorsements Strip */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-[#555555]">
-          <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Strict NDA & 100% IP Ownership</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>48-Hour Developer Matching</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Dedicated Pods & Nested OEM</span>
-          </div>
+        {/* 4 Authentic Value Bullets from Old Qrious Tech Site */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl mx-auto text-left">
+          {HERO_CONTENT.bulletPoints.map((point, idx) => (
+            <div
+              key={idx}
+              className="bg-white border border-[#ececec] rounded-2xl p-3.5 flex items-start space-x-2.5 shadow-2xs"
+            >
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+              <span className="text-xs font-semibold text-[#333333] leading-snug">
+                {point}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Motive Metrics Cards */}
@@ -118,10 +122,10 @@ export default function HeroSection() {
               {COMPANY_STATS.teamSize}
             </div>
             <div className="text-xs font-bold text-[#0c0407] uppercase tracking-wider mt-1">
-              Senior Engineers
+              Team Members
             </div>
             <p className="text-xs text-[#777777] mt-1.5">
-              In-house architects & tech specialists
+              Certified developers & architects
             </p>
           </div>
 
@@ -130,10 +134,10 @@ export default function HeroSection() {
               {COMPANY_STATS.projectsCompleted}
             </div>
             <div className="text-xs font-bold text-emerald-600 uppercase tracking-wider mt-1">
-              Deployments
+              Projects Done
             </div>
             <p className="text-xs text-[#777777] mt-1.5">
-              Production solutions delivered globally
+              Across global industries & USA
             </p>
           </div>
 
@@ -142,7 +146,7 @@ export default function HeroSection() {
               {COMPANY_STATS.clientSatisfaction}
             </div>
             <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-1">
-              Satisfaction
+              Happy Clients
             </div>
             <p className="text-xs text-[#777777] mt-1.5">
               Long-term client partnerships
@@ -153,7 +157,7 @@ export default function HeroSection() {
         {/* Motive Infinite Running Marquee */}
         <div className="mt-16 pt-10 border-t border-[#e5e5e5] max-w-6xl mx-auto overflow-hidden">
           <div className="text-xs font-bold uppercase tracking-widest text-[#777777] mb-6">
-            Technologies, Frameworks & Stacks We Master
+            Technologies @ Qtech
           </div>
           <div className="relative w-full overflow-hidden mask-fade-edges">
             <div className="animate-marquee flex items-center space-x-4">
