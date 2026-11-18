@@ -29,7 +29,7 @@
     color: #0c0407;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: clip;
+    overflow: visible;
     max-width: 100vw;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
