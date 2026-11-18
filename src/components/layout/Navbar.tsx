@@ -444,7 +444,7 @@ export default function Navbar() {
 
               {/* Grouped Industries Mega Menu */}
               {activeDropdown === "industries" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[860px] pt-3 z-50">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] xl:w-[940px] pt-3 z-50">
                   <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-6 shadow-2xl grid grid-cols-12 gap-6">
                     {/* Left: Featured Industry Pods Card */}
                     <div className="col-span-4 bg-[#f8f8f9] dark:bg-[#18181b] rounded-2xl p-5 border border-neutral-200/70 dark:border-neutral-800 flex flex-col justify-between">
@@ -485,12 +485,12 @@ export default function Navbar() {
                       </div>
                     </div>
 
-                    {/* Right: 3 Distinct Industry Sectors */}
+                    {/* Right: 3 Distinct Industry Sectors with Harmonized Header Baseline */}
                     <div className="col-span-8 grid grid-cols-3 gap-4">
                       {industrySectors.map((sector, sIdx) => (
                         <div key={sIdx} className="space-y-3">
-                          <h5 className="text-[11px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider pb-1 border-b border-neutral-100 dark:border-neutral-800">
-                            {sector.sectorName}
+                          <h5 className="text-[10.5px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wide pb-1.5 border-b border-neutral-100 dark:border-neutral-800 h-8 flex items-end whitespace-nowrap overflow-hidden">
+                            <span>{sector.sectorName}</span>
                           </h5>
                           <div className="space-y-1">
                             {sector.items.map((ind) => (
