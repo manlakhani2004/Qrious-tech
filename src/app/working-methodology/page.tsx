@@ -181,7 +181,7 @@ export default function WorkingMethodologyPage() {
 
       <main className="flex-grow pt-8 pb-20 lg:pb-28">
         {/* Motive Centered Hero */}
-        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="py-16 sm:py-24 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative overflow-hidden">
           {/* Ambient background glow for luxury dark mode */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[420px] pointer-events-none -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(120,119,198,0.14),transparent)] dark:block hidden" />
 
@@ -220,7 +220,7 @@ export default function WorkingMethodologyPage() {
 
         {/* 5-Step Operational Methodology */}
         <section className="py-16 bg-[#f8f8f9] dark:bg-[#0c0c0e] border-y border-neutral-100 dark:border-neutral-800/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
             <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight mb-4">
                 The 5-Step Process to Success
@@ -245,7 +245,7 @@ export default function WorkingMethodologyPage() {
 
         {/* SLA & Guarantees Section */}
         <section className="py-20 lg:py-28 bg-white dark:bg-[#09090b]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
             <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 mb-4 shadow-2xs backdrop-blur-sm">
                 <ShieldCheck className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />

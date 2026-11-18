@@ -283,7 +283,7 @@ export default function Navbar() {
           : "border-b border-neutral-100/80 dark:border-white/[0.06] py-3 sm:py-3.5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         <div className="flex items-center justify-between">
           {/* Authentic Qrious Tech Brand Logo */}
           <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5">

@@ -236,7 +236,7 @@ export default function ServicesPage() {
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-[100px] pointer-events-none" />
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative z-10">
             <ScrollReveal>
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-6 backdrop-blur-sm">
                 <Layers className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
@@ -274,7 +274,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Overlapping Stacking Service Cards */}
-        <section id="practices" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section id="practices" className="py-12 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative">
           <div className="space-y-16 pb-20">
             {SERVICES_LIST.map((srv, idx) => (
               <OverlappingServiceCard
@@ -290,7 +290,7 @@ export default function ServicesPage() {
 
         {/* Master Tech Stack Matrix */}
         <section className="py-20 bg-white dark:bg-[#09090b] border-y border-neutral-100 dark:border-neutral-800 transition-colors duration-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
             <ScrollReveal className="text-center max-w-3xl mx-auto mb-14">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
                 Complete Technology Practice Matrix
@@ -334,7 +334,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Motive Bottom Appointment CTA Banner */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <ScrollReveal duration={0.7} yOffset={30}>
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <h3 className="text-3xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight leading-[1.14]">

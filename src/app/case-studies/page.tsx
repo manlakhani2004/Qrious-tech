@@ -42,7 +42,7 @@ export default function CaseStudiesPage() {
 
       <main className="flex-grow pt-8 pb-20 lg:pb-28">
         {/* Motive Centered Hero */}
-        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="py-16 sm:py-24 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative overflow-hidden">
           {/* Ambient background glow for luxury dark mode */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[420px] pointer-events-none -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(120,119,198,0.14),transparent)] dark:block hidden" />
 
@@ -65,7 +65,7 @@ export default function CaseStudiesPage() {
 
         {/* Sticky Filter & Search Toolbar */}
         <section className="bg-white/95 dark:bg-[#09090b]/95 backdrop-blur-md border-y border-neutral-100 dark:border-neutral-800/80 sticky top-20 z-20 shadow-2xs py-3.5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 space-y-3">
             {/* Tier 1: Motive Category Pill Tabs (Full-Width Responsive Grid) */}
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5">
               {CASE_STUDY_TABS.map((tab) => {
@@ -143,7 +143,7 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* Case Studies Grid with Motion */}
-        <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 sm:py-16 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
               {filteredStudies.map((study, idx) => (

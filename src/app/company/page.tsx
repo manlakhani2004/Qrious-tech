@@ -42,7 +42,7 @@ export default function CompanyPage() {
 
       <main className="flex-grow pt-4 sm:pt-6 pb-20 lg:pb-28">
         {/* CEO Message Section (Top-of-Page Executive Showcase) */}
-        <section className="pt-2 sm:pt-4 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="pt-2 sm:pt-4 pb-16 sm:pb-20 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <ScrollReveal duration={0.7} yOffset={20}>
             <div className="bg-[#f8f8f9] dark:bg-[#121215] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 lg:p-14 shadow-sm relative">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -163,7 +163,7 @@ export default function CompanyPage() {
 
         {/* Core Values */}
         <section className="py-20 bg-white dark:bg-[#09090b] border-y border-neutral-100 dark:border-neutral-800/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
             <ScrollReveal className="text-center max-w-3xl mx-auto mb-14">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight">
                 Our Core Engineering Values
@@ -216,7 +216,7 @@ export default function CompanyPage() {
         </div>
 
         {/* Motive Bottom Appointment CTA Banner */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <ScrollReveal duration={0.7} yOffset={30}>
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <h3 className="text-3xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight leading-[1.14]">

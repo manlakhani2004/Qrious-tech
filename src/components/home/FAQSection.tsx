@@ -16,7 +16,7 @@ export default function FAQSection() {
 
   return (
     <section id="faqs" className="py-20 lg:py-28 bg-white dark:bg-[#09090b] border-b border-neutral-100 dark:border-neutral-800 relative transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column (Sticky in Motive style with Scroll Reveal) */}
           <ScrollReveal className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">

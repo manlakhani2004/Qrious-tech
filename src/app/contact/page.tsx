@@ -58,7 +58,7 @@ export default function ContactPage() {
 
       <main className="flex-grow pt-8 pb-20 lg:pb-28">
         {/* Motive Centered Hero with Smooth Animation */}
-        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="py-16 sm:py-24 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative overflow-hidden">
           {/* Ambient background glow for luxury dark mode */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[420px] pointer-events-none -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(120,119,198,0.14),transparent)] dark:block hidden" />
 
@@ -82,7 +82,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Details & Form Grid with Smooth Staggered Animation */}
-        <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-8 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left Column: Office & Direct Channels */}
             <ScrollReveal className="lg:col-span-5 space-y-6">

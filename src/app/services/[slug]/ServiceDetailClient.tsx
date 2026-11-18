@@ -115,7 +115,7 @@ export default function ServiceDetailClient({
           <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-[100px] pointer-events-none" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ export default function ServiceDetailClient({
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="py-16 sm:py-20 bg-[#f8f8f9] dark:bg-[#0c0c0e] border-y border-neutral-200/80 dark:border-neutral-800 transition-colors duration-200"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left Column: Key Features */}
             <div className="lg:col-span-7 space-y-6">
@@ -343,7 +343,7 @@ export default function ServiceDetailClient({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 py-16"
       >
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-xs font-semibold text-neutral-800 dark:text-neutral-200 mb-3 border border-neutral-200/80 dark:border-white/10 shadow-2xs backdrop-blur-sm">
@@ -393,7 +393,7 @@ export default function ServiceDetailClient({
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="py-16 sm:py-20 bg-white dark:bg-[#09090b] transition-colors duration-200"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
               <div>
                 <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-xs font-semibold text-neutral-800 dark:text-neutral-200 mb-3 border border-neutral-200/80 dark:border-white/10 shadow-2xs backdrop-blur-sm">
@@ -481,7 +481,7 @@ export default function ServiceDetailClient({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10"
+        className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 pb-10"
       >
         <div className="bg-[#f8f8f9] dark:bg-[#121215] rounded-3xl p-8 sm:p-14 border border-neutral-200/80 dark:border-neutral-800 shadow-sm text-center max-w-4xl mx-auto space-y-6">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1f1f23] border border-neutral-200 dark:border-neutral-800 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs">

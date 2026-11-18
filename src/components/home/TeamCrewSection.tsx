@@ -50,7 +50,7 @@ export default function TeamCrewSection() {
 
   return (
     <section className="py-20 lg:py-28 bg-white dark:bg-[#09090b] border-b border-neutral-100 dark:border-neutral-800 overflow-hidden relative transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative z-10">
         {/* Motive Centered Header with Authentic Text from index.html (Lines 2295-2300) */}
         <ScrollReveal className="max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
@@ -426,7 +426,7 @@ export default function TeamCrewSection() {
       )}
 
       {/* Motive Bottom Metrics Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-14">
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mt-12 sm:mt-14">
         <div className="bg-[#f8f8f9] dark:bg-[#121215] border border-transparent dark:border-neutral-800 hover:border-neutral-200/60 dark:hover:border-neutral-700 rounded-[28px] p-6 sm:p-8 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/70 dark:divide-neutral-800">
             <div className="pt-3 sm:pt-0">

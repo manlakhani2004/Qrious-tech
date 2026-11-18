@@ -100,7 +100,7 @@ export default function VideoCultureSection() {
 
   return (
     <section className="py-20 lg:py-28 bg-white dark:bg-[#09090b] border-b border-neutral-100 dark:border-neutral-800 transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         <ScrollReveal duration={0.7} yOffset={35}>
           <div
             ref={sectionRef}
