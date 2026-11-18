@@ -147,8 +147,8 @@ export default function AboutProductIdeaSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3.5 left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-xs">
+                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       <span>Executive Strategy</span>
                     </span>
@@ -165,8 +165,8 @@ export default function AboutProductIdeaSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3.5 left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-xs">
+                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                       <span>Engineering Pods</span>
                     </span>
@@ -175,7 +175,7 @@ export default function AboutProductIdeaSection() {
               </div>
 
               {/* Column 2: Mobile & Cloud (compact) + 500+ Projects Card (tall) */}
-              <div className="space-y-4 pt-6 sm:pt-8">
+              <div className="space-y-4 pt-4 sm:pt-8">
                 {/* 3. Mobile & Cloud */}
                 <div className="relative h-48 sm:h-52 rounded-[26px] overflow-hidden border border-neutral-200/90 dark:border-white/10 shadow-lg bg-neutral-900 group">
                   <Image
@@ -186,8 +186,8 @@ export default function AboutProductIdeaSection() {
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3.5 left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-xs">
+                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
                       <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                       <span>Mobile &amp; Cloud</span>
                     </span>
@@ -195,23 +195,23 @@ export default function AboutProductIdeaSection() {
                 </div>
 
                 {/* 4. 500+ Projects Delivered Card */}
-                <div className="relative h-56 sm:h-64 rounded-[26px] p-6 sm:p-7 border border-neutral-200/90 dark:border-white/10 shadow-lg bg-[#f8f8f9] dark:bg-[#121215] flex flex-col justify-between transition-all duration-300 group hover:shadow-xl dark:hover:border-white/20">
+                <div className="relative h-56 sm:h-64 rounded-[26px] p-5 sm:p-6 lg:p-7 border border-neutral-200/90 dark:border-white/10 shadow-lg bg-[#f8f8f9] dark:bg-[#121215] flex flex-col justify-between transition-all duration-300 group hover:shadow-xl dark:hover:border-white/20">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-extrabold text-xs shadow-md">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-extrabold text-[11px] sm:text-xs shadow-md">
                       QT
                     </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 bg-neutral-200/60 dark:bg-white/10 px-2.5 py-1 rounded-full">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 bg-neutral-200/60 dark:bg-white/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
                       Since 2017
                     </span>
                   </div>
                   <div>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight leading-none">
+                    <div className="text-2xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight leading-none">
                       500+
                     </div>
-                    <div className="text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
+                    <div className="text-[11px] sm:text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
                       Projects Delivered
                     </div>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-1 sm:mt-1.5 leading-relaxed">
                       Proven track record serving clients worldwide since 2017 with dedicated engineering talent.
                     </p>
                   </div>

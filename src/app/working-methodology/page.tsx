@@ -68,14 +68,14 @@ function MethodologyStepCard({
     >
       <motion.div
         style={{ scale, opacity }}
-        className="bg-white dark:bg-[#121215] rounded-[28px] sm:rounded-[32px] p-8 sm:p-10 border border-neutral-200/90 dark:border-white/[0.08] shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_60px_rgba(0,0,0,0.7)] transition-all duration-300 relative overflow-hidden"
+        className="bg-white dark:bg-[#121215] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 lg:p-10 border border-neutral-200/90 dark:border-white/[0.08] shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_60px_rgba(0,0,0,0.7)] transition-all duration-300 relative overflow-hidden"
       >
         {/* Subtle top edge specular highlight in dark mode */}
         <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent dark:block hidden pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
           <div className="lg:col-span-1">
-            <div className="w-14 h-14 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center font-extrabold text-lg text-black dark:text-white shadow-2xs">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center font-extrabold text-base sm:text-lg text-black dark:text-white shadow-2xs">
               {item.step}
             </div>
           </div>
@@ -84,7 +84,7 @@ function MethodologyStepCard({
             <div className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
               {item.subtitle}
             </div>
-            <h3 className="text-2xl font-bold text-black dark:text-white">
+            <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white">
               {item.title}
             </h3>
             <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
@@ -92,7 +92,7 @@ function MethodologyStepCard({
             </p>
           </div>
 
-          <div className="lg:col-span-5 bg-[#f8f8f9] dark:bg-[#18181b] rounded-2xl p-5 border border-neutral-200/60 dark:border-neutral-800 space-y-2">
+          <div className="lg:col-span-5 bg-[#f8f8f9] dark:bg-[#18181b] rounded-2xl p-4 sm:p-5 border border-neutral-200/60 dark:border-neutral-800 space-y-2">
             <div className="text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
               Key Deliverables
             </div>

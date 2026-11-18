@@ -129,7 +129,7 @@ export default function ServiceDetailClient({
             </div>
 
             {/* Heading - Full size & wide impact */}
-            <h1 className="text-4xl sm:text-6xl lg:text-[68px] xl:text-[76px] font-extrabold text-black dark:text-white tracking-tight leading-[1.06]">
+            <h1 className="text-3xl sm:text-5xl lg:text-[64px] xl:text-[72px] font-extrabold text-black dark:text-white tracking-tight leading-[1.08] break-words">
               {service.title}: <br />
               <span className="text-neutral-400 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-neutral-200 dark:via-neutral-400 dark:to-neutral-500 font-normal">
                 {service.tagline}

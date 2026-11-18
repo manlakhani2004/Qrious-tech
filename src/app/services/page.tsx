@@ -82,12 +82,12 @@ function OverlappingServiceCard({
     >
       <motion.div
         style={{ scale, opacity }}
-        className="bg-white dark:bg-[#111114] rounded-[28px] sm:rounded-[32px] p-7 sm:p-10 lg:p-12 border border-neutral-200/90 dark:border-white/[0.08] shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_60px_rgba(0,0,0,0.7)] transition-all duration-300 relative overflow-hidden"
+        className="bg-white dark:bg-[#111114] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 lg:p-12 border border-neutral-200/90 dark:border-white/[0.08] shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_60px_rgba(0,0,0,0.7)] transition-all duration-300 relative overflow-hidden"
       >
         {/* Subtle top edge specular highlight in dark mode */}
         <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent dark:block hidden pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Left Column: Number, Title, Capabilities, Deliverables */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center space-x-4">

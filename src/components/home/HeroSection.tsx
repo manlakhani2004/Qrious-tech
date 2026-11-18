@@ -142,7 +142,7 @@ export default function HeroSection() {
               </motion.div>
 
               {/* Main Headline: Staggered Lines Moving Left-to-Right */}
-              <h1 className="text-4xl sm:text-6xl lg:text-[74px] font-extrabold tracking-tight text-black dark:text-white max-w-5xl mx-auto leading-[1.08] mb-5">
+              <h1 className="text-3xl sm:text-5xl lg:text-[70px] xl:text-[74px] font-extrabold tracking-tight text-black dark:text-white max-w-5xl mx-auto leading-[1.08] mb-5">
                 <motion.span
                   className="block"
                   variants={{

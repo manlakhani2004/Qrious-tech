@@ -118,9 +118,9 @@ function OverlappingCard({
     >
       <motion.div
         style={{ scale, opacity }}
-        className="bg-white dark:bg-[#121215] rounded-[28px] sm:rounded-[32px] p-8 sm:p-12 lg:p-14 border border-neutral-200/90 dark:border-neutral-800 shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_-12px_36px_rgba(0,0,0,0.4),0_24px_50px_rgba(0,0,0,0.5)] transition-all duration-300"
+        className="bg-white dark:bg-[#121215] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 lg:p-14 border border-neutral-200/90 dark:border-neutral-800 shadow-[0_-12px_36px_rgba(0,0,0,0.06),0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_-12px_36px_rgba(0,0,0,0.4),0_24px_50px_rgba(0,0,0,0.5)] transition-all duration-300"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Column: Number, Badge, Title, Bullets, Tags */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center space-x-3">
