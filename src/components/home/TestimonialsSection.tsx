@@ -31,21 +31,21 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-[#fafafa] border-b border-neutral-100">
+    <section className="py-20 lg:py-28 bg-[#fafafa] dark:bg-[#09090b] border-b border-neutral-100 dark:border-neutral-800/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Motive Centered Pill Badge */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/80 text-xs font-semibold text-neutral-800 shadow-2xs mb-4">
-            <Quote className="w-3.5 h-3.5 text-neutral-600" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#18181b] border border-neutral-200/80 dark:border-neutral-800 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4">
+            <Quote className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
             <span>Executive Client Endorsements</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight mb-4">
             The experiences behind <br />
             our shared success
           </h2>
 
-          <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Our leadership and clients share how our dedicated pods deliver measurable impact across complex industries.
           </p>
         </ScrollReveal>
@@ -63,22 +63,22 @@ export default function TestimonialsSection() {
                 delay: idx * 0.15,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="bg-white border border-neutral-200/80 rounded-3xl p-8 sm:p-9 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="bg-[#f8f8f9] dark:bg-[#121215] rounded-[28px] p-8 sm:p-9 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-transparent dark:border-neutral-800/60 hover:border-neutral-200/60 dark:hover:border-neutral-700"
             >
               <div>
                 {/* Header: User Avatar + Name + Subtitle */}
-                <div className="flex items-center justify-between mb-6 pb-6 border-b border-neutral-100">
+                <div className="flex items-center justify-between mb-6 pb-6 border-b border-neutral-200/60 dark:border-neutral-800">
                   <div className="flex items-center space-x-3.5">
-                    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm shadow-2xs shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
                       {item.initials}
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-black">{item.name}</h3>
-                      <p className="text-xs text-neutral-500 font-medium">{item.role}</p>
-                      <p className="text-[10px] text-neutral-400 mt-0.5">{item.context}</p>
+                      <h3 className="text-base font-bold text-black dark:text-white">{item.name}</h3>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{item.role}</p>
+                      <p className="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5">{item.context}</p>
                     </div>
                   </div>
-                  <div className="flex items-center text-amber-400">
+                  <div className="flex items-center text-amber-400 bg-white dark:bg-[#18181b] px-2.5 py-1 rounded-full shadow-xs border border-neutral-100 dark:border-neutral-800">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                     ))}
@@ -86,14 +86,14 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Quote Body */}
-                <blockquote className="text-neutral-700 text-sm sm:text-base leading-relaxed font-normal">
+                <blockquote className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed font-normal">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
               </div>
 
               {/* Security Pill */}
-              <div className="mt-8 pt-4 border-t border-neutral-100 flex items-center space-x-2 text-xs text-neutral-500">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="mt-8 pt-4 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center space-x-2 text-xs text-neutral-500 dark:text-neutral-400">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>Verified Client Project • Mutual NDA & IP Protection</span>
               </div>
             </motion.div>

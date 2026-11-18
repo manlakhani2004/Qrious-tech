@@ -82,15 +82,15 @@ export const COMPANY_INFO: ContactInfo = {
 };
 
 export const COMPANY_STATS: CompanyStats = {
-  yearsInBusiness: "20+",
-  teamSize: "60+",
-  projectsCompleted: "250+",
+  yearsInBusiness: "8+",
+  teamSize: "100+",
+  projectsCompleted: "500+",
   clientSatisfaction: "99.4%",
   countriesServed: "15+"
 };
 
 export const HERO_CONTENT = {
-  pill: "20+ Years Offshore & Enterprise IT Excellence",
+  pill: "500+ Projects Delivered • Offshore IT Excellence",
   titleMain: "Pioneering Business Growth with",
   titleHighlight: "AI Innovation & Scalable IT Solutions",
   subtitle: "Qrious Tech Team LLP is your go-to IT partner for simple and effective solutions. We provide you with the right tech support, tailored to your business. Count on us as more than just service providers – we're your reliable friends in tech, helping you succeed in the digital age.",
@@ -617,6 +617,70 @@ export const SERVICES_LIST = [
     ],
     techStack: ["Salesforce CRM", "Apex", "LWC", "Conga CPQ", "MuleSoft"],
     deliverables: ["Custom LWC Components", "Workflows & Automations", "User Training Docs"]
+  },
+  {
+    id: "ai-ml-development",
+    slug: "ai-ml-development",
+    title: "AI / ML Development",
+    tagline: "Intelligent Systems & Neural Architecture",
+    description: "At Qtech, we leverage Artificial Intelligence and Machine Learning to deliver exceptional solutions and drive forward-thinking initiatives.",
+    iconName: "Brain",
+    features: [
+      "Custom LLM fine-tuning & RAG pipeline integration",
+      "Computer vision & biometric recognition algorithms",
+      "Predictive analytics and neural network modeling",
+      "Enterprise NLP & automated cognitive workflows"
+    ],
+    techStack: ["Python", "PyTorch", "TensorFlow", "LangChain", "OpenAI / Claude APIs", "FastAPI"],
+    deliverables: ["Trained Model Checkpoints", "Inference REST APIs", "Data Pipeline Architecture"]
+  },
+  {
+    id: "dedicated-development-teams",
+    slug: "dedicated-development-teams",
+    title: "Dedicated Development Teams",
+    tagline: "Staff Augmentation & Agile Pods",
+    description: "Scale your product capacity instantly with an embedded development team that works as a seamless, transparent extension of your in-house engineering.",
+    iconName: "Users2",
+    features: [
+      "Vetted senior developer profiles allocated in 48 hours",
+      "Direct integration into your Slack, Jira, and GitHub",
+      "Flexible ramp-up with zero recruitment friction",
+      "100% intellectual property ownership from day one"
+    ],
+    techStack: ["React 19", "Next.js", "Flutter", "Salesforce", "Python", "AWS"],
+    deliverables: ["Dedicated Engineering Pod", "Daily Standup Logs", "Sprint Backlog Burndown"]
+  },
+  {
+    id: "saas-development-partner",
+    slug: "saas-development-partner",
+    title: "SaaS Development Partner",
+    tagline: "Zero-to-One Product Partnership",
+    description: "Turn your software idea into a market-ready SaaS product. We take you from MVP conceptualization and design to production architecture and launch.",
+    iconName: "Rocket",
+    features: [
+      "Multi-tenant database schema & tenancy isolation",
+      "Stripe / LemonSqueezy subscription billing engines",
+      "Automated CI/CD with Kubernetes & AWS CloudFormation",
+      "Rapid 90-day production MVP release milestone"
+    ],
+    techStack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "AWS", "Stripe"],
+    deliverables: ["Production Multi-Tenant SaaS", "Admin Backoffice", "Architecture Blueprint"]
+  },
+  {
+    id: "ai-modernization-partner",
+    slug: "ai-modernization-partner",
+    title: "AI Modernization Partner",
+    tagline: "Legacy System Transformation with AI",
+    description: "Modernize your existing product with AI. We re-engineer workflows, integrate LLMs or machine learning models, and unlock intelligent features.",
+    iconName: "Sparkles",
+    features: [
+      "Full architecture and legacy code modernization audit",
+      "Embeddings & semantic vector search implementation",
+      "Intelligent document understanding & process automation",
+      "Zero data-leakage enterprise privacy compliance"
+    ],
+    techStack: ["LangChain", "LlamaIndex", "Python", "Vector DBs", "AWS Bedrock", "Azure OpenAI"],
+    deliverables: ["Modernized Cloud Architecture", "AI Automation Suite", "Compliance Audit"]
   }
 ];
 

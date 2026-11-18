@@ -98,12 +98,12 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = rawPortfolio as PortfolioP
 export const CASE_STUDIES: CaseStudy[] = rawCaseStudies as CaseStudy[];
 
 export const CASE_STUDY_TABS = [
-  { id: "all", label: "All Engineering" },
-  { id: "ai", label: "AI & Machine Learning" },
-  { id: "web", label: "Cloud & Web Architecture" },
-  { id: "mobile", label: "Mobile Apps" },
-  { id: "salesforce", label: "Salesforce Multi-Cloud" },
-  { id: "power-bi", label: "Power BI & Fabric" }
+  { id: "all", label: "All" },
+  { id: "ai", label: "AI" },
+  { id: "web", label: "Web" },
+  { id: "mobile", label: "Mobile" },
+  { id: "salesforce", label: "Salesforce" },
+  { id: "power-bi", label: "Power BI" }
 ];
 
 export const PORTFOLIO_DOMAINS = [
