@@ -76,7 +76,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              Schedule a discovery session with our software architects. We provide tailored technical roadmaps, dedicated engineering pods, and rapid talent allocation.
+              Schedule a discovery session with our software architects. We provide tailored AI roadmaps, dedicated engineering pods, and rapid 14-day working POCs.
             </p>
           </ScrollReveal>
         </section>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-2xl font-bold text-black dark:text-white">Consultation Request Received</h3>
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-md mx-auto leading-relaxed">
-                      Thank you. An engineering lead will review your submission and contact you within 24 hours with prospective developer profiles and NDA details.
+                      Thank you. An engineering lead will review your submission and contact you within 24 hours with a custom AI roadmap and NDA details.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}

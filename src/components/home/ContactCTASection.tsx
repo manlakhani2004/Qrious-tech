@@ -192,12 +192,12 @@ export default function ContactCTASection() {
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] dark:bg-[#121215] border border-[#e5e5e5] dark:border-neutral-700 rounded-xl text-sm text-[#0c0407] dark:text-white focus:outline-none focus:border-[#0c0407] dark:focus:border-white"
                     >
-                      <option value="ai-ml">AI, GenAI & LangGraph Multi-Agent</option>
-                      <option value="web-dev">Cloud-Native Web (Next.js / Node.js)</option>
+                      <option value="ai-ml">AI Agents & Workflow Automation</option>
+                      <option value="web-dev">Custom AI Software & Web Apps</option>
                       <option value="mobile-dev">Mobile App (Flutter / React Native)</option>
                       <option value="salesforce">Salesforce Multi-Cloud / CPQ</option>
                       <option value="data-power-bi">Power BI & Microsoft Fabric</option>
-                      <option value="dedicated-pod">Dedicated Engineering Pod / Staffing</option>
+                      <option value="dedicated-pod">Dedicated AI Engineering Pod</option>
                     </select>
                   </div>
 
@@ -209,7 +209,7 @@ export default function ContactCTASection() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Describe your current tech stack, desired timelines, or developer profiles needed..."
+                      placeholder="Describe your business goals, operational workflows, or AI requirements..."
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] dark:bg-[#121215] border border-[#e5e5e5] dark:border-neutral-700 rounded-xl text-sm text-[#0c0407] dark:text-white placeholder-[#999999] dark:placeholder-neutral-500 focus:outline-none focus:border-[#0c0407] dark:focus:border-white"
                     ></textarea>
                   </div>

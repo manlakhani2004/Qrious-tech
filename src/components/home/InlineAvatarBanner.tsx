@@ -13,7 +13,7 @@ export default function InlineAvatarBanner() {
         {/* Authentic Statement with Inline Avatars */}
         <ScrollReveal duration={0.75} yOffset={30}>
           <h2 className="text-3xl sm:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.3] text-black dark:text-white">
-            <span>Qrious Tech Team LLP helps enterprises turn </span>
+            <span>Qrious Tech Team LLP powers ambitious enterprises with </span>
             {/* Avatar Pill 1 */}
             <span className="inline-flex items-center align-middle mx-2 my-1 px-1.5 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/90 dark:border-white/10 shadow-2xs hover:scale-110 transition-transform duration-200">
               <span className="relative w-10 h-6 sm:w-12 sm:h-7 rounded-full overflow-hidden inline-block">
@@ -26,9 +26,9 @@ export default function InlineAvatarBanner() {
                 />
               </span>
             </span>
-            <span>product ideas into reality with </span>
+            <span>autonomous AI systems </span>
             <br className="hidden sm:inline" />
-            <span className="text-neutral-500 dark:text-neutral-400 font-normal">proven IT solutions </span>
+            <span className="text-neutral-500 dark:text-neutral-400 font-normal">and dedicated engineering pods that </span>
             {/* Avatar Pill 2 */}
             <span className="inline-flex items-center align-middle mx-2 my-1 px-1.5 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/90 dark:border-white/10 shadow-2xs hover:scale-110 transition-transform duration-200">
               <span className="relative w-10 h-6 sm:w-12 sm:h-7 rounded-full overflow-hidden inline-block">
@@ -41,9 +41,9 @@ export default function InlineAvatarBanner() {
                 />
               </span>
             </span>
-            <span className="text-neutral-500 dark:text-neutral-400 font-normal">and dedicated engineering pods that </span>
+            <span className="text-neutral-500 dark:text-neutral-400 font-normal">scale your operational velocity with </span>
             <br className="hidden sm:inline" />
-            <span className="text-neutral-500 dark:text-neutral-400 font-normal">accelerate your roadmap with </span>
+            <span className="text-neutral-500 dark:text-neutral-400 font-normal">proven architectural rigor </span>
             {/* Avatar Pill 3 */}
             <span className="inline-flex items-center align-middle mx-2 my-1 px-1.5 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/90 dark:border-white/10 shadow-2xs hover:scale-110 transition-transform duration-200">
               <span className="relative w-10 h-6 sm:w-12 sm:h-7 rounded-full overflow-hidden inline-block">
@@ -56,7 +56,7 @@ export default function InlineAvatarBanner() {
                 />
               </span>
             </span>
-            <span className="text-neutral-500 dark:text-neutral-400 font-normal">measurable success.</span>
+            <span className="text-neutral-500 dark:text-neutral-400 font-normal">and measurable success.</span>
           </h2>
         </ScrollReveal>
 

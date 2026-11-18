@@ -20,7 +20,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white dark:bg-[#09090b] border-t border-neutral-100 dark:border-neutral-800 pt-16 sm:pt-20 pb-12 transition-colors duration-200">
+    <footer className="bg-transparent border-t border-neutral-100 dark:border-neutral-800 pt-16 sm:pt-20 pb-12 transition-colors duration-200">
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         {/* Main Motive Footer Grid (Screenshot 8) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-neutral-100 dark:border-neutral-800">
@@ -44,7 +44,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="mt-4 text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed max-w-sm">
-                Pioneering innovative IT solutions and dedicated engineering pods that accelerate enterprise roadmaps with measurable success.
+                Building and deploying production AI systems, autonomous agents, and scalable software for businesses worldwide.
               </p>
             </div>
 

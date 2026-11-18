@@ -153,7 +153,7 @@ export default function TestimonialsPage() {
             </h1>
 
             <p className="text-neutral-600 dark:text-neutral-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-              Read authentic feedback from founders, CEOs, and CTOs who trust Qrious Tech Team LLP as their long-term offshore software engineering partner.
+              Read authentic feedback from founders, CEOs, and CTOs who trust Qrious Tech Team LLP to build their AI solutions, automation workflows, and scalable software.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">

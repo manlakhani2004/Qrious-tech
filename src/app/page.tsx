@@ -3,57 +3,45 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
-import ServicesSection from "@/components/home/ServicesSection";
-import VideoCultureSection from "@/components/home/VideoCultureSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
-import MethodologySection from "@/components/home/MethodologySection";
+import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
 import ClientFeedbacksSection from "@/components/home/ClientFeedbacksSection";
-import InlineAvatarBanner from "@/components/home/InlineAvatarBanner";
 import TeamCrewSection from "@/components/home/TeamCrewSection";
-import FAQSection from "@/components/home/FAQSection";
+import GlobalBackgroundGrid from "@/components/home/GlobalBackgroundGrid";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] flex flex-col transition-colors duration-200">
-      {/* 1. Motive Navbar with Authentic Qtech Navigation & Official Logo */}
+    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] flex flex-col transition-colors duration-200 relative isolate">
+      {/* Continuous Engineering Grid & Cursor Spotlight across full homepage */}
+      <GlobalBackgroundGrid />
+
+      {/* 1. Floating Frosted Island Navbar */}
       <Navbar />
 
       <main className="flex-grow">
-        {/* 2. Hero Section: AI Innovation & IT Solutions + Scroll Image Expansion + 4 Fun Facts */}
-        <HeroSection  />
+        {/* 2. Hero Section: AI Positioning + Scroll Image Expansion + Proof Strip */}
+        <HeroSection />
 
-        {/* 3. Horizontal Auto-Scrolling Technologies of Company (Technologies @ Qtech) */}
+        {/* 3. Tech Stack Marquee */}
         <TechMarqueeSection />
 
-        {/* 4. Have a Product Idea? Let us be your next Preferred IT Partner (index.html lines 216-302) */}
+        {/* 4. Core Enterprise AI Capabilities: 4-Tile Interactive Bento Grid */}
         <AboutProductIdeaSection />
 
-        {/* 5. What We Do ? Solutions and Focus Areas (5 Authentic Focus Areas from index.html lines 350-575) */}
-        <ServicesSection />
-
-        {/* 6. Video & Goal Statement: "Qrious Tech Team LLP will get you on the move towards your goals" */}
-        <VideoCultureSection />
-
-        {/* 7. Why Choose Qrious Tech Team LLP (Easier To Implement, Growth Rates, Branding of Future + Appointment) */}
+        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 9. Working Methodology: From Strategy to Success in 4 Steps (working-methodology.html) */}
-        <MethodologySection />
+        {/* 6. Global Delivery Network: GitHub-Style Animated Connected Canvas */}
+        <GlobalNetworkSection />
 
-        {/* 10. Authentic Client Testimonials (Stuart Rox, Lorel Parker, Shota Oda, Shin Paul) */}
+        {/* 7. Client Endorsements & Proof */}
         <ClientFeedbacksSection />
 
-        {/* 11. Statement with Real Inline Staff Avatars */}
-        <InlineAvatarBanner />
-
-        {/* 12. Teamwork is the only way we work (Authentic Staff Gallery & Join The Crew) */}
+        {/* 8. Team Crew: Horizontal Drifting Avatars */}
         <TeamCrewSection />
-
-        {/* 13. Frequently Asked Questions (from faqs.html) */}
-        <FAQSection />
       </main>
 
-      {/* 14. Footer with Official Logo & Ahmedabad Headquarters */}
+      {/* 9. Minimalist Enterprise Footer */}
       <Footer />
     </div>
   );

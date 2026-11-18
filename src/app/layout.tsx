@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -10,26 +11,23 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Qrious Tech Team LLP | Enterprise Software, AI Innovation & Scalable Platforms",
-  description: "Premier technology engineering partner empowering enterprises with AI/ML, cloud-native web & mobile development, Power BI analytics, and Salesforce multi-cloud ecosystems. 500+ successful projects delivered since 2017.",
+  title: "Qrious Tech Team LLP | Enterprise AI, Autonomous Systems & Cloud Platforms",
+  description: "Enterprise technology engineering partner empowering businesses with autonomous multi-agent swarms, private RAG hubs, custom models, and dedicated engineering pods. 500+ successful systems delivered since 2017.",
   keywords: [
+    "Enterprise AI Partner",
+    "Autonomous AI Agents",
+    "Private RAG",
+    "Custom LLM Development",
+    "LangGraph Multi-Agent",
     "Qrious Tech",
     "Qrious Tech Team LLP",
-    "Software Development Company",
-    "AI Development",
-    "LangGraph Multi-Agent",
-    "Next.js Development",
-    "Flutter App Development",
-    "Salesforce Consulting",
-    "Power BI Development",
-    "Dedicated Development Teams",
-    "Offshore Software Engineering"
+    "Dedicated AI Engineering Pods"
   ],
   authors: [{ name: "Qrious Tech Team LLP" }],
   creator: "Qrious Tech Team LLP",
   openGraph: {
-    title: "Qrious Tech Team LLP | Enterprise Engineering & AI Innovation",
-    description: "Partnering with visionary enterprises to build mission-critical web, mobile, AI/ML, and Salesforce platforms.",
+    title: "Qrious Tech Team LLP | Enterprise AI, Autonomous Systems & Cloud Platforms",
+    description: "Partnering with visionary enterprises to build, validate, and scale autonomous AI systems, private RAG, and custom models.",
     url: "https://www.qrioustech.com",
     siteName: "Qrious Tech Team LLP",
     locale: "en_US",
@@ -53,14 +51,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script
+      <body className={`${plusJakartaSans.className} bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] antialiased min-h-screen selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black`}>
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=localStorage.getItem("qtech-theme");var d=s==="dark"||(!s&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(d){document.documentElement.classList.add("dark")}else{document.documentElement.classList.remove("dark")}}catch(e){}})();`,
           }}
         />
-      </head>
-      <body className={`${plusJakartaSans.className} bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] antialiased min-h-screen selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>

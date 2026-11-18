@@ -193,7 +193,7 @@ export default function TechMarqueeSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-white dark:bg-[#09090b] border-b border-neutral-100 dark:border-neutral-800 overflow-hidden transition-colors duration-200">
+    <section className="py-16 sm:py-20 bg-transparent border-b border-neutral-100 dark:border-neutral-800 overflow-hidden transition-colors duration-200">
       <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
         {/* Motive Centered Label */}
         <p className="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 font-semibold tracking-wider uppercase mb-3">

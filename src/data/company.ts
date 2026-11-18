@@ -90,14 +90,14 @@ export const COMPANY_STATS: CompanyStats = {
 };
 
 export const HERO_CONTENT = {
-  pill: "500+ Projects Delivered • Offshore IT Excellence",
-  titleMain: "Pioneering Business Growth with",
-  titleHighlight: "AI Innovation & Scalable IT Solutions",
-  subtitle: "Qrious Tech Team LLP is your go-to IT partner for simple and effective solutions. We provide you with the right tech support, tailored to your business. Count on us as more than just service providers – we're your reliable friends in tech, helping you succeed in the digital age.",
+  pill: "500+ Projects Delivered • AI & Modern Engineering",
+  titleMain: "Building & Deploying",
+  titleHighlight: "AI Solutions For Your Business",
+  subtitle: "Qrious Tech Team LLP helps businesses deploy production-ready AI agents, workflow automation, and custom intelligent software that drive measurable revenue and operational efficiency.",
   ctaPrimary: "Explore 37 Case Studies",
   ctaSecondary: "Book A Free Consultation",
   bulletPoints: [
-    "Providing tailored IT solutions for your unique business needs",
+    "Providing tailored AI solutions for your unique business needs",
     "Driving technological advancement to keep your business ahead",
     "Implementing robust measures to safeguard your data and systems",
     "Adapting solutions to accommodate your company's growth seamlessly"
@@ -108,8 +108,8 @@ export const CEO_MESSAGE = {
   name: "Rikin Thakkar",
   role: "CEO & Founder",
   company: "Qrious Tech Team LLP",
-  quote: "At Qrioustech, our mission is to provide businesses with world-class development talent, enabling them to focus on their core objectives while we handle the technology backbone. Our team of 60+ skilled professionals works tirelessly across diverse domains, including web development, mobile technologies, AI/ML, and Salesforce, ensuring the highest quality of work for every client.",
-  details: "Our unique approach to contractual staffing, including nested OEM partnerships, ensures flexibility, confidentiality, and seamless integration with client teams. We pride ourselves on our commitment to excellence, collaboration, and delivering value at every step."
+  quote: "At Qrioustech, our mission is to empower businesses with production AI systems, autonomous agents, and dedicated engineering pods, enabling leadership to focus on core growth while we handle the technology backbone. Our team works tirelessly across AI/ML, cloud platforms, and modern web architectures, ensuring the highest standard of delivery for every enterprise client.",
+  details: "Our dedicated engineering pods and 14-day rapid AI proof-of-concepts ensure complete IP ownership, confidentiality, and seamless integration with client roadmaps. We pride ourselves on engineering rigor, transparent collaboration, and tangible business ROI at every step."
 };
 
 export const WHY_CHOOSE_ITEMS = [
@@ -117,7 +117,7 @@ export const WHY_CHOOSE_ITEMS = [
     step: "01",
     title: "Easier To Implement",
     subtitle: "Smooth & Frictionless Adoption",
-    description: "Make tech changes smoothly and hassle-free. With over two decades of offshore experience, our internal frameworks ensure seamless integration with your existing workflow.",
+    description: "Deploy AI and modern tech smoothly and hassle-free. Our proven architectural frameworks ensure seamless, deterministic integration with your existing databases and enterprise workflows.",
     icon: "Target"
   },
   {
@@ -149,7 +149,7 @@ export const CORE_VALUES = [
   },
   {
     title: "Quality Delivered in Time",
-    description: "With over two decades of offshore IT experience, our internal frameworks enable us to deliver solutions with superior quality at all times, preventing failures and replicating success.",
+    description: "With proven engineering delivery frameworks, our teams deliver solutions with superior quality at all times, preventing failures and replicating production success.",
     icon: "Sparkles"
   },
   {
@@ -487,7 +487,7 @@ export const FAQS_LIST: FAQItem[] = [
   {
     category: "About Qtech",
     question: "How long has your company been in business?",
-    answer: "Qrious Tech Team LLP has been proudly serving clients in the IT industry since 2017, backed by executive leadership with over two decades in tech. We have established ourselves as a trusted provider of innovative IT solutions, delivering 500+ successful projects for 200+ clients across healthcare, finance, SaaS, oil & energy, and on-demand platforms."
+    answer: "Qrious Tech Team LLP has been proudly serving clients in the technology industry since 2017. We have established ourselves as a trusted partner for production AI and scalable systems, delivering 500+ successful projects for 200+ clients across healthcare, finance, SaaS, oil & energy, and on-demand platforms."
   },
   {
     category: "Team & Expertise",
@@ -523,11 +523,139 @@ export const FAQS_LIST: FAQItem[] = [
 
 export const SERVICES_LIST = [
   {
+    id: "ai-ml-development",
+    slug: "ai-ml-development",
+    title: "AI / ML Development",
+    tagline: "Autonomous Agents & Custom Intelligence",
+    description: "We build and deploy production AI solutions: multi-agent autonomous swarms, private RAG pipelines, and fine-tuned open-weights models tailored to your business.",
+    iconName: "Brain",
+    features: [
+      "Custom LLM fine-tuning & private RAG integration",
+      "Autonomous LangGraph & CrewAI multi-agent swarms",
+      "Computer vision & biometric recognition algorithms",
+      "Enterprise zero-leakage privacy & VPC deployment"
+    ],
+    techStack: ["Python", "PyTorch", "LangGraph", "Llama 3.3", "Claude", "FastAPI"],
+    deliverables: ["Deployed Model Endpoints", "Private Vector Hub", "Production Agentic Workflows"]
+  },
+  {
+    id: "ai-modernization-partner",
+    slug: "ai-modernization-partner",
+    title: "AI Modernization Partner",
+    tagline: "Transforming Business Workflows with AI",
+    description: "Modernize your existing business software and processes with AI. We re-engineer workflows, integrate LLMs, and automate repetitive tasks with zero data leakage.",
+    iconName: "Sparkles",
+    features: [
+      "Full architecture and workflow automation audit",
+      "Embeddings & semantic vector search implementation",
+      "Intelligent document understanding & process automation",
+      "Zero data-leakage enterprise privacy compliance"
+    ],
+    techStack: ["LangChain", "LlamaIndex", "Python", "Vector DBs", "AWS Bedrock", "Azure OpenAI"],
+    deliverables: ["Modernized Cloud Architecture", "AI Automation Suite", "Compliance Audit"]
+  },
+  {
+    id: "dedicated-development-teams",
+    slug: "dedicated-development-teams",
+    title: "Dedicated AI & Tech Pods",
+    tagline: "Senior Engineers & Fast Onboarding",
+    description: "Scale your engineering capacity with dedicated developers and AI specialists who integrate directly into your Slack and Jira to deliver solutions fast.",
+    iconName: "Users2",
+    features: [
+      "Vetted senior developer profiles allocated in 48 hours",
+      "Direct integration into your Slack, Jira, and GitHub",
+      "Flexible ramp-up with zero recruitment friction",
+      "100% intellectual property ownership from day one"
+    ],
+    techStack: ["React 19", "Next.js", "Flutter", "Salesforce", "Python", "AWS"],
+    deliverables: ["Dedicated Engineering Pod", "Daily Standup Logs", "Sprint Backlog Burndown"]
+  },
+  {
+    id: "web-development",
+    slug: "web-development",
+    title: "Web Development",
+    tagline: "High-Performance Modern Web Apps",
+    description: "From engaging user interfaces to scalable backends, we build fast, responsive Next.js and React applications built for your users and customers.",
+    iconName: "Globe",
+    features: [
+      "Modern Next.js & React 19 web applications",
+      "Robust Node.js, Nest.js & Python APIs",
+      "Progressive Web Apps (PWA) with offline sync",
+      "Lighthouse 95+ performance optimization"
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Node.js", "NestJS", "PostgreSQL"],
+    deliverables: ["Full Stack Web App", "REST/GraphQL APIs", "Lighthouse 95+ Score"]
+  },
+  {
+    id: "power-bi",
+    slug: "data-visualization",
+    title: "Power BI & Analytics",
+    tagline: "Transforming Data into Actionable Insights",
+    description: "Transform your company data into clean, interactive Power BI dashboards and predictive reports for fast, confident business decisions.",
+    iconName: "BarChart3",
+    features: [
+      "Custom interactive Power BI dashboards",
+      "Data modeling & DAX performance tuning",
+      "Microsoft Fabric semantic layer design",
+      "Secure embedded customer analytics"
+    ],
+    techStack: ["Power BI", "Microsoft Fabric", "DAX", "Power Query", "Azure Synapse"],
+    deliverables: ["Interactive Dashboards", "Semantic Model", "DAX Performance Audit"]
+  },
+  {
+    id: "mobile-development",
+    slug: "mobile-development",
+    title: "Mobile App Development",
+    tagline: "Intuitive & Engaging Mobile Applications",
+    description: "Creating intuitive and engaging mobile applications, we connect you with your audience anytime, anywhere on iOS and Android.",
+    iconName: "Smartphone",
+    features: [
+      "Cross-platform Flutter & React Native apps",
+      "Native Swift (iOS) & Kotlin (Android) apps",
+      "Companion apps for watchOS & tablet devices",
+      "Real-time offline sync & push notifications"
+    ],
+    techStack: ["Flutter", "React Native", "Swift", "Kotlin", "Firebase"],
+    deliverables: ["iOS & Android App Store Builds", "Complete Source Code"]
+  },
+  {
+    id: "salesforce",
+    slug: "salesforce-development",
+    title: "Salesforce Development",
+    tagline: "Maximizing Multi-Cloud Potential",
+    description: "Maximizing the potential of Salesforce, we streamline your customer operations and sales pipelines with custom Lightning components and automations.",
+    iconName: "CloudLightning",
+    features: [
+      "Sales Cloud & Service Cloud automation",
+      "Experience Cloud customer & partner portals",
+      "Salesforce & Conga CPQ quoting engines",
+      "Custom Lightning Web Components (LWC)"
+    ],
+    techStack: ["Salesforce CRM", "Apex", "LWC", "Conga CPQ", "MuleSoft"],
+    deliverables: ["Custom LWC Components", "Workflows & Automations", "User Training Docs"]
+  },
+  {
+    id: "saas-development-partner",
+    slug: "saas-development-partner",
+    title: "Custom Software & SaaS Development",
+    tagline: "Fast Idea to Working Software",
+    description: "Turn your business idea or internal workflow into market-ready software. We take you from early prototype to live production deployment.",
+    iconName: "Rocket",
+    features: [
+      "Multi-tenant database schema & tenancy isolation",
+      "Stripe / LemonSqueezy subscription billing engines",
+      "Automated CI/CD with Kubernetes & AWS CloudFormation",
+      "Rapid 90-day production MVP release milestone"
+    ],
+    techStack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "AWS", "Stripe"],
+    deliverables: ["Production Multi-Tenant SaaS", "Admin Backoffice", "Architecture Blueprint"]
+  },
+  {
     id: "product-development",
     slug: "product-development",
-    title: "Product Development",
-    tagline: "Visionary Products from Concept to Reality",
-    description: "Crafting visionary products from concept to reality, our development team turns ideas into impactful software solutions.",
+    title: "Product Engineering",
+    tagline: "Full-Cycle Digital Solutions",
+    description: "Crafting digital software from concept to reality, our engineering team turns operational requirements into reliable, scalable applications.",
     iconName: "Rocket",
     features: [
       "Zero-to-one MVP architecture & prototyping",
@@ -541,9 +669,9 @@ export const SERVICES_LIST = [
   {
     id: "product-architect",
     slug: "product-architect",
-    title: "Product Architect",
+    title: "System Architecture",
     tagline: "Resilient & Scalable Foundations",
-    description: "Building resilient and scalable foundations, our architects design the blueprint for your product's success.",
+    description: "Building resilient and scalable foundations, our architects design the blueprint for your system's long-term performance and reliability.",
     iconName: "Cpu",
     features: [
       "Microservices & event-driven architecture",
@@ -553,134 +681,6 @@ export const SERVICES_LIST = [
     ],
     techStack: ["AWS", "Google Cloud", "Kubernetes", "Redis", "Kafka", "PostgreSQL"],
     deliverables: ["Cloud Architecture Spec", "Security Audit", "IaC Terraform Scripts"]
-  },
-  {
-    id: "power-bi",
-    slug: "data-visualization",
-    title: "Power BI & Analytics",
-    tagline: "Transforming Data into Actionable Insights",
-    description: "Transforming data into actionable insights, our Power BI experts illuminate the path to informed decision-making.",
-    iconName: "BarChart3",
-    features: [
-      "Custom interactive Power BI dashboards",
-      "Data modeling & DAX performance tuning",
-      "Microsoft Fabric semantic layer design",
-      "Secure embedded customer analytics"
-    ],
-    techStack: ["Power BI", "Microsoft Fabric", "DAX", "Power Query", "Azure Synapse"],
-    deliverables: ["Interactive Dashboards", "Semantic Model", "DAX Performance Audit"]
-  },
-  {
-    id: "web-development",
-    slug: "web-development",
-    title: "Web Development",
-    tagline: "Captivating Interfaces & Robust Backends",
-    description: "From captivating user interfaces to robust backends, we build dynamic web experiences that elevate your online presence.",
-    iconName: "Globe",
-    features: [
-      "Modern Next.js & React 19 web applications",
-      "Robust Node.js, Nest.js & Java APIs",
-      "Progressive Web Apps (PWA) with offline sync",
-      "Lighthouse 95+ performance optimization"
-    ],
-    techStack: ["Next.js", "React", "TypeScript", "Node.js", "NestJS", "Java"],
-    deliverables: ["Full Stack Web App", "REST/GraphQL APIs", "Lighthouse 95+ Score"]
-  },
-  {
-    id: "mobile-development",
-    slug: "mobile-development",
-    title: "Mobile App Development",
-    tagline: "Intuitive & Engaging Mobile Applications",
-    description: "Creating intuitive and engaging mobile applications, we connect you with your audience anytime, anywhere.",
-    iconName: "Smartphone",
-    features: [
-      "Cross-platform Flutter & React Native apps",
-      "Native Swift (iOS) & Kotlin (Android) apps",
-      "Companion apps for watchOS & tvOS",
-      "Real-time offline sync & push notifications"
-    ],
-    techStack: ["Flutter", "React Native", "Swift", "Kotlin", "Firebase"],
-    deliverables: ["iOS & Android App Store Builds", "Complete Source Code"]
-  },
-  {
-    id: "salesforce",
-    slug: "salesforce-development",
-    title: "Salesforce Development",
-    tagline: "Maximizing Multi-Cloud Potential",
-    description: "Maximizing the potential of Salesforce, we streamline your processes and enhance customer relationships for sustained growth.",
-    iconName: "CloudLightning",
-    features: [
-      "Sales Cloud & Service Cloud automation",
-      "Experience Cloud customer & partner portals",
-      "Salesforce & Conga CPQ quoting engines",
-      "Custom Lightning Web Components (LWC)"
-    ],
-    techStack: ["Salesforce CRM", "Apex", "LWC", "Conga CPQ", "MuleSoft"],
-    deliverables: ["Custom LWC Components", "Workflows & Automations", "User Training Docs"]
-  },
-  {
-    id: "ai-ml-development",
-    slug: "ai-ml-development",
-    title: "AI / ML Development",
-    tagline: "Intelligent Systems & Neural Architecture",
-    description: "At Qtech, we leverage Artificial Intelligence and Machine Learning to deliver exceptional solutions and drive forward-thinking initiatives.",
-    iconName: "Brain",
-    features: [
-      "Custom LLM fine-tuning & RAG pipeline integration",
-      "Computer vision & biometric recognition algorithms",
-      "Predictive analytics and neural network modeling",
-      "Enterprise NLP & automated cognitive workflows"
-    ],
-    techStack: ["Python", "PyTorch", "TensorFlow", "LangChain", "OpenAI / Claude APIs", "FastAPI"],
-    deliverables: ["Trained Model Checkpoints", "Inference REST APIs", "Data Pipeline Architecture"]
-  },
-  {
-    id: "dedicated-development-teams",
-    slug: "dedicated-development-teams",
-    title: "Dedicated Development Teams",
-    tagline: "Staff Augmentation & Agile Pods",
-    description: "Scale your product capacity instantly with an embedded development team that works as a seamless, transparent extension of your in-house engineering.",
-    iconName: "Users2",
-    features: [
-      "Vetted senior developer profiles allocated in 48 hours",
-      "Direct integration into your Slack, Jira, and GitHub",
-      "Flexible ramp-up with zero recruitment friction",
-      "100% intellectual property ownership from day one"
-    ],
-    techStack: ["React 19", "Next.js", "Flutter", "Salesforce", "Python", "AWS"],
-    deliverables: ["Dedicated Engineering Pod", "Daily Standup Logs", "Sprint Backlog Burndown"]
-  },
-  {
-    id: "saas-development-partner",
-    slug: "saas-development-partner",
-    title: "SaaS Development Partner",
-    tagline: "Zero-to-One Product Partnership",
-    description: "Turn your software idea into a market-ready SaaS product. We take you from MVP conceptualization and design to production architecture and launch.",
-    iconName: "Rocket",
-    features: [
-      "Multi-tenant database schema & tenancy isolation",
-      "Stripe / LemonSqueezy subscription billing engines",
-      "Automated CI/CD with Kubernetes & AWS CloudFormation",
-      "Rapid 90-day production MVP release milestone"
-    ],
-    techStack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "AWS", "Stripe"],
-    deliverables: ["Production Multi-Tenant SaaS", "Admin Backoffice", "Architecture Blueprint"]
-  },
-  {
-    id: "ai-modernization-partner",
-    slug: "ai-modernization-partner",
-    title: "AI Modernization Partner",
-    tagline: "Legacy System Transformation with AI",
-    description: "Modernize your existing product with AI. We re-engineer workflows, integrate LLMs or machine learning models, and unlock intelligent features.",
-    iconName: "Sparkles",
-    features: [
-      "Full architecture and legacy code modernization audit",
-      "Embeddings & semantic vector search implementation",
-      "Intelligent document understanding & process automation",
-      "Zero data-leakage enterprise privacy compliance"
-    ],
-    techStack: ["LangChain", "LlamaIndex", "Python", "Vector DBs", "AWS Bedrock", "Azure OpenAI"],
-    deliverables: ["Modernized Cloud Architecture", "AI Automation Suite", "Compliance Audit"]
   }
 ];
 

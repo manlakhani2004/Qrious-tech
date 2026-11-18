@@ -29,48 +29,48 @@ interface ModelItem {
 
 const models: ModelItem[] = [
   {
-    id: "dedicated-teams",
-    badge: "Staff Augmentation",
-    title: "Dedicated Development Teams",
-    desc: "Scale your product capacity instantly with an embedded development team that works as a seamless, transparent extension of your in-house engineering.",
-    image: "/images/resource/dedicated-teams-cover.png",
-    tags: ["Tech Lead", "Senior Developers", "QA Automation", "DevOps"],
-    idealFor: "Enterprises needing agile engineering velocity without recruitment overhead.",
+    id: "ai-modernization",
+    badge: "AI Integration & Automation",
+    title: "AI Modernization Partner",
+    desc: "We bring artificial intelligence into your business operations. We re-engineer workflows, integrate custom AI models, and automate repetitive tasks with zero data leakage.",
+    image: "/images/resource/ai-modernization-cover.png",
+    tags: ["Custom AI Agents", "Workflow Automation", "Private Document Search", "AI Audit"],
+    idealFor: "Businesses looking to automate repetitive operations and integrate modern AI.",
     bullets: [
-      "Direct communication via your Slack, Teams, or Jira",
-      "Pre-screened developers matched to your tech stack within 48h",
-      "Overlapping time-zone coverage for USA & European markets",
-      "100% IP ownership & continuous code reviews"
+      "Comprehensive workflow and data readiness audit",
+      "Custom AI agents, embeddings, and smart document search",
+      "Intelligent process automation and automated data pipelines",
+      "Complete data privacy with private cloud hosting"
+    ]
+  },
+  {
+    id: "dedicated-teams",
+    badge: "Dedicated Tech Team",
+    title: "Dedicated AI Developers & Tech Pods",
+    desc: "Scale your capacity instantly with senior developers and machine learning engineers who work as a seamless, transparent extension of your business.",
+    image: "/images/resource/dedicated-teams-cover.png",
+    tags: ["Tech Lead", "Senior Developers", "AI Specialists", "QA & DevOps"],
+    idealFor: "Companies needing experienced engineering talent to deliver projects fast.",
+    bullets: [
+      "Direct daily communication via your Slack, Teams, or Jira",
+      "Pre-vetted developers matched to your tech stack within 48h",
+      "Flexible scaling with zero recruitment overhead",
+      "100% intellectual property ownership from day one"
     ]
   },
   {
     id: "saas-partner",
-    badge: "Product Partnership",
-    title: "SaaS Development Partner",
-    desc: "Turn your software idea into a market-ready SaaS product. We take you from MVP conceptualization and architecture to production deployment and launch.",
+    badge: "Custom Software",
+    title: "Custom Software & SaaS Development",
+    desc: "Turn your business idea or internal workflow into market-ready software. We take you from early prototype to live production deployment.",
     image: "/images/resource/saas-partner-cover.png",
-    tags: ["Startups & Scaleups", "MVP to Production", "Multi-Tenant", "Cloud Infra"],
-    idealFor: "Founders and enterprises launching new digital SaaS initiatives.",
+    tags: ["Custom Web Apps", "Mobile Apps", "Cloud Infrastructure", "API Integrations"],
+    idealFor: "Businesses launching new digital platforms or upgrading internal tools.",
     bullets: [
-      "End-to-end product architecture and UX wireframing",
-      "Multi-tenant database schema & secure auth design",
-      "Automated CI/CD pipelines on AWS / Google Cloud",
-      "Rapid 90-day zero-to-one MVP release sprints"
-    ]
-  },
-  {
-    id: "ai-modernization",
-    badge: "AI Integration",
-    title: "AI Modernization Partner",
-    desc: "Modernize your existing legacy product with AI. We re-engineer workflows, integrate LLMs or predictive machine learning models, and unlock intelligent features.",
-    image: "/images/resource/ai-modernization-cover.png",
-    tags: ["Legacy Modernization", "LLM Integration", "Automated Workflows", "AI Audit"],
-    idealFor: "Established products looking to automate processes and integrate generative AI.",
-    bullets: [
-      "Comprehensive architectural and data readiness audit",
-      "Custom LLM fine-tuning, embeddings, and RAG pipelines",
-      "Intelligent document parsing and computer vision",
-      "Enterprise data privacy & zero data-leakage protocols"
+      "Modern Next.js & React full-stack application development",
+      "Intuitive UX design and scalable database architecture",
+      "Automated cloud deployments with continuous testing",
+      "Fast sprints to get working software in your hands quickly"
     ]
   }
 ];
