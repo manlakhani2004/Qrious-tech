@@ -137,7 +137,7 @@ export default function AboutProductIdeaSection() {
             <div className="grid grid-cols-2 gap-4">
               {/* Column 1: Executive Strategy (tall) + Engineering Pods (compact) */}
               <div className="space-y-4">
-                {/* 1. Executive Strategy */}
+                {/* 1. Executive Strategy Photo */}
                 <div className="relative h-56 sm:h-64 rounded-[26px] overflow-hidden border border-neutral-200/90 dark:border-white/10 shadow-lg bg-neutral-900 group">
                   <Image
                     src="/images/meeting-room.png"
@@ -146,16 +146,10 @@ export default function AboutProductIdeaSection() {
                     sizes="(max-width: 768px) 50vw, 300px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                      <span>Executive Strategy</span>
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                {/* 2. Engineering Pods */}
+                {/* 2. Engineering Pods Photo */}
                 <div className="relative h-48 sm:h-52 rounded-[26px] overflow-hidden border border-neutral-200/90 dark:border-white/10 shadow-lg bg-neutral-900 group">
                   <Image
                     src="/images/home-page-2.webp"
@@ -164,19 +158,13 @@ export default function AboutProductIdeaSection() {
                     sizes="(max-width: 768px) 50vw, 300px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                      <span>Engineering Pods</span>
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
 
               {/* Column 2: Mobile & Cloud (compact) + 500+ Projects Card (tall) */}
               <div className="space-y-4 pt-4 sm:pt-8">
-                {/* 3. Mobile & Cloud */}
+                {/* 3. Mobile & Cloud Photo */}
                 <div className="relative h-48 sm:h-52 rounded-[26px] overflow-hidden border border-neutral-200/90 dark:border-white/10 shadow-lg bg-neutral-900 group">
                   <Image
                     src="/images/home-page-3.webp"
@@ -185,13 +173,7 @@ export default function AboutProductIdeaSection() {
                     sizes="(max-width: 768px) 50vw, 300px"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-10">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                      <span>Mobile &amp; Cloud</span>
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* 4. 500+ Projects Delivered Card */}
