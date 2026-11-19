@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import {
   Sparkles,
@@ -17,7 +17,63 @@ import {
   Scale
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
+
+function JimoPerspectiveCard({
+  children,
+  className = "",
+  beamColor = "from-blue-500/70 via-indigo-500/80 to-purple-500/70"
+}: {
+  children: React.ReactNode;
+  className?: string;
+  beamColor?: string;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [3.2, -3.2]), {
+    stiffness: 220,
+    damping: 28
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-3.2, 3.2]), {
+    stiffness: 220,
+    damping: 28
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        perspective: 1100,
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d"
+      }}
+      className={`relative overflow-hidden transition-shadow duration-300 ${className}`}
+    >
+      {/* Jimo-style animated top border beam highlight */}
+      <div className={`absolute top-0 inset-x-0 h-px bg-gradient-to-r ${beamColor} pointer-events-none z-20`} />
+      {children}
+    </motion.div>
+  );
+}
 
 export default function AboutProductIdeaSection() {
   // Interactive real-world scenario tab for Feature 1 (Vercel/Stripe style)
@@ -60,6 +116,13 @@ export default function AboutProductIdeaSection() {
       id="capabilities"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 relative transition-colors duration-200 overflow-hidden"
     >
+      {/* Jimo-Style Concentric Coordinate Depth Rings */}
+      <div className="absolute top-1/2 left-[-10%] -translate-y-1/2 w-[650px] h-[650px] pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/10" />
+        <div className="absolute inset-[25%] rounded-full border border-dashed border-neutral-400/20 dark:border-white/[0.06]" />
+        <div className="absolute inset-[50%] rounded-full border border-neutral-400/15 dark:border-white/[0.04]" />
+      </div>
+
       {/* Ambient background grid with subtle central radial fade */}
       <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_30%,transparent_100%)]" />
 
@@ -83,7 +146,10 @@ export default function AboutProductIdeaSection() {
         {/* Modern Vercel & Stripe Asymmetric Bento Grid (No Clunky Outdated Cards) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8">
           {/* Bento Card 1: Interactive Real-World Workflow Automation (Left 7 Cols) */}
-          <div className="lg:col-span-7 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
+          <JimoPerspectiveCard
+            beamColor="from-blue-500/70 via-sky-400/80 to-blue-600/70"
+            className="lg:col-span-7 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-sky-400">
@@ -102,7 +168,7 @@ export default function AboutProductIdeaSection() {
                 Whether it&apos;s cross-checking vendor bills, filing customer requests, or moving data between old databases—we build autonomous assistants that do the heavy lifting in seconds, so your people only intervene when a real human decision is needed.
               </p>
 
-              {/* Interactive Scenario Switcher (Vercel style: see how it works on real problems) */}
+              {/* Interactive Scenario Switcher */}
               <div className="mb-6">
                 <div className="text-xs font-mono font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
                   Explore how it works in practice:
@@ -199,10 +265,13 @@ export default function AboutProductIdeaSection() {
                 Plugs into Slack, ERP &amp; CRMs
               </span>
             </div>
-          </div>
+          </JimoPerspectiveCard>
 
           {/* Bento Card 2: Private Knowledge & Search (Right 5 Cols) */}
-          <div className="lg:col-span-5 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
+          <JimoPerspectiveCard
+            beamColor="from-purple-500/70 via-indigo-500/80 to-pink-500/70"
+            className="lg:col-span-5 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
@@ -255,10 +324,13 @@ export default function AboutProductIdeaSection() {
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-          </div>
+          </JimoPerspectiveCard>
 
           {/* Bento Card 3: Dedicated In-House Senior Pods (Full 12 Cols Bottom Bar) */}
-          <div className="lg:col-span-12 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
+          <JimoPerspectiveCard
+            beamColor="from-emerald-500/70 via-teal-400/80 to-blue-500/70"
+            className="lg:col-span-12 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+          >
             <div className="max-w-3xl">
               <div className="flex items-center space-x-2.5 mb-2">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
@@ -293,7 +365,7 @@ export default function AboutProductIdeaSection() {
                 Agile Sprints • Full Code Ownership
               </span>
             </div>
-          </div>
+          </JimoPerspectiveCard>
         </div>
       </div>
     </section>

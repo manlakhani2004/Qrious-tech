@@ -152,6 +152,30 @@ export default function GlobalNetworkSection() {
           </p>
         </ScrollReveal>
 
+        {/* Jimo-Style Live Telemetry Hub Dock */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-4 text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
+          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-semibold text-neutral-800 dark:text-neutral-200">SFO:</span>
+            <span>142ms</span>
+          </div>
+          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-semibold text-neutral-800 dark:text-neutral-200">LON:</span>
+            <span>108ms</span>
+          </div>
+          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-semibold text-neutral-800 dark:text-neutral-200">DXB:</span>
+            <span>48ms</span>
+          </div>
+          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-semibold text-neutral-800 dark:text-neutral-200">TYO:</span>
+            <span>92ms</span>
+          </div>
+        </div>
+
         {/* Center Stage: Ambient Background Graphic with Open Arcs, Glowing Nodes & Location Labels */}
         <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[340px] flex items-center justify-center overflow-hidden my-2 sm:my-4 pointer-events-none select-none">
           <motion.div

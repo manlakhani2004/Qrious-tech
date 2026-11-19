@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,9 +10,11 @@ import {
   Compass,
   Rocket,
   Lock,
-  GitBranch
+  GitBranch,
+  Sparkles
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 
 interface JourneyStep {
   stepNumber: string;
@@ -55,19 +57,41 @@ const STEPS: JourneyStep[] = [
 ];
 
 export default function BusinessAIIntegrationRoadmapSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "end 20%"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Animated energy beam traversing horizontally across the top border of the 3 columns
+  const beamWidth = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
+  const beamGlowOpacity = useTransform(smoothProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0.5]);
+
   return (
     <section
+      ref={sectionRef}
       id="how-we-bring-ai-to-business"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 transition-colors duration-200 relative overflow-hidden"
     >
-      {/* Subtle modern background texture */}
-      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)]" />
+      {/* Jimo-Style Concentric Coordinate Depth Rings */}
+      <div className="absolute top-1/2 right-[-15%] -translate-y-1/2 w-[700px] h-[700px] pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/10" />
+        <div className="absolute inset-[20%] rounded-full border border-dashed border-neutral-400/20 dark:border-white/[0.06]" />
+        <div className="absolute inset-[40%] rounded-full border border-neutral-400/15 dark:border-white/[0.04]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.06),transparent_65%)]" />
+      </div>
 
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
         {/* Section Header: Human, Clear, Honest */}
         <ScrollReveal className="max-w-3xl mb-14 sm:mb-20">
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             <span>How We Work Together</span>
           </div>
 
@@ -80,54 +104,70 @@ export default function BusinessAIIntegrationRoadmapSection() {
           </p>
         </ScrollReveal>
 
-        {/* 3-Step Milestone Flow (Stripe / Vercel style open layout) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200/80 dark:divide-white/10 border-t border-b border-neutral-200/80 dark:border-white/10">
-          {STEPS.map((s, idx) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.stepNumber}
-                className={`py-10 lg:py-12 flex flex-col justify-between group transition-colors duration-200 ${
-                  idx === 0 ? "lg:pr-10" : idx === 1 ? "lg:px-10" : "lg:pl-10"
-                }`}
-              >
-                <div>
-                  {/* Step Number & Phase Badge */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-4xl font-extrabold font-mono text-black dark:text-white tracking-tight">
-                      {s.stepNumber}
-                    </span>
-                    <span className="text-xs font-mono font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-white/[0.06] px-3 py-1 rounded-[2px] border border-neutral-200/60 dark:border-white/10">
-                      {s.phase}
-                    </span>
+        {/* 3-Step Milestone Flow with Jimo-Style Kinetic Scroll-Linked Energy Beam */}
+        <div className="relative border-t border-b border-neutral-200/80 dark:border-white/10">
+          
+          {/* Scroll-Driven Horizontal Glowing Energy Beam */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden pointer-events-none -translate-y-1/2 z-20">
+            <motion.div
+              style={{
+                width: beamWidth,
+                opacity: beamGlowOpacity
+              }}
+              className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 via-sky-400 to-purple-500 shadow-[0_0_12px_rgba(99,102,241,0.8)]"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200/80 dark:divide-white/10">
+            {STEPS.map((s, idx) => {
+              const Icon = s.icon;
+              return (
+                <motion.div
+                  key={s.stepNumber}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                  className={`py-10 lg:py-12 flex flex-col justify-between group transition-colors duration-200 ${
+                    idx === 0 ? "lg:pr-10" : idx === 1 ? "lg:px-10" : "lg:pl-10"
+                  }`}
+                >
+                  <div>
+                    {/* Step Number & Phase Badge */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-4xl font-extrabold font-mono text-black dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-colors">
+                        {s.stepNumber}
+                      </span>
+                      <span className="text-xs font-mono font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-white/[0.06] px-3 py-1 rounded-[2px] border border-neutral-200/60 dark:border-white/10 group-hover:border-blue-500/40 transition-colors">
+                        {s.phase}
+                      </span>
+                    </div>
+
+                    {/* Subtitle / Headline */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight mb-3">
+                      {s.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-sky-400 mb-4">
+                      {s.subtitle}
+                    </p>
+
+                    <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6 font-normal">
+                      {s.story}
+                    </p>
                   </div>
 
-                  {/* Subtitle / Headline */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight mb-3">
-                    {s.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-sky-400 mb-4">
-                    {s.subtitle}
-                  </p>
-
-                  <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6 font-normal">
-                    {s.story}
-                  </p>
-                </div>
-
-                {/* Clear Outcome Milestone Box */}
-                <div className="pt-6 border-t border-neutral-100 dark:border-white/[0.06]">
-                  <div className="p-3.5 rounded-[2px] bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/70 dark:border-white/10 flex items-center space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">
-                      {s.deliverable}
-                    </span>
+                  {/* Clear Outcome Milestone Box */}
+                  <div className="pt-6 border-t border-neutral-100 dark:border-white/[0.06]">
+                    <div className="p-3.5 rounded-[2px] bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/70 dark:border-white/10 flex items-center space-x-2.5 group-hover:border-blue-500/30 transition-colors">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">
+                        {s.deliverable}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Bottom Reassurance Banner */}

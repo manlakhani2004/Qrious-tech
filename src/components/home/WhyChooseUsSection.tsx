@@ -216,6 +216,14 @@ export default function WhyChooseUsSection() {
         </svg>
       </div>
 
+      {/* Jimo-Style Concentric Coordinate Depth Rings */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/10" />
+        <div className="absolute inset-[20%] rounded-full border border-dashed border-neutral-400/20 dark:border-white/[0.06]" />
+        <div className="absolute inset-[40%] rounded-full border border-neutral-400/15 dark:border-white/[0.04]" />
+        <div className="absolute inset-[60%] rounded-full border border-dashed border-neutral-400/10 dark:border-white/[0.03]" />
+      </div>
+
       {/* Subtle Atmospheric Ambient Glow (Stripe / Animos style) */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1000px] h-[350px] bg-gradient-to-r from-blue-500/8 via-indigo-500/8 to-purple-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
 

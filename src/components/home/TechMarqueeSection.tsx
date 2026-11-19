@@ -204,8 +204,11 @@ export default function TechMarqueeSection() {
         </h2>
       </ScrollReveal>
 
-      {/* Marquee Row 1 (Auto-scrolling Left) */}
-      <div className="relative w-full overflow-hidden mb-5 py-3">
+      {/* Marquee Row 1 (Auto-scrolling Left with 3D Runway Perspective) */}
+      <div
+        style={{ perspective: "1000px" }}
+        className="relative w-full overflow-hidden mb-5 py-3"
+      >
         {/* Soft edge gradients */}
         <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
@@ -218,12 +221,13 @@ export default function TechMarqueeSection() {
             duration: 58,
             ease: "linear"
           }}
+          style={{ transform: "rotateX(3deg)" }}
           className="flex items-center space-x-4 sm:space-x-5 w-max"
         >
           {[...techRow1, ...techRow1, ...techRow1, ...techRow1].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-neutral-200/60 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-sky-500/40 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
               <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
                 {tech.icon}
@@ -241,8 +245,11 @@ export default function TechMarqueeSection() {
         </motion.div>
       </div>
 
-      {/* Marquee Row 2 (Auto-scrolling Right / Reverse) */}
-      <div className="relative w-full overflow-hidden py-3">
+      {/* Marquee Row 2 (Auto-scrolling Right / Reverse with 3D Runway Perspective) */}
+      <div
+        style={{ perspective: "1000px" }}
+        className="relative w-full overflow-hidden py-3"
+      >
         {/* Soft edge gradients */}
         <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
@@ -255,12 +262,13 @@ export default function TechMarqueeSection() {
             duration: 58,
             ease: "linear"
           }}
+          style={{ transform: "rotateX(3deg)" }}
           className="flex items-center space-x-4 sm:space-x-5 w-max"
         >
           {[...techRow2, ...techRow2, ...techRow2, ...techRow2].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-neutral-200/60 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-sky-500/40 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
               <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
                 {tech.icon}
