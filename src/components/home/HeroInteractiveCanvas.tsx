@@ -91,12 +91,12 @@ export default function HeroInteractiveCanvas() {
           }
         : {
             // Core radiant warm amber/gold sunburst in light mode (exact Stripe dandelion aura)
-            coreAmberInner: "rgba(245, 158, 11, 0.40)",
-            coreAmberMid: "rgba(251, 191, 36, 0.22)",
-            coreAmberOuter: "rgba(217, 119, 6, 0.08)",
-            coreAuraCyan: "rgba(59, 130, 246, 0.07)",
+            coreAmberInner: "rgba(245, 158, 11, 0.42)",
+            coreAmberMid: "rgba(251, 191, 36, 0.24)",
+            coreAmberOuter: "rgba(217, 119, 6, 0.10)",
+            coreAuraCyan: "rgba(59, 130, 246, 0.08)",
             // Ray filaments in light mode: delicate royal sapphire & cobalt lines
-            rayStroke: "rgba(37, 99, 235, 0.22)",
+            rayStroke: "rgba(37, 99, 235, 0.24)",
             rayStrokeHover: "rgba(217, 119, 6, 0.85)",
             rayTipDots: [
               "#1d4ed8", // Deep sapphire
@@ -111,51 +111,53 @@ export default function HeroInteractiveCanvas() {
     };
 
     // =========================================================================
-    // STRIPE-STYLE RAYBURST GENERATION (Compact & Proportioned)
+    // STRIPE-STYLE RAYBURST GENERATION
+    // Full bottom fan restored, with top height reduced slightly as requested
     // =========================================================================
-    const RAY_COUNT = Math.min(Math.max(Math.floor(width / 6.5), 140), 210);
+    const RAY_COUNT = Math.min(Math.max(Math.floor(width / 5.5), 180), 260);
     const rays: Ray[] = [];
     const sparks: Spark[] = [];
     const waves: Wave[] = [];
 
-    // Calculate origin dynamically positioned right at the mascot / console shelf
-    const getOriginAndRadius = () => {
-      const originX = width / 2;
-      const consoleEl = document.querySelector("#hero-content-wrap > div:last-child");
-      let originY = height * 0.58;
-
-      if (consoleEl && canvas) {
-        const cRect = consoleEl.getBoundingClientRect();
-        const canRect = canvas.getBoundingClientRect();
-        originY = Math.max(100, cRect.top - canRect.top + 22);
-      }
-
-      // Compact & reduced radius matching the beloved Stripe reference (stops just below main title)
-      const maxRadius = Math.min(width * 0.32, 380);
-
-      return { originX, originY, maxRadius };
-    };
-
     const initRays = () => {
       rays.length = 0;
       const theme = getThemeConfig();
-      const { originX, originY, maxRadius } = getOriginAndRadius();
+      const originX = width / 2;
+      // Restored to full bottom origin exactly as in original design
+      const originY = height * 0.96;
+
+      // Full horizontal width preserved across left & right edges
+      const maxRadiusX = Math.min(width * 0.68, 1150);
+
+      // Reduced from the top by a little (height * 0.87 instead of 0.98)
+      // Tips stop right around the kicker radar / top of headline, without shooting off the page
+      const maxRadiusY = Math.min(height * 0.87, 1150);
 
       for (let i = 0; i < RAY_COUNT; i++) {
         const t = i / (RAY_COUNT - 1); // 0 to 1 across upward semi-circle
-        // Fan angle from -PI*0.94 (left horizon) to -PI*0.06 (right horizon)
-        const angle = -Math.PI * 0.94 + t * (Math.PI * 0.88);
+        // Fan angle from -PI*0.96 (left horizon) to -PI*0.04 (right horizon)
+        const angle = -Math.PI * 0.96 + t * (Math.PI * 0.92);
 
         // Multi-frequency harmonic envelope creates natural layered dandelion profile
         const domeCurve = Math.sin(t * Math.PI);
         const harmonic = Math.sin(t * Math.PI * 3) * 0.07;
-        const jitter = (Math.sin(i * 17.1) * 0.5 + Math.cos(i * 5.3) * 0.5) * 0.18;
-        const length = maxRadius * Math.max(0.42, Math.min(1.0, 0.52 + domeCurve * 0.44 + harmonic + jitter));
+        const jitter = (Math.sin(i * 17.1) * 0.5 + Math.cos(i * 5.3) * 0.5) * 0.22;
 
-        const tipX = originX + Math.cos(angle) * length;
-        const tipY = originY + Math.sin(angle) * length;
-        const midX = originX + Math.cos(angle) * (length * 0.5);
-        const midY = originY + Math.sin(angle) * (length * 0.5);
+        // Elliptical scaling: wide horizontal spread on sides, slightly lowered height at the top
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const ellipseRadius = (maxRadiusX * maxRadiusY) / Math.sqrt(
+          Math.pow(maxRadiusY * cosA, 2) + Math.pow(maxRadiusX * sinA, 2)
+        );
+
+        // Crown factor: top rays lowered just a little so they don't shoot past the top of the hero
+        const crownFactor = Math.max(0.38, Math.min(1.02, 0.55 + domeCurve * 0.38 + harmonic + jitter));
+        const length = ellipseRadius * crownFactor;
+
+        const tipX = originX + cosA * length;
+        const tipY = originY + sinA * length;
+        const midX = originX + cosA * (length * 0.5);
+        const midY = originY + sinA * (length * 0.5);
 
         rays.push({
           baseAngle: angle,
@@ -167,7 +169,7 @@ export default function HeroInteractiveCanvas() {
           ctrlY: midY,
           vx: 0,
           vy: 0,
-          dotRadius: Math.random() * 1.8 + 1.2,
+          dotRadius: Math.random() * 2.0 + 1.2,
           color: theme.rayTipDots[Math.floor(Math.random() * theme.rayTipDots.length)],
           pulseOffset: Math.random() * Math.PI * 2,
           widthFactor: Math.random() * 0.5 + 0.7
@@ -187,7 +189,7 @@ export default function HeroInteractiveCanvas() {
       prevX: -1000,
       prevY: -1000,
       speed: 0,
-      radius: 200,
+      radius: 240,
       isHovered: false
     };
 
@@ -215,7 +217,7 @@ export default function HeroInteractiveCanvas() {
       );
 
       // Emit interactive micro-sparks on brisk cursor motion
-      if (mouse.speed > 6 && sparks.length < 45) {
+      if (mouse.speed > 6 && sparks.length < 50) {
         const theme = getThemeConfig();
         for (let s = 0; s < 2; s++) {
           sparks.push({
@@ -252,14 +254,14 @@ export default function HeroInteractiveCanvas() {
           x: cx,
           y: cy,
           radius: 12,
-          maxRadius: 280,
+          maxRadius: 320,
           alpha: 0.85
         });
 
         const theme = getThemeConfig();
-        for (let s = 0; s < 14; s++) {
+        for (let s = 0; s < 16; s++) {
           const angle = Math.random() * Math.PI * 2;
-          const spd = Math.random() * 4 + 1.5;
+          const spd = Math.random() * 4.5 + 1.5;
           sparks.push({
             x: cx,
             y: cy,
@@ -317,7 +319,9 @@ export default function HeroInteractiveCanvas() {
       ctx.clearRect(0, 0, width, height);
 
       const theme = getThemeConfig();
-      const { originX, originY, maxRadius } = getOriginAndRadius();
+      const originX = width / 2;
+      const originY = height * 0.96;
+      const maxRadiusY = Math.min(height * 0.87, 1150);
 
       // Smooth lerp mouse coordinates
       mouse.x += (mouse.targetX - mouse.x) * 0.16;
@@ -359,8 +363,8 @@ export default function HeroInteractiveCanvas() {
         }
       }
 
-      // 3. Core Radiant Amber/Gold Sunrise Aura (Stripe signature dandelion glow)
-      const coreAuraRadius = maxRadius * 0.65;
+      // 3. Core Radiant Amber/Gold Sunrise Aura (Stripe signature dandelion glow at bottom)
+      const coreAuraRadius = maxRadiusY * 0.42;
       const coreGrad = ctx.createRadialGradient(
         originX,
         originY,
@@ -383,17 +387,17 @@ export default function HeroInteractiveCanvas() {
       const cyanGrad = ctx.createRadialGradient(
         originX,
         originY,
-        maxRadius * 0.2,
+        maxRadiusY * 0.15,
         originX,
         originY,
-        maxRadius * 0.95
+        maxRadiusY * 0.85
       );
       cyanGrad.addColorStop(0, theme.coreAuraCyan);
       cyanGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
 
       ctx.fillStyle = cyanGrad;
       ctx.beginPath();
-      ctx.arc(originX, originY, maxRadius * 0.95, 0, Math.PI * 2);
+      ctx.arc(originX, originY, maxRadiusY * 0.85, 0, Math.PI * 2);
       ctx.fill();
 
       // 4. Render Fiber-Optic Filament Rays with Magnetic Cursor Manipulation
