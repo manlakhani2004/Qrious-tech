@@ -141,8 +141,8 @@ function ShowcaseStoryCard({
       transition={{ type: "spring", stiffness: 350, damping: 25 }}
       className={`relative rounded-[2px] border p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden ${
         isSelected
-          ? "bg-white dark:bg-[#111114] border-black dark:border-white/30 shadow-xl"
-          : "bg-neutral-50/70 dark:bg-white/[0.02] border-neutral-200/80 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-50 dark:hover:bg-white/[0.04]"
+          ? "bg-white dark:bg-[#0c0c10] border-neutral-900 dark:border-white/30 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_12px_36px_rgba(0,0,0,0.06)] dark:shadow-2xl scale-[1.01]"
+          : "bg-white dark:bg-[#0c0c10] border-neutral-200/80 dark:border-white/[0.08] hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)]"
       }`}
     >
       {/* Jimo-style animated top border beam on selected card */}
@@ -165,21 +165,21 @@ function ShowcaseStoryCard({
         </div>
 
         {/* Headline */}
-        <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white tracking-tight mb-3">
+        <h3 className="text-lg sm:text-xl font-bold text-[#09090b] dark:text-white tracking-tight mb-3">
           {story.headline}
         </h3>
 
         {/* The Real Headache */}
         <div className="mb-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
-          <strong className="text-neutral-800 dark:text-neutral-200 block mb-1">
+          <strong className="text-neutral-900 dark:text-neutral-200 block mb-1">
             The Challenge:
           </strong>
           {story.headache}
         </div>
 
         {/* What We Shipped */}
-        <div className="mb-6 text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal p-3 rounded-[2px] bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.06]">
-          <strong className="text-black dark:text-white block mb-1 font-semibold">
+        <div className="mb-6 text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal p-3 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08]">
+          <strong className="text-[#09090b] dark:text-white block mb-1 font-semibold">
             What We Built:
           </strong>
           {story.solution}
@@ -188,7 +188,7 @@ function ShowcaseStoryCard({
 
       {/* Before vs After Impact Box with Jimo Kinetic Meter */}
       <div>
-        <div className="pt-4 border-t border-neutral-200/60 dark:border-white/10 mb-4 flex items-center justify-between">
+        <div className="pt-4 border-t border-neutral-200/70 dark:border-white/[0.08] mb-4 flex items-center justify-between">
           <div>
             <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
               Before

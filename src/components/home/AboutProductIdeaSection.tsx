@@ -148,19 +148,19 @@ export default function AboutProductIdeaSection() {
           {/* Bento Card 1: Interactive Real-World Workflow Automation (Left 7 Cols) */}
           <JimoPerspectiveCard
             beamColor="from-blue-500/70 via-sky-400/80 to-blue-600/70"
-            className="lg:col-span-7 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+            className="lg:col-span-7 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)] dark:shadow-2xl"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-sky-400">
                   {current.tag}
                 </span>
-                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 font-semibold">
+                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-500/20 font-semibold">
                   {current.metric}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-3">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#09090b] dark:text-white tracking-tight mb-3">
                 Take the repetitive grind off your team&apos;s plate.
               </h3>
 
@@ -178,8 +178,8 @@ export default function AboutProductIdeaSection() {
                     onClick={() => setActiveWorkflow("invoices")}
                     className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
                       activeWorkflow === "invoices"
-                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
-                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                        ? "bg-[#f8f9fa] dark:bg-white/10 border-neutral-300 dark:border-white/20 text-[#09090b] dark:text-white shadow-2xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-[#09090b] dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
                     }`}
                   >
                     <FileText className="w-3.5 h-3.5 shrink-0 text-blue-500" />
@@ -190,8 +190,8 @@ export default function AboutProductIdeaSection() {
                     onClick={() => setActiveWorkflow("support")}
                     className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
                       activeWorkflow === "support"
-                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
-                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                        ? "bg-[#f8f9fa] dark:bg-white/10 border-neutral-300 dark:border-white/20 text-[#09090b] dark:text-white shadow-2xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-[#09090b] dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
                     }`}
                   >
                     <Mail className="w-3.5 h-3.5 shrink-0 text-purple-500" />
@@ -202,8 +202,8 @@ export default function AboutProductIdeaSection() {
                     onClick={() => setActiveWorkflow("compliance")}
                     className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
                       activeWorkflow === "compliance"
-                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
-                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                        ? "bg-[#f8f9fa] dark:bg-white/10 border-neutral-300 dark:border-white/20 text-[#09090b] dark:text-white shadow-2xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-[#09090b] dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
                     }`}
                   >
                     <Scale className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
@@ -220,9 +220,9 @@ export default function AboutProductIdeaSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.2 }}
-                  className="rounded-[2px] bg-white dark:bg-black/40 border border-neutral-200/80 dark:border-white/10 p-4.5 space-y-3"
+                  className="rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08] p-4.5 space-y-3"
                 >
-                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-200/60 dark:border-white/[0.06]">
                     <span className="text-[11px] font-mono font-bold text-neutral-400 dark:text-neutral-500 shrink-0 mt-0.5">
                       BEFORE:
                     </span>
@@ -231,7 +231,7 @@ export default function AboutProductIdeaSection() {
                     </p>
                   </div>
 
-                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-200/60 dark:border-white/[0.06]">
                     <span className="text-[11px] font-mono font-bold text-blue-600 dark:text-sky-400 shrink-0 mt-0.5">
                       HOW IT RUNS:
                     </span>
@@ -256,7 +256,7 @@ export default function AboutProductIdeaSection() {
             <div className="pt-6 mt-6 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between">
               <Link
                 href="/services/ai-agent-development"
-                className="inline-flex items-center space-x-2 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                className="inline-flex items-center space-x-2 text-xs font-bold text-[#09090b] dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
               >
                 <span>See Our Workflow Engineering Services</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -270,19 +270,19 @@ export default function AboutProductIdeaSection() {
           {/* Bento Card 2: Private Knowledge & Search (Right 5 Cols) */}
           <JimoPerspectiveCard
             beamColor="from-purple-500/70 via-indigo-500/80 to-pink-500/70"
-            className="lg:col-span-5 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+            className="lg:col-span-5 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)] dark:shadow-2xl"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
                   PRIVATE KNOWLEDGE
                 </span>
-                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/60 font-semibold">
+                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-200/60 dark:border-purple-500/20 font-semibold">
                   Zero Data Leakage
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-3">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#09090b] dark:text-white tracking-tight mb-3">
                 Instant answers from your own company&apos;s brains.
               </h3>
 
@@ -291,7 +291,7 @@ export default function AboutProductIdeaSection() {
               </p>
 
               {/* Clean Human Value Box */}
-              <div className="rounded-[2px] bg-white dark:bg-black/40 border border-neutral-200/80 dark:border-white/10 p-5 space-y-3.5">
+              <div className="rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08] p-5 space-y-3.5">
                 <div className="flex items-center space-x-2.5 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
                   <div className="w-5 h-5 rounded-[2px] bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
@@ -318,7 +318,7 @@ export default function AboutProductIdeaSection() {
             <div className="pt-6 mt-6 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between">
               <Link
                 href="/services/ai-ml-development"
-                className="inline-flex items-center space-x-2 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                className="inline-flex items-center space-x-2 text-xs font-bold text-[#09090b] dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
               >
                 <span>Explore Private Knowledge Engines</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -329,7 +329,7 @@ export default function AboutProductIdeaSection() {
           {/* Bento Card 3: Dedicated In-House Senior Pods (Full 12 Cols Bottom Bar) */}
           <JimoPerspectiveCard
             beamColor="from-emerald-500/70 via-teal-400/80 to-blue-500/70"
-            className="lg:col-span-12 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-neutral-300 dark:hover:border-white/20 hover:shadow-xl"
+            className="lg:col-span-12 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)] dark:shadow-2xl"
           >
             <div className="max-w-3xl">
               <div className="flex items-center space-x-2.5 mb-2">
@@ -341,7 +341,7 @@ export default function AboutProductIdeaSection() {
                   100% In-House Engineers
                 </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-black dark:text-white tracking-tight mb-2">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-[#09090b] dark:text-white tracking-tight mb-2">
                 Skip the 6-month recruiting cycle. Get a senior AI team in your sprints next week.
               </h3>
               <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed font-normal">
@@ -352,13 +352,13 @@ export default function AboutProductIdeaSection() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
               <Link
                 href="/how-we-work"
-                className="group relative overflow-hidden px-6 py-3 rounded-[2px] bg-black text-white dark:bg-white dark:text-black hover:text-white dark:hover:text-white text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center space-x-2"
+                className="group relative overflow-hidden px-6 py-3 rounded-[2px] bg-[#09090b] text-white dark:bg-white dark:text-[#09090b] hover:text-white dark:hover:text-white text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center space-x-2"
               >
                 <span className="relative z-20 flex items-center space-x-2">
                   <span>How Our Pods Work</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-purple-600 pointer-events-none" />
+                <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-blue-600 dark:bg-blue-600 pointer-events-none" />
               </Link>
 
               <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 sm:text-right">

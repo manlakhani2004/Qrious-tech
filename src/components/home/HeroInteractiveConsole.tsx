@@ -183,10 +183,10 @@ export default function HeroInteractiveConsole() {
           rotateY,
           transformStyle: "preserve-3d"
         }}
-        className="relative rounded-none sm:rounded-[3px] border border-neutral-200/90 dark:border-white/10 bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl shadow-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
+        className="relative rounded-none sm:rounded-[3px] border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0c10] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_12px_36px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_50px_rgba(0,0,0,0.7)] overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
       >
         {/* Continuous Animated Border Beam Highlight (Prompt-Motion / Magic UI style) */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/60 dark:via-cyan-400/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 dark:via-sky-400/60 to-transparent pointer-events-none" />
 
         {/* Dynamic Cursor Spotlight Radial Effect */}
         <motion.div
@@ -201,7 +201,7 @@ export default function HeroInteractiveConsole() {
         />
 
         {/* macOS Window Controls Header */}
-        <div className="flex flex-wrap items-center justify-between gap-2.5 px-4 sm:px-6 py-2.5 sm:py-3 border-b border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.03]">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 px-4 sm:px-6 py-2.5 sm:py-3 border-b border-neutral-200/80 dark:border-white/[0.08] bg-[#f8f9fa] dark:bg-white/[0.03]">
           {/* macOS Traffic Lights + Breadcrumb */}
           <div className="flex items-center space-x-2.5">
             <div className="flex items-center space-x-1.5">
@@ -212,7 +212,7 @@ export default function HeroInteractiveConsole() {
             <div className="h-3.5 w-px bg-neutral-200 dark:bg-white/10 mx-1 hidden sm:block" />
             <div className="flex items-center space-x-1.5 text-[11px] sm:text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400">
               <Terminal className="w-3 h-3 text-neutral-500 dark:text-neutral-400" />
-              <span className="text-black dark:text-white font-semibold">qtech://ai-engine.v4</span>
+              <span className="text-[#09090b] dark:text-white font-semibold">qtech://ai-engine.v4</span>
               <span>/</span>
               <span className="text-blue-600 dark:text-sky-400 font-semibold">{activeTab.id}</span>
             </div>
@@ -226,7 +226,7 @@ export default function HeroInteractiveConsole() {
         </div>
 
         {/* Tab Navigation with Motion.dev Fluid Pill Indicator */}
-        <div className="px-4 sm:px-6 py-2 border-b border-neutral-200/80 dark:border-white/10 bg-neutral-50/60 dark:bg-black/30 flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-2 border-b border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-black/20 flex items-center justify-between">
           <div className="flex items-center space-x-1 sm:space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
             {TABS.map((tab) => {
               const isActive = activeTabId === tab.id;
@@ -267,12 +267,12 @@ export default function HeroInteractiveConsole() {
             >
               {/* Left Column: Business Problem, Solution & Metrics (5 cols) */}
               <div className="lg:col-span-5 text-left space-y-3.5">
-                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-[11px] font-semibold text-neutral-800 dark:text-neutral-200">
-                  <Sparkles className="w-3 h-3 text-blue-600 dark:text-sky-400" />
+                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] text-[11px] font-semibold text-[#09090b] dark:text-[#f8f9fa]">
+                  <Sparkles className="w-3 dot-3 text-blue-600 dark:text-blue-400" />
                   <span>{activeTab.badge}</span>
                 </div>
 
-                <h3 className="text-base sm:text-lg lg:text-[21px] font-bold text-black dark:text-white tracking-tight leading-snug">
+                <h3 className="text-base sm:text-lg lg:text-[21px] font-bold text-[#09090b] dark:text-[#f8f9fa] tracking-tight leading-snug">
                   {activeTab.title}
                 </h3>
 
@@ -285,9 +285,9 @@ export default function HeroInteractiveConsole() {
                   {activeTab.metrics.map((m, idx) => (
                     <div
                       key={idx}
-                      className="p-2 sm:p-2.5 rounded-[2px] bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/70 dark:border-white/[0.07] text-left"
+                      className="p-2 sm:p-2.5 rounded-[2px] bg-[#f8f9fa] dark:bg-white/[0.03] border border-neutral-200/80 dark:border-white/[0.08] text-left"
                     >
-                      <div className="text-sm sm:text-base font-black text-black dark:text-white tracking-tight">
+                      <div className="text-sm sm:text-base font-black text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                         {m.value}
                       </div>
                       <div className="text-[10px] font-medium text-neutral-500 dark:text-neutral-400 mt-0.5 leading-tight">
@@ -301,7 +301,7 @@ export default function HeroInteractiveConsole() {
                 <div className="pt-1">
                   <Link
                     href={activeTab.caseStudyUrl}
-                    className="inline-flex items-center space-x-1.5 text-xs font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                    className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#09090b] dark:text-[#f8f9fa] hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                   >
                     <span>Explore Verified Case Studies &amp; Outcomes</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -312,13 +312,13 @@ export default function HeroInteractiveConsole() {
               {/* Right Column: Clean, Authentic Interactive Visual (7 cols) */}
               <div className="lg:col-span-7">
                 {activeTab.id === "workflows" && (
-                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
-                    <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-neutral-200/70 dark:border-white/10">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                    <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-neutral-200/70 dark:border-white/[0.08]">
                       <div>
                         <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
                           Autonomous Pipeline
                         </div>
-                        <div className="text-xs sm:text-sm font-bold text-black dark:text-white">
+                        <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa]">
                           Invoice Ingestion &amp; ERP Reconciliation
                         </div>
                       </div>
@@ -444,20 +444,20 @@ export default function HeroInteractiveConsole() {
                     </div>
 
                     {/* Execution Outcome */}
-                    <div className="mt-2.5 pt-2 border-t border-neutral-200/70 dark:border-white/10 flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
-                      <span>Human oversight: <strong className="text-black dark:text-white font-semibold">Exception Only</strong></span>
+                    <div className="mt-2.5 pt-2 border-t border-neutral-200/70 dark:border-white/[0.08] flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
+                      <span>Human oversight: <strong className="text-[#09090b] dark:text-[#f8f9fa] font-semibold">Exception Only</strong></span>
                       <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Live Pipeline Verified</span>
                     </div>
                   </div>
                 )}
 
                 {activeTab.id === "rag" && (
-                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
-                    <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/10">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                    <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/[0.08]">
                       <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider mb-0.5">
                         Private Cloud Knowledge Query
                       </div>
-                      <div className="text-xs sm:text-sm font-bold text-black dark:text-white">
+                      <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa]">
                         Zero-Leakage Air-Gapped Search Test
                       </div>
                     </div>
@@ -470,8 +470,8 @@ export default function HeroInteractiveConsole() {
                           onClick={() => setSelectedRagQuery(qIdx)}
                           className={`text-left p-2 rounded-[2px] border text-[11px] font-medium transition-colors cursor-pointer flex-1 ${
                             selectedRagQuery === qIdx
-                              ? "bg-white dark:bg-white/10 border-blue-500 text-black dark:text-white shadow-2xs"
-                              : "bg-white/60 dark:bg-white/[0.02] border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+                              ? "bg-white dark:bg-[#0c0c10] border-blue-500 text-[#09090b] dark:text-[#f8f9fa] shadow-2xs"
+                              : "bg-white/60 dark:bg-white/[0.02] border-neutral-200/80 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-[#09090b] dark:hover:text-[#f8f9fa]"
                           }`}
                         >
                           <div className="truncate">{item.q}</div>
@@ -480,9 +480,9 @@ export default function HeroInteractiveConsole() {
                     </div>
 
                     {/* Grounded Result Display */}
-                    <div className="p-3 rounded-[2px] bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10 space-y-2">
+                    <div className="p-3 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] space-y-2">
                       <div className="flex items-center justify-between text-[11px]">
-                        <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-[2px] bg-blue-500/10 text-blue-600 dark:text-sky-400 font-mono text-[10px] font-semibold">
+                        <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-[2px] bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono text-[10px] font-semibold">
                           <CheckCircle2 className="w-2.5 h-2.5" />
                           <span>{ragQueries[selectedRagQuery].source}</span>
                         </span>
@@ -497,20 +497,20 @@ export default function HeroInteractiveConsole() {
 
                       <div className="pt-1.5 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-[10.5px] text-neutral-400">
                         <span>Model: Private Llama-3 70B</span>
-                        <span className="text-blue-600 dark:text-sky-400">Zero data retention</span>
+                        <span className="text-blue-600 dark:text-blue-400">Zero data retention</span>
                       </div>
                     </div>
                   </div>
                 )}
 
                 {activeTab.id === "squads" && (
-                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
-                    <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/10 flex items-center justify-between">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                    <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/[0.08] flex items-center justify-between">
                       <div>
                         <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
                           Dedicated Pod Architecture
                         </div>
-                        <div className="text-xs sm:text-sm font-bold text-black dark:text-white">
+                        <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa]">
                           In-House Ahmedabad Squad Topology
                         </div>
                       </div>
@@ -529,9 +529,9 @@ export default function HeroInteractiveConsole() {
                       ].map((item, idx) => (
                         <div
                           key={idx}
-                          className="p-2.5 rounded-[2px] bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10"
+                          className="p-2.5 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08]"
                         >
-                          <div className="text-xs font-bold text-black dark:text-white">
+                          <div className="text-xs font-bold text-[#09090b] dark:text-[#f8f9fa]">
                             {item.role}
                           </div>
                           <div className="text-[10.5px] text-neutral-500 dark:text-neutral-400 mt-0.5">
@@ -541,8 +541,8 @@ export default function HeroInteractiveConsole() {
                       ))}
                     </div>
 
-                    <div className="p-2.5 rounded-[2px] bg-white/70 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/10 flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
-                      <span>Delivery Cycle: <strong className="text-black dark:text-white font-semibold">14-Day Production Sprints</strong></span>
+                    <div className="p-2.5 rounded-[2px] bg-white/70 dark:bg-white/[0.02] border border-neutral-200/80 dark:border-white/[0.08] flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
+                      <span>Delivery Cycle: <strong className="text-[#09090b] dark:text-[#f8f9fa] font-semibold">14-Day Production Sprints</strong></span>
                       <span>Direct Slack &amp; Git Access</span>
                     </div>
                   </div>

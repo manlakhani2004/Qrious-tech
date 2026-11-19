@@ -13,7 +13,7 @@ import OpeningLoader from "@/components/ui/OpeningLoader";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] flex flex-col transition-colors duration-200 relative isolate">
+    <div className="min-h-screen bg-white dark:bg-[#060608] text-[#09090b] dark:text-[#f8f9fa] flex flex-col transition-colors duration-200 relative isolate">
       {/* 0. Luxury Dual-Curtain Opening Loader & Typewriter (aicommon.creamu.co.jp style) */}
       <OpeningLoader />
 

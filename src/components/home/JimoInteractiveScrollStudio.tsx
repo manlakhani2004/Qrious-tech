@@ -212,10 +212,10 @@ export default function JimoInteractiveScrollStudio() {
               }}
               className="lg:col-span-7 will-change-transform"
             >
-              <div className="rounded-[2px] bg-white/85 dark:bg-[#0c0c10]/90 border border-neutral-200/90 dark:border-white/15 p-5 sm:p-7 shadow-xl backdrop-blur-xl relative overflow-hidden">
+              <div className="rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] p-5 sm:p-7 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_12px_36px_rgba(0,0,0,0.04)] dark:shadow-2xl relative overflow-hidden">
                 
                 {/* Window Chrome Title Bar */}
-                <div className="flex items-center justify-between pb-4 mb-5 border-b border-neutral-200/70 dark:border-white/10 text-xs font-mono">
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-neutral-200/70 dark:border-white/[0.08] text-xs font-mono">
                   <div className="flex items-center space-x-2">
                     <div className="flex space-x-1.5">
                       <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block" />
@@ -232,7 +232,7 @@ export default function JimoInteractiveScrollStudio() {
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                       <span>LIVE TELEMETRY</span>
                     </span>
-                    <span className="px-2 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300 font-mono">
+                    <span className="px-2 py-0.5 rounded-[2px] bg-[#f8f9fa] dark:bg-white/10 text-neutral-600 dark:text-neutral-300 font-mono">
                       {currentMode.latency}
                     </span>
                   </div>
@@ -253,11 +253,11 @@ export default function JimoInteractiveScrollStudio() {
                         <span className="text-[11px] font-mono font-bold tracking-wider text-blue-600 dark:text-sky-400 uppercase">
                           {currentMode.tag}
                         </span>
-                        <span className="text-xs font-mono px-2.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/10 text-neutral-800 dark:text-neutral-200 font-bold">
+                        <span className="text-xs font-mono px-2.5 py-0.5 rounded-[2px] bg-[#f8f9fa] dark:bg-white/10 text-neutral-800 dark:text-neutral-200 font-bold border border-neutral-200/60 dark:border-white/10">
                           {currentMode.badge}
                         </span>
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-extrabold text-black dark:text-white tracking-tight mb-2">
+                      <h3 className="text-xl sm:text-2xl font-extrabold text-[#09090b] dark:text-white tracking-tight mb-2">
                         {currentMode.simulation.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans mb-4">
@@ -270,10 +270,10 @@ export default function JimoInteractiveScrollStudio() {
                       {currentMode.simulation.steps.map((step, sIdx) => (
                         <div
                           key={sIdx}
-                          className="flex items-center justify-between p-2.5 sm:p-3 rounded-[2px] bg-neutral-50 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10 transition-colors"
+                          className="flex items-center justify-between p-2.5 sm:p-3 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08] transition-colors"
                         >
                           <div className="flex items-center space-x-2.5">
-                            <span className="w-5 h-5 rounded-[2px] bg-neutral-200/80 dark:bg-white/10 text-neutral-700 dark:text-neutral-300 flex items-center justify-center text-[10px] font-bold">
+                            <span className="w-5 h-5 rounded-[2px] bg-neutral-200/70 dark:bg-white/10 text-neutral-700 dark:text-neutral-300 flex items-center justify-center text-[10px] font-bold">
                               {sIdx + 1}
                             </span>
                             <span className="text-neutral-800 dark:text-neutral-200 font-medium text-[11.5px] sm:text-xs">
@@ -285,7 +285,7 @@ export default function JimoInteractiveScrollStudio() {
                             <span className="text-[10px] text-neutral-400 dark:text-neutral-500 hidden sm:inline">
                               {step.time}
                             </span>
-                            <span className="px-2 py-0.5 rounded-[2px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold text-[10.5px] border border-emerald-200/60 dark:border-emerald-800/60">
+                            <span className="px-2 py-0.5 rounded-[2px] bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold text-[10.5px] border border-emerald-200/60 dark:border-emerald-500/20">
                               {step.status}
                             </span>
                           </div>
@@ -294,7 +294,7 @@ export default function JimoInteractiveScrollStudio() {
                     </div>
 
                     {/* Grounded Result Banner */}
-                    <div className="p-3 rounded-[2px] bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/70 dark:border-blue-800/50 flex items-center space-x-2.5 text-xs text-blue-900 dark:text-blue-200 font-mono">
+                    <div className="p-3 rounded-[2px] bg-blue-50/70 dark:bg-blue-500/10 border border-blue-200/70 dark:border-blue-500/20 flex items-center space-x-2.5 text-xs text-blue-900 dark:text-blue-300 font-mono">
                       <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
                       <span className="truncate">{currentMode.simulation.summary}</span>
                     </div>
@@ -307,7 +307,7 @@ export default function JimoInteractiveScrollStudio() {
             <div className="lg:col-span-5 space-y-4">
               
               {/* Telemetry Card */}
-              <div className="rounded-[2px] bg-neutral-50/90 dark:bg-white/[0.03] border border-neutral-200/90 dark:border-white/10 p-5 sm:p-6 backdrop-blur-md">
+              <div className="rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)] dark:shadow-xl">
                 <div className="text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2 flex items-center justify-between">
                   <span>Guaranteed Performance</span>
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">99.8% Uptime SLA</span>
@@ -315,14 +315,14 @@ export default function JimoInteractiveScrollStudio() {
 
                 {/* 2-Grid Metric Highlights */}
                 <div className="grid grid-cols-2 gap-3 mb-5">
-                  <div className="p-3 rounded-[2px] bg-white dark:bg-black/50 border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-3 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08]">
                     <span className="block text-[11px] font-mono text-neutral-500 uppercase">Latency</span>
-                    <span className="text-2xl font-extrabold text-black dark:text-white font-mono">
+                    <span className="text-2xl font-extrabold text-[#09090b] dark:text-white font-mono">
                       {currentMode.latency}
                     </span>
                   </div>
 
-                  <div className="p-3 rounded-[2px] bg-white dark:bg-black/50 border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-3 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08]">
                     <span className="block text-[11px] font-mono text-neutral-500 uppercase">
                       {currentMode.metricLabel}
                     </span>
@@ -340,7 +340,7 @@ export default function JimoInteractiveScrollStudio() {
                 {/* Action CTA */}
                 <Link
                   href="/contact"
-                  className="group w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors"
+                  className="group w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-[2px] bg-[#09090b] text-white dark:bg-white dark:text-[#09090b] text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors shadow-sm"
                 >
                   <span>Explore {currentMode.tabLabel}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

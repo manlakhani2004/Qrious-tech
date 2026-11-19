@@ -73,7 +73,7 @@ export default function ScrollTextRevealSection({
     <section
       ref={containerRef}
       style={{ height: "190vh" }}
-      className="relative bg-white dark:bg-[#09090b] transition-colors duration-300 border-b border-neutral-200/80 dark:border-white/10"
+      className="relative bg-white dark:bg-[#060608] transition-colors duration-300 border-b border-neutral-200/80 dark:border-white/[0.08]"
     >
       {/* Sticky Viewport Window with 1000px 3D perspective */}
       <div

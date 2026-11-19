@@ -196,7 +196,7 @@ export default function WhyChooseUsSection() {
   return (
     <section
       id="why-choose-us"
-      className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-100 dark:border-neutral-800 relative transition-colors duration-200 overflow-hidden isolate"
+      className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/[0.08] relative transition-colors duration-200 overflow-hidden isolate"
     >
       {/* Precision Crosshair Reticle Matrix (Reduced Density & Whisper-Quiet Opacity) */}
       <div className="absolute inset-0 pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_75%_60%_at_50%_50%,#000_30%,transparent_90%)] opacity-30 dark:opacity-25">
@@ -232,12 +232,12 @@ export default function WhyChooseUsSection() {
         {/* SECTION HEADER: MINIMALIST & BOLD (NO CARDS) */}
         {/* ============================================================== */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] text-xs font-semibold text-[#09090b] dark:text-[#f8f9fa] shadow-2xs mb-4 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
             <span>The Enterprise Engineering Difference</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-black dark:text-white tracking-tight leading-[1.14] mb-4">
+          <h2 className="text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight leading-[1.14] mb-4">
             Why Enterprise Leaders Choose <br className="hidden sm:inline" />
             Qrious Tech Over Legacy Agencies
           </h2>
@@ -250,7 +250,7 @@ export default function WhyChooseUsSection() {
         {/* ============================================================== */}
         {/* OPEN CAPABILITY SELECTOR (NO CARD BOXES!) */}
         {/* ============================================================== */}
-        <div className="flex items-center justify-start sm:justify-center overflow-x-auto no-scrollbar gap-2 pb-4 mb-8 sm:mb-12 border-b border-neutral-100 dark:border-neutral-800">
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto no-scrollbar gap-2 pb-4 mb-8 sm:mb-12 border-b border-neutral-200/80 dark:border-white/[0.08]">
           {DIMENSIONS.map((dim, idx) => {
             const isActive = activeTabIdx === idx;
             return (
@@ -260,14 +260,14 @@ export default function WhyChooseUsSection() {
                 onClick={() => setActiveTabIdx(idx)}
                 className={`relative px-4 py-2.5 rounded-[2px] text-xs font-mono transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
                   isActive
-                    ? "text-black dark:text-white font-bold"
+                    ? "text-[#09090b] dark:text-[#f8f9fa] font-bold"
                     : "text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200"
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeDimensionGlider"
-                    className="absolute inset-0 bg-neutral-100 dark:bg-white/[0.08] rounded-[2px] border border-neutral-200/90 dark:border-white/15 shadow-2xs"
+                    className="absolute inset-0 bg-[#f8f9fa] dark:bg-[#121217] rounded-[2px] border border-neutral-200/80 dark:border-white/[0.08] shadow-2xs"
                     transition={{ type: "spring", stiffness: 450, damping: 35 }}
                   />
                 )}
@@ -293,7 +293,7 @@ export default function WhyChooseUsSection() {
               <span className="text-[11px] font-mono uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-2">
                 {activeDim.tagline}
               </span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-black dark:text-white tracking-tight">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                 {activeDim.headline}
               </h3>
             </motion.div>
@@ -311,8 +311,8 @@ export default function WhyChooseUsSection() {
           className="relative w-full max-w-5xl mx-auto select-none touch-none py-6 sm:py-10 cursor-ew-resize"
         >
           {/* Subtle Stage Boundary Guide (Clean Top & Bottom Hairline) */}
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-200/80 dark:via-white/[0.08] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-200/80 dark:via-white/[0.08] to-transparent pointer-events-none" />
 
           {/* Vercel-Style Precision Architectural Crosshairs (Structural Corner & Center Divider Accents Only) */}
           <span className="absolute -top-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
@@ -356,7 +356,7 @@ export default function WhyChooseUsSection() {
               </p>
 
               {/* Dynamic Motion Graphic: Legacy Pipeline Stagnation */}
-              <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
+              <div className="pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] space-y-3">
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">
                   Workflow Bottleneck Flow:
                 </span>
@@ -392,12 +392,12 @@ export default function WhyChooseUsSection() {
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   <span>{activeDim.qrious.title}</span>
                 </span>
-                <span className="px-2.5 py-0.5 rounded-[2px] bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-500/20">
+                <span className="px-2.5 py-0.5 rounded-[2px] bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-500/20">
                   {activeDim.qrious.badge}
                 </span>
               </div>
 
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-black dark:text-white tracking-tight flex items-baseline space-x-3">
+              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-[#09090b] dark:text-[#f8f9fa] tracking-tight flex items-baseline space-x-3">
                 <span>{activeDim.qrious.metric}</span>
                 <span className="text-xs font-sans text-neutral-400 font-medium">
                   {activeDim.qrious.metricLabel}
@@ -409,7 +409,7 @@ export default function WhyChooseUsSection() {
               </p>
 
               {/* Dynamic Motion Graphic: High-Velocity AI Pod Flow */}
-              <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
+              <div className="pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] space-y-3">
                 <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-wider block font-semibold">
                   Accelerated Autonomous Pipeline:
                 </span>
@@ -417,7 +417,7 @@ export default function WhyChooseUsSection() {
                   {activeDim.qrious.flow.map((step, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center space-x-2.5 text-xs font-mono text-black dark:text-neutral-200 font-medium"
+                      className="flex items-center space-x-2.5 text-xs font-mono text-[#09090b] dark:text-[#f8f9fa] font-medium"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                       <span>{step}</span>
@@ -439,7 +439,7 @@ export default function WhyChooseUsSection() {
             <div className="absolute top-0 bottom-0 -left-px w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
 
             {/* Draggable Center Pill with Motion Indicator */}
-            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black shadow-xl text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize">
+            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] bg-[#09090b] text-white dark:bg-[#f8f9fa] dark:text-[#09090b] shadow-xl text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize">
               <MoveHorizontal className="w-3 h-3 text-blue-400 dark:text-blue-600" />
               <span>DRAG</span>
             </div>
@@ -454,9 +454,9 @@ export default function WhyChooseUsSection() {
         {/* ============================================================== */}
         {/* OPEN 4 STAT PILLARS (NO ENCLOSING CARD BOXES) */}
         {/* ============================================================== */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-neutral-100 dark:border-neutral-800/80">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-neutral-200/80 dark:border-white/[0.08]">
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               5.4x
             </div>
             <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
@@ -468,7 +468,7 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               0%
             </div>
             <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
@@ -480,7 +480,7 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               99.8%
             </div>
             <div className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-1">
@@ -492,10 +492,10 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               100%
             </div>
-            <div className="text-xs font-bold text-black dark:text-white uppercase tracking-wider mb-1">
+            <div className="text-xs font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mb-1">
               In-House Staff
             </div>
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug">
