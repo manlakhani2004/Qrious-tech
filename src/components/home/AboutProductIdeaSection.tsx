@@ -290,7 +290,7 @@ export default function AboutProductIdeaSection() {
               </Link>
 
               <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 sm:text-right">
-                14-Day Working POC Guarantee
+                Agile Sprints • Full Code Ownership
               </span>
             </div>
           </div>

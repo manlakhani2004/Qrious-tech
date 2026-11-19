@@ -40,7 +40,7 @@ const DIMENSIONS: CapabilityDimension[] = [
     number: "01",
     label: "Delivery Speed",
     tagline: "Time to First Working Prototype",
-    headline: "14-Day Working POC vs. 6-Month Waterfall Delay",
+    headline: "Fast Agile Sprints vs. 6-Month Waterfall Delay",
     legacy: {
       title: "Traditional Outsourcing",
       description: "Months spent in bureaucratic scoping meetings and static wireframe decks without a single executable line of code.",
@@ -50,10 +50,10 @@ const DIMENSIONS: CapabilityDimension[] = [
     },
     qrious: {
       title: "Qrious Tech AI Pods",
-      description: "A production-grade, functional Proof of Concept wired to your real data schemas and evaluated in exactly 14 calendar days.",
-      metric: "14 Days",
-      metricLabel: "Guaranteed Working POC",
-      flow: ["Day 1-3: Schema Audit", "Day 4-9: Agentic Build", "Day 10-14: Live Benchmark", "Production Ready"],
+      description: "A production-grade, functional Proof of Concept wired to your real data schemas and evaluated in rapid, transparent sprints.",
+      metric: "Fast Sprints",
+      metricLabel: "Milestone-Driven Delivery",
+      flow: ["Sprint 1: Schema Audit", "Sprint 2: Core Build", "Sprint 3: Live Benchmark", "Production Ready"],
       badge: "5.4x Faster Velocity"
     }
   },
@@ -455,7 +455,7 @@ export default function WhyChooseUsSection() {
               Sprint Velocity
             </div>
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug">
-              14-day working POC vs. standard 6-month waterfall schedules.
+              Rapid sprint delivery vs. standard 6-month waterfall schedules.
             </p>
           </div>
 

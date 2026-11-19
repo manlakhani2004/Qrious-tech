@@ -111,7 +111,7 @@ export default function HeroSection() {
                   </span>
                   <span className="text-neutral-300 dark:text-neutral-700">|</span>
                   <span className="text-neutral-700 dark:text-neutral-300 font-sans font-medium text-[11.5px]">
-                    Autonomous Swarms v4.2 • 14-Day Working POC
+                    Autonomous Swarms v4.2 • Rapid Agile Delivery
                   </span>
                   <ArrowRight className="w-3 h-3 text-neutral-400 group-hover:translate-x-0.5 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-all" />
                 </Link>

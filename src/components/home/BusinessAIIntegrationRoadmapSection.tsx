@@ -16,8 +16,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface JourneyStep {
   stepNumber: string;
-  days: string;
-  badge: string;
+  phase: string;
   title: string;
   subtitle: string;
   story: string;
@@ -28,8 +27,7 @@ interface JourneyStep {
 const STEPS: JourneyStep[] = [
   {
     stepNumber: "01",
-    days: "Days 1 – 3",
-    badge: "Step 1: Scoping",
+    phase: "Phase 1 • Scoping",
     title: "We map what actually slows your team down.",
     subtitle: "Pinpoint real bottlenecks with clear ROI.",
     story: "We sit down on a call with your team and look at the daily tasks that steal their time—whether it's copying data between old systems, answering repetitive emails, or searching through messy contracts. We map out the exact solution and agree on milestones before writing a single line of code.",
@@ -38,18 +36,16 @@ const STEPS: JourneyStep[] = [
   },
   {
     stepNumber: "02",
-    days: "Days 4 – 10",
-    badge: "Step 2: Engineering",
+    phase: "Phase 2 • Sprint Build",
     title: "We build it directly into the tools you already use.",
     subtitle: "Daily GitHub commits with zero disruption.",
     story: "You don't need to force your staff to adopt unfamiliar software. We write clean, tested code that plugs right into what you already use—Slack, your CRM, or your company database. You see daily commits on your company GitHub and test real working features as they get built.",
-    deliverable: "Working Prototype Tested in 7 Days",
+    deliverable: "Working Prototype Tested in Sprints",
     icon: Code2
   },
   {
     stepNumber: "03",
-    days: "Days 11 – 14",
-    badge: "Step 3: Launch",
+    phase: "Phase 3 • Production",
     title: "We deploy to your private cloud and hand you the keys.",
     subtitle: "100% code ownership. Zero vendor lock-in.",
     story: "We launch the system inside your private cloud environment so your customer data never touches public models. We train your staff so everyone feels empowered, and hand over 100% of the source code, weights, and documentation.",
@@ -76,11 +72,11 @@ export default function BusinessAIIntegrationRoadmapSection() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-black dark:text-white tracking-tight leading-[1.12] mb-4">
-            From our first call to live production in 14 days.
+            From discovery to live production. Fast, transparent, and milestone-driven.
           </h2>
 
           <p className="text-neutral-600 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
-            No 6-month consulting bloat. No confusing 100-page slide decks. Here is exactly what happens from the moment we kick off.
+            No 6-month consulting bloat. No confusing 100-page slide decks. Here is our sprint-by-sprint engineering process tailored to your scope.
           </p>
         </ScrollReveal>
 
@@ -96,13 +92,13 @@ export default function BusinessAIIntegrationRoadmapSection() {
                 }`}
               >
                 <div>
-                  {/* Step Number & Timeframe Badge */}
+                  {/* Step Number & Phase Badge */}
                   <div className="flex items-center justify-between mb-6">
                     <span className="text-4xl font-extrabold font-mono text-black dark:text-white tracking-tight">
                       {s.stepNumber}
                     </span>
                     <span className="text-xs font-mono font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-white/[0.06] px-3 py-1 rounded-[2px] border border-neutral-200/60 dark:border-white/10">
-                      {s.days}
+                      {s.phase}
                     </span>
                   </div>
 
@@ -142,10 +138,10 @@ export default function BusinessAIIntegrationRoadmapSection() {
             </div>
             <div>
               <div className="text-sm font-bold text-black dark:text-white">
-                Our 14-Day Working POC Guarantee
+                Milestone-Validated Delivery Guarantee
               </div>
               <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                If the prototype does not meet the agreed architecture criteria, you pay nothing.
+                We establish clear sprint criteria before starting. You only sign off when working milestones are delivered and tested.
               </div>
             </div>
           </div>

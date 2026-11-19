@@ -135,11 +135,11 @@ export default function Navbar() {
     },
     {
       title: "Dedicated AI Pods & All Services",
-      tagline: "100+ In-House Engineers • 14-Day Delivery",
-      desc: "Explore our full architectural capabilities, 14-day working POCs, and embedded sprint pods.",
+      tagline: "100+ In-House Engineers • Rapid Agile Delivery",
+      desc: "Explore our full architectural capabilities, dedicated sprint pods, and tailored enterprise solutions.",
       href: "/services",
       icon: <Sparkles className="w-4 h-4 text-white" />,
-      subItems: ["10 Practices", "14-Day POC", "Explore All →"],
+      subItems: ["10 Practices", "Agile Sprints", "Explore All →"],
       isSpecial: true
     }
   ];
@@ -378,7 +378,7 @@ export default function Navbar() {
                           AI Solutions &amp; Engineering Practices
                         </h4>
                         <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-[2px] bg-blue-600 text-white">
-                          14-Day POC Guarantee
+                          Milestone-Driven Sprints
                         </span>
                       </div>
                       <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">
