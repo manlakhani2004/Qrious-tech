@@ -308,14 +308,14 @@ export default function Navbar() {
       >
         <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
           {/* Authentic Qrious Tech Brand Logo (Icon Mark Only) */}
-          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5" aria-label="Qrious Tech Home">
+          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5 ml-1.5 sm:ml-2.5 md:ml-3.5" aria-label="Qrious Tech Home">
             <Image
               src="/images/qt-logo/mark.png"
               alt="Qrious Tech"
-              width={34}
-              height={34}
+              width={44}
+              height={44}
               priority
-              className="h-7 sm:h-8 md:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
           </Link>
 
