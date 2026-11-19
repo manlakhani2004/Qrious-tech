@@ -52,7 +52,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none -z-20 bg-[linear-gradient(to_right,rgba(0,0,0,0.032)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.032)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_35%,#000_40%,transparent_100%)]" />
 
       {/* Interactive Cursor-Reactive Neural Canvas (Tracks Cursor Arrow & Click Shockwaves) */}
-      <HeroInteractiveCanvas />
+      <div id="hero-interactive-canvas">
+        <HeroInteractiveCanvas />
+      </div>
 
       {/* Stripe Radiant Aurora Mesh */}
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[850px] 2xl:w-[1100px] h-[480px] bg-gradient-to-tr from-indigo-500/10 via-sky-500/10 to-purple-500/10 dark:from-indigo-600/15 dark:via-blue-600/15 dark:to-violet-600/15 blur-[120px] rounded-full pointer-events-none -z-10" />
@@ -60,7 +62,7 @@ export default function HeroSection() {
       {/* Ambient top radial glow for luxury dark mode */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl 2xl:max-w-7xl h-[420px] pointer-events-none -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(120,119,198,0.14),transparent)] dark:block hidden" />
 
-      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative pt-4 sm:pt-6">
+      <div id="hero-content-wrap" className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative pt-4 sm:pt-6">
         {/* Animated Loop for AI Leadership Headlines */}
         <div className="min-h-[220px] sm:min-h-[250px] lg:min-h-[270px] 2xl:min-h-[320px] flex flex-col items-center justify-center">
           <AnimatePresence mode="wait">

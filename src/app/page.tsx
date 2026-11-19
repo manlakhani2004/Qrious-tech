@@ -8,10 +8,14 @@ import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionS
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
+import OpeningLoader from "@/components/ui/OpeningLoader";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] flex flex-col transition-colors duration-200 relative isolate">
+      {/* 0. Luxury Dual-Curtain Opening Loader & Typewriter (aicommon.creamu.co.jp style) */}
+      <OpeningLoader />
+
       {/* 1. Floating Frosted Island Navbar */}
       <Navbar />
 

@@ -212,3 +212,84 @@ html.dark ::-webkit-scrollbar-thumb {
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
+
+/* ==========================================================================
+   AI Common Style Opening Loader Curtain & Smooth Hero Reveal
+   Inspired by aicommon.creamu.co.jp dual-layer curtain wipe & typewriter
+   ========================================================================== */
+
+/* Hero & Navbar Smooth Entrance Coordination */
+:root.is-loading #site-header-nav {
+  opacity: 0;
+  transform: translateY(-24px);
+  pointer-events: none;
+}
+
+:root.is-loading #hero-content-wrap {
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+}
+
+:root.is-loading #hero-interactive-canvas {
+  opacity: 0;
+}
+
+:root.from-loader #site-header-nav {
+  animation: qtechNavIn 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+:root.from-loader #hero-content-wrap {
+  animation: qtechHeroIn 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+}
+
+:root.from-loader #hero-interactive-canvas {
+  animation: qtechCanvasIn 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.02s forwards;
+}
+
+@keyframes qtechNavIn {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qtechHeroIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes qtechCanvasIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #qtech-opening-loader,
+  #qtech-opening-loader::before,
+  #qtech-opening-loader::after {
+    display: none !important;
+    transition: none !important;
+  }
+  :root.is-loading #site-header-nav,
+  :root.is-loading #hero-content-wrap,
+  :root.is-loading #hero-interactive-canvas {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+}
+

@@ -298,7 +298,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300 font-sans">
+    <header id="site-header-nav" className="sticky top-0 z-50 w-full transition-all duration-300 font-sans">
       <div
         className={`w-full transition-all duration-300 border-b ${
           scrolled
@@ -1040,7 +1040,18 @@ export default function Navbar() {
                 { title: "HCM & Workforce Dispatch", category: "Industry", href: "/industries/hcm", icon: Briefcase },
                 { title: "All 37 Enterprise Case Studies", category: "Work", href: "/case-studies", icon: FolderGit2 },
                 { title: "Dedicated Pods & Methodology", category: "Process", href: "/how-we-work", icon: Workflow },
-                { title: "Schedule Discovery Session", category: "Contact", href: "/contact", icon: Sparkles }
+                { title: "Schedule Discovery Session", category: "Contact", href: "/contact", icon: Sparkles },
+                {
+                  title: "Replay Opening Animation",
+                  category: "Experience",
+                  action: () => {
+                    setSearchOpen(false);
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("replay-qtech-intro"));
+                    }
+                  },
+                  icon: Sparkles
+                }
               ]
                 .filter((item) =>
                   !searchQuery ||
@@ -1049,13 +1060,8 @@ export default function Navbar() {
                 )
                 .map((item, idx) => {
                   const ItemIcon = item.icon;
-                  return (
-                    <Link
-                      key={idx}
-                      href={item.href}
-                      onClick={() => setSearchOpen(false)}
-                      className="flex items-center justify-between px-3 py-2.5 rounded-[2px] hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors group cursor-pointer"
-                    >
+                  const content = (
+                    <div className="flex items-center justify-between px-3 py-2.5 rounded-[2px] hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors group cursor-pointer w-full">
                       <div className="flex items-center space-x-3">
                         <div className="w-7 h-7 rounded-[2px] bg-neutral-100 dark:bg-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                           <ItemIcon className="w-3.5 h-3.5" />
@@ -1070,6 +1076,30 @@ export default function Navbar() {
                         </span>
                         <ArrowRight className="w-3.5 h-3.5 text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                       </div>
+                    </div>
+                  );
+
+                  if (item.action) {
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={item.action}
+                        className="w-full text-left"
+                      >
+                        {content}
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={idx}
+                      href={item.href || "#"}
+                      onClick={() => setSearchOpen(false)}
+                      className="block w-full"
+                    >
+                      {content}
                     </Link>
                   );
                 })}
