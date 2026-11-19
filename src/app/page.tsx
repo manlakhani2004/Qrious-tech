@@ -4,7 +4,6 @@ import HeroSection from "@/components/home/HeroSection";
 import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
 import JimoInteractiveScrollStudio from "@/components/home/JimoInteractiveScrollStudio";
-import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionShowcaseSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
@@ -20,32 +19,29 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* 2. Hero Section: AI Positioning + Console + Peeking Mascot */}
+        {/* 1. Hero Section: AI Positioning + Console + Peeking Mascot */}
         <HeroSection />
 
-        {/* 3. Animos-Style Scroll-Driven Manifesto Reveal */}
+        {/* 2. Animos-Style Scroll-Driven Manifesto Reveal */}
         <ScrollTextRevealSection />
 
-        {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
+        {/* 3. Core Enterprise AI Capabilities: Serko Disruption Studio */}
         <AboutProductIdeaSection />
 
-        {/* 6. Jimo-Style Sticky 3D Interactive Scroll Studio (One Engine • Three Modes) */}
+        {/* 4. Jimo-Style Sticky 3D Interactive Scroll Studio (One Engine • Three Modes) */}
         <JimoInteractiveScrollStudio />
 
-        {/* 7. Animos-Style Production Showcase Stream */}
-        <AnimosProductionShowcaseSection />
-
-        {/* 7. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
+        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 8. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
+        {/* 6. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
         <BusinessAIIntegrationRoadmapSection />
 
-        {/* 9. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
+        {/* 7. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
         <GlobalNetworkSection />
       </main>
 
-      {/* 10. Minimalist Enterprise Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );
