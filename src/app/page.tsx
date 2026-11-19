@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
+import WhatWeBuildSection from "@/components/home/WhatWeBuildSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
 import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionShowcaseSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
@@ -29,7 +30,10 @@ export default function Home() {
         {/* 4. Animos-Style Scroll-Driven Manifesto Reveal */}
         <ScrollTextRevealSection />
 
-        {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
+        {/* 5. What We Build: AI Working Inside Your Company */}
+        <WhatWeBuildSection />
+
+        {/* 6. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
         <AboutProductIdeaSection />
 
         {/* 6. Animos-Style Production Showcase Stream */}
