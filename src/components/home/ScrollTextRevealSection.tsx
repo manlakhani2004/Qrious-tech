@@ -67,8 +67,6 @@ export default function ScrollTextRevealSection({
   const maxTranslateY = 16; // px vertical travel
   const maxRotateX = 24; // deg 3D perspective tilt
 
-  const progressPercent = Math.min(100, Math.round(progress * 100));
-
   return (
     <section
       ref={containerRef}
@@ -96,30 +94,30 @@ export default function ScrollTextRevealSection({
 
         {/* Four-Corner Cartesian Coordinate Crosshairs */}
         <div className="absolute top-8 left-8 hidden sm:flex items-center space-x-1 text-[10px] font-mono text-neutral-400 dark:text-neutral-500 select-none">
-          <span className="text-blue-500 font-bold">+</span>
+          <span className="text-neutral-400 dark:text-neutral-500 font-bold">+</span>
           <span>SYS.LAT: 23.0225° N</span>
         </div>
         <div className="absolute top-8 right-8 hidden sm:flex items-center space-x-1 text-[10px] font-mono text-neutral-400 dark:text-neutral-500 select-none">
           <span>SYS.LON: 72.5714° E</span>
-          <span className="text-blue-500 font-bold">+</span>
+          <span className="text-neutral-400 dark:text-neutral-500 font-bold">+</span>
         </div>
         <div className="absolute bottom-10 left-8 hidden sm:flex items-center space-x-1 text-[10px] font-mono text-neutral-400 dark:text-neutral-500 select-none">
-          <span className="text-blue-500 font-bold">+</span>
+          <span className="text-neutral-400 dark:text-neutral-500 font-bold">+</span>
           <span>ENGINE: QRIOUS // CORE</span>
         </div>
         <div className="absolute bottom-10 right-8 hidden sm:flex items-center space-x-2 text-[10px] font-mono text-neutral-400 dark:text-neutral-500 select-none">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           <span>SCROLL KINETICS: ACTIVE</span>
-          <span className="text-blue-500 font-bold">+</span>
+          <span className="text-neutral-400 dark:text-neutral-500 font-bold">+</span>
         </div>
 
         {/* Subtle Atmospheric Spotlight */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] 2xl:w-[950px] h-[360px] bg-gradient-to-tr from-blue-600/10 via-cyan-500/10 to-purple-600/10 blur-[140px] pointer-events-none -z-10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] 2xl:w-[950px] h-[360px] bg-gradient-to-tr from-neutral-500/5 via-neutral-400/5 to-transparent dark:from-white/[0.03] dark:via-white/[0.02] dark:to-transparent blur-[140px] pointer-events-none -z-10 rounded-full" />
 
         {/* Typographical Statement with Word Luminosity Bloom */}
         <div className="flex flex-col items-center">
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#09090b] dark:bg-white" />
             <span>The Enterprise Manifesto</span>
           </div>
 
@@ -132,21 +130,17 @@ export default function ScrollTextRevealSection({
             }}
           >
             {words.map((word, idx) => {
-              // Effective progress mapped to reveal all words by ~0.84 of sticky track
-              const activeRange = 0.84;
-              const normProgress = Math.min(1, progress / activeRange);
-
-              // Stagger with smooth liquid wave overlap
-              const wordStart = idx / total;
-              const rawY = (normProgress - wordStart) * (total / 1.6);
-              const w = Math.max(0, Math.min(1, rawY));
+              // Ensure all words, including the final word ("overhead."), completely reveal and unblur
+              const endProgress = 0.72;
+              const wordDuration = 0.10;
+              const start = (idx / (total - 1)) * (endProgress - wordDuration);
+              const w = Math.max(0, Math.min(1, (progress - start) / wordDuration));
 
               const blur = maxBlur * (1 - w);
               const opacity = minOpacity + (1 - minOpacity) * w;
               const scale = minScale + (1 - minScale) * w;
               const translateY = maxTranslateY * (1 - w);
               const rotateX = maxRotateX * (1 - w);
-              const isFullyLit = w >= 0.95;
 
               return (
                 <span key={idx}>
@@ -159,10 +153,7 @@ export default function ScrollTextRevealSection({
                       transformOrigin: "50% 100%",
                       willChange: "filter, opacity, transform",
                       transition:
-                        "filter 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)",
-                      textShadow: isFullyLit
-                        ? "0 0 24px rgba(59, 130, 246, 0.25)"
-                        : "none"
+                        "filter 0.18s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)"
                     }}
                   >
                     {word}
@@ -172,18 +163,6 @@ export default function ScrollTextRevealSection({
               );
             })}
           </p>
-
-          {/* Jimo-Style Telemetry Scroll Progress Bar */}
-          <div className="mt-10 flex items-center space-x-3 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-            <span>0%</span>
-            <div className="w-40 sm:w-56 h-[2px] bg-neutral-200 dark:bg-white/10 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-75"
-                style={{ width: `${progressPercent}%` }}
-              />
-            </div>
-            <span className="text-black dark:text-white font-bold min-w-[36px]">{progressPercent}%</span>
-          </div>
         </div>
       </div>
     </section>
