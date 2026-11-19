@@ -59,8 +59,8 @@ export default function AboutProductIdeaSection() {
       id="capabilities"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 relative transition-colors duration-200 overflow-hidden"
     >
-      {/* Modern Background Design: Linear / Raycast Stippled Micro-Dot Matrix */}
-      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(rgba(0,0,0,0.06)_1.2px,transparent_1.2px)] dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1.2px,transparent_1.2px)] bg-[size:28px_28px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_45%,transparent_100%)]" />
+      {/* Modern Background Design: Linear / Raycast Stippled Micro-Dot Matrix (Subtle & Non-Intrusive) */}
+      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(rgba(0,0,0,0.032)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,#000_30%,transparent_100%)]" />
 
       {/* Subtle Atmospheric Ambient Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] 2xl:w-[950px] h-[360px] bg-gradient-to-tr from-blue-600/6 via-cyan-500/6 to-purple-600/6 blur-[140px] pointer-events-none -z-20 rounded-full" />

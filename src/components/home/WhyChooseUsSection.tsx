@@ -198,20 +198,8 @@ export default function WhyChooseUsSection() {
       id="why-choose-us"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-100 dark:border-neutral-800 relative transition-colors duration-200 overflow-hidden isolate"
     >
-      {/* Modern Background Design: Precision Crosshair Reticle Matrix (Vercel Style) */}
-      <div className="absolute inset-0 pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,#000_40%,transparent_100%)] opacity-80 dark:opacity-45">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="crosshair-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
-              <path d="M 22 18 L 22 26 M 18 22 L 26 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round" className="text-neutral-400 dark:text-neutral-600" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#crosshair-pattern)" />
-        </svg>
-      </div>
-
-      {/* Atmospheric Radial Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1000px] h-[350px] bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+      {/* Subtle Atmospheric Ambient Glow (Stripe / Animos style) */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1000px] h-[350px] bg-gradient-to-r from-blue-500/8 via-indigo-500/8 to-purple-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
         {/* ============================================================== */}
@@ -299,6 +287,14 @@ export default function WhyChooseUsSection() {
           {/* Subtle Stage Boundary Guide (Clean Top & Bottom Hairline) */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
+
+          {/* Vercel-Style Precision Architectural Crosshairs (Structural Corner & Center Divider Accents Only) */}
+          <span className="absolute -top-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+          <span className="absolute -top-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+          <span className="absolute -top-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+          <span className="absolute -bottom-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+          <span className="absolute -bottom-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
 
           {/* Interactive Split Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
