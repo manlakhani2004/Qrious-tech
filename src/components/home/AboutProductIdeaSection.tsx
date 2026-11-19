@@ -4,343 +4,294 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   Sparkles,
-  Workflow,
-  Search,
-  Lock,
   ArrowRight,
-  CheckCircle2,
-  FileText,
   ShieldCheck,
-  Database,
-  Cpu,
-  GitCommit,
-  Check,
-  Play,
-  RotateCw
+  CheckCircle2,
+  Lock,
+  Layers,
+  Zap,
+  Clock,
+  Code2,
+  FileText,
+  Mail,
+  Scale
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function AboutProductIdeaSection() {
-  // Pillar 1: Interactive Agent Simulation State
-  const [pipelineRunning, setPipelineRunning] = useState(false);
-  const [pipelineStep, setPipelineStep] = useState(2); // Default to completed state for instant aesthetic
+  // Interactive real-world scenario tab for Feature 1 (Vercel/Stripe style)
+  const [activeWorkflow, setActiveWorkflow] = useState<"invoices" | "support" | "compliance">("invoices");
 
-  // Pillar 2: Interactive Query Selection
-  const [activeQueryIndex, setActiveQueryIndex] = useState(0);
-
-  const ragExamples = [
-    {
-      query: "Vendor SLA & Incident Response Protocol",
-      source: "Master Service Agreement §14.2",
-      excerpt: "Critical (P1) incidents require engineer acknowledgment in < 15m and live hourly updates.",
-      confidence: "99.8% Match"
+  const workflows = {
+    invoices: {
+      title: "Invoice & Bill Processing",
+      humanTask: "Accounts team spends 3 hours manually cross-checking PDF invoices with purchase orders.",
+      automatedAction: "Software reads incoming PDFs, verifies line items & tax IDs, and posts clean journal entries into NetSuite.",
+      humanOutcome: "Reconciliation time cut from 3 hours to 25 seconds. Zero duplicate payments.",
+      metric: "15 hrs saved / week",
+      timeReduction: "96% faster",
+      tag: "FINANCE & OPS"
     },
-    {
-      query: "Client Data Purge & Vault Retention",
-      source: "Security Architecture Guide v3.1",
-      excerpt: "All client backups are cryptographically destroyed within 30 days of contract termination.",
-      confidence: "99.4% Match"
+    support: {
+      title: "Technical Customer Inquiries",
+      humanTask: "Support team answers the same 40 product setup questions across Zendesk and email all day.",
+      automatedAction: "Assistant searches internal engineering docs, drafts a detailed response with code snippets, and cues it for human approval.",
+      humanOutcome: "First response time drops from 4 hours to under 3 minutes. Customer satisfaction up 38%.",
+      metric: "< 3 min response",
+      timeReduction: "8x quicker",
+      tag: "SUPPORT & CX"
+    },
+    compliance: {
+      title: "Vendor Contract & Risk Review",
+      humanTask: "Legal counsel manually reviews 60-page vendor MSAs for non-standard indemnity clauses.",
+      automatedAction: "System highlights deviation from standard corporate policy, flags high-risk clauses, and suggests approved redlines.",
+      humanOutcome: "Contract review turns around in 1 day instead of 2 weeks. Legal costs drop by half.",
+      metric: "1-day turnaround",
+      timeReduction: "70% review time saved",
+      tag: "LEGAL & RISK"
     }
-  ];
-
-  const runPipelineSim = () => {
-    if (pipelineRunning) return;
-    setPipelineRunning(true);
-    setPipelineStep(0);
-
-    setTimeout(() => setPipelineStep(1), 500);
-    setTimeout(() => setPipelineStep(2), 1200);
-    setTimeout(() => setPipelineRunning(false), 1500);
   };
+
+  const current = workflows[activeWorkflow];
 
   return (
     <section
       id="capabilities"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 relative transition-colors duration-200 overflow-hidden"
     >
-      {/* Modern Background Design: Linear / Raycast Stippled Micro-Dot Matrix (Subtle & Non-Intrusive) */}
-      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(rgba(0,0,0,0.032)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,#000_30%,transparent_100%)]" />
-
-      {/* Subtle Atmospheric Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] 2xl:w-[950px] h-[360px] bg-gradient-to-tr from-blue-600/6 via-cyan-500/6 to-purple-600/6 blur-[140px] pointer-events-none -z-20 rounded-full" />
+      {/* Ambient background grid with subtle central radial fade */}
+      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_30%,transparent_100%)]" />
 
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
-        {/* ============================================================== */}
-        {/* SECTION HEADER: MINIMALIST & BOLD (NO NESTED CARDS)            */}
-        {/* ============================================================== */}
+        {/* Editorial Section Header: Human, Honest, Compelling */}
         <ScrollReveal className="max-w-3xl mb-14 sm:mb-20">
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-            <span>01 / Core Capabilities</span>
+            <span>What We Actually Build</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[46px] font-extrabold text-black dark:text-white tracking-tight leading-[1.12] mb-4">
-            How We Bring AI Into Your Core Operations
+          <h2 className="text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-black dark:text-white tracking-tight leading-[1.12] mb-4">
+            Less busywork. More work that actually moves your business forward.
           </h2>
 
-          <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed">
-            We don’t build generic chatbots or prompt wrappers. We engineer deterministic multi-agent swarms, private enterprise knowledge engines, and custom software that integrate directly with your existing infrastructure.
+          <p className="text-neutral-600 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
+            Most AI demos look cool in a sandbox and break in production. We don’t build toy chatbots or generic prompt wrappers. We build reliable, tailored software that connects to your existing tools so your team gets hours of their week back.
           </p>
         </ScrollReveal>
 
-        {/* ============================================================== */}
-        {/* 3-PILLAR OPEN ARCHITECTURAL GRID (VERCEL & STRIPE MINIMALISM)  */}
-        {/* ============================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200/80 dark:divide-white/10 border-t border-b border-neutral-200/80 dark:border-white/10">
-          {/* ============================================================ */}
-          {/* PILLAR 01: AUTONOMOUS AGENT SWARMS                           */}
-          {/* ============================================================ */}
-          <div className="py-10 lg:py-12 lg:pr-10 flex flex-col justify-between">
+        {/* Modern Vercel & Stripe Asymmetric Bento Grid (No Clunky Outdated Cards) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8">
+          {/* Bento Card 1: Interactive Real-World Workflow Automation (Left 7 Cols) */}
+          <div className="lg:col-span-7 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-                  01 // Operations
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-sky-400">
+                  {current.tag}
                 </span>
-                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
-                  <Workflow className="w-4 h-4 text-blue-500" />
+                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 font-semibold">
+                  {current.metric}
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight mb-3">
-                Autonomous Agent Swarms
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-3">
+                Take the repetitive grind off your team&apos;s plate.
               </h3>
 
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
-                Eliminate manual operational bottlenecks. We build self-correcting multi-agent pipelines that ingest invoices, validate data against business schemas, and sync records into your ERP and CRM in seconds.
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                Whether it&apos;s cross-checking vendor bills, filing customer requests, or moving data between old databases—we build autonomous assistants that do the heavy lifting in seconds, so your people only intervene when a real human decision is needed.
               </p>
 
-              {/* Minimal Interactive Visual Flow */}
-              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
-                <div className="flex items-center justify-between mb-3 pb-2 border-b border-neutral-200/60 dark:border-white/[0.06]">
-                  <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-                    Document ➔ ERP Pipeline
-                  </span>
+              {/* Interactive Scenario Switcher (Vercel style: see how it works on real problems) */}
+              <div className="mb-6">
+                <div className="text-xs font-mono font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+                  Explore how it works in practice:
+                </div>
+                <div className="grid grid-cols-3 gap-2">
                   <button
-                    onClick={runPipelineSim}
-                    disabled={pipelineRunning}
-                    className="inline-flex items-center space-x-1 text-[11px] font-semibold text-blue-600 dark:text-sky-400 hover:underline cursor-pointer disabled:opacity-50"
+                    onClick={() => setActiveWorkflow("invoices")}
+                    className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
+                      activeWorkflow === "invoices"
+                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                    }`}
                   >
-                    {pipelineRunning ? (
-                      <>
-                        <RotateCw className="w-3 h-3 animate-spin" />
-                        <span>Running</span>
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-3 h-3 fill-current" />
-                        <span>Simulate</span>
-                      </>
-                    )}
+                    <FileText className="w-3.5 h-3.5 shrink-0 text-blue-500" />
+                    <span className="truncate">Invoices</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveWorkflow("support")}
+                    className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
+                      activeWorkflow === "support"
+                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <Mail className="w-3.5 h-3.5 shrink-0 text-purple-500" />
+                    <span className="truncate">Support</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveWorkflow("compliance")}
+                    className={`px-3 py-2 rounded-[2px] text-xs font-semibold text-left transition-all cursor-pointer flex items-center space-x-2 border ${
+                      activeWorkflow === "compliance"
+                        ? "bg-white dark:bg-white/10 border-black/20 dark:border-white/20 text-black dark:text-white shadow-xs font-bold"
+                        : "bg-transparent border-transparent text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <Scale className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
+                    <span className="truncate">Contracts</span>
                   </button>
                 </div>
-
-                <div className="space-y-2">
-                  <div
-                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
-                      pipelineStep >= 0
-                        ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
-                        : "text-neutral-400"
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <FileText className="w-3.5 h-3.5 text-neutral-500" />
-                      <span>PDF Ingestion &amp; OCR</span>
-                    </div>
-                    <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
-                      {pipelineStep >= 0 ? "Processed" : "Pending"}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
-                      pipelineStep >= 1
-                        ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
-                        : "text-neutral-400"
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <ShieldCheck className="w-3.5 h-3.5 text-blue-500" />
-                      <span>Schema &amp; Policy Guardrail</span>
-                    </div>
-                    <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
-                      {pipelineStep >= 1 ? "Zero Variance" : "Awaiting"}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
-                      pipelineStep >= 2
-                        ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
-                        : "text-neutral-400"
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <Database className="w-3.5 h-3.5 text-purple-500" />
-                      <span>NetSuite / Salesforce Sync</span>
-                    </div>
-                    <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
-                      {pipelineStep >= 2 ? "Synced (< 1.4s)" : "Queued"}
-                    </span>
-                  </div>
-                </div>
               </div>
+
+              {/* Dynamic Before & After Breakdown */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeWorkflow}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="rounded-[2px] bg-white dark:bg-black/40 border border-neutral-200/80 dark:border-white/10 p-4.5 space-y-3"
+                >
+                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+                    <span className="text-[11px] font-mono font-bold text-neutral-400 dark:text-neutral-500 shrink-0 mt-0.5">
+                      BEFORE:
+                    </span>
+                    <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                      {current.humanTask}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start space-x-3 pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+                    <span className="text-[11px] font-mono font-bold text-blue-600 dark:text-sky-400 shrink-0 mt-0.5">
+                      HOW IT RUNS:
+                    </span>
+                    <p className="text-xs text-neutral-800 dark:text-neutral-200 font-medium leading-relaxed">
+                      {current.automatedAction}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-0.5">
+                    <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center space-x-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                      <span>{current.humanOutcome}</span>
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-neutral-500 dark:text-neutral-400">
+                      {current.timeReduction}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <div>
-              <div className="pt-4 border-t border-neutral-200/80 dark:border-white/10 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                <span>Accuracy: <strong className="text-black dark:text-white font-semibold">99.8%</strong></span>
-                <span>Time Saved: <strong className="text-black dark:text-white font-semibold">84%</strong></span>
-              </div>
-
+            <div className="pt-6 mt-6 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between">
               <Link
                 href="/services/ai-agent-development"
-                className="inline-flex items-center space-x-1.5 text-xs font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                className="inline-flex items-center space-x-2 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
               >
-                <span>Explore Autonomous Agents</span>
+                <span>See Our Workflow Engineering Services</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
+              <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono hidden sm:inline">
+                Plugs into Slack, ERP &amp; CRMs
+              </span>
             </div>
           </div>
 
-          {/* ============================================================ */}
-          {/* PILLAR 02: PRIVATE ENTERPRISE RAG                            */}
-          {/* ============================================================ */}
-          <div className="py-10 lg:py-12 lg:px-10 flex flex-col justify-between">
+          {/* Bento Card 2: Private Knowledge & Search (Right 5 Cols) */}
+          <div className="lg:col-span-5 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-                  02 // Intelligence
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                  PRIVATE KNOWLEDGE
                 </span>
-                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
-                  <Lock className="w-4 h-4 text-purple-500" />
+                <span className="text-xs font-mono px-2.5 py-1 rounded-[2px] bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/60 font-semibold">
+                  Zero Data Leakage
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight mb-3">
-                Private Enterprise RAG
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-black dark:text-white tracking-tight mb-3">
+                Instant answers from your own company&apos;s brains.
               </h3>
 
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
-                Transform company manuals, standard operating procedures, and contract archives into an instant, air-gapped search engine. Hosted in your private VPC with zero third-party model retraining.
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6 font-normal">
+                Stop pinging coworkers or digging through 50-page PDF contracts and outdated wikis. We turn your internal files, SOPs, and spreadsheets into an instant, private assistant that gives verified answers in plain English with page numbers.
               </p>
 
-              {/* Minimal Interactive Search Preview */}
-              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
-                <div className="flex items-center space-x-1.5 mb-3">
-                  {ragExamples.map((ex, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveQueryIndex(idx)}
-                      className={`text-left text-[11px] px-2.5 py-1 rounded-[2px] transition-colors cursor-pointer ${
-                        activeQueryIndex === idx
-                          ? "bg-white dark:bg-white/10 text-black dark:text-white font-semibold shadow-2xs border border-neutral-200/80 dark:border-white/10"
-                          : "text-neutral-500 hover:text-black dark:hover:text-white"
-                      }`}
-                    >
-                      Case {idx + 1}
-                    </button>
-                  ))}
+              {/* Clean Human Value Box */}
+              <div className="rounded-[2px] bg-white dark:bg-black/40 border border-neutral-200/80 dark:border-white/10 p-5 space-y-3.5">
+                <div className="flex items-center space-x-2.5 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
+                  <div className="w-5 h-5 rounded-[2px] bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
+                  <span>Answers backed by exact document citations</span>
                 </div>
 
-                <div className="p-3 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
-                  <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-1">
-                    Query: &quot;{ragExamples[activeQueryIndex].query}&quot;
+                <div className="flex items-center space-x-2.5 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
+                  <div className="w-5 h-5 rounded-[2px] bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+                    <Lock className="w-3.5 h-3.5" />
                   </div>
-                  <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal mb-2">
-                    {ragExamples[activeQueryIndex].excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-[10px] font-mono pt-1.5 border-t border-neutral-100 dark:border-white/[0.06]">
-                    <span className="text-blue-600 dark:text-sky-400 font-semibold">
-                      {ragExamples[activeQueryIndex].source}
-                    </span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                      {ragExamples[activeQueryIndex].confidence}
-                    </span>
+                  <span>Hosted inside your own private cloud or VPC</span>
+                </div>
+
+                <div className="flex items-center space-x-2.5 text-xs text-neutral-800 dark:text-neutral-200 font-medium">
+                  <div className="w-5 h-5 rounded-[2px] bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
+                  <span>Zero public model retraining on your customer secrets</span>
                 </div>
               </div>
             </div>
 
-            <div>
-              <div className="pt-4 border-t border-neutral-200/80 dark:border-white/10 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                <span>Privacy: <strong className="text-black dark:text-white font-semibold">100% Air-Gapped</strong></span>
-                <span>Latency: <strong className="text-black dark:text-white font-semibold">&lt; 14ms</strong></span>
-              </div>
-
+            <div className="pt-6 mt-6 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between">
               <Link
                 href="/services/ai-ml-development"
-                className="inline-flex items-center space-x-1.5 text-xs font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                className="inline-flex items-center space-x-2 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
               >
-                <span>Explore Enterprise RAG</span>
+                <span>Explore Private Knowledge Engines</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
 
-          {/* ============================================================ */}
-          {/* PILLAR 03: CUSTOM AI SOFTWARE & PODS                         */}
-          {/* ============================================================ */}
-          <div className="py-10 lg:py-12 lg:pl-10 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-                  03 // Delivery
+          {/* Bento Card 3: Dedicated In-House Senior Pods (Full 12 Cols Bottom Bar) */}
+          <div className="lg:col-span-12 rounded-[2px] bg-neutral-50/70 dark:bg-white/[0.02] border border-neutral-200/90 dark:border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-200 hover:border-neutral-300 dark:hover:border-white/20">
+            <div className="max-w-3xl">
+              <div className="flex items-center space-x-2.5 mb-2">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                  DEDICATED SENIOR SQUADS
                 </span>
-                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
-                  <Cpu className="w-4 h-4 text-emerald-500" />
+                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+                <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 font-semibold">
+                  100% In-House Engineers
                 </span>
               </div>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight mb-3">
-                Custom AI Copilots &amp; Pods
+              <h3 className="text-xl sm:text-2xl font-extrabold text-black dark:text-white tracking-tight mb-2">
+                Skip the 6-month recruiting cycle. Get a senior AI team in your sprints next week.
               </h3>
-
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
-                Off-the-shelf software doesn’t fit proprietary workflows. We embed dedicated in-house engineers directly into your GitHub and Slack to deliver customized copilot software and internal portals.
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed font-normal">
+                We don’t outsource to junior contractors or sell rigid software and disappear. Our senior engineers join your Slack, commit clean code directly to your company GitHub, and hand over complete source code ownership.
               </p>
-
-              {/* Minimal Architecture Preview */}
-              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
-                <div className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 mb-2.5 flex items-center justify-between">
-                  <span>Pod Deployment Topology</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">14-Day Delivery</span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 text-left">
-                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
-                    <div className="text-[11px] font-bold text-black dark:text-white">AI Systems Architect</div>
-                    <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Security &amp; Schemas</div>
-                  </div>
-                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
-                    <div className="text-[11px] font-bold text-black dark:text-white">Full-Stack Lead</div>
-                    <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Next.js &amp; APIs</div>
-                  </div>
-                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
-                    <div className="text-[11px] font-bold text-black dark:text-white">LLM / Agent Eng</div>
-                    <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Swarms &amp; Evals</div>
-                  </div>
-                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
-                    <div className="text-[11px] font-bold text-black dark:text-white">QA &amp; Reliability</div>
-                    <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Deterministic CI/CD</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <div>
-              <div className="pt-4 border-t border-neutral-200/80 dark:border-white/10 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                <span>Code Ownership: <strong className="text-black dark:text-white font-semibold">100% Client Transferred</strong></span>
-                <span>Speed: <strong className="text-black dark:text-white font-semibold">14-Day POC</strong></span>
-              </div>
-
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
               <Link
                 href="/how-we-work"
-                className="inline-flex items-center space-x-1.5 text-xs font-semibold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+                className="group relative overflow-hidden px-6 py-3 rounded-[2px] bg-black text-white dark:bg-white dark:text-black hover:text-white dark:hover:text-white text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center space-x-2"
               >
-                <span>Learn How Pods Work</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-20 flex items-center space-x-2">
+                  <span>How Our Pods Work</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-purple-600 pointer-events-none" />
               </Link>
+
+              <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 sm:text-right">
+                14-Day Working POC Guarantee
+              </span>
             </div>
           </div>
         </div>
