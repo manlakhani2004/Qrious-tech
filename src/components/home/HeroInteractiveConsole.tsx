@@ -55,27 +55,27 @@ const TABS: TabData[] = [
     badge: "VPC Air-Gapped Knowledge",
     title: "Private Search Across Your Entire Enterprise Knowledge Base",
     description:
-      "Enable your team to query contracts, standard operating procedures, and customer histories with instant, grounded citations. All hosted inside your private cloud with zero risk of data leakage or public model retraining.",
+      "Enable your team to query contracts, standard operating procedures, and customer histories with instant, grounded citations. All hosted inside your private cloud with zero risk of third-party model data training.",
     metrics: [
-      { value: "100%", label: "Private & Air-Gapped" },
-      { value: "Sub-200ms", label: "Search Latency" },
-      { value: "SOC2", label: "Protocol Aligned" }
+      { value: "14ms", label: "Semantic Search Latency" },
+      { value: "100%", label: "Data Privacy & Air-Gapped" },
+      { value: "0%", label: "External LLM Retraining" }
     ],
-    caseStudyUrl: "/case-studies"
+    caseStudyUrl: "/services/ai-ml-development"
   },
   {
     id: "squads",
     label: "Dedicated In-House Squads",
-    badge: "Ahmedabad Engineering HQ",
-    title: "Senior AI Engineering Squads Deployed Into Your Stack",
+    badge: "Embedded Talent",
+    title: "Senior AI Pods That Deploy Directly Into Your Engineering Team",
     description:
-      "Work directly with full-time, vetted AI engineers, architects, and full-stack developers. We embed into your daily standups, integrate into your Git workflows, and build production-grade software with 100% IP ownership.",
+      "Full-stack developers, machine learning engineers, and system architects from our Ahmedabad HQ working directly within your codebase, GitHub repositories, and daily standup sprints.",
     metrics: [
       { value: "100+", label: "In-House Engineers" },
       { value: "14 Days", label: "Working POC Delivery" },
       { value: "100%", label: "IP Ownership Transferred" }
     ],
-    caseStudyUrl: "/crew"
+    caseStudyUrl: "/how-we-work"
   }
 ];
 
@@ -156,7 +156,7 @@ export default function HeroInteractiveConsole() {
           setWorkflowRunning(false);
         }, 1200);
       }, 1000);
-    }, 1000);
+    }, 900);
   };
 
   const activeTab = TABS.find((t) => t.id === activeTabId) || TABS[0];
@@ -168,8 +168,10 @@ export default function HeroInteractiveConsole() {
       onMouseLeave={handleMouseLeave}
       className="relative w-full max-w-4xl 2xl:max-w-5xl mx-auto mt-8 sm:mt-10 2xl:mt-12 select-none perspective-[1200px]"
     >
-      {/* 3D Motion Perspective Card Wrapper */}
+      {/* 3D Motion Perspective Card Wrapper with Animos-Style Gentle Floating Levitation */}
       <motion.div
+        animate={{ y: [-3.5, 3.5, -3.5] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
         style={{
           rotateX,
           rotateY,
@@ -177,6 +179,9 @@ export default function HeroInteractiveConsole() {
         }}
         className="relative rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl shadow-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
       >
+        {/* Continuous Animated Border Beam Highlight (Prompt-Motion / Magic UI style) */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/60 dark:via-cyan-400/80 to-transparent pointer-events-none" />
+
         {/* Dynamic Cursor Spotlight Radial Effect */}
         <motion.div
           className="pointer-events-none absolute -inset-px opacity-0 hover:opacity-100 transition-opacity duration-300 z-30"
@@ -184,7 +189,7 @@ export default function HeroInteractiveConsole() {
             background: useTransform(
               [spotlightX, spotlightY],
               ([x, y]) =>
-                `radial-gradient(500px circle at ${x}px ${y}px, rgba(56, 189, 248, 0.07), transparent 75%)`
+                `radial-gradient(500px circle at ${x}px ${y}px, rgba(56, 189, 248, 0.09), transparent 75%)`
             )
           }}
         />
@@ -207,9 +212,12 @@ export default function HeroInteractiveConsole() {
             </div>
           </div>
 
-          {/* Right: Window Status */}
-          <div className="text-[10.5px] font-mono text-neutral-400 dark:text-neutral-500 hidden sm:block">
-            production-ready
+          {/* Right: Window Status with Live Uptime Pulse */}
+          <div className="flex items-center space-x-2 text-[10.5px] font-mono text-neutral-400 dark:text-neutral-500 hidden sm:flex">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>99.9% UPTIME</span>
+            <span>•</span>
+            <span>SWARM ARCHITECTURE</span>
           </div>
         </div>
 
@@ -248,7 +256,7 @@ export default function HeroInteractiveConsole() {
           </div>
         </div>
 
-        {/* Tab Content Display Area (Compact, Refined, Minimalist) */}
+        {/* Tab Content Display Area */}
         <div className="p-4 sm:p-6 lg:p-7">
           <AnimatePresence mode="wait">
             <motion.div
@@ -332,19 +340,19 @@ export default function HeroInteractiveConsole() {
                         ) : (
                           <>
                             <Play className="w-2.5 h-2.5 fill-current" />
-                            <span>Simulate</span>
+                            <span>Run Live Simulation</span>
                           </>
                         )}
                       </motion.button>
                     </div>
 
-                    {/* 3 Step Visual Pipeline */}
+                    {/* 3 Step Visual Pipeline with Micro-Animations */}
                     <div className="space-y-2">
                       {/* Step 1 */}
                       <div
                         className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 1
-                            ? "bg-blue-50/80 dark:bg-blue-950/20 border-blue-300 dark:border-blue-700/50"
+                            ? "bg-blue-50/80 dark:bg-blue-950/20 border-blue-300 dark:border-blue-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
                         }`}
                       >
@@ -376,7 +384,7 @@ export default function HeroInteractiveConsole() {
                       <div
                         className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 2
-                            ? "bg-purple-50/80 dark:bg-purple-950/20 border-purple-300 dark:border-purple-700/50"
+                            ? "bg-purple-50/80 dark:bg-purple-950/20 border-purple-300 dark:border-purple-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
                         }`}
                       >
@@ -395,12 +403,12 @@ export default function HeroInteractiveConsole() {
                               2. AI Rule &amp; Schema Validation
                             </div>
                             <div className="text-[10.5px] text-neutral-500 dark:text-neutral-400">
-                              PO #4092 matched • Line items verified
+                              PO #4092 matched • Line items verified • 0 variances
                             </div>
                           </div>
                         </div>
                         <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">
-                          {workflowStep >= 2 ? "✓ Validated" : "Waiting"}
+                          {workflowStep >= 2 ? "✓ Validated" : "Awaiting Step 1"}
                         </span>
                       </div>
 
@@ -408,7 +416,7 @@ export default function HeroInteractiveConsole() {
                       <div
                         className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 3
-                            ? "bg-emerald-50/80 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-700/50"
+                            ? "bg-emerald-50/80 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
                         }`}
                       >

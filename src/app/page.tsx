@@ -3,7 +3,9 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
+import BusinessAITransformationsSection from "@/components/home/BusinessAITransformationsSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
+import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
 import GlobalBackgroundGrid from "@/components/home/GlobalBackgroundGrid";
 
@@ -26,14 +28,20 @@ export default function Home() {
         {/* 4. Core Enterprise AI Capabilities: 4-Tile Interactive Bento Grid */}
         <AboutProductIdeaSection />
 
-        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
+        {/* 5. Where AI Transforms Your Business: Interactive Department & Operations Explorer */}
+        <BusinessAITransformationsSection />
+
+        {/* 6. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 6. Global Delivery Network: GitHub-Style Animated Connected Canvas */}
+        {/* 7. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
+        <BusinessAIIntegrationRoadmapSection />
+
+        {/* 8. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
         <GlobalNetworkSection />
       </main>
 
-      {/* 7. Minimalist Enterprise Footer */}
+      {/* 9. Minimalist Enterprise Footer */}
       <Footer />
     </div>
   );

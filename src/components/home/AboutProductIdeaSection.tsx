@@ -19,12 +19,13 @@ import {
   GitCommit,
   GitPullRequest,
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  Activity
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react";
 
-// Reusable Spotlight Card Component for Vercel/Stripe Cursor Manipulation
+// Reusable Spotlight Card Component for Cursor Manipulation & Ambient Glow (Prompt-Motion style)
 function BentoCard({
   children,
   className = "",
@@ -52,14 +53,14 @@ function BentoCard({
       onMouseMove={handleMouseMove}
       className={`group relative rounded-[28px] border border-neutral-200/80 dark:border-white/[0.08] bg-[#fbfbfc] dark:bg-[#0e0e11] p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-2xl transition-all duration-300 hover:border-neutral-300 dark:hover:border-white/20 ${colSpan} ${className}`}
     >
-      {/* Dynamic Cursor Spotlight Beam (Vercel & Stripe style) */}
+      {/* Dynamic Cursor Spotlight Beam (Prompt-Motion / Vercel style) */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
         style={{
           background: useTransform(
             [mouseX, mouseY],
             ([x, y]) =>
-              `radial-gradient(480px circle at ${x}px ${y}px, rgba(56, 189, 248, 0.08), transparent 70%)`
+              `radial-gradient(480px circle at ${x}px ${y}px, rgba(56, 189, 248, 0.1), transparent 70%)`
           )
         }}
       />
@@ -82,15 +83,15 @@ export default function AboutProductIdeaSection() {
   const [activeRagQuery, setActiveRagQuery] = useState(0);
 
   // Tile 3 Active Sprint Milestone State
-  const [activeSprintStep, setActiveSprintStep] = useState(2);
+  const [activeSprintStep, setActiveSprintStep] = useState(1);
 
   const scenarios = {
     doc: {
       name: "Invoice & Doc Ingestion",
       tagline: "PDF & OCR ➔ Semantic Extraction ➔ ERP Match",
-      node1: "Inbound Document",
-      node2: "AI Schema & Policy Check",
-      node3: "NetSuite ERP Sync",
+      step1: { title: "Inbound Document", detail: "PDF / Scan received", badge: "200 OK" },
+      step2: { title: "AI Policy Guardrail", detail: "Schema validation & Zod rule", badge: "Zero-Leak" },
+      step3: { title: "NetSuite ERP Sync", detail: "Direct bi-directional sync", badge: "< 140ms" },
       sample: {
         title: "Vendor Invoice #INV-8842",
         detail: "$34,800.00 • 3 line items matched PO #4092",
@@ -101,9 +102,9 @@ export default function AboutProductIdeaSection() {
     support: {
       name: "Customer Operations Agent",
       tagline: "Omnichannel Message ➔ Intent ➔ Automated Resolution",
-      node1: "Customer Inbound",
-      node2: "Account & SLA Evaluation",
-      node3: "CRM Automated Action",
+      step1: { title: "Customer Inbound", detail: "Slack/Email webhook trigger", badge: "P1 Priority" },
+      step2: { title: "Account & SLA Evaluation", detail: "Context vector search", badge: "Verified" },
+      step3: { title: "CRM Automated Action", detail: "Ticket resolved & dispatched", badge: "< 115ms" },
       sample: {
         title: "Enterprise SLA Query",
         detail: "SLA Clause §14 retrieved • Auto-dispatched",
@@ -114,9 +115,9 @@ export default function AboutProductIdeaSection() {
     db: {
       name: "ERP & Database Reconciliation",
       tagline: "CRM Event ➔ Logic Check ➔ Live Ledger Sync",
-      node1: "Transaction Webhook",
-      node2: "Ledger Discrepancy Filter",
-      node3: "PostgreSQL Ledger Update",
+      step1: { title: "Transaction Webhook", detail: "Stripe/Salesforce event payload", badge: "Streaming" },
+      step2: { title: "Ledger Discrepancy Filter", detail: "Multi-table consistency guard", badge: "100% Invariant" },
+      step3: { title: "PostgreSQL Ledger Update", detail: "ACID transactional commit", badge: "< 92ms" },
       sample: {
         title: "Cross-System Ledger Update",
         detail: "Validated 12,400 rows • 0 variances found",
@@ -164,9 +165,9 @@ export default function AboutProductIdeaSection() {
         setSimStepTile1(3);
         setTimeout(() => {
           setIsSimulatingTile1(false);
-        }, 1200);
+        }, 1400);
       }, 1000);
-    }, 1000);
+    }, 900);
   };
 
   return (
@@ -194,10 +195,10 @@ export default function AboutProductIdeaSection() {
           </p>
         </ScrollReveal>
 
-        {/* Vercel / Stripe Style 4-Tile Interactive Bento Grid with Cursor Spotlight */}
+        {/* 4-Tile Interactive Bento Grid with Prompt-Motion Kinematics */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 2xl:gap-7">
           {/* ========================================================================= */}
-          {/* TILE 1 (Col Span 7): Autonomous Multi-Agent Swarms */}
+          {/* TILE 1 (Col Span 7): Autonomous Multi-Agent Swarms with Animated Energy Beam */}
           {/* ========================================================================= */}
           <BentoCard colSpan="lg:col-span-7">
             <div>
@@ -217,7 +218,8 @@ export default function AboutProductIdeaSection() {
                   </div>
                 </div>
 
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200 dark:border-white/10 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 text-[11px] font-medium text-emerald-700 dark:text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Deterministic Guardrails</span>
                 </div>
               </div>
@@ -226,14 +228,17 @@ export default function AboutProductIdeaSection() {
                 Specialized agents handle repetitive business procedures end-to-end: parsing unstructured files, evaluating policy guardrails, and updating existing databases without human latency.
               </p>
 
-              {/* Scenario Switcher with Motion.dev Fluid Pill */}
+              {/* Scenario Switcher with Motion.dev Fluid Spring Pill */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {(["doc", "support", "db"] as const).map((key) => {
                   const isActive = activeScenario === key;
                   return (
                     <button
                       key={key}
-                      onClick={() => setActiveScenario(key)}
+                      onClick={() => {
+                        setActiveScenario(key);
+                        setSimStepTile1(0);
+                      }}
                       className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-colors duration-150 ${
                         isActive
                           ? "text-white dark:text-black font-bold"
@@ -253,14 +258,15 @@ export default function AboutProductIdeaSection() {
                 })}
               </div>
 
-              {/* Interactive Pipeline Showcase (Clean, Minimalist, Motion.dev Style) */}
-              <div className="bg-white dark:bg-[#151518] border border-neutral-200/80 dark:border-white/[0.08] rounded-2xl p-5 shadow-xs mb-4">
+              {/* Interactive Pipeline Showcase with Prompt-Motion Animated SVG Path Flow */}
+              <div className="bg-white dark:bg-[#151518] border border-neutral-200/80 dark:border-white/[0.08] rounded-2xl p-5 shadow-xs mb-4 relative overflow-hidden">
+                {/* Active Beam Light Line running across top */}
                 <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-neutral-100 dark:border-white/5">
-                  <div className="text-xs font-mono font-medium text-neutral-500 dark:text-neutral-400">
-                    <span>Active Pipeline: </span>
-                    <strong className="text-black dark:text-white font-semibold">
-                      {currentScenario.tagline}
-                    </strong>
+                  <div className="text-xs font-mono font-medium text-neutral-500 dark:text-neutral-400 flex items-center space-x-2 truncate pr-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping shrink-0" />
+                    <span className="truncate">
+                      Pipeline: <strong className="text-black dark:text-white font-semibold">{currentScenario.tagline}</strong>
+                    </span>
                   </div>
 
                   <motion.button
@@ -268,96 +274,112 @@ export default function AboutProductIdeaSection() {
                     whileTap={{ scale: 0.96 }}
                     onClick={runTile1Simulation}
                     disabled={isSimulatingTile1}
-                    className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-black text-white dark:bg-white dark:text-black text-xs font-semibold cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
+                    className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-black text-white dark:bg-white dark:text-black text-xs font-semibold cursor-pointer disabled:opacity-50 transition-colors shadow-2xs shrink-0"
                   >
                     {isSimulatingTile1 ? (
                       <>
-                        <RotateCw className="w-3 h-3 animate-spin" />
-                        <span>Running...</span>
+                        <RotateCw className="w-3 h-3 animate-spin text-cyan-400 dark:text-cyan-600" />
+                        <span>Executing...</span>
                       </>
                     ) : (
                       <>
                         <Play className="w-3 h-3 fill-current" />
-                        <span>Simulate</span>
+                        <span>Run Simulation</span>
                       </>
                     )}
                   </motion.button>
                 </div>
 
-                {/* 3 Clear Pipeline Nodes Connected with SVG Beam */}
+                {/* 3 Connected Pipeline Nodes with Animated SVG Traveling Energy Packets */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 relative">
-                  {/* Node 1 */}
-                  <div
-                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left ${
+                  {/* Step 1 Node */}
+                  <motion.div
+                    animate={simStepTile1 === 1 ? { scale: [1, 1.02, 1] } : {}}
+                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left relative ${
                       simStepTile1 >= 1
-                        ? "bg-blue-50/70 dark:bg-blue-950/20 border-blue-400 dark:border-blue-700/50 shadow-xs"
+                        ? "bg-blue-50/80 dark:bg-blue-950/30 border-blue-400 dark:border-blue-600/60 shadow-sm"
                         : "bg-neutral-50/80 dark:bg-white/[0.02] border-neutral-200/70 dark:border-white/[0.06]"
                     }`}
                   >
-                    <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider mb-1">
-                      Step 01
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
+                        01 • Inbound
+                      </span>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">
+                        {currentScenario.step1.badge}
+                      </span>
                     </div>
                     <div className="text-xs font-bold text-black dark:text-white truncate">
-                      {currentScenario.node1}
+                      {currentScenario.step1.title}
                     </div>
-                    <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">
-                      {simStepTile1 >= 1 ? "✓ Verified Ingest" : "Awaiting payload"}
+                    <div className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate mt-0.5">
+                      {currentScenario.step1.detail}
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Node 2 */}
-                  <div
-                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left ${
+                  {/* Step 2 Node */}
+                  <motion.div
+                    animate={simStepTile1 === 2 ? { scale: [1, 1.02, 1] } : {}}
+                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left relative ${
                       simStepTile1 >= 2
-                        ? "bg-purple-50/70 dark:bg-purple-950/20 border-purple-400 dark:border-purple-700/50 shadow-xs"
+                        ? "bg-cyan-50/80 dark:bg-cyan-950/30 border-cyan-400 dark:border-cyan-600/60 shadow-sm"
                         : "bg-neutral-50/80 dark:bg-white/[0.02] border-neutral-200/70 dark:border-white/[0.06]"
                     }`}
                   >
-                    <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider mb-1">
-                      Step 02
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
+                        02 • Guardrail
+                      </span>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300">
+                        {currentScenario.step2.badge}
+                      </span>
                     </div>
                     <div className="text-xs font-bold text-black dark:text-white truncate">
-                      {currentScenario.node2}
+                      {currentScenario.step2.title}
                     </div>
-                    <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">
-                      {simStepTile1 >= 2 ? "✓ Invariants Held" : "Rule evaluation"}
+                    <div className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate mt-0.5">
+                      {currentScenario.step2.detail}
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Node 3 */}
-                  <div
-                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left ${
+                  {/* Step 3 Node */}
+                  <motion.div
+                    animate={simStepTile1 === 3 ? { scale: [1, 1.02, 1] } : {}}
+                    className={`p-3.5 rounded-xl border transition-all duration-300 text-left relative ${
                       simStepTile1 >= 3
-                        ? "bg-emerald-50/70 dark:bg-emerald-950/20 border-emerald-400 dark:border-emerald-700/50 shadow-xs"
+                        ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-600/60 shadow-sm"
                         : "bg-neutral-50/80 dark:bg-white/[0.02] border-neutral-200/70 dark:border-white/[0.06]"
                     }`}
                   >
-                    <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider mb-1">
-                      Step 03
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
+                        03 • Dispatch
+                      </span>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">
+                        {currentScenario.step3.badge}
+                      </span>
                     </div>
                     <div className="text-xs font-bold text-black dark:text-white truncate">
-                      {currentScenario.node3}
+                      {currentScenario.step3.title}
                     </div>
-                    <div className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                      {simStepTile1 >= 3 ? "✓ Synced (140ms)" : "Ready to commit"}
+                    <div className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate mt-0.5">
+                      {currentScenario.step3.detail}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Outcome strip */}
-                <div className="mt-4 pt-3.5 border-t border-neutral-100 dark:border-white/5 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
-                  <div className="flex items-center space-x-2 text-neutral-800 dark:text-neutral-200">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span className="font-semibold">{currentScenario.sample.title}:</span>
-                    <span className="text-neutral-500 dark:text-neutral-400 truncate">
+                {/* Live Event Execution Stream Footer */}
+                <div className="mt-3.5 pt-3 border-t border-neutral-100 dark:border-white/5 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div className="flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>{currentScenario.sample.title}:</span>
+                    <span className="text-neutral-500 dark:text-neutral-400 font-normal">
                       {currentScenario.sample.detail}
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2 font-mono text-[11px] text-neutral-500 shrink-0">
-                    <span>P99: {currentScenario.sample.latency}</span>
-                    <span className="font-bold text-neutral-700 dark:text-neutral-300">
-                      {currentScenario.sample.accuracy}
-                    </span>
+                  <div className="flex items-center space-x-3 text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
+                    <span>Latency: <strong className="text-black dark:text-white font-semibold">{currentScenario.sample.latency}</strong></span>
+                    <span>Accuracy: <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">{currentScenario.sample.accuracy}</strong></span>
                   </div>
                 </div>
               </div>
@@ -365,7 +387,7 @@ export default function AboutProductIdeaSection() {
 
             <div className="flex items-center justify-between pt-4 border-t border-neutral-200/60 dark:border-white/10 mt-2">
               <span className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                LangGraph • Multi-Agent Swarms • Deterministic Guardrails
+                LangGraph • CrewAI • Llama 3.3 • Claude 3.5 Sonnet
               </span>
               <Link
                 href="/services/ai-ml-development"
@@ -378,7 +400,7 @@ export default function AboutProductIdeaSection() {
           </BentoCard>
 
           {/* ========================================================================= */}
-          {/* TILE 2 (Col Span 5): Zero-Leakage Private Knowledge RAG */}
+          {/* TILE 2 (Col Span 5): Zero-Leakage Private Knowledge RAG with Kinetic Radar Scan */}
           {/* ========================================================================= */}
           <BentoCard colSpan="lg:col-span-5">
             <div>
@@ -441,26 +463,35 @@ export default function AboutProductIdeaSection() {
                   })}
                 </div>
 
-                {/* Live Grounded Citation Result */}
-                <div className="p-3.5 rounded-xl bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/60 dark:border-white/5 space-y-2">
-                  <div className="flex items-center justify-between text-[10px] font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
-                    <span className="text-blue-600 dark:text-sky-400 truncate max-w-[220px]">
-                      {currentRag.citation}
-                    </span>
-                    <span className="font-mono text-neutral-500 dark:text-neutral-400">
-                      Match: {currentRag.match} • {currentRag.latency}
-                    </span>
-                  </div>
-                  <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
-                    &ldquo;{currentRag.answer}&rdquo;
-                  </p>
-                </div>
+                {/* Live Grounded Citation Result with Animated Scan Sweep */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeRagQuery}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                    className="p-3.5 rounded-xl bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/60 dark:border-white/5 space-y-2 relative overflow-hidden"
+                  >
+                    <div className="flex items-center justify-between text-[10px] font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                      <span className="text-blue-600 dark:text-sky-400 truncate max-w-[220px]">
+                        {currentRag.citation}
+                      </span>
+                      <span className="font-mono text-neutral-500 dark:text-neutral-400">
+                        Match: {currentRag.match} • {currentRag.latency}
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
+                      &ldquo;{currentRag.answer}&rdquo;
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
 
             <div className="flex items-center justify-between pt-4 border-t border-neutral-200/60 dark:border-white/10 mt-2">
               <span className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                Qdrant • Milvus • Cross-Encoder Reranking
+                Qdrant • Pinecone • Hybrid Dense / Sparse
               </span>
               <span className="text-xs font-bold text-neutral-800 dark:text-neutral-200">
                 SOC2 &amp; HIPAA Ready
@@ -469,7 +500,7 @@ export default function AboutProductIdeaSection() {
           </BentoCard>
 
           {/* ========================================================================= */}
-          {/* TILE 3 (Col Span 5): 14-Day Working POC Guarantee */}
+          {/* TILE 3 (Col Span 5): 14-Day Working POC Guarantee with Sprint Progress Beam */}
           {/* ========================================================================= */}
           <BentoCard colSpan="lg:col-span-5">
             <div>
@@ -497,58 +528,60 @@ export default function AboutProductIdeaSection() {
                 Validate real business ROI before major commitments. We deliver a functional, live Proof of Concept wired to your data schemas in exactly 14 calendar days.
               </p>
 
-              {/* Interactive 3-Phase Sprint Roadmap */}
-              <div className="space-y-2.5 mb-4">
-                {[
-                  {
-                    step: 1,
-                    title: "Days 1–3: Pipeline & Schema Audit",
-                    desc: "Identify operational bottlenecks, schema readiness, and zero-leakage security boundaries."
-                  },
-                  {
-                    step: 2,
-                    title: "Days 4–9: Agentic & RAG Build",
-                    desc: "Engineer custom multi-agent workflows, safety guardrails, and private vector search."
-                  },
-                  {
-                    step: 3,
-                    title: "Days 10–14: Live Benchmark & Executive Demo",
-                    desc: "Validate accuracy, latency, and business ROI with your stakeholder team."
-                  }
-                ].map((s, idx) => {
-                  const isCurrent = activeSprintStep === s.step;
-                  return (
-                    <div
-                      key={s.step}
-                      onClick={() => setActiveSprintStep(s.step)}
-                      className={`p-3 rounded-2xl border transition-all duration-200 cursor-pointer ${
-                        isCurrent
-                          ? "bg-white dark:bg-[#151518] border-neutral-300 dark:border-white/20 shadow-xs"
-                          : "bg-neutral-50/70 dark:bg-white/[0.02] border-neutral-200/60 dark:border-white/[0.05] hover:bg-white/80 dark:hover:bg-white/[0.04]"
-                      }`}
-                    >
-                      <div className="flex items-start space-x-3">
-                        <div
-                          className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
-                            isCurrent
-                              ? "bg-black text-white dark:bg-white dark:text-black"
-                              : "bg-neutral-200/80 dark:bg-white/10 text-neutral-700 dark:text-neutral-300"
-                          }`}
-                        >
-                          {s.step === 3 ? "✓" : s.step}
+              {/* Interactive 3-Phase Sprint Roadmap with Kinetic Progress */}
+              <div className="bg-white dark:bg-[#151518] border border-neutral-200/80 dark:border-white/[0.08] rounded-2xl p-4 shadow-xs space-y-3 mb-4">
+                <div className="flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400 pb-2 border-b border-neutral-100 dark:border-white/5">
+                  <span>Sprint Velocity: 100% Guaranteed</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Live Prototype</span>
+                </div>
+
+                <div className="space-y-2">
+                  {[
+                    {
+                      step: 1,
+                      days: "Day 01 – 03",
+                      title: "Schema Audit & Tool Routing",
+                      desc: "Map database models, target APIs & prompt safety boundaries"
+                    },
+                    {
+                      step: 2,
+                      days: "Day 04 – 10",
+                      title: "Agent Pipeline Construction",
+                      desc: "Build autonomous nodes, error-correction & vector indexes"
+                    },
+                    {
+                      step: 3,
+                      days: "Day 11 – 14",
+                      title: "Live Production Benchmark",
+                      desc: "Load testing, latency optimization & customer handoff"
+                    }
+                  ].map((phase, idx) => {
+                    const isSelected = activeSprintStep === phase.step;
+                    return (
+                      <div
+                        key={idx}
+                        onClick={() => setActiveSprintStep(phase.step)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-neutral-50 dark:bg-white/[0.06] border-black/20 dark:border-white/20 shadow-xs"
+                            : "bg-neutral-50/50 dark:bg-white/[0.02] border-neutral-200/50 dark:border-white/[0.04] opacity-75 hover:opacity-100"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-xs mb-1">
+                          <span className="font-bold text-black dark:text-white">
+                            {phase.title}
+                          </span>
+                          <span className="font-mono text-[10px] font-semibold text-neutral-500 dark:text-neutral-400">
+                            {phase.days}
+                          </span>
                         </div>
-                        <div>
-                          <div className="text-xs font-bold text-black dark:text-white">
-                            {s.title}
-                          </div>
-                          <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5 leading-snug">
-                            {s.desc}
-                          </div>
-                        </div>
+                        <p className="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal">
+                          {phase.desc}
+                        </p>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
@@ -567,7 +600,7 @@ export default function AboutProductIdeaSection() {
           </BentoCard>
 
           {/* ========================================================================= */}
-          {/* TILE 4 (Col Span 7): Dedicated In-House AI Engineering Pods */}
+          {/* TILE 4 (Col Span 7): Dedicated In-House AI Engineering Pods with Live Telemetry Pulse */}
           {/* ========================================================================= */}
           <BentoCard colSpan="lg:col-span-7">
             <div>
@@ -595,14 +628,17 @@ export default function AboutProductIdeaSection() {
                 Skip hiring delays. Senior machine learning specialists, cloud architects, and full-stack software engineers join your team directly inside your Slack, GitHub, and Jira workflows.
               </p>
 
-              {/* GitHub-Style Squad Deployment Cockpit (Replacing the toy laptop photo) */}
+              {/* Squad Deployment Cockpit with Live Heartbeat Wave Telemetry */}
               <div className="bg-white dark:bg-[#151518] border border-neutral-200/80 dark:border-white/[0.08] rounded-2xl p-4 sm:p-5 shadow-xs mb-4">
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-neutral-100 dark:border-white/5 font-mono text-[11px] text-neutral-500">
                   <div className="flex items-center space-x-2">
                     <GitPullRequest className="w-3.5 h-3.5 text-blue-500" />
                     <span className="font-bold text-black dark:text-white">qtech/engineering-pod-v4</span>
                   </div>
-                  <span>Ahmedabad Engineering HQ</span>
+                  <div className="flex items-center space-x-2">
+                    <Activity className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">Active Pod Sprint</span>
+                  </div>
                 </div>
 
                 {/* 4 Pod Roles */}
@@ -620,7 +656,7 @@ export default function AboutProductIdeaSection() {
                     },
                     {
                       role: "Full-Stack Systems Eng",
-                      focus: "Next.js 15 • FastAPI • Redis",
+                      focus: "Next.js 16 • FastAPI • Redis",
                       badge: "Daily Standups"
                     },
                     {
@@ -631,7 +667,7 @@ export default function AboutProductIdeaSection() {
                   ].map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-neutral-50/80 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/5 flex items-center justify-between"
+                      className="p-3 rounded-xl bg-neutral-50/80 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/5 flex items-center justify-between hover:border-neutral-300 dark:hover:border-white/20 transition-colors"
                     >
                       <div>
                         <div className="text-xs font-bold text-black dark:text-white">
