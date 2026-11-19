@@ -152,30 +152,6 @@ export default function GlobalNetworkSection() {
           </p>
         </ScrollReveal>
 
-        {/* Jimo-Style Live Telemetry Hub Dock */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-4 text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-semibold text-[#09090b] dark:text-[#f8f9fa]">SFO:</span>
-            <span>142ms</span>
-          </div>
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-semibold text-[#09090b] dark:text-[#f8f9fa]">LON:</span>
-            <span>108ms</span>
-          </div>
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-semibold text-[#09090b] dark:text-[#f8f9fa]">DXB:</span>
-            <span>48ms</span>
-          </div>
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-semibold text-[#09090b] dark:text-[#f8f9fa]">TYO:</span>
-            <span>92ms</span>
-          </div>
-        </div>
-
         {/* Center Stage: Ambient Background Graphic with Open Arcs, Glowing Nodes & Location Labels */}
         <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[340px] flex items-center justify-center overflow-hidden my-2 sm:my-4 pointer-events-none select-none">
           <motion.div
