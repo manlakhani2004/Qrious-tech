@@ -36,8 +36,10 @@ export default function AboutProductIdeaSection() {
             Most AI demos look cool in a sandbox and break in production. We don’t build toy chatbots or generic prompt wrappers. We build reliable, tailored software that connects to your existing tools so your team gets hours of their week back.
           </p>
         </ScrollReveal>
+      </div>
 
-        {/* Serko-Style Disruption & Workflow Studio */}
+      {/* Serko-Style Disruption & Workflow Studio */}
+      <div className="w-full max-w-[1520px] 2xl:max-w-[1680px] 3xl:max-w-[1800px] mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         <SerkoDisruptionWorkflowStudio />
       </div>
     </section>
