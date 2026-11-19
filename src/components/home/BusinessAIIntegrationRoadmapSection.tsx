@@ -74,6 +74,15 @@ export default function BusinessAIIntegrationRoadmapSection() {
       id="how-we-bring-ai-to-business"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 transition-colors duration-200 relative overflow-hidden"
     >
+      {/* Modern Background Design: Diagonal Technical Micro-Pinstripe Weave & Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(59,130,246,0.06),transparent_70%)]" />
+      <div
+        className="absolute inset-0 pointer-events-none -z-10 opacity-35 dark:opacity-20 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_30%,transparent_90%)]"
+        style={{
+          backgroundImage: "repeating-linear-gradient(-45deg, rgba(148, 163, 184, 0.18) 0, rgba(148, 163, 184, 0.18) 1px, transparent 0, transparent 28px)"
+        }}
+      />
+
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
         {/* Section Header: Minimalist & Bold */}
         <ScrollReveal className="max-w-3xl mb-14 sm:mb-20">

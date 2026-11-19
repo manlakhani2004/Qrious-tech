@@ -39,6 +39,9 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 2xl:pt-40 2xl:pb-36 bg-transparent transition-colors duration-200">
+      {/* Local Blueprint Grid (Confined to Hero only, softly fades at edges & bottom) */}
+      <div className="absolute inset-0 pointer-events-none -z-20 bg-[linear-gradient(to_right,rgba(0,0,0,0.032)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.032)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_35%,#000_40%,transparent_100%)]" />
+
       {/* Interactive Cursor-Reactive Neural Canvas (Tracks Cursor Arrow & Click Shockwaves) */}
       <HeroInteractiveCanvas />
 
