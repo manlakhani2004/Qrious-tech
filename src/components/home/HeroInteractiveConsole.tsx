@@ -21,6 +21,7 @@ import {
   Check
 } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
+import PeekingMascot from "./PeekingMascot";
 
 type TabId = "workflows" | "rag" | "squads";
 
@@ -166,8 +167,13 @@ export default function HeroInteractiveConsole() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-4xl 2xl:max-w-5xl mx-auto mt-8 sm:mt-10 2xl:mt-12 select-none perspective-[1200px]"
+      className="relative w-full max-w-4xl 2xl:max-w-5xl mx-auto mt-12 sm:mt-16 2xl:mt-18 select-none perspective-[1200px]"
     >
+      {/* GitHub Copilot-style Cartoon Mascot peeking over the shelf and staring at cursor */}
+      <div className="absolute -top-12 sm:-top-14 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
+        <PeekingMascot />
+      </div>
+
       {/* 3D Motion Perspective Card Wrapper with Animos-Style Gentle Floating Levitation */}
       <motion.div
         animate={{ y: [-3.5, 3.5, -3.5] }}
