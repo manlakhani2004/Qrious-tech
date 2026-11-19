@@ -1,22 +1,10 @@
 "use client";
 
 import React, { useState, useRef, useCallback } from "react";
-import Link from "next/link";
 import {
-  Zap,
-  ShieldCheck,
-  Cpu,
-  Users2,
-  GitCommit,
-  ArrowRight,
   Sparkles,
-  Calendar,
   CheckCircle2,
-  Lock,
-  Workflow,
-  Sliders,
   XCircle,
-  Bot,
   MoveHorizontal
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -162,7 +150,6 @@ const DIMENSIONS: CapabilityDimension[] = [
 export default function WhyChooseUsSection() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [sliderPct, setSliderPct] = useState(50); // 0 (Legacy) to 100 (Qrious)
-  const [selectedTopic, setSelectedTopic] = useState<string>("agent-swarms");
   const stageRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
 
@@ -433,7 +420,7 @@ export default function WhyChooseUsSection() {
         {/* ============================================================== */}
         {/* OPEN 4 STAT PILLARS (NO ENCLOSING CARD BOXES) */}
         {/* ============================================================== */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-neutral-100 dark:border-neutral-800/80 mb-16 sm:mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-neutral-100 dark:border-neutral-800/80">
           <div>
             <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
               5.4x
@@ -482,87 +469,6 @@ export default function WhyChooseUsSection() {
             </p>
           </div>
         </div>
-
-        {/* ============================================================== */}
-        {/* MODERN MINIMALIST ARCHITECTURE DISCOVERY CTA (OPEN LAYOUT) */}
-        {/* ============================================================== */}
-        <ScrollReveal duration={0.7} yOffset={30}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-white/10 text-[11px] font-mono">
-                <Calendar className="w-3.5 h-3.5 text-blue-500" />
-                <span>15-Minute Engineering Discovery</span>
-              </div>
-
-              <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-black dark:text-white">
-                Review Your Architecture With a <br className="hidden sm:inline" />
-                Senior AI Systems Lead
-              </h3>
-
-              <p className="text-neutral-500 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-xl font-normal">
-                Direct discussion with a principal AI architect to review your data schemas, calculate potential token savings, and design a 14-day working POC blueprint with zero commitment.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-medium text-neutral-600 dark:text-neutral-300">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Direct discussion with principal architect</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Feasibility &amp; ROI matrix within 48h</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Strict mutual NDA signed prior to call</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>14-day delivery sprint roadmap</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side: Quick Action Selector */}
-            <div className="lg:col-span-5 p-6 rounded-3xl bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/80 dark:border-white/10 space-y-3">
-              <div className="text-xs font-mono text-neutral-400 uppercase tracking-wider pb-2 border-b border-neutral-200/60 dark:border-white/10">
-                Select Discovery Focus
-              </div>
-
-              <div className="space-y-2">
-                {[
-                  { id: "agent-swarms", label: "Autonomous Multi-Agent Swarms" },
-                  { id: "private-rag", label: "Zero-Leakage Private Enterprise RAG" },
-                  { id: "dedicated-pods", label: "Dedicated AI Engineering Pods (14-Day POC)" }
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setSelectedTopic(item.id)}
-                    className={`w-full text-left p-3 rounded-xl text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
-                      selectedTopic === item.id
-                        ? "bg-black text-white dark:bg-white dark:text-black font-bold shadow-sm"
-                        : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    <ArrowRight className="w-3.5 h-3.5 opacity-60" />
-                  </button>
-                ))}
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  href={`/contact?topic=${selectedTopic}`}
-                  className="w-full inline-flex items-center justify-center space-x-2 py-3 px-6 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-md"
-                >
-                  <span>Confirm 15-Min Architecture Call</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

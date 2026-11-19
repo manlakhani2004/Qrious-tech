@@ -212,12 +212,10 @@ export default function HeroInteractiveConsole() {
             </div>
           </div>
 
-          {/* Right: Window Status with Live Uptime Pulse */}
-          <div className="flex items-center space-x-2 text-[10.5px] font-mono text-neutral-400 dark:text-neutral-500 hidden sm:flex">
+          {/* Right: Window Status */}
+          <div className="flex items-center space-x-1.5 text-[11px] font-mono text-neutral-400 dark:text-neutral-500 hidden sm:flex">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>99.9% UPTIME</span>
-            <span>•</span>
-            <span>SWARM ARCHITECTURE</span>
+            <span>Production Ready</span>
           </div>
         </div>
 
@@ -247,12 +245,6 @@ export default function HeroInteractiveConsole() {
                 </button>
               );
             })}
-          </div>
-
-          <div className="hidden md:flex items-center space-x-2 text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
-            <span>SOC2 Type II</span>
-            <span>•</span>
-            <span>100% IP Transferred</span>
           </div>
         </div>
 
@@ -445,10 +437,10 @@ export default function HeroInteractiveConsole() {
                       </div>
                     </div>
 
-                    {/* Execution Outcome Badge */}
+                    {/* Execution Outcome */}
                     <div className="mt-2.5 pt-2 border-t border-neutral-200/70 dark:border-white/10 flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
                       <span>Human oversight: <strong className="text-black dark:text-white font-semibold">Exception Only</strong></span>
-                      <span>SOC2 Type II Aligned</span>
+                      <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Live Pipeline Verified</span>
                     </div>
                   </div>
                 )}

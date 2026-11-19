@@ -2,42 +2,10 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Bot, ShieldCheck, CheckCircle2, Zap, Lock, Cpu } from "lucide-react";
-import { motion, AnimatePresence, useInView, animate } from "motion/react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import HeroInteractiveCanvas from "./HeroInteractiveCanvas";
 import HeroInteractiveConsole from "./HeroInteractiveConsole";
-
-// Modern Interactive Stat Counter that counts up when scrolled into view
-function StatCounter({
-  value,
-  suffix = "+",
-  duration = 2.2
-}: {
-  value: number;
-  suffix?: string;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-    const controls = animate(0, value, {
-      duration,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (latest) => setCount(Math.round(latest))
-    });
-    return () => controls.stop();
-  }, [isInView, value, duration]);
-
-  return (
-    <span ref={ref} className="tabular-nums font-black">
-      {count}
-      <span className="text-neutral-400 dark:text-neutral-500 font-extrabold ml-0.5">{suffix}</span>
-    </span>
-  );
-}
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -229,76 +197,6 @@ export default function HeroSection() {
 
         {/* Interactive AI Architecture Command Console (Vercel & Stripe style with 3D Parallax & Live Node Telemetry) */}
         <HeroInteractiveConsole />
-
-        {/* Enterprise Impact Metrics Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 sm:mt-20 2xl:mt-24 3xl:mt-28 max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto w-full"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/80 dark:divide-white/10">
-            {/* Stat 1: 500+ Projects Done */}
-            <div className="text-center sm:px-8 2xl:px-12 pb-8 sm:pb-0 first:pt-0">
-              <div className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-black dark:text-white tracking-tight leading-none mb-3">
-                <StatCounter value={500} />
-              </div>
-              <div className="text-xs sm:text-sm 2xl:text-base font-extrabold text-neutral-800 dark:text-neutral-200 uppercase tracking-widest">
-                Projects Delivered
-              </div>
-              <div className="text-xs 2xl:text-sm text-neutral-500 dark:text-neutral-400 mt-1.5 font-medium">
-                AI &amp; Enterprise Platforms Since 2017
-              </div>
-            </div>
-
-            {/* Stat 2: 84% Average Workflow Acceleration */}
-            <div className="text-center sm:px-8 2xl:px-12 py-8 sm:py-0">
-              <div className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-black dark:text-white tracking-tight leading-none mb-3">
-                <StatCounter value={84} suffix="%" />
-              </div>
-              <div className="text-xs sm:text-sm 2xl:text-base font-extrabold text-neutral-800 dark:text-neutral-200 uppercase tracking-widest">
-                Task Acceleration
-              </div>
-              <div className="text-xs 2xl:text-sm text-neutral-500 dark:text-neutral-400 mt-1.5 font-medium">
-                Average Manual Process Reduction
-              </div>
-            </div>
-
-            {/* Stat 3: 100+ Team Members */}
-            <div className="text-center sm:px-8 2xl:px-12 pt-8 sm:pt-0">
-              <div className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-black dark:text-white tracking-tight leading-none mb-3">
-                <StatCounter value={100} />
-              </div>
-              <div className="text-xs sm:text-sm 2xl:text-base font-extrabold text-neutral-800 dark:text-neutral-200 uppercase tracking-widest">
-                Engineers &amp; Architects
-              </div>
-              <div className="text-xs 2xl:text-sm text-neutral-500 dark:text-neutral-400 mt-1.5 font-medium">
-                In-House Dedicated AI Pods
-              </div>
-            </div>
-          </div>
-
-          {/* Vercel Enterprise Capability Proof Strip */}
-          <div className="mt-10 sm:mt-12 pt-8 border-t border-neutral-200/80 dark:border-white/10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-            <span className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10 shadow-2xs">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-              <span>SOC2 Type II &amp; HIPAA Protocol Aligned</span>
-            </span>
-            <span className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10 shadow-2xs">
-              <Lock className="w-3.5 h-3.5 text-blue-500" />
-              <span>100% Code &amp; IP Ownership Transferred</span>
-            </span>
-            <span className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10 shadow-2xs">
-              <Zap className="w-3.5 h-3.5 text-amber-500" />
-              <span>Sub-200ms Low-Latency Inference Telemetry</span>
-            </span>
-            <span className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10 shadow-2xs">
-              <Cpu className="w-3.5 h-3.5 text-purple-500" />
-              <span>Dedicated In-House AI Pods (Ahmedabad HQ)</span>
-            </span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

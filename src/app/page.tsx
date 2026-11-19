@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
-import BusinessAITransformationsSection from "@/components/home/BusinessAITransformationsSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
@@ -19,29 +18,26 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* 2. Hero Section: AI Positioning + Scroll Image Expansion + Proof Strip */}
+        {/* 2. Hero Section: AI Positioning + Console */}
         <HeroSection />
 
         {/* 3. Tech Stack Marquee */}
         <TechMarqueeSection />
 
-        {/* 4. Core Enterprise AI Capabilities: 4-Tile Interactive Bento Grid */}
+        {/* 4. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
         <AboutProductIdeaSection />
 
-        {/* 5. Where AI Transforms Your Business: Interactive Department & Operations Explorer */}
-        <BusinessAITransformationsSection />
-
-        {/* 6. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
+        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 7. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
+        {/* 6. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
         <BusinessAIIntegrationRoadmapSection />
 
-        {/* 8. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
+        {/* 7. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
         <GlobalNetworkSection />
       </main>
 
-      {/* 9. Minimalist Enterprise Footer */}
+      {/* 8. Minimalist Enterprise Footer */}
       <Footer />
     </div>
   );
