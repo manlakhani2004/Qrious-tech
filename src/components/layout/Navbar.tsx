@@ -307,23 +307,15 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
-          {/* Authentic Qrious Tech Brand Logo */}
-          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5">
+          {/* Authentic Qrious Tech Brand Logo (Icon Mark Only) */}
+          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5" aria-label="Qrious Tech Home">
             <Image
-              src="/images/qrious-tech-team-logo.png"
-              alt="Qrious Tech Team LLP"
-              width={220}
-              height={32}
+              src="/images/qt-logo/mark.png"
+              alt="Qrious Tech"
+              width={34}
+              height={34}
               priority
-              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden"
-            />
-            <Image
-              src="/images/qrious-tech-team-logo-dark.png"
-              alt="Qrious Tech Team LLP"
-              width={220}
-              height={32}
-              priority
-              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
+              className="h-7 sm:h-8 md:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
           </Link>
 
