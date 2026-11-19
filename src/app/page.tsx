@@ -2,7 +2,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
+import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
+import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionShowcaseSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
@@ -18,26 +20,32 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* 2. Hero Section: AI Positioning + Console */}
+        {/* 2. Hero Section: AI Positioning + Console + Peeking Mascot */}
         <HeroSection />
 
         {/* 3. Tech Stack Marquee */}
         <TechMarqueeSection />
 
-        {/* 4. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
+        {/* 4. Animos-Style Scroll-Driven Manifesto Reveal */}
+        <ScrollTextRevealSection />
+
+        {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
         <AboutProductIdeaSection />
 
-        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
+        {/* 6. Animos-Style Production Showcase Stream */}
+        <AnimosProductionShowcaseSection />
+
+        {/* 7. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 6. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
+        {/* 8. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
         <BusinessAIIntegrationRoadmapSection />
 
-        {/* 7. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
+        {/* 9. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
         <GlobalNetworkSection />
       </main>
 
-      {/* 8. Minimalist Enterprise Footer */}
+      {/* 10. Minimalist Enterprise Footer */}
       <Footer />
     </div>
   );
