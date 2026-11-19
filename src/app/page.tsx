@@ -4,6 +4,7 @@ import HeroSection from "@/components/home/HeroSection";
 import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
+import JimoInteractiveScrollStudio from "@/components/home/JimoInteractiveScrollStudio";
 import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionShowcaseSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
@@ -32,7 +33,10 @@ export default function Home() {
         {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
         <AboutProductIdeaSection />
 
-        {/* 6. Animos-Style Production Showcase Stream */}
+        {/* 6. Jimo-Style Sticky 3D Interactive Scroll Studio (One Engine • Three Modes) */}
+        <JimoInteractiveScrollStudio />
+
+        {/* 7. Animos-Style Production Showcase Stream */}
         <AnimosProductionShowcaseSection />
 
         {/* 7. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
