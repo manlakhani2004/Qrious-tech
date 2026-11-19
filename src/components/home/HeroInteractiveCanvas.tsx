@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 
-// Ray filament for Stripe fiber-optic rayburst
+// Ray filament for Stripe-style rayburst
 interface Ray {
   baseAngle: number;
   length: number;
@@ -65,12 +65,12 @@ export default function HeroInteractiveCanvas() {
       typeof document !== "undefined" &&
       document.documentElement.classList.contains("dark");
 
-    // Colors calibrated for Stripe sunburst fiber-optics
+    // Colors calibrated for Stripe sunburst (Image 1)
     const getThemeConfig = () => {
       const dark = isDarkMode();
       return dark
         ? {
-            // Core radiant warm amber/gold sunburst aura
+            // Core radiant warm amber/gold sunburst in dark mode
             coreAmberInner: "rgba(245, 158, 11, 0.45)",
             coreAmberMid: "rgba(251, 191, 36, 0.22)",
             coreAmberOuter: "rgba(217, 119, 6, 0.08)",
@@ -111,10 +111,9 @@ export default function HeroInteractiveCanvas() {
     };
 
     // =========================================================================
-    // STRIPE-STYLE RAYBURST GENERATION
-    // Full bottom fan restored, with top height reduced slightly as requested
+    // STRIPE-STYLE RAYBURST (Old animation restored, reduced from top, left & right)
     // =========================================================================
-    const RAY_COUNT = Math.min(Math.max(Math.floor(width / 5.5), 180), 260);
+    const RAY_COUNT = Math.min(Math.max(Math.floor(width / 5.5), 180), 240);
     const rays: Ray[] = [];
     const sparks: Spark[] = [];
     const waves: Wave[] = [];
@@ -123,36 +122,32 @@ export default function HeroInteractiveCanvas() {
       rays.length = 0;
       const theme = getThemeConfig();
       const originX = width / 2;
-      // Restored to full bottom origin exactly as in original design
-      const originY = height * 0.96;
+      // Bottom touches exactly at the bottom border of the section
+      const originY = height;
 
-      // Full horizontal width preserved across left & right edges
-      const maxRadiusX = Math.min(width * 0.68, 1150);
-
-      // Reduced from the top by a little (height * 0.87 instead of 0.98)
-      // Tips stop right around the kicker radar / top of headline, without shooting off the page
-      const maxRadiusY = Math.min(height * 0.87, 1150);
+      // Reduced from top: height * 0.70 instead of 0.98
+      // Reduced from left and right: width * 0.46 instead of 0.68
+      const maxRadiusX = Math.min(width * 0.46, 700);
+      const maxRadiusY = Math.min(height * 0.70, 780);
 
       for (let i = 0; i < RAY_COUNT; i++) {
         const t = i / (RAY_COUNT - 1); // 0 to 1 across upward semi-circle
         // Fan angle from -PI*0.96 (left horizon) to -PI*0.04 (right horizon)
         const angle = -Math.PI * 0.96 + t * (Math.PI * 0.92);
 
-        // Multi-frequency harmonic envelope creates natural layered dandelion profile
+        // Multi-frequency harmonic envelope creates natural layered dandelion profile (from 0f3988f)
         const domeCurve = Math.sin(t * Math.PI);
-        const harmonic = Math.sin(t * Math.PI * 3) * 0.07;
-        const jitter = (Math.sin(i * 17.1) * 0.5 + Math.cos(i * 5.3) * 0.5) * 0.22;
+        const harmonic = Math.sin(t * Math.PI * 3) * 0.08;
+        const jitter = (Math.sin(i * 17.1) * 0.5 + Math.cos(i * 5.3) * 0.5) * 0.24;
 
-        // Elliptical scaling: wide horizontal spread on sides, slightly lowered height at the top
+        // Elliptical scaling: reduced left/right width, reduced top height
         const cosA = Math.cos(angle);
         const sinA = Math.sin(angle);
         const ellipseRadius = (maxRadiusX * maxRadiusY) / Math.sqrt(
           Math.pow(maxRadiusY * cosA, 2) + Math.pow(maxRadiusX * sinA, 2)
         );
 
-        // Crown factor: top rays lowered just a little so they don't shoot past the top of the hero
-        const crownFactor = Math.max(0.38, Math.min(1.02, 0.55 + domeCurve * 0.38 + harmonic + jitter));
-        const length = ellipseRadius * crownFactor;
+        const length = ellipseRadius * Math.max(0.38, Math.min(1.05, 0.55 + domeCurve * 0.40 + harmonic + jitter));
 
         const tipX = originX + cosA * length;
         const tipY = originY + sinA * length;
@@ -179,7 +174,7 @@ export default function HeroInteractiveCanvas() {
     initRays();
 
     // =========================================================================
-    // CURSOR ARROW TRACKING & MAGNETIC INTERACTION
+    // CURSOR ARROW TRACKING & MAGNETIC PHYSICS (from 0f3988f)
     // =========================================================================
     const mouse = {
       x: -1000,
@@ -216,13 +211,13 @@ export default function HeroInteractiveCanvas() {
         mouse.targetY - mouse.prevY
       );
 
-      // Emit interactive micro-sparks on brisk cursor motion
-      if (mouse.speed > 6 && sparks.length < 50) {
+      // Emit interactive micro-sparks on fast cursor motion
+      if (mouse.speed > 5 && sparks.length < 50) {
         const theme = getThemeConfig();
         for (let s = 0; s < 2; s++) {
           sparks.push({
-            x: mouse.targetX + (Math.random() - 0.5) * 12,
-            y: mouse.targetY + (Math.random() - 0.5) * 12,
+            x: mouse.targetX + (Math.random() - 0.5) * 10,
+            y: mouse.targetY + (Math.random() - 0.5) * 10,
             vx: (Math.random() - 0.5) * 2.2,
             vy: (Math.random() - 0.5) * 2.2 - 0.5,
             alpha: 0.9,
@@ -310,18 +305,17 @@ export default function HeroInteractiveCanvas() {
     observer.observe(canvas);
 
     // =========================================================================
-    // MAIN RAF RENDER LOOP
+    // MAIN RAF RENDER LOOP (from 0f3988f)
     // =========================================================================
-    let time = 0;
+    let globalTick = 0;
 
     const render = () => {
-      time += 0.016;
+      globalTick += 0.016;
       ctx.clearRect(0, 0, width, height);
 
       const theme = getThemeConfig();
       const originX = width / 2;
-      const originY = height * 0.96;
-      const maxRadiusY = Math.min(height * 0.87, 1150);
+      const originY = height;
 
       // Smooth lerp mouse coordinates
       mouse.x += (mouse.targetX - mouse.x) * 0.16;
@@ -363,169 +357,156 @@ export default function HeroInteractiveCanvas() {
         }
       }
 
-      // 3. Core Radiant Amber/Gold Sunrise Aura (Stripe signature dandelion glow at bottom)
-      const coreAuraRadius = maxRadiusY * 0.42;
-      const coreGrad = ctx.createRadialGradient(
+      // 3. Core Radiant Amber / Gold Center Glow at base (touching bottom border)
+      const glowRadius = Math.min(width * 0.38, 480);
+      const baseGradient = ctx.createRadialGradient(
         originX,
         originY,
         0,
         originX,
         originY,
-        coreAuraRadius
+        glowRadius
       );
-      coreGrad.addColorStop(0, theme.coreAmberInner);
-      coreGrad.addColorStop(0.35, theme.coreAmberMid);
-      coreGrad.addColorStop(0.70, theme.coreAmberOuter);
-      coreGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      baseGradient.addColorStop(0, theme.coreAmberInner);
+      baseGradient.addColorStop(0.32, theme.coreAmberMid);
+      baseGradient.addColorStop(0.60, theme.coreAmberOuter);
+      baseGradient.addColorStop(0.82, theme.coreAuraCyan);
+      baseGradient.addColorStop(1, "rgba(0,0,0,0)");
 
-      ctx.fillStyle = coreGrad;
+      ctx.fillStyle = baseGradient;
       ctx.beginPath();
-      ctx.arc(originX, originY, coreAuraRadius, 0, Math.PI * 2);
+      ctx.arc(originX, originY, glowRadius, Math.PI, 0); // Exact upward semi-circle touching bottom border
       ctx.fill();
 
-      // Secondary ambient cyan wash
-      const cyanGrad = ctx.createRadialGradient(
-        originX,
-        originY,
-        maxRadiusY * 0.15,
-        originX,
-        originY,
-        maxRadiusY * 0.85
-      );
-      cyanGrad.addColorStop(0, theme.coreAuraCyan);
-      cyanGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      // 4. Cursor Halo Spotlight
+      if (mouse.isHovered && mouse.x > 0 && mouse.y > 0) {
+        const cursorGlow = ctx.createRadialGradient(
+          mouse.x,
+          mouse.y,
+          0,
+          mouse.x,
+          mouse.y,
+          mouse.radius
+        );
+        cursorGlow.addColorStop(0, theme.cursorGlow);
+        cursorGlow.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = cursorGlow;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
-      ctx.fillStyle = cyanGrad;
-      ctx.beginPath();
-      ctx.arc(originX, originY, maxRadiusY * 0.85, 0, Math.PI * 2);
-      ctx.fill();
+      // 5. Draw Rays & Calculate Cursor Arrow Magnetic Deflection (from 0f3988f)
+      const closestTips: { x: number; y: number; dist: number }[] = [];
 
-      // 4. Render Fiber-Optic Filament Rays with Magnetic Cursor Manipulation
       for (let i = 0; i < rays.length; i++) {
         const ray = rays[i];
 
-        // Autonomous gentle breathing pulse
-        const breathe = Math.sin(time * 1.5 + ray.pulseOffset) * 4.5;
-        const currentTargetLength = ray.origLength + breathe;
+        // Natural undeflected tip coordinates
+        const naturalTipX = originX + Math.cos(ray.baseAngle) * ray.length;
+        const naturalTipY = originY + Math.sin(ray.baseAngle) * ray.length;
+        const naturalMidX = originX + Math.cos(ray.baseAngle) * (ray.length * 0.5);
+        const naturalMidY = originY + Math.sin(ray.baseAngle) * (ray.length * 0.5);
 
-        // Base resting tip position
-        const targetTipX = originX + Math.cos(ray.baseAngle) * currentTargetLength;
-        const targetTipY = originY + Math.sin(ray.baseAngle) * currentTargetLength;
-        const targetCtrlX = originX + Math.cos(ray.baseAngle) * (currentTargetLength * 0.5);
-        const targetCtrlY = originY + Math.sin(ray.baseAngle) * (currentTargetLength * 0.5);
+        let targetTipX = naturalTipX;
+        let targetTipY = naturalTipY;
+        let targetCtrlX = naturalMidX;
+        let targetCtrlY = naturalMidY;
 
-        let isHovered = false;
-        let hoverProximity = 0;
+        // Subtle organic breeze oscillation
+        const breeze = Math.sin(globalTick + ray.pulseOffset) * 4.5;
+        targetTipX += Math.cos(ray.baseAngle + Math.PI / 2) * breeze;
+        targetTipY += Math.sin(ray.baseAngle + Math.PI / 2) * breeze;
 
-        // Interactive Cursor Manipulation (Magnetic Pull & Elastic Bending)
+        let isNearCursor = false;
+        let cursorProximity = 0;
+
+        // Magnetic attraction / deflection toward cursor arrow
         if (mouse.isHovered && mouse.x > 0) {
-          const dx = mouse.x - ray.tipX;
-          const dy = mouse.y - ray.tipY;
-          const dist = Math.hypot(dx, dy);
+          const dx = mouse.x - naturalTipX;
+          const dy = mouse.y - naturalTipY;
+          const distToTip = Math.hypot(dx, dy);
 
-          if (dist < mouse.radius) {
-            hoverProximity = 1 - dist / mouse.radius;
-            isHovered = hoverProximity > 0.45;
+          if (distToTip < mouse.radius) {
+            isNearCursor = true;
+            cursorProximity = 1 - distToTip / mouse.radius;
 
-            // Elastic pull force towards cursor arrow
-            const pullForce = hoverProximity * 28;
+            const pullFactor = cursorProximity * 24;
             const pullAngle = Math.atan2(dy, dx);
 
-            ray.vx += Math.cos(pullAngle) * pullForce * 0.14;
-            ray.vy += Math.sin(pullAngle) * pullForce * 0.14;
+            targetCtrlX += Math.cos(pullAngle) * (pullFactor * 0.75);
+            targetCtrlY += Math.sin(pullAngle) * (pullFactor * 0.75);
 
-            // Control point also bows gracefully toward cursor
-            ray.ctrlX += (mouse.x - ray.ctrlX) * hoverProximity * 0.08;
-            ray.ctrlY += (mouse.y - ray.ctrlY) * hoverProximity * 0.08;
+            targetTipX += Math.cos(pullAngle) * pullFactor;
+            targetTipY += Math.sin(pullAngle) * pullFactor;
+
+            closestTips.push({ x: ray.tipX, y: ray.tipY, dist: distToTip });
           }
         }
 
-        // Apply click shockwave displacement
+        // Apply click shockwave displacement along ray length
         for (let w = 0; w < waves.length; w++) {
           const wave = waves[w];
-          const wdx = ray.tipX - wave.x;
-          const wdy = ray.tipY - wave.y;
+          const wdx = naturalTipX - wave.x;
+          const wdy = naturalTipY - wave.y;
           const wdist = Math.hypot(wdx, wdy);
-          if (Math.abs(wdist - wave.radius) < 35) {
-            const push = (1 - Math.abs(wdist - wave.radius) / 35) * 16 * wave.alpha;
-            const angle = Math.atan2(wdy, wdx);
-            ray.vx += Math.cos(angle) * push;
-            ray.vy += Math.sin(angle) * push;
+          if (Math.abs(wdist - wave.radius) < 45) {
+            const push = (1 - Math.abs(wdist - wave.radius) / 45) * 28 * wave.alpha;
+            const wAngle = Math.atan2(wdy, wdx);
+            targetTipX += Math.cos(wAngle) * push;
+            targetTipY += Math.sin(wAngle) * push;
           }
         }
 
-        // Spring physics: return smoothly toward resting coordinates
-        const spring = 0.08;
-        const damping = 0.82;
-
-        ray.vx += (targetTipX - ray.tipX) * spring;
-        ray.vy += (targetTipY - ray.tipY) * spring;
-        ray.vx *= damping;
-        ray.vy *= damping;
-
+        // Spring physics: dampening & velocity integration
+        const k = 0.13; // Spring stiffness
+        const damp = 0.82; // Friction damping
+        ray.vx = (ray.vx + (targetTipX - ray.tipX) * k) * damp;
+        ray.vy = (ray.vy + (targetTipY - ray.tipY) * k) * damp;
         ray.tipX += ray.vx;
         ray.tipY += ray.vy;
 
-        ray.ctrlX += (targetCtrlX - ray.ctrlX) * 0.12;
-        ray.ctrlY += (targetCtrlY - ray.ctrlY) * 0.12;
+        ray.ctrlX += (targetCtrlX - ray.ctrlX) * 0.16;
+        ray.ctrlY += (targetCtrlY - ray.ctrlY) * 0.16;
 
-        // Draw curved quadratic filament line
+        // Render curved ray filament
         ctx.beginPath();
         ctx.moveTo(originX, originY);
         ctx.quadraticCurveTo(ray.ctrlX, ray.ctrlY, ray.tipX, ray.tipY);
 
-        if (isHovered) {
+        if (isNearCursor) {
           ctx.strokeStyle = theme.rayStrokeHover;
-          ctx.lineWidth = 1.35 * ray.widthFactor;
-        } else if (hoverProximity > 0) {
-          ctx.strokeStyle = `rgba(251, 191, 36, ${0.25 + hoverProximity * 0.55})`;
-          ctx.lineWidth = (0.75 + hoverProximity * 0.5) * ray.widthFactor;
+          ctx.lineWidth = (0.9 + cursorProximity * 1.5) * ray.widthFactor;
         } else {
           ctx.strokeStyle = theme.rayStroke;
-          ctx.lineWidth = 0.75 * ray.widthFactor;
+          ctx.lineWidth = 0.65 * ray.widthFactor;
         }
         ctx.stroke();
 
-        // Draw glowing tip micro-dot
+        // Render glowing ray tip dot
+        ctx.fillStyle = ray.color;
         ctx.beginPath();
-        const tipRadius = isHovered
-          ? ray.dotRadius * 1.6
-          : hoverProximity > 0
-          ? ray.dotRadius * (1 + hoverProximity * 0.4)
+        const curDotRadius = isNearCursor
+          ? ray.dotRadius * (1 + cursorProximity * 0.95)
           : ray.dotRadius;
-
-        ctx.arc(ray.tipX, ray.tipY, tipRadius, 0, Math.PI * 2);
-        ctx.fillStyle = isHovered ? "#fbbf24" : ray.color;
+        ctx.arc(ray.tipX, ray.tipY, curDotRadius, 0, Math.PI * 2);
         ctx.fill();
-
-        // Extra specular bloom for active hovered tip
-        if (isHovered) {
-          ctx.beginPath();
-          ctx.arc(ray.tipX, ray.tipY, tipRadius * 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(251, 191, 36, 0.35)";
-          ctx.fill();
-        }
       }
 
-      // 5. Cursor Filament Connection (Draw delicate golden thread from nearest ray to cursor)
-      if (mouse.isHovered && mouse.x > 0) {
-        let closestRay: Ray | null = null;
-        let closestDist = Infinity;
-
-        for (let i = 0; i < rays.length; i++) {
-          const d = Math.hypot(mouse.x - rays[i].tipX, mouse.y - rays[i].tipY);
-          if (d < closestDist && d < mouse.radius * 0.8) {
-            closestDist = d;
-            closestRay = rays[i];
-          }
-        }
-
-        if (closestRay) {
+      // 6. Draw magnetic filament arcs connecting cursor arrow to closest ray tips
+      if (mouse.isHovered && mouse.x > 0 && closestTips.length > 0) {
+        closestTips.sort((a, b) => a.dist - b.dist);
+        const topConnections = closestTips.slice(0, 4);
+        for (let c = 0; c < topConnections.length; c++) {
+          const tip = topConnections[c];
+          const alpha = (1 - tip.dist / mouse.radius) * 0.6;
+          ctx.strokeStyle = isDarkMode()
+            ? `rgba(251, 191, 36, ${alpha})`
+            : `rgba(217, 119, 6, ${alpha})`;
+          ctx.lineWidth = 0.9;
           ctx.beginPath();
-          ctx.moveTo(closestRay.tipX, closestRay.tipY);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = theme.cursorLine;
-          ctx.lineWidth = (1 - closestDist / (mouse.radius * 0.8)) * 1.5;
+          ctx.moveTo(mouse.x, mouse.y);
+          ctx.lineTo(tip.x, tip.y);
           ctx.stroke();
         }
       }
