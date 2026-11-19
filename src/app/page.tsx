@@ -1,7 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
 import JimoInteractiveScrollStudio from "@/components/home/JimoInteractiveScrollStudio";
@@ -24,10 +23,7 @@ export default function Home() {
         {/* 2. Hero Section: AI Positioning + Console + Peeking Mascot */}
         <HeroSection />
 
-        {/* 3. Tech Stack Marquee */}
-        <TechMarqueeSection />
-
-        {/* 4. Animos-Style Scroll-Driven Manifesto Reveal */}
+        {/* 3. Animos-Style Scroll-Driven Manifesto Reveal */}
         <ScrollTextRevealSection />
 
         {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
