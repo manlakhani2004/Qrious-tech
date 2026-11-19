@@ -70,7 +70,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden pt-12 pb-20 lg:pt-16 lg:pb-28 2xl:pt-20 2xl:pb-36 bg-transparent transition-colors duration-200">
+    <section ref={containerRef} className="relative overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 2xl:pt-40 2xl:pb-36 bg-transparent transition-colors duration-200">
       {/* Interactive Cursor-Reactive Neural Canvas (Tracks Cursor Arrow & Click Shockwaves) */}
       <HeroInteractiveCanvas />
 
