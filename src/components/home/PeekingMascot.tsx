@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
-type MascotType = "mona" | "astro" | "sprite";
+type MascotType = "astro" | "mona" | "sprite";
 
 export default function PeekingMascot() {
   const mascotRef = useRef<HTMLDivElement>(null);
-  const [mascotType, setMascotType] = useState<MascotType>("astro"); // Default to high-tech AI Astro Bot!
+  const [mascotType, setMascotType] = useState<MascotType>("astro");
   const [isBlinking, setIsBlinking] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   // Raw mouse coordinates relative to mascot center
   const mouseRelX = useMotionValue(0);
@@ -75,71 +74,12 @@ export default function PeekingMascot() {
   return (
     <div
       ref={mascotRef}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className="relative flex flex-col items-center select-none"
     >
-      {/* Interactive Quick-Switcher Bar when hovered */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.92 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.95 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -top-11 whitespace-nowrap px-2 py-1 rounded-full bg-neutral-900/95 text-white dark:bg-white/95 dark:text-neutral-900 shadow-xl border border-neutral-700/80 dark:border-neutral-200/80 z-30 flex items-center space-x-1 backdrop-blur-md"
-          >
-            <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 mr-1 pl-1">
-              Style:
-            </span>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setMascotType("astro");
-              }}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors cursor-pointer ${
-                mascotType === "astro"
-                  ? "bg-cyan-500 text-black shadow-2xs"
-                  : "hover:bg-white/10 dark:hover:bg-black/10 text-neutral-300 dark:text-neutral-700"
-              }`}
-            >
-              🤖 Astro Bot
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setMascotType("mona");
-              }}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors cursor-pointer ${
-                mascotType === "mona"
-                  ? "bg-purple-500 text-white shadow-2xs"
-                  : "hover:bg-white/10 dark:hover:bg-black/10 text-neutral-300 dark:text-neutral-700"
-              }`}
-            >
-              🐱 Mona Kitty
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setMascotType("sprite");
-              }}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors cursor-pointer ${
-                mascotType === "sprite"
-                  ? "bg-emerald-400 text-black shadow-2xs"
-                  : "hover:bg-white/10 dark:hover:bg-black/10 text-neutral-300 dark:text-neutral-700"
-              }`}
-            >
-              👻 Cyber Sprite
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Mascot Graphic with click-to-cycle */}
+      {/* Mascot Graphic with click-to-cycle (zero tooltips, zero labels) */}
       <div
         onClick={cycleMascot}
         className="relative w-28 sm:w-32 h-16 sm:h-20 cursor-pointer"
-        title="Click to switch cartoon character style"
       >
         <motion.div
           key={mascotType}
