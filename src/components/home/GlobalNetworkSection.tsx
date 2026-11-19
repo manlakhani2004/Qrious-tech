@@ -135,7 +135,7 @@ export default function GlobalNetworkSection() {
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
         {/* Section Header */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
             <Globe className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
             <span>Global Delivery &amp; Dedicated Pods</span>
           </div>

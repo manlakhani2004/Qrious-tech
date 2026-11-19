@@ -128,14 +128,14 @@ export default function AnimosProductionShowcaseSection() {
           <div className="flex items-center space-x-2 mt-6 md:mt-0">
             <button
               onClick={scrollPrev}
-              className="p-3 rounded-full bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors cursor-pointer shadow-2xs"
+              className="p-3 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors cursor-pointer shadow-2xs"
               aria-label="Previous showcase"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={scrollNext}
-              className="p-3 rounded-full bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors cursor-pointer shadow-2xs"
+              className="p-3 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors cursor-pointer shadow-2xs"
               aria-label="Next showcase"
             >
               <ChevronRight className="w-4 h-4" />
@@ -153,7 +153,7 @@ export default function AnimosProductionShowcaseSection() {
                 whileHover={{ y: -6, scale: 1.01 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setActiveIndex(idx)}
-                className={`group relative rounded-3xl border p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden ${
+                className={`group relative rounded-none sm:rounded-[3px] border p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden ${
                   isFeatured
                     ? "bg-white dark:bg-[#111114] border-blue-500/80 dark:border-cyan-500/50 shadow-xl"
                     : "bg-[#fbfbfc]/80 dark:bg-[#0c0c0e]/80 border-neutral-200/80 dark:border-white/[0.08] hover:border-neutral-300 dark:hover:border-white/20 shadow-xs"
@@ -168,7 +168,7 @@ export default function AnimosProductionShowcaseSection() {
                     <span className="text-[11px] font-mono font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
                       {item.tag}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/70 dark:border-white/10 text-[10px] font-mono font-bold text-neutral-800 dark:text-neutral-200">
+                    <span className="px-2.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/70 dark:border-white/10 text-[10px] font-mono font-bold text-neutral-800 dark:text-neutral-200">
                       {item.badge}
                     </span>
                   </div>
@@ -182,7 +182,7 @@ export default function AnimosProductionShowcaseSection() {
                   </p>
 
                   {/* Visual Miniature UI Mockup (Animos Editor style) */}
-                  <div className="p-3.5 rounded-xl bg-neutral-50 dark:bg-[#18181c] border border-neutral-200/70 dark:border-white/[0.07] mb-6 space-y-2 text-left font-mono text-[11px]">
+                  <div className="p-3.5 rounded-[2px] bg-neutral-50 dark:bg-[#18181c] border border-neutral-200/70 dark:border-white/[0.07] mb-6 space-y-2 text-left font-mono text-[11px]">
                     <div className="flex items-center justify-between text-[10px] text-neutral-400 pb-1.5 border-b border-neutral-200/60 dark:border-white/[0.06]">
                       <span className="flex items-center space-x-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

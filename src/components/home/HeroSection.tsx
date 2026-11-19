@@ -87,7 +87,7 @@ export default function HeroSection() {
                     transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
                   }
                 }}
-                className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-md"
+                className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-md"
               >
                 <Sparkles className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
                 <span>{heroSlides[currentSlide].badge}</span>
@@ -148,7 +148,7 @@ export default function HeroSection() {
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Switch to slide ${idx + 1}`}
-              className={`h-1.5 2xl:h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`h-1.5 2xl:h-2 rounded-[1px] transition-all duration-300 cursor-pointer ${
                 currentSlide === idx ? "w-7 2xl:w-10 bg-black dark:bg-white" : "w-2 2xl:w-3 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600"
               }`}
             />
@@ -174,7 +174,7 @@ export default function HeroSection() {
           >
             <Link
               href="/case-studies"
-              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-8 py-3.5 2xl:px-10 2xl:py-4.5 rounded-full bg-black text-white dark:bg-white dark:text-black text-[14px] 2xl:text-base font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors duration-200 shadow-md dark:shadow-[0_0_24px_rgba(255,255,255,0.18)]"
+              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-8 py-3.5 2xl:px-10 2xl:py-4.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-[14px] 2xl:text-base font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors duration-200 shadow-md dark:shadow-[0_0_24px_rgba(255,255,255,0.18)]"
             >
               <span>Explore AI Solutions &amp; Case Studies</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -190,7 +190,7 @@ export default function HeroSection() {
           >
             <Link
               href="/contact"
-              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-7 py-3.5 2xl:px-9 2xl:py-4.5 rounded-full bg-white dark:bg-white/[0.05] text-black dark:text-white border border-neutral-200 dark:border-white/10 hover:border-black dark:hover:border-white/30 hover:bg-neutral-50 dark:hover:bg-white/[0.09] transition-colors duration-200 text-[14px] 2xl:text-base font-semibold shadow-2xs backdrop-blur-sm"
+              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-7 py-3.5 2xl:px-9 2xl:py-4.5 rounded-[2px] bg-white dark:bg-white/[0.05] text-black dark:text-white border border-neutral-200 dark:border-white/10 hover:border-black dark:hover:border-white/30 hover:bg-neutral-50 dark:hover:bg-white/[0.09] transition-colors duration-200 text-[14px] 2xl:text-base font-semibold shadow-2xs backdrop-blur-sm"
             >
               <span>Schedule Architecture Discovery</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />

@@ -97,7 +97,7 @@ export default function AboutProductIdeaSection() {
                 <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
                   01 // Operations
                 </span>
-                <span className="p-2 rounded-lg bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
+                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
                   <Workflow className="w-4 h-4 text-blue-500" />
                 </span>
               </div>
@@ -111,7 +111,7 @@ export default function AboutProductIdeaSection() {
               </p>
 
               {/* Minimal Interactive Visual Flow */}
-              <div className="rounded-xl border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
+              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
                 <div className="flex items-center justify-between mb-3 pb-2 border-b border-neutral-200/60 dark:border-white/[0.06]">
                   <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
                     Document ➔ ERP Pipeline
@@ -137,7 +137,7 @@ export default function AboutProductIdeaSection() {
 
                 <div className="space-y-2">
                   <div
-                    className={`flex items-center justify-between p-2 rounded-lg text-xs transition-colors duration-200 ${
+                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
                       pipelineStep >= 0
                         ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
                         : "text-neutral-400"
@@ -153,7 +153,7 @@ export default function AboutProductIdeaSection() {
                   </div>
 
                   <div
-                    className={`flex items-center justify-between p-2 rounded-lg text-xs transition-colors duration-200 ${
+                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
                       pipelineStep >= 1
                         ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
                         : "text-neutral-400"
@@ -169,7 +169,7 @@ export default function AboutProductIdeaSection() {
                   </div>
 
                   <div
-                    className={`flex items-center justify-between p-2 rounded-lg text-xs transition-colors duration-200 ${
+                    className={`flex items-center justify-between p-2 rounded-[2px] text-xs transition-colors duration-200 ${
                       pipelineStep >= 2
                         ? "bg-white dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-black dark:text-white font-medium"
                         : "text-neutral-400"
@@ -212,7 +212,7 @@ export default function AboutProductIdeaSection() {
                 <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
                   02 // Intelligence
                 </span>
-                <span className="p-2 rounded-lg bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
+                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
                   <Lock className="w-4 h-4 text-purple-500" />
                 </span>
               </div>
@@ -226,13 +226,13 @@ export default function AboutProductIdeaSection() {
               </p>
 
               {/* Minimal Interactive Search Preview */}
-              <div className="rounded-xl border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
+              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
                 <div className="flex items-center space-x-1.5 mb-3">
                   {ragExamples.map((ex, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveQueryIndex(idx)}
-                      className={`text-left text-[11px] px-2.5 py-1 rounded-md transition-colors cursor-pointer ${
+                      className={`text-left text-[11px] px-2.5 py-1 rounded-[2px] transition-colors cursor-pointer ${
                         activeQueryIndex === idx
                           ? "bg-white dark:bg-white/10 text-black dark:text-white font-semibold shadow-2xs border border-neutral-200/80 dark:border-white/10"
                           : "text-neutral-500 hover:text-black dark:hover:text-white"
@@ -243,7 +243,7 @@ export default function AboutProductIdeaSection() {
                   ))}
                 </div>
 
-                <div className="p-3 rounded-lg bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                <div className="p-3 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
                   <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-1">
                     Query: &quot;{ragExamples[activeQueryIndex].query}&quot;
                   </div>
@@ -287,7 +287,7 @@ export default function AboutProductIdeaSection() {
                 <span className="font-mono text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
                   03 // Delivery
                 </span>
-                <span className="p-2 rounded-lg bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
+                <span className="p-2 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200">
                   <Cpu className="w-4 h-4 text-emerald-500" />
                 </span>
               </div>
@@ -301,26 +301,26 @@ export default function AboutProductIdeaSection() {
               </p>
 
               {/* Minimal Architecture Preview */}
-              <div className="rounded-xl border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
+              <div className="rounded-[2px] border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.02] p-4 mb-6">
                 <div className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 mb-2.5 flex items-center justify-between">
                   <span>Pod Deployment Topology</span>
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">14-Day Delivery</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-left">
-                  <div className="p-2 rounded-lg bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
                     <div className="text-[11px] font-bold text-black dark:text-white">AI Systems Architect</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Security &amp; Schemas</div>
                   </div>
-                  <div className="p-2 rounded-lg bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
                     <div className="text-[11px] font-bold text-black dark:text-white">Full-Stack Lead</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Next.js &amp; APIs</div>
                   </div>
-                  <div className="p-2 rounded-lg bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
                     <div className="text-[11px] font-bold text-black dark:text-white">LLM / Agent Eng</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Swarms &amp; Evals</div>
                   </div>
-                  <div className="p-2 rounded-lg bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                  <div className="p-2 rounded-[2px] bg-white dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
                     <div className="text-[11px] font-bold text-black dark:text-white">QA &amp; Reliability</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Deterministic CI/CD</div>
                   </div>

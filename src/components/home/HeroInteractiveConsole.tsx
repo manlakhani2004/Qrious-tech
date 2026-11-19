@@ -183,7 +183,7 @@ export default function HeroInteractiveConsole() {
           rotateY,
           transformStyle: "preserve-3d"
         }}
-        className="relative rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl shadow-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
+        className="relative rounded-none sm:rounded-[3px] border border-neutral-200/90 dark:border-white/10 bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl shadow-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
       >
         {/* Continuous Animated Border Beam Highlight (Prompt-Motion / Magic UI style) */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/60 dark:via-cyan-400/80 to-transparent pointer-events-none" />
@@ -234,7 +234,7 @@ export default function HeroInteractiveConsole() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`relative px-3 py-1.5 rounded-[2px] text-xs font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer ${
                     isActive
                       ? "text-black dark:text-white"
                       : "text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white"
@@ -244,7 +244,7 @@ export default function HeroInteractiveConsole() {
                     <motion.div
                       layoutId="macConsoleTabCompact"
                       transition={{ type: "spring", stiffness: 450, damping: 35 }}
-                      className="absolute inset-0 rounded-lg bg-white dark:bg-white/10 shadow-2xs border border-neutral-200/80 dark:border-white/15"
+                      className="absolute inset-0 rounded-[2px] bg-white dark:bg-white/10 shadow-2xs border border-neutral-200/80 dark:border-white/15"
                     />
                   )}
                   <span className="relative z-10">{tab.label}</span>
@@ -267,7 +267,7 @@ export default function HeroInteractiveConsole() {
             >
               {/* Left Column: Business Problem, Solution & Metrics (5 cols) */}
               <div className="lg:col-span-5 text-left space-y-3.5">
-                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-[11px] font-semibold text-neutral-800 dark:text-neutral-200">
+                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-[11px] font-semibold text-neutral-800 dark:text-neutral-200">
                   <Sparkles className="w-3 h-3 text-blue-600 dark:text-sky-400" />
                   <span>{activeTab.badge}</span>
                 </div>
@@ -285,7 +285,7 @@ export default function HeroInteractiveConsole() {
                   {activeTab.metrics.map((m, idx) => (
                     <div
                       key={idx}
-                      className="p-2 sm:p-2.5 rounded-xl bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/70 dark:border-white/[0.07] text-left"
+                      className="p-2 sm:p-2.5 rounded-[2px] bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200/70 dark:border-white/[0.07] text-left"
                     >
                       <div className="text-sm sm:text-base font-black text-black dark:text-white tracking-tight">
                         {m.value}
@@ -312,7 +312,7 @@ export default function HeroInteractiveConsole() {
               {/* Right Column: Clean, Authentic Interactive Visual (7 cols) */}
               <div className="lg:col-span-7">
                 {activeTab.id === "workflows" && (
-                  <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
                     <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-neutral-200/70 dark:border-white/10">
                       <div>
                         <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
@@ -328,7 +328,7 @@ export default function HeroInteractiveConsole() {
                         whileTap={{ scale: 0.97 }}
                         onClick={runWorkflowSimulation}
                         disabled={workflowRunning}
-                        className="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-black text-white dark:bg-white dark:text-black text-[11px] font-semibold cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
+                        className="inline-flex items-center space-x-1 px-3 py-1 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-[11px] font-semibold cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
                       >
                         {workflowRunning ? (
                           <>
@@ -348,7 +348,7 @@ export default function HeroInteractiveConsole() {
                     <div className="space-y-2">
                       {/* Step 1 */}
                       <div
-                        className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
+                        className={`p-2.5 rounded-[2px] border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 1
                             ? "bg-blue-50/80 dark:bg-blue-950/20 border-blue-300 dark:border-blue-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
@@ -356,7 +356,7 @@ export default function HeroInteractiveConsole() {
                       >
                         <div className="flex items-center space-x-2.5">
                           <div
-                            className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs ${
+                            className={`w-6 h-6 rounded-[2px] flex items-center justify-center font-bold text-xs ${
                               workflowStep >= 1
                                 ? "bg-blue-600 text-white"
                                 : "bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300"
@@ -380,7 +380,7 @@ export default function HeroInteractiveConsole() {
 
                       {/* Step 2 */}
                       <div
-                        className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
+                        className={`p-2.5 rounded-[2px] border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 2
                             ? "bg-purple-50/80 dark:bg-purple-950/20 border-purple-300 dark:border-purple-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
@@ -388,7 +388,7 @@ export default function HeroInteractiveConsole() {
                       >
                         <div className="flex items-center space-x-2.5">
                           <div
-                            className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs ${
+                            className={`w-6 h-6 rounded-[2px] flex items-center justify-center font-bold text-xs ${
                               workflowStep >= 2
                                 ? "bg-purple-600 text-white"
                                 : "bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300"
@@ -412,7 +412,7 @@ export default function HeroInteractiveConsole() {
 
                       {/* Step 3 */}
                       <div
-                        className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
+                        className={`p-2.5 rounded-[2px] border transition-all duration-300 flex items-center justify-between ${
                           workflowStep >= 3
                             ? "bg-emerald-50/80 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-700/50 shadow-xs"
                             : "bg-white dark:bg-white/[0.02] border-neutral-200 dark:border-white/[0.07]"
@@ -420,7 +420,7 @@ export default function HeroInteractiveConsole() {
                       >
                         <div className="flex items-center space-x-2.5">
                           <div
-                            className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs ${
+                            className={`w-6 h-6 rounded-[2px] flex items-center justify-center font-bold text-xs ${
                               workflowStep >= 3
                                 ? "bg-emerald-600 text-white"
                                 : "bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300"
@@ -452,7 +452,7 @@ export default function HeroInteractiveConsole() {
                 )}
 
                 {activeTab.id === "rag" && (
-                  <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
                     <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/10">
                       <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider mb-0.5">
                         Private Cloud Knowledge Query
@@ -468,7 +468,7 @@ export default function HeroInteractiveConsole() {
                         <button
                           key={qIdx}
                           onClick={() => setSelectedRagQuery(qIdx)}
-                          className={`text-left p-2 rounded-lg border text-[11px] font-medium transition-colors cursor-pointer flex-1 ${
+                          className={`text-left p-2 rounded-[2px] border text-[11px] font-medium transition-colors cursor-pointer flex-1 ${
                             selectedRagQuery === qIdx
                               ? "bg-white dark:bg-white/10 border-blue-500 text-black dark:text-white shadow-2xs"
                               : "bg-white/60 dark:bg-white/[0.02] border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
@@ -480,9 +480,9 @@ export default function HeroInteractiveConsole() {
                     </div>
 
                     {/* Grounded Result Display */}
-                    <div className="p-3 rounded-lg bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10 space-y-2">
+                    <div className="p-3 rounded-[2px] bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10 space-y-2">
                       <div className="flex items-center justify-between text-[11px]">
-                        <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 font-mono text-[10px] font-semibold">
+                        <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-[2px] bg-blue-500/10 text-blue-600 dark:text-sky-400 font-mono text-[10px] font-semibold">
                           <CheckCircle2 className="w-2.5 h-2.5" />
                           <span>{ragQueries[selectedRagQuery].source}</span>
                         </span>
@@ -504,7 +504,7 @@ export default function HeroInteractiveConsole() {
                 )}
 
                 {activeTab.id === "squads" && (
-                  <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
+                  <div className="p-3.5 sm:p-4 rounded-[2px] bg-neutral-50 dark:bg-[#121214] border border-neutral-200/80 dark:border-white/[0.08] shadow-inner text-left">
                     <div className="pb-2 mb-3 border-b border-neutral-200/70 dark:border-white/10 flex items-center justify-between">
                       <div>
                         <div className="text-[10px] font-mono font-bold text-neutral-400 uppercase tracking-wider">
@@ -529,7 +529,7 @@ export default function HeroInteractiveConsole() {
                       ].map((item, idx) => (
                         <div
                           key={idx}
-                          className="p-2.5 rounded-lg bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10"
+                          className="p-2.5 rounded-[2px] bg-white dark:bg-[#0c0c0e] border border-neutral-200/80 dark:border-white/10"
                         >
                           <div className="text-xs font-bold text-black dark:text-white">
                             {item.role}
@@ -541,7 +541,7 @@ export default function HeroInteractiveConsole() {
                       ))}
                     </div>
 
-                    <div className="p-2.5 rounded-lg bg-white/70 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/10 flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
+                    <div className="p-2.5 rounded-[2px] bg-white/70 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/10 flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
                       <span>Delivery Cycle: <strong className="text-black dark:text-white font-semibold">14-Day Production Sprints</strong></span>
                       <span>Direct Slack &amp; Git Access</span>
                     </div>

@@ -223,9 +223,9 @@ export default function TechMarqueeSection() {
           {[...techRow1, ...techRow1, ...techRow1, ...techRow1].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-full bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
-              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
+              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
                 {tech.icon}
               </span>
               <div className="flex flex-col text-left">
@@ -260,9 +260,9 @@ export default function TechMarqueeSection() {
           {[...techRow2, ...techRow2, ...techRow2, ...techRow2].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-full bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
-              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
+              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
                 {tech.icon}
               </span>
               <div className="flex flex-col text-left">

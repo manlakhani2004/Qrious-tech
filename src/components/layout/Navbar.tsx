@@ -283,14 +283,14 @@ export default function Navbar() {
     <header className="fixed top-3 sm:top-4 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300">
       <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
         <div
-          className={`pointer-events-auto rounded-full transition-all duration-300 relative ${
+          className={`pointer-events-auto rounded-[2px] transition-all duration-300 relative ${
             scrolled
               ? "bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-[0_12px_36px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.6)] py-2 sm:py-2.5 px-4 sm:px-6"
               : "bg-white/80 dark:bg-[#0c0c0e]/80 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.09] shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2.5 sm:py-3 px-4 sm:px-6"
           }`}
         >
           {/* Specular highlight border at top */}
-          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent rounded-full pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent rounded-[2px] pointer-events-none" />
 
           <div className="flex items-center justify-between">
             {/* Authentic Qrious Tech Brand Logo */}
@@ -332,7 +332,7 @@ export default function Navbar() {
                 <Link
                   href="/services"
                   onClick={() => setActiveDropdown(null)}
-                  className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
+                  className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
                     activeDropdown === "services" || pathname.startsWith("/services")
                       ? "text-black dark:text-white"
                       : "text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white"
@@ -341,7 +341,7 @@ export default function Navbar() {
                   {hoveredNav === "services" && (
                     <motion.div
                       layoutId="navHoverPill"
-                      className="absolute inset-0 rounded-full bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
+                      className="absolute inset-0 rounded-[2px] bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
@@ -357,13 +357,13 @@ export default function Navbar() {
               {/* Services Mega Menu */}
               {activeDropdown === "services" && (
                 <div className="absolute top-full left-0 w-[720px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-3xl p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)]">
+                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)]">
                     <div className="mb-4 pb-3 border-b border-neutral-100 dark:border-neutral-800">
                       <div className="flex items-center justify-between">
                         <h4 className="text-xs font-bold text-black dark:text-white uppercase tracking-wider">
                           AI Solutions &amp; Engineering Practices
                         </h4>
-                        <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-600 text-white">
+                        <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-[2px] bg-blue-600 text-white">
                           14-Day POC Guarantee
                         </span>
                       </div>
@@ -379,9 +379,9 @@ export default function Navbar() {
                             key={tech.title}
                             href={tech.href}
                             onClick={() => setActiveDropdown(null)}
-                            className="p-3.5 rounded-2xl bg-black dark:bg-[#1c1917] hover:bg-neutral-900 dark:hover:bg-neutral-900 transition-all flex items-start space-x-3 group shadow-md text-white border border-neutral-800 dark:border-neutral-700"
+                            className="p-3.5 rounded-[2px] bg-black dark:bg-[#1c1917] hover:bg-neutral-900 dark:hover:bg-neutral-900 transition-all flex items-start space-x-3 group shadow-md text-white border border-neutral-800 dark:border-neutral-700"
                           >
-                            <div className="w-9 h-9 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 group-hover:bg-white/25 transition-all text-white">
+                            <div className="w-9 h-9 rounded-[2px] bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 group-hover:bg-white/25 transition-all text-white">
                               {tech.icon}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -398,7 +398,7 @@ export default function Navbar() {
                                 {tech.subItems.map((sub, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${
+                                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-[2px] ${
                                       sIdx === tech.subItems.length - 1
                                         ? "bg-white text-black font-bold"
                                         : "bg-white/15 text-white border border-white/20"
@@ -415,14 +415,14 @@ export default function Navbar() {
                             key={tech.title}
                             href={tech.href}
                             onClick={() => setActiveDropdown(null)}
-                            className={`p-3.5 rounded-2xl transition-all flex items-start space-x-3 group relative overflow-hidden ${
+                            className={`p-3.5 rounded-[2px] transition-all flex items-start space-x-3 group relative overflow-hidden ${
                               (tech as any).isFeatured
                                 ? "bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200/90 dark:border-blue-900/50 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs"
                                 : "bg-[#f8f8f9] dark:bg-[#18181b] hover:bg-neutral-100/80 dark:hover:bg-[#202025]"
                             }`}
                           >
                             <div
-                              className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-all ${
+                              className={`w-9 h-9 rounded-[2px] border flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-all ${
                                 (tech as any).isFeatured
                                   ? "bg-blue-600 text-white border-blue-500 shadow-sm"
                                   : "bg-white dark:bg-[#27272a] border-neutral-200/80 dark:border-neutral-700 text-black dark:text-white"
@@ -437,7 +437,7 @@ export default function Navbar() {
                                     {tech.title}
                                   </span>
                                   {(tech as any).badge && (
-                                    <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-blue-600 text-white tracking-wide">
+                                    <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-[2px] bg-blue-600 text-white tracking-wide">
                                       {(tech as any).badge}
                                     </span>
                                   )}
@@ -451,7 +451,7 @@ export default function Navbar() {
                                 {tech.subItems.map((sub, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${
+                                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-[2px] ${
                                       (tech as any).isFeatured
                                         ? "bg-white dark:bg-blue-900/40 text-blue-900 dark:text-blue-200 border border-blue-200/60 dark:border-blue-800/60"
                                         : "bg-white dark:bg-[#27272a] text-neutral-700 dark:text-neutral-300 border border-neutral-200/60 dark:border-neutral-700"
@@ -480,7 +480,7 @@ export default function Navbar() {
               }}
             >
               <button
-                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
+                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
                   activeDropdown === "industries" || pathname.startsWith("/industries")
                     ? "text-black dark:text-white"
                     : "text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white"
@@ -489,7 +489,7 @@ export default function Navbar() {
                 {hoveredNav === "industries" && (
                   <motion.div
                     layoutId="navHoverPill"
-                    className="absolute inset-0 rounded-full bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
+                    className="absolute inset-0 rounded-[2px] bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -504,11 +504,11 @@ export default function Navbar() {
               {/* Grouped Industries Mega Menu */}
               {activeDropdown === "industries" && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] xl:w-[940px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-6 shadow-2xl grid grid-cols-12 gap-6">
+                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-neutral-800 rounded-[2px] p-6 shadow-2xl grid grid-cols-12 gap-6">
                     {/* Left: Featured Industry Pods Card */}
-                    <div className="col-span-4 bg-[#f8f8f9] dark:bg-[#18181b] rounded-2xl p-5 border border-neutral-200/70 dark:border-neutral-800 flex flex-col justify-between">
+                    <div className="col-span-4 bg-[#f8f8f9] dark:bg-[#18181b] rounded-[2px] p-5 border border-neutral-200/70 dark:border-neutral-800 flex flex-col justify-between">
                       <div>
-                        <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
+                        <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
                           <ShieldCheck className="w-5 h-5 text-neutral-900 dark:text-neutral-100" />
                         </div>
                         <h4 className="text-sm font-bold text-black dark:text-white mb-1">
@@ -556,9 +556,9 @@ export default function Navbar() {
                               <Link
                                 key={ind.name}
                                 href={ind.href}
-                                className="p-2 rounded-xl hover:bg-neutral-100/70 dark:hover:bg-[#18181b] transition-all duration-150 flex items-center space-x-3 group"
+                                className="p-2 rounded-[2px] hover:bg-neutral-100/70 dark:hover:bg-[#18181b] transition-all duration-150 flex items-center space-x-3 group"
                               >
-                                <div className="w-8 h-8 rounded-lg bg-neutral-100/90 dark:bg-[#27272a] border border-neutral-200/50 dark:border-neutral-700 flex items-center justify-center shrink-0 text-black dark:text-white group-hover:bg-white dark:group-hover:bg-[#323238] group-hover:shadow-2xs group-hover:scale-105 transition-all">
+                                <div className="w-8 h-8 rounded-[2px] bg-neutral-100/90 dark:bg-[#27272a] border border-neutral-200/50 dark:border-neutral-700 flex items-center justify-center shrink-0 text-black dark:text-white group-hover:bg-white dark:group-hover:bg-[#323238] group-hover:shadow-2xs group-hover:scale-105 transition-all">
                                   {ind.icon}
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -592,7 +592,7 @@ export default function Navbar() {
               <Link
                 href="/case-studies"
                 onClick={() => setActiveDropdown(null)}
-                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
+                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
                   activeDropdown === "work" ||
                   pathname.startsWith("/case-studies") ||
                   pathname === "/portfolio"
@@ -603,7 +603,7 @@ export default function Navbar() {
                 {hoveredNav === "work" && (
                   <motion.div
                     layoutId="navHoverPill"
-                    className="absolute inset-0 rounded-full bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
+                    className="absolute inset-0 rounded-[2px] bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -618,14 +618,14 @@ export default function Navbar() {
               {/* Work Dropdown */}
               {activeDropdown === "work" && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-3xl p-5 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] space-y-2">
+                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-5 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] space-y-2">
                     {workItems.map((item, idx) => (
                       <Link
                         key={idx}
                         href={item.href}
-                        className="p-3.5 rounded-2xl bg-[#f8f8f9] dark:bg-[#18181b] hover:bg-neutral-100/80 dark:hover:bg-[#202025] transition-all flex items-start space-x-3 group"
+                        className="p-3.5 rounded-[2px] bg-[#f8f8f9] dark:bg-[#18181b] hover:bg-neutral-100/80 dark:hover:bg-[#202025] transition-all flex items-start space-x-3 group"
                       >
-                        <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#27272a] border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 group-hover:border-neutral-300 dark:group-hover:border-neutral-600 transition-all text-neutral-900 dark:text-neutral-100">
+                        <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 group-hover:border-neutral-300 dark:group-hover:border-neutral-600 transition-all text-neutral-900 dark:text-neutral-100">
                           {item.icon}
                         </div>
                         <div className="flex-1">
@@ -649,7 +649,7 @@ export default function Navbar() {
             >
               <Link
                 href="/how-we-work"
-                className={`relative px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-150 z-10 block ${
+                className={`relative px-3 py-1.5 rounded-[2px] text-xs font-semibold tracking-tight transition-colors duration-150 z-10 block ${
                   pathname === "/how-we-work" || pathname === "/working-methodology"
                     ? "text-black dark:text-white"
                     : "text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white"
@@ -658,7 +658,7 @@ export default function Navbar() {
                 {hoveredNav === "how-we-work" && (
                   <motion.div
                     layoutId="navHoverPill"
-                    className="absolute inset-0 rounded-full bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
+                    className="absolute inset-0 rounded-[2px] bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -678,7 +678,7 @@ export default function Navbar() {
               <Link
                 href="/company"
                 onClick={() => setActiveDropdown(null)}
-                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
+                className={`relative flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] text-xs font-semibold tracking-tight transition-colors duration-150 z-10 ${
                   activeDropdown === "company" ||
                   pathname === "/company" ||
                   pathname === "/life-at-qtech" ||
@@ -692,7 +692,7 @@ export default function Navbar() {
                 {hoveredNav === "company" && (
                   <motion.div
                     layoutId="navHoverPill"
-                    className="absolute inset-0 rounded-full bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
+                    className="absolute inset-0 rounded-[2px] bg-black/[0.06] dark:bg-white/[0.08] pointer-events-none -z-10"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -707,11 +707,11 @@ export default function Navbar() {
               {/* Company Mega Menu */}
               {activeDropdown === "company" && (
                 <div className="absolute top-full right-0 w-[580px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-3xl p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] grid grid-cols-12 gap-5">
+                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] grid grid-cols-12 gap-5">
                     {/* Left Feature Card */}
-                    <div className="col-span-5 bg-[#f8f8f9] dark:bg-[#18181b] rounded-2xl p-5 flex flex-col justify-between border border-neutral-100 dark:border-neutral-800">
+                    <div className="col-span-5 bg-[#f8f8f9] dark:bg-[#18181b] rounded-[2px] p-5 flex flex-col justify-between border border-neutral-100 dark:border-neutral-800">
                       <div>
-                        <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
+                        <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
                           <Building2 className="w-4 h-4 text-neutral-900 dark:text-neutral-100" />
                         </div>
                         <h4 className="text-sm font-bold text-black dark:text-white mb-1">
@@ -732,9 +732,9 @@ export default function Navbar() {
                         <Link
                           key={item.title}
                           href={item.href}
-                          className="p-2.5 rounded-xl hover:bg-neutral-100/70 dark:hover:bg-[#18181b] transition-all flex items-start space-x-3 group"
+                          className="p-2.5 rounded-[2px] hover:bg-neutral-100/70 dark:hover:bg-[#18181b] transition-all flex items-start space-x-3 group"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-neutral-100/90 dark:bg-[#27272a] border border-neutral-200/50 dark:border-neutral-700 flex items-center justify-center shrink-0 mt-0.5 text-black dark:text-white group-hover:bg-white dark:group-hover:bg-[#323238] group-hover:shadow-2xs group-hover:scale-105 transition-all">
+                          <div className="w-8 h-8 rounded-[2px] bg-neutral-100/90 dark:bg-[#27272a] border border-neutral-200/50 dark:border-neutral-700 flex items-center justify-center shrink-0 mt-0.5 text-black dark:text-white group-hover:bg-white dark:group-hover:bg-[#323238] group-hover:shadow-2xs group-hover:scale-105 transition-all">
                             {item.icon}
                           </div>
                           <div>
@@ -764,7 +764,7 @@ export default function Navbar() {
             >
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-black text-white dark:bg-white dark:text-black text-xs font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-md transition-all border border-black/10 dark:border-white/20"
+                className="group relative inline-flex items-center space-x-2 px-5 py-2.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-xs font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-md transition-all border border-black/10 dark:border-white/20"
               >
                 <span>Schedule AI Discovery</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -777,7 +777,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="p-2 rounded-[2px] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -788,7 +788,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer: Floating Frosted Card */}
         {mobileMenuOpen && (
-          <div className="pointer-events-auto lg:hidden mt-3 p-5 rounded-3xl bg-white/95 dark:bg-[#121215]/95 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-2xl max-h-[80vh] overflow-y-auto space-y-3">
+          <div className="pointer-events-auto lg:hidden mt-3 p-5 rounded-[2px] bg-white/95 dark:bg-[#121215]/95 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-2xl max-h-[80vh] overflow-y-auto space-y-3">
             {/* AI Solutions Accordion */}
             <div>
               <button
@@ -828,7 +828,7 @@ export default function Navbar() {
                       <div className="flex items-center space-x-2">
                         <span>{tech.title}</span>
                         {(tech as any).badge && (
-                          <span className="text-[8.5px] font-extrabold px-1.5 py-0.5 rounded-full bg-blue-600 text-white">
+                          <span className="text-[8.5px] font-extrabold px-1.5 py-0.5 rounded-[2px] bg-blue-600 text-white">
                             {(tech as any).badge}
                           </span>
                         )}
@@ -949,7 +949,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-sm font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
               >
                 <span>Let&apos;s Connect</span>
                 <ArrowRight className="w-4 h-4 ml-1" />

@@ -114,7 +114,7 @@ export default function BusinessAIIntegrationRoadmapSection() {
                   <span className="text-3xl font-black font-mono text-black dark:text-white">
                     {s.number}
                   </span>
-                  <span className="text-xs font-mono font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-white/[0.06] px-3 py-1 rounded-full">
+                  <span className="text-xs font-mono font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-white/[0.06] px-3 py-1 rounded-[2px]">
                     {s.timeframe}
                   </span>
                 </div>

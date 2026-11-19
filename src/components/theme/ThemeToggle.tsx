@@ -20,7 +20,7 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
   if (!mounted) {
     return (
       <div
-        className={`w-9 h-9 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-800/50 flex items-center justify-center opacity-0 ${className}`}
+        className={`w-9 h-9 rounded-[2px] border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-800/50 flex items-center justify-center opacity-0 ${className}`}
         aria-hidden="true"
       />
     );
@@ -32,7 +32,7 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
     <button
       onClick={toggleTheme}
       type="button"
-      className={`relative inline-flex items-center justify-center p-2 rounded-full border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 active:scale-95 ${
+      className={`relative inline-flex items-center justify-center p-2 rounded-[2px] border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 active:scale-95 ${
         isDark
           ? "border-neutral-800 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-white"
           : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100 hover:text-black shadow-2xs"

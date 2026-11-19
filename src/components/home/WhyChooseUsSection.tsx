@@ -224,7 +224,7 @@ export default function WhyChooseUsSection() {
         {/* SECTION HEADER: MINIMALIST & BOLD (NO CARDS) */}
         {/* ============================================================== */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
             <span>The Enterprise Engineering Difference</span>
           </div>
@@ -250,7 +250,7 @@ export default function WhyChooseUsSection() {
                 key={dim.id}
                 type="button"
                 onClick={() => setActiveTabIdx(idx)}
-                className={`relative px-4 py-2.5 rounded-full text-xs font-mono transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
+                className={`relative px-4 py-2.5 rounded-[2px] text-xs font-mono transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
                   isActive
                     ? "text-black dark:text-white font-bold"
                     : "text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200"
@@ -259,7 +259,7 @@ export default function WhyChooseUsSection() {
                 {isActive && (
                   <motion.div
                     layoutId="activeDimensionGlider"
-                    className="absolute inset-0 bg-neutral-100 dark:bg-white/[0.08] rounded-full border border-neutral-200/90 dark:border-white/15 shadow-2xs"
+                    className="absolute inset-0 bg-neutral-100 dark:bg-white/[0.08] rounded-[2px] border border-neutral-200/90 dark:border-white/15 shadow-2xs"
                     transition={{ type: "spring", stiffness: 450, damping: 35 }}
                   />
                 )}
@@ -384,7 +384,7 @@ export default function WhyChooseUsSection() {
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   <span>{activeDim.qrious.title}</span>
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-500/20">
+                <span className="px-2.5 py-0.5 rounded-[2px] bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-500/20">
                   {activeDim.qrious.badge}
                 </span>
               </div>
@@ -431,7 +431,7 @@ export default function WhyChooseUsSection() {
             <div className="absolute top-0 bottom-0 -left-px w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
 
             {/* Draggable Center Pill with Motion Indicator */}
-            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-black text-white dark:bg-white dark:text-black shadow-xl text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize">
+            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black shadow-xl text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize">
               <MoveHorizontal className="w-3 h-3 text-blue-400 dark:text-blue-600" />
               <span>DRAG</span>
             </div>

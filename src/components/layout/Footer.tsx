@@ -51,7 +51,7 @@ export default function Footer() {
             {/* Circular Grey Icon Buttons for Contacts (Screenshot 8) */}
             <div className="space-y-4">
               <div className="flex items-center space-x-3.5">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
+                <div className="w-10 h-10 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <a
@@ -63,7 +63,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-3.5">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
+                <div className="w-10 h-10 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <a
@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-transparent dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
@@ -98,7 +98,7 @@ export default function Footer() {
 
               {/* Motive Newsletter Input Pill (Screenshot 8) */}
               <form onSubmit={handleSubscribe} className="relative max-w-md">
-                <div className="flex items-center border border-neutral-200 dark:border-neutral-800 rounded-full p-1 pl-4 bg-white dark:bg-[#121215] focus-within:border-black dark:focus-within:border-white transition-colors">
+                <div className="flex items-center border border-neutral-200 dark:border-neutral-800 rounded-[2px] p-1 pl-4 bg-white dark:bg-[#121215] focus-within:border-black dark:focus-within:border-white transition-colors">
                   <input
                     type="email"
                     value={email}
@@ -109,7 +109,7 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className="group inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-full bg-black text-white dark:bg-white dark:text-black text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all duration-200 shrink-0 shadow-sm active:scale-95"
+                    className="group inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all duration-200 shrink-0 shadow-sm active:scale-95"
                   >
                     {subscribed ? (
                       <>
