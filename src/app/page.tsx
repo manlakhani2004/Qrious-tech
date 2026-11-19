@@ -5,8 +5,6 @@ import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
-import ClientFeedbacksSection from "@/components/home/ClientFeedbacksSection";
-import TeamCrewSection from "@/components/home/TeamCrewSection";
 import GlobalBackgroundGrid from "@/components/home/GlobalBackgroundGrid";
 
 export default function Home() {
@@ -33,15 +31,9 @@ export default function Home() {
 
         {/* 6. Global Delivery Network: GitHub-Style Animated Connected Canvas */}
         <GlobalNetworkSection />
-
-        {/* 7. Client Endorsements & Proof */}
-        <ClientFeedbacksSection />
-
-        {/* 8. Team Crew: Horizontal Drifting Avatars */}
-        <TeamCrewSection />
       </main>
 
-      {/* 9. Minimalist Enterprise Footer */}
+      {/* 7. Minimalist Enterprise Footer */}
       <Footer />
     </div>
   );
