@@ -232,9 +232,9 @@ export default function OpeningLoader({ onComplete }: OpeningLoaderProps) {
       }`}
       aria-hidden={isDone}
     >
-      {/* Layer 1: Bottom Curtain - Vibrant Brand Accent (Theme-adaptive: bright electric sapphire in Light, cosmic indigo in Dark) */}
+      {/* Layer 1: Bottom Curtain - Theme-Adaptive Shutter (Deep Luxury Charcoal in Light Mode, Zinc Obsidian in Dark Mode) */}
       <div
-        className={`absolute inset-0 z-0 bg-gradient-to-tr from-[#1d4ed8] via-[#3b82f6] via-[#6366f1] to-[#0ea5e9] dark:from-[#312e81] dark:via-[#4f46e5] dark:via-[#6366f1] dark:to-[#0284c7] will-change-transform will-change-[clip-path] pointer-events-none transition-all duration-[1150ms] ease-[cubic-bezier(0.77,0,0.175,1)] delay-[80ms] ${
+        className={`absolute inset-0 z-0 bg-gradient-to-tr from-[#09090b] via-[#18181b] to-[#27272a] dark:from-[#18181b] dark:via-[#27272a] dark:to-[#3f3f46] will-change-transform will-change-[clip-path] pointer-events-none transition-all duration-[1150ms] ease-[cubic-bezier(0.77,0,0.175,1)] delay-[80ms] ${
           isDone
             ? "-translate-y-full [clip-path:inset(0_0_100%_0)] opacity-90"
             : "translate-y-0 [clip-path:inset(0_0_0_0)] opacity-100"
@@ -252,8 +252,8 @@ export default function OpeningLoader({ onComplete }: OpeningLoaderProps) {
         {/* Architectural blueprint grid matching the hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px]" />
 
-        {/* Ambient radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(59,130,246,0.06),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(99,102,241,0.12),transparent)]" />
+        {/* Ambient radial glow - Theme Adaptive Neutral */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(0,0,0,0.035),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(255,255,255,0.05),transparent)]" />
       </div>
 
       {/* Layer 3: Centered Typewriter Typography Block */}
@@ -266,18 +266,18 @@ export default function OpeningLoader({ onComplete }: OpeningLoaderProps) {
         <div className="text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-[0.28em] mb-3 min-h-[1.5em] flex items-center justify-center">
           <span>{typedLine1}</span>
           {isTyping && typedLine1.length < 6 && (
-            <span className="inline-block w-1.5 h-3.5 bg-blue-600 dark:bg-blue-400 ml-1.5 animate-pulse" />
+            <span className="inline-block w-1.5 h-3.5 bg-neutral-900 dark:bg-white ml-1.5 animate-pulse" />
           )}
         </div>
 
-        {/* Line 2: Bold Brand Identification */}
+        {/* Line 2: Bold Brand Identification (Theme Type Colour) */}
         <div className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 min-h-[1.3em] flex items-center justify-center flex-wrap gap-x-2.5">
           <span>{typedLine2Prefix}</span>
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 dark:from-blue-400 dark:via-indigo-300 dark:to-sky-300 bg-clip-text text-transparent drop-shadow-[0_2px_16px_rgba(37,99,235,0.22)] dark:drop-shadow-[0_0_24px_rgba(99,102,241,0.45)]">
+          <span className="text-[#09090b] dark:text-[#f8f9fa] font-black tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.06)] dark:drop-shadow-[0_0_24px_rgba(255,255,255,0.2)]">
             {typedLine2Brand}
           </span>
           {isTyping && typedLine1.length >= 6 && typedLine3.length === 0 && (
-            <span className="inline-block w-2 sm:w-2.5 h-6 sm:h-9 bg-indigo-600 dark:bg-indigo-400 ml-1 animate-pulse" />
+            <span className="inline-block w-2 sm:w-2.5 h-6 sm:h-9 bg-neutral-900 dark:bg-white ml-1 animate-pulse" />
           )}
         </div>
 
@@ -285,7 +285,7 @@ export default function OpeningLoader({ onComplete }: OpeningLoaderProps) {
         <div className="text-xs sm:text-sm md:text-base font-mono text-neutral-500 dark:text-neutral-400 tracking-wide min-h-[1.5em] flex items-center justify-center">
           <span className="text-neutral-700 dark:text-neutral-300 font-medium">{typedLine3}</span>
           {isTyping && typedLine3.length > 0 && typedLine3.length < 38 && (
-            <span className="inline-block w-1.5 h-4 bg-sky-600 dark:bg-sky-400 ml-1.5 animate-pulse" />
+            <span className="inline-block w-1.5 h-4 bg-neutral-800 dark:bg-neutral-200 ml-1.5 animate-pulse" />
           )}
         </div>
       </div>

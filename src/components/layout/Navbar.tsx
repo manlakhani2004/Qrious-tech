@@ -351,7 +351,7 @@ export default function Navbar() {
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
-                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                  <Sparkles className="w-3.5 h-3.5 text-neutral-800 dark:text-neutral-200" />
                   <span>AI Solutions</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
