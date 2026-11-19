@@ -5,15 +5,83 @@ import { Globe } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "motion/react";
 
-// Global network nodes connected to Ahmedabad HQ
-const NODES = [
-  { id: "ahmedabad", x: 580, y: 190, isHQ: true },
-  { id: "san-francisco", x: 160, y: 140 },
-  { id: "new-york", x: 270, y: 130 },
-  { id: "london", x: 440, y: 110 },
-  { id: "dubai", x: 535, y: 170 },
-  { id: "tokyo", x: 770, y: 145 },
-  { id: "sydney", x: 840, y: 270 },
+interface NetworkNode {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  labelX: number;
+  labelY: number;
+  anchor: "middle" | "start" | "end";
+  isHQ?: boolean;
+}
+
+// Global network nodes connected to Ahmedabad HQ with city location names and label positions
+const NODES: NetworkNode[] = [
+  {
+    id: "san-francisco",
+    name: "San Francisco",
+    x: 160,
+    y: 140,
+    labelX: 160,
+    labelY: 174,
+    anchor: "middle"
+  },
+  {
+    id: "new-york",
+    name: "New York",
+    x: 270,
+    y: 130,
+    labelX: 270,
+    labelY: 100,
+    anchor: "middle"
+  },
+  {
+    id: "london",
+    name: "London",
+    x: 440,
+    y: 110,
+    labelX: 440,
+    labelY: 82,
+    anchor: "middle"
+  },
+  {
+    id: "dubai",
+    name: "Dubai",
+    x: 535,
+    y: 170,
+    labelX: 504,
+    labelY: 154,
+    anchor: "end"
+  },
+  {
+    id: "ahmedabad",
+    name: "Ahmedabad (HQ)",
+    x: 580,
+    y: 190,
+    labelX: 580,
+    labelY: 228,
+    anchor: "middle",
+    isHQ: true
+  },
+  {
+    id: "tokyo",
+    name: "Tokyo",
+    x: 770,
+    y: 145,
+    labelX: 770,
+    labelY: 116,
+    anchor: "middle"
+  },
+  {
+    id: "sydney",
+    name: "Sydney",
+    x: 840,
+    y: 270,
+    labelX: 840,
+    labelY: 304,
+    anchor: "middle"
+  },
 ];
 
 // Arcs connecting Ahmedabad HQ to each global hub with bezier curve control points
@@ -84,8 +152,8 @@ export default function GlobalNetworkSection() {
           </p>
         </ScrollReveal>
 
-        {/* Center Stage: Ambient Background Graphic with Open Arcs & Glowing Nodes (Zero Cards, Zero City Names) */}
-        <div className="relative w-full h-[200px] sm:h-[250px] lg:h-[290px] flex items-center justify-center overflow-hidden my-2 sm:my-4 pointer-events-none select-none">
+        {/* Center Stage: Ambient Background Graphic with Open Arcs, Glowing Nodes & Location Labels */}
+        <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[340px] flex items-center justify-center overflow-hidden my-2 sm:my-4 pointer-events-none select-none">
           <motion.div
             style={{ x: parallaxX, y: parallaxY }}
             className="w-full h-full max-w-[1200px] flex items-center justify-center"
@@ -234,6 +302,73 @@ export default function GlobalNetworkSection() {
                   />
                 </g>
               ))}
+
+              {/* Location Name Labels */}
+              {NODES.map((node) => {
+                if (node.isHQ) {
+                  return (
+                    <g key={`label-${node.id}`}>
+                      {/* HQ Distinct Pill */}
+                      <rect
+                        x={node.labelX - 62}
+                        y={node.labelY - 11}
+                        width="124"
+                        height="22"
+                        rx="11"
+                        className="fill-blue-500/10 dark:fill-blue-500/20 stroke-blue-500/50 dark:stroke-cyan-400/60"
+                        strokeWidth="1.2"
+                      />
+                      <circle
+                        cx={node.labelX - 44}
+                        cy={node.labelY}
+                        r="3"
+                        className="fill-blue-500 dark:fill-cyan-400 animate-pulse"
+                      />
+                      <text
+                        x={node.labelX + 4}
+                        y={node.labelY}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        className="fill-blue-600 dark:fill-cyan-400 font-mono text-[11px] font-bold tracking-wider"
+                      >
+                        AHMEDABAD HQ
+                      </text>
+                    </g>
+                  );
+                }
+
+                // Sleek, minimal city tags
+                const labelWidth = node.name.length * 7.5 + 16;
+                const rectX =
+                  node.anchor === "end"
+                    ? node.labelX - labelWidth
+                    : node.anchor === "start"
+                    ? node.labelX
+                    : node.labelX - labelWidth / 2;
+
+                return (
+                  <g key={`label-${node.id}`}>
+                    <rect
+                      x={rectX}
+                      y={node.labelY - 9}
+                      width={labelWidth}
+                      height="18"
+                      rx="9"
+                      className="fill-white/85 dark:fill-[#0c0c0e]/85 stroke-neutral-200/90 dark:stroke-white/10"
+                      strokeWidth="0.75"
+                    />
+                    <text
+                      x={node.labelX}
+                      y={node.labelY}
+                      textAnchor={node.anchor || "middle"}
+                      dominantBaseline="central"
+                      className="fill-neutral-800 dark:fill-neutral-200 font-mono text-[10.5px] font-semibold tracking-wide"
+                    >
+                      {node.name}
+                    </text>
+                  </g>
+                );
+              })}
 
               {/* Gradients and Filters Definition */}
               <defs>
