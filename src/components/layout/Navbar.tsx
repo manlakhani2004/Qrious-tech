@@ -768,21 +768,8 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* Right Actions: Kiro-Style Command+K Search + Theme Toggle + Liquid Expanding Bubble CTA Button */}
+          {/* Right Actions: Theme Toggle + Liquid Expanding Bubble CTA Button */}
           <div className="hidden lg:flex items-center space-x-3">
-            {/* Command+K Search Trigger (Kiro style) */}
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="flex items-center space-x-2 px-2.5 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-xs text-neutral-500 dark:text-neutral-400 hover:border-neutral-300 dark:hover:border-white/20 transition-all font-mono cursor-pointer"
-              title="Quick Search (⌘K)"
-            >
-              <Search className="w-3.5 h-3.5 text-neutral-500 dark:text-neutral-400" />
-              <span className="text-[11px] uppercase tracking-wider font-semibold">Search</span>
-              <kbd className="text-[10px] bg-neutral-200/70 dark:bg-white/10 px-1 py-0.5 rounded-[2px] text-neutral-600 dark:text-neutral-300">
-                ⌘K
-              </kbd>
-            </button>
-
             <ThemeToggle />
 
             {/* Kiro.dev Signature Radial Expansion CTA Button */}
@@ -799,15 +786,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Actions: Search + ThemeToggle + Hamburger */}
+          {/* Mobile Actions: ThemeToggle + Hamburger */}
           <div className="lg:hidden flex items-center space-x-2">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="p-2 rounded-[2px] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              aria-label="Search"
-            >
-              <Search className="w-4 h-4" />
-            </button>
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

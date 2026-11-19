@@ -283,16 +283,6 @@ export default function OpeningLoader({ onComplete }: OpeningLoaderProps) {
           )}
         </div>
       </div>
-
-      {/* Subtle Skip Hint (Non-intrusive, luxury typography) */}
-      <div
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2 px-3 py-1.5 rounded-[2px] bg-white/[0.04] border border-white/10 text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest transition-opacity duration-300 hover:text-neutral-300 ${
-          isDone ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
-        <span>Click anywhere or press ESC to skip</span>
-      </div>
     </div>
   );
 }

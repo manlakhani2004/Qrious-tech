@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Terminal, Copy, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import HeroInteractiveCanvas from "./HeroInteractiveCanvas";
 import HeroInteractiveConsole from "./HeroInteractiveConsole";
@@ -10,15 +10,6 @@ import HeroInteractiveConsole from "./HeroInteractiveConsole";
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyCommand = (cmd: string) => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(cmd);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
 
   // Clear, direct AI headers focused on providing AI to businesses
   const heroSlides = [
@@ -88,53 +79,6 @@ export default function HeroSection() {
               }}
               className="max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto"
             >
-              {/* Kiro-Style "What's New" Live Radar Ticker */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: -10 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
-                  }
-                }}
-                className="mb-3.5 inline-block"
-              >
-                <Link
-                  href="/services/ai-ml-development"
-                  className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-white/[0.05] border border-neutral-200/90 dark:border-white/10 text-xs font-mono hover:border-purple-500/50 dark:hover:border-purple-400/50 transition-all duration-200 group backdrop-blur-md"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  <span className="font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider text-[10.5px]">
-                    What’s New
-                  </span>
-                  <span className="text-neutral-300 dark:text-neutral-700">|</span>
-                  <span className="text-neutral-700 dark:text-neutral-300 font-sans font-medium text-[11.5px]">
-                    Autonomous Swarms v4.2 • Rapid Agile Delivery
-                  </span>
-                  <ArrowRight className="w-3 h-3 text-neutral-400 group-hover:translate-x-0.5 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-all" />
-                </Link>
-              </motion.div>
-
-              {/* Pillar Badge */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -25 },
-                  visible: {
-                    opacity: 1,
-                    x: 0,
-                    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
-                  }
-                }}
-                className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-md"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
-                <span>{heroSlides[currentSlide].badge}</span>
-              </motion.div>
-
               {/* Main Headline */}
               <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-[68px] xl:text-[76px] 2xl:text-[90px] 3xl:text-[102px] font-extrabold tracking-tight text-black dark:text-white max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto leading-[1.12] mb-5 break-words">
                 <motion.span
@@ -242,35 +186,6 @@ export default function HeroSection() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </motion.div>
-        </motion.div>
-
-        {/* Kiro-Style Interactive Quick CLI / SDK Install Command Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-mono text-neutral-500 dark:text-neutral-400"
-        >
-          <div className="flex items-center space-x-2 px-3 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-black/60 border border-neutral-200/90 dark:border-white/10 shadow-xs backdrop-blur-sm">
-            <Terminal className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500 shrink-0" />
-            <span className="text-neutral-400 dark:text-neutral-600 select-none">$</span>
-            <span className="text-neutral-800 dark:text-neutral-200 font-medium">curl -fsSL https://qtech.ai/install | bash</span>
-            <button
-              onClick={() => handleCopyCommand("curl -fsSL https://qtech.ai/install | bash")}
-              className="p-1 rounded-[2px] hover:bg-neutral-200 dark:hover:bg-white/10 text-neutral-600 dark:text-neutral-300 transition-colors ml-1 cursor-pointer"
-              title="Copy install command"
-              aria-label="Copy CLI command"
-            >
-              {copied ? (
-                <Check className="w-3.5 h-3.5 text-emerald-500" />
-              ) : (
-                <Copy className="w-3.5 h-3.5" />
-              )}
-            </button>
-          </div>
-          <span className="text-[11px] text-neutral-400 dark:text-neutral-500 hidden sm:inline">
-            Production Pods • 100% Client IP Ownership
-          </span>
         </motion.div>
 
         {/* Interactive AI Architecture Command Console (Vercel & Stripe style with 3D Parallax & Live Node Telemetry) */}
