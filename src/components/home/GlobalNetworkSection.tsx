@@ -119,7 +119,7 @@ export default function GlobalNetworkSection() {
     <section
       id="global-network"
       onMouseMove={handleMouseMove}
-      className="py-14 sm:py-18 lg:py-22 bg-transparent border-b border-neutral-100 dark:border-neutral-800 transition-colors duration-200 relative overflow-hidden"
+      className="py-14 sm:py-18 lg:py-22 bg-transparent border-b border-neutral-200/80 dark:border-white/[0.08] transition-colors duration-200 relative overflow-hidden"
     >
       {/* GitHub-style Ambient Neon Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] 2xl:w-[1200px] h-[450px] bg-gradient-to-tr from-blue-600/10 via-cyan-500/10 to-indigo-600/10 blur-[140px] pointer-events-none -z-10 rounded-full" />
@@ -135,12 +135,12 @@ export default function GlobalNetworkSection() {
       <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
         {/* Section Header */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] text-xs font-semibold text-[#09090b] dark:text-[#f8f9fa] shadow-2xs mb-4 backdrop-blur-sm">
             <Globe className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
             <span>Global Delivery &amp; Dedicated Pods</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[44px] font-extrabold text-black dark:text-white tracking-tight leading-[1.14] mb-3">
+          <h2 className="text-3xl sm:text-5xl lg:text-[44px] font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight leading-[1.14] mb-3">
             Engineered In Ahmedabad. <br />
             <span className="text-neutral-500 dark:text-neutral-400 font-normal">
               Deployed For Enterprises Worldwide.
@@ -354,7 +354,7 @@ export default function GlobalNetworkSection() {
                       width={labelWidth}
                       height="18"
                       rx="9"
-                      className="fill-white/85 dark:fill-[#0c0c0e]/85 stroke-neutral-200/90 dark:stroke-white/10"
+                      className="fill-white dark:fill-[#0c0c10] stroke-neutral-200/80 dark:stroke-white/[0.08]"
                       strokeWidth="0.75"
                     />
                     <text
@@ -362,7 +362,7 @@ export default function GlobalNetworkSection() {
                       y={node.labelY}
                       textAnchor={node.anchor || "middle"}
                       dominantBaseline="central"
-                      className="fill-neutral-800 dark:fill-neutral-200 font-mono text-[10.5px] font-semibold tracking-wide"
+                      className="fill-[#09090b] dark:fill-[#f8f9fa] font-mono text-[10.5px] font-semibold tracking-wide"
                     >
                       {node.name}
                     </text>
@@ -396,13 +396,13 @@ export default function GlobalNetworkSection() {
         </div>
 
         {/* Bottom Metrics Bar - Open, Minimalist 4-Column Layout on the continuous grid */}
-        <ScrollReveal className="pt-8 sm:pt-10 border-t border-neutral-200/80 dark:border-white/10">
+        <ScrollReveal className="pt-8 sm:pt-10 border-t border-neutral-200/80 dark:border-white/[0.08]">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div>
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                 100<span className="text-blue-500 dark:text-cyan-400">+</span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
+              <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mt-2">
                 In-House Engineers
               </div>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
@@ -411,10 +411,10 @@ export default function GlobalNetworkSection() {
             </div>
 
             <div>
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                 500<span className="text-blue-500 dark:text-cyan-400">+</span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
+              <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mt-2">
                 Global Deployments
               </div>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
@@ -423,10 +423,10 @@ export default function GlobalNetworkSection() {
             </div>
 
             <div>
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                 100<span className="text-blue-500 dark:text-cyan-400">%</span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
+              <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mt-2">
                 Direct IP Ownership
               </div>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
@@ -435,10 +435,10 @@ export default function GlobalNetworkSection() {
             </div>
 
             <div>
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
                 24<span className="text-blue-500 dark:text-cyan-400">/</span>7
               </div>
-              <div className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mt-2">
+              <div className="text-xs sm:text-sm font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mt-2">
                 Continuous Sprints
               </div>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">

@@ -204,11 +204,14 @@ export default function TechMarqueeSection() {
         </h2>
       </ScrollReveal>
 
-      {/* Marquee Row 1 (Auto-scrolling Left) */}
-      <div className="relative w-full overflow-hidden mb-5 py-3">
+      {/* Marquee Row 1 (Auto-scrolling Left with 3D Runway Perspective) */}
+      <div
+        style={{ perspective: "1000px" }}
+        className="relative w-full overflow-hidden mb-5 py-3"
+      >
         {/* Soft edge gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#060608] via-white/80 dark:via-[#060608]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#060608] via-white/80 dark:via-[#060608]/80 to-transparent z-10 pointer-events-none" />
 
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -218,18 +221,19 @@ export default function TechMarqueeSection() {
             duration: 58,
             ease: "linear"
           }}
+          style={{ transform: "rotateX(3deg)" }}
           className="flex items-center space-x-4 sm:space-x-5 w-max"
         >
           {[...techRow1, ...techRow1, ...techRow1, ...techRow1].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
-              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
+              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-[#f8f9fa] dark:bg-[#14141a] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-200/60 dark:border-white/[0.08]">
                 {tech.icon}
               </span>
               <div className="flex flex-col text-left">
-                <span className="text-sm sm:text-[15px] font-bold text-black dark:text-white tracking-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
+                <span className="text-sm sm:text-[15px] font-bold text-[#09090b] dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-colors">
                   {tech.name}
                 </span>
                 <span className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-medium">
@@ -241,11 +245,14 @@ export default function TechMarqueeSection() {
         </motion.div>
       </div>
 
-      {/* Marquee Row 2 (Auto-scrolling Right / Reverse) */}
-      <div className="relative w-full overflow-hidden py-3">
+      {/* Marquee Row 2 (Auto-scrolling Right / Reverse with 3D Runway Perspective) */}
+      <div
+        style={{ perspective: "1000px" }}
+        className="relative w-full overflow-hidden py-3"
+      >
         {/* Soft edge gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#09090b] via-white/80 dark:via-[#09090b]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-white dark:from-[#060608] via-white/80 dark:via-[#060608]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-white dark:from-[#060608] via-white/80 dark:via-[#060608]/80 to-transparent z-10 pointer-events-none" />
 
         <motion.div
           animate={{ x: ["-50%", "0%"] }}
@@ -255,18 +262,19 @@ export default function TechMarqueeSection() {
             duration: 58,
             ease: "linear"
           }}
+          style={{ transform: "rotateX(3deg)" }}
           className="flex items-center space-x-4 sm:space-x-5 w-max"
         >
           {[...techRow2, ...techRow2, ...techRow2, ...techRow2].map((tech, idx) => (
             <div
               key={idx}
-              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-[#f8f8f9] dark:bg-[#121215] border border-transparent hover:border-neutral-200/60 dark:hover:border-neutral-800 shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-1 transition-all duration-300 whitespace-nowrap cursor-default group"
+              className="flex items-center space-x-3.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-[2px] bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap cursor-default group"
             >
-              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-white dark:bg-[#1f1f23] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-100 dark:border-neutral-800">
+              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-[2px] bg-[#f8f9fa] dark:bg-[#14141a] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-neutral-200/60 dark:border-white/[0.08]">
                 {tech.icon}
               </span>
               <div className="flex flex-col text-left">
-                <span className="text-sm sm:text-[15px] font-bold text-black dark:text-white tracking-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
+                <span className="text-sm sm:text-[15px] font-bold text-[#09090b] dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-colors">
                   {tech.name}
                 </span>
                 <span className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-medium">

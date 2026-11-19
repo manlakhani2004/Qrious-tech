@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -12,10 +12,11 @@ import {
   ChevronRight,
   Building2,
   Stethoscope,
-  Laptop
+  Laptop,
+  Sparkles
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
 
 interface CaseStory {
   id: string;
@@ -24,10 +25,11 @@ interface CaseStory {
   headline: string;
   headache: string;
   solution: string;
-  beforeAfter: { before: string; after: string; metricLabel: string };
+  beforeAfter: { before: string; after: string; metricLabel: string; percentReduction: number };
   href: string;
   icon: typeof Building2;
   accent: string;
+  beamColor: string;
 }
 
 const STORIES: CaseStory[] = [
@@ -41,11 +43,13 @@ const STORIES: CaseStory[] = [
     beforeAfter: {
       before: "4 hours daily",
       after: "30 seconds",
-      metricLabel: "Reconciliation Time"
+      metricLabel: "Reconciliation Time",
+      percentReduction: 98
     },
     href: "/case-studies",
     icon: Building2,
-    accent: "text-blue-600 dark:text-sky-400"
+    accent: "text-blue-600 dark:text-sky-400",
+    beamColor: "from-blue-500 via-sky-400 to-indigo-500"
   },
   {
     id: "healthcare",
@@ -57,11 +61,13 @@ const STORIES: CaseStory[] = [
     beforeAfter: {
       before: "20 min per patient",
       after: "2 seconds",
-      metricLabel: "Pre-Auth Lookup"
+      metricLabel: "Pre-Auth Lookup",
+      percentReduction: 99
     },
     href: "/case-studies",
     icon: Stethoscope,
-    accent: "text-purple-600 dark:text-purple-400"
+    accent: "text-purple-600 dark:text-purple-400",
+    beamColor: "from-purple-500 via-pink-400 to-indigo-500"
   },
   {
     id: "saas",
@@ -73,13 +79,162 @@ const STORIES: CaseStory[] = [
     beforeAfter: {
       before: "14-hour delay",
       after: "Instant (24/7)",
-      metricLabel: "Lead Response Time"
+      metricLabel: "Lead Response Time",
+      percentReduction: 95
     },
     href: "/case-studies",
     icon: Laptop,
-    accent: "text-emerald-600 dark:text-emerald-400"
+    accent: "text-emerald-600 dark:text-emerald-400",
+    beamColor: "from-emerald-500 via-teal-400 to-blue-500"
   }
 ];
+
+function ShowcaseStoryCard({
+  story,
+  isSelected,
+  onClick
+}: {
+  story: CaseStory;
+  isSelected: boolean;
+  onClick: () => void;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), {
+    stiffness: 240,
+    damping: 28
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-4, 4]), {
+    stiffness: 240,
+    damping: 28
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        perspective: 1100,
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d"
+      }}
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 350, damping: 25 }}
+      className={`relative rounded-[2px] border p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden ${
+        isSelected
+          ? "bg-white dark:bg-[#0c0c10] border-neutral-900 dark:border-white/30 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_12px_36px_rgba(0,0,0,0.06)] dark:shadow-2xl scale-[1.01]"
+          : "bg-white dark:bg-[#0c0c10] border-neutral-200/80 dark:border-white/[0.08] hover:border-neutral-400 dark:hover:border-white/[0.18] shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.02)]"
+      }`}
+    >
+      {/* Jimo-style animated top border beam on selected card */}
+      {isSelected && (
+        <div
+          className={`absolute top-0 inset-x-0 h-px bg-gradient-to-r ${story.beamColor} pointer-events-none z-20`}
+        />
+      )}
+
+      <div>
+        {/* Top Metadata: Industry & Client */}
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center space-x-1.5">
+            {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />}
+            <span>{story.industry}</span>
+          </span>
+          <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 font-medium">
+            {story.client}
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h3 className="text-lg sm:text-xl font-bold text-[#09090b] dark:text-white tracking-tight mb-3">
+          {story.headline}
+        </h3>
+
+        {/* The Real Headache */}
+        <div className="mb-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+          <strong className="text-neutral-900 dark:text-neutral-200 block mb-1">
+            The Challenge:
+          </strong>
+          {story.headache}
+        </div>
+
+        {/* What We Shipped */}
+        <div className="mb-6 text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal p-3 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/70 dark:border-white/[0.08]">
+          <strong className="text-[#09090b] dark:text-white block mb-1 font-semibold">
+            What We Built:
+          </strong>
+          {story.solution}
+        </div>
+      </div>
+
+      {/* Before vs After Impact Box with Jimo Kinetic Meter */}
+      <div>
+        <div className="pt-4 border-t border-neutral-200/70 dark:border-white/[0.08] mb-4 flex items-center justify-between">
+          <div>
+            <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+              Before
+            </div>
+            <div className="text-xs font-mono line-through text-neutral-400">
+              {story.beforeAfter.before}
+            </div>
+          </div>
+
+          <ArrowRight className="w-3.5 h-3.5 text-neutral-300 dark:text-neutral-600 shrink-0 mx-2" />
+
+          <div className="text-right">
+            <div className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+              {story.beforeAfter.metricLabel}
+            </div>
+            <div className="text-sm font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
+              {story.beforeAfter.after}
+            </div>
+          </div>
+        </div>
+
+        {/* Jimo-style micro-telemetry progress bar */}
+        <div className="mb-4">
+          <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400 dark:text-neutral-500 mb-1">
+            <span>VELOCITY EFFICIENCY</span>
+            <span className="font-bold text-emerald-600 dark:text-emerald-400">+{story.beforeAfter.percentReduction}%</span>
+          </div>
+          <div className="h-1 w-full bg-neutral-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-emerald-500 to-sky-500 transition-all duration-500"
+              style={{ width: `${story.beforeAfter.percentReduction}%` }}
+            />
+          </div>
+        </div>
+
+        <Link
+          href={story.href}
+          className="inline-flex items-center space-x-1.5 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
+        >
+          <span>Read Full Case Study</span>
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function AnimosProductionShowcaseSection() {
   const [activeStory, setActiveStory] = useState(0);
@@ -97,6 +252,13 @@ export default function AnimosProductionShowcaseSection() {
       id="showcase"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-200/80 dark:border-white/10 relative transition-colors duration-200 overflow-hidden"
     >
+      {/* Jimo-Style Concentric Coordinate Depth Rings in Background */}
+      <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[650px] h-[650px] pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/10" />
+        <div className="absolute inset-[25%] rounded-full border border-dashed border-neutral-400/20 dark:border-white/[0.06]" />
+        <div className="absolute inset-[50%] rounded-full border border-neutral-400/15 dark:border-white/[0.04]" />
+      </div>
+
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[400px] bg-gradient-to-r from-blue-600/6 via-cyan-500/6 to-purple-600/6 blur-[140px] pointer-events-none -z-10 rounded-full" />
 
@@ -140,89 +302,16 @@ export default function AnimosProductionShowcaseSection() {
           </div>
         </ScrollReveal>
 
-        {/* 3 Human Story Cards Grid (Stripe & Vercel Style) */}
+        {/* 3 Human Story Cards Grid with 3D Spatial Spring Physics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {STORIES.map((story, idx) => {
-            const Icon = story.icon;
-            const isSelected = idx === activeStory;
-            return (
-              <div
-                key={story.id}
-                onClick={() => setActiveStory(idx)}
-                className={`rounded-[2px] border p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer ${
-                  isSelected
-                    ? "bg-white dark:bg-[#111114] border-black dark:border-white/30 shadow-lg scale-[1.01]"
-                    : "bg-neutral-50/70 dark:bg-white/[0.02] border-neutral-200/80 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-50 dark:hover:bg-white/[0.04]"
-                }`}
-              >
-                <div>
-                  {/* Top Metadata: Industry & Client */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      {story.industry}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 font-medium">
-                      {story.client}
-                    </span>
-                  </div>
-
-                  {/* Headline */}
-                  <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white tracking-tight mb-3">
-                    {story.headline}
-                  </h3>
-
-                  {/* The Real Headache */}
-                  <div className="mb-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
-                    <strong className="text-neutral-800 dark:text-neutral-200 block mb-1">
-                      The Challenge:
-                    </strong>
-                    {story.headache}
-                  </div>
-
-                  {/* What We Shipped */}
-                  <div className="mb-6 text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal p-3 rounded-[2px] bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.06]">
-                    <strong className="text-black dark:text-white block mb-1 font-semibold">
-                      What We Built:
-                    </strong>
-                    {story.solution}
-                  </div>
-                </div>
-
-                {/* Before vs After Impact Box */}
-                <div>
-                  <div className="pt-4 border-t border-neutral-200/60 dark:border-white/10 mb-4 flex items-center justify-between">
-                    <div>
-                      <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
-                        Before
-                      </div>
-                      <div className="text-xs font-mono line-through text-neutral-400">
-                        {story.beforeAfter.before}
-                      </div>
-                    </div>
-
-                    <ArrowRight className="w-3.5 h-3.5 text-neutral-300 dark:text-neutral-600 shrink-0 mx-2" />
-
-                    <div className="text-right">
-                      <div className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                        {story.beforeAfter.metricLabel}
-                      </div>
-                      <div className="text-sm font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
-                        {story.beforeAfter.after}
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={story.href}
-                    className="inline-flex items-center space-x-1.5 text-xs font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors group"
-                  >
-                    <span>Read Full Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+          {STORIES.map((story, idx) => (
+            <ShowcaseStoryCard
+              key={story.id}
+              story={story}
+              isSelected={idx === activeStory}
+              onClick={() => setActiveStory(idx)}
+            />
+          ))}
         </div>
       </div>
     </section>

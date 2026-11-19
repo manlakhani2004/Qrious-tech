@@ -302,28 +302,20 @@ export default function Navbar() {
       <div
         className={`w-full transition-all duration-300 border-b ${
           scrolled
-            ? "bg-white/90 dark:bg-[#070709]/90 backdrop-blur-xl border-neutral-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
-            : "bg-white/70 dark:bg-[#070709]/70 backdrop-blur-md border-neutral-200/50 dark:border-white/[0.04] py-3 sm:py-3.5"
+            ? "bg-white/90 dark:bg-[#060608]/90 backdrop-blur-xl border-neutral-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
+            : "bg-white/70 dark:bg-[#060608]/70 backdrop-blur-md border-neutral-200/50 dark:border-white/[0.04] py-3 sm:py-3.5"
         }`}
       >
         <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
-          {/* Authentic Qrious Tech Brand Logo */}
-          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5">
+          {/* Authentic Qrious Tech Brand Logo (Icon Mark Only) */}
+          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5 ml-1.5 sm:ml-2.5 md:ml-3.5" aria-label="Qrious Tech Home">
             <Image
-              src="/images/qrious-tech-team-logo.png"
-              alt="Qrious Tech Team LLP"
-              width={220}
-              height={32}
+              src="/images/qt-logo/mark.png"
+              alt="Qrious Tech"
+              width={44}
+              height={44}
               priority
-              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden"
-            />
-            <Image
-              src="/images/qrious-tech-team-logo-dark.png"
-              alt="Qrious Tech Team LLP"
-              width={220}
-              height={32}
-              priority
-              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
           </Link>
 
@@ -359,7 +351,7 @@ export default function Navbar() {
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
-                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                  <Sparkles className="w-3.5 h-3.5 text-neutral-800 dark:text-neutral-200" />
                   <span>AI Solutions</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -371,7 +363,7 @@ export default function Navbar() {
               {/* Services Mega Menu */}
               {activeDropdown === "services" && (
                 <div className="absolute top-full left-0 w-[720px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)]">
+                  <div className="bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)]">
                     <div className="mb-4 pb-3 border-b border-neutral-100 dark:border-neutral-800">
                       <div className="flex items-center justify-between">
                         <h4 className="text-xs font-bold text-black dark:text-white uppercase tracking-wider">
@@ -518,9 +510,9 @@ export default function Navbar() {
               {/* Grouped Industries Mega Menu */}
               {activeDropdown === "industries" && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] xl:w-[940px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-neutral-800 rounded-[2px] p-6 shadow-2xl grid grid-cols-12 gap-6">
+                  <div className="bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl grid grid-cols-12 gap-6">
                     {/* Left: Featured Industry Pods Card */}
-                    <div className="col-span-4 bg-[#f8f8f9] dark:bg-[#18181b] rounded-[2px] p-5 border border-neutral-200/70 dark:border-neutral-800 flex flex-col justify-between">
+                    <div className="col-span-4 bg-[#f8f9fa] dark:bg-[#14141a] rounded-[2px] p-5 border border-neutral-200/70 dark:border-white/[0.06] flex flex-col justify-between">
                       <div>
                         <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
                           <ShieldCheck className="w-5 h-5 text-neutral-900 dark:text-neutral-100" />
@@ -632,12 +624,12 @@ export default function Navbar() {
               {/* Work Dropdown */}
               {activeDropdown === "work" && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-5 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] space-y-2">
+                  <div className="bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] rounded-[2px] p-5 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] space-y-2">
                     {workItems.map((item, idx) => (
                       <Link
                         key={idx}
                         href={item.href}
-                        className="p-3.5 rounded-[2px] bg-[#f8f8f9] dark:bg-[#18181b] hover:bg-neutral-100/80 dark:hover:bg-[#202025] transition-all flex items-start space-x-3 group"
+                        className="p-3.5 rounded-[2px] bg-[#f8f9fa] dark:bg-[#14141a] hover:bg-neutral-100/80 dark:hover:bg-[#1c1c24] border border-transparent hover:border-neutral-200/60 dark:hover:border-white/[0.08] transition-all flex items-start space-x-3 group"
                       >
                         <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 group-hover:border-neutral-300 dark:group-hover:border-neutral-600 transition-all text-neutral-900 dark:text-neutral-100">
                           {item.icon}
@@ -721,9 +713,9 @@ export default function Navbar() {
               {/* Company Mega Menu */}
               {activeDropdown === "company" && (
                 <div className="absolute top-full right-0 w-[580px] pt-3 z-50">
-                  <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] grid grid-cols-12 gap-5">
+                  <div className="bg-white dark:bg-[#0c0c10] border border-neutral-200/80 dark:border-white/[0.08] rounded-[2px] p-6 shadow-2xl dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_24px_50px_rgba(0,0,0,0.8)] grid grid-cols-12 gap-5">
                     {/* Left Feature Card */}
-                    <div className="col-span-5 bg-[#f8f8f9] dark:bg-[#18181b] rounded-[2px] p-5 flex flex-col justify-between border border-neutral-100 dark:border-neutral-800">
+                    <div className="col-span-5 bg-[#f8f9fa] dark:bg-[#14141a] rounded-[2px] p-5 flex flex-col justify-between border border-neutral-200/70 dark:border-white/[0.06]">
                       <div>
                         <div className="w-9 h-9 rounded-[2px] bg-white dark:bg-[#27272a] border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-3 shadow-2xs">
                           <Building2 className="w-4 h-4 text-neutral-900 dark:text-neutral-100" />
@@ -802,7 +794,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer: Floating Frosted Card */}
         {mobileMenuOpen && (
-          <div className="pointer-events-auto lg:hidden mt-3 p-5 rounded-[2px] bg-white/95 dark:bg-[#121215]/95 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-2xl max-h-[80vh] overflow-y-auto space-y-3">
+          <div className="pointer-events-auto lg:hidden mt-3 p-5 rounded-[2px] bg-white/95 dark:bg-[#0c0c10]/95 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-2xl max-h-[80vh] overflow-y-auto space-y-3">
             {/* AI Solutions Accordion */}
             <div>
               <button

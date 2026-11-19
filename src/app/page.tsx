@@ -1,10 +1,9 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import TechMarqueeSection from "@/components/home/TechMarqueeSection";
 import ScrollTextRevealSection from "@/components/home/ScrollTextRevealSection";
 import AboutProductIdeaSection from "@/components/home/AboutProductIdeaSection";
-import AnimosProductionShowcaseSection from "@/components/home/AnimosProductionShowcaseSection";
+import JimoInteractiveScrollStudio from "@/components/home/JimoInteractiveScrollStudio";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import BusinessAIIntegrationRoadmapSection from "@/components/home/BusinessAIIntegrationRoadmapSection";
 import GlobalNetworkSection from "@/components/home/GlobalNetworkSection";
@@ -12,7 +11,7 @@ import OpeningLoader from "@/components/ui/OpeningLoader";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#0c0407] dark:text-[#f4f4f5] flex flex-col transition-colors duration-200 relative isolate">
+    <div className="min-h-screen bg-white dark:bg-[#060608] text-[#09090b] dark:text-[#f8f9fa] flex flex-col transition-colors duration-200 relative isolate">
       {/* 0. Luxury Dual-Curtain Opening Loader & Typewriter (aicommon.creamu.co.jp style) */}
       <OpeningLoader />
 
@@ -20,32 +19,29 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* 2. Hero Section: AI Positioning + Console + Peeking Mascot */}
+        {/* 1. Hero Section: AI Positioning + Console + Peeking Mascot */}
         <HeroSection />
 
-        {/* 3. Tech Stack Marquee */}
-        <TechMarqueeSection />
-
-        {/* 4. Animos-Style Scroll-Driven Manifesto Reveal */}
+        {/* 2. Animos-Style Scroll-Driven Manifesto Reveal */}
         <ScrollTextRevealSection />
 
-        {/* 5. Core Enterprise AI Capabilities: Open 3-Pillar Architecture */}
+        {/* 3. Core Enterprise AI Capabilities: Serko Disruption Studio */}
         <AboutProductIdeaSection />
 
-        {/* 6. Animos-Style Production Showcase Stream */}
-        <AnimosProductionShowcaseSection />
+        {/* 4. Jimo-Style Sticky 3D Interactive Scroll Studio (One Engine • Three Modes) */}
+        <JimoInteractiveScrollStudio />
 
-        {/* 7. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
+        {/* 5. Enterprise Velocity & Performance Matrix: Traditional vs QTech AI Engine */}
         <WhyChooseUsSection />
 
-        {/* 8. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
+        {/* 6. How We Bring AI Into Your Business: 3-Step Adoption Roadmap */}
         <BusinessAIIntegrationRoadmapSection />
 
-        {/* 9. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
+        {/* 7. Global Delivery Network: Ambient Connected Background Arcs & Stats */}
         <GlobalNetworkSection />
       </main>
 
-      {/* 10. Minimalist Enterprise Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

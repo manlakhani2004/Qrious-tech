@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   Sparkles,
   CheckCircle2,
@@ -8,7 +8,7 @@ import {
   MoveHorizontal
 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 
 // 5 Core Capability Dimensions
 interface CapabilityDimension {
@@ -150,17 +150,52 @@ const DIMENSIONS: CapabilityDimension[] = [
 export default function WhyChooseUsSection() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [sliderPct, setSliderPct] = useState(50); // 0 (Legacy) to 100 (Qrious)
+  const [isDragging, setIsDragging] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const manualScrollRef = useRef(false);
+
+  // Track scroll progress within this sticky section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 220,
+    damping: 28,
+    restDelta: 0.001
+  });
+
+  // Automatically switch dimensions as the user scrolls
+  useEffect(() => {
+    return smoothProgress.on("change", (latest) => {
+      if (manualScrollRef.current) return;
+      const clamped = Math.max(0, Math.min(0.999, latest));
+      const step = Math.min(DIMENSIONS.length - 1, Math.floor(clamped * DIMENSIONS.length));
+      setActiveTabIdx(step);
+    });
+  }, [smoothProgress]);
 
   const activeDim = DIMENSIONS[activeTabIdx];
 
-  // Motion cursor coordinates for interactive 3D tilt & dynamic glow
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 200, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 200, damping: 30 });
+  // Smooth click navigation to a dimension
+  const handleTabClick = (idx: number) => {
+    manualScrollRef.current = true;
+    setActiveTabIdx(idx);
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY + rect.top;
+    const totalScrollable = rect.height - window.innerHeight;
+    const targetFraction = (idx + 0.45) / DIMENSIONS.length;
+    const targetY = scrollTop + totalScrollable * targetFraction;
+    window.scrollTo({ top: targetY, behavior: "smooth" });
+    setTimeout(() => {
+      manualScrollRef.current = false;
+    }, 750);
+  };
 
+  // Drag calculation
   const updateSliderFromClientX = useCallback((clientX: number) => {
     if (!stageRef.current) return;
     const rect = stageRef.current.getBoundingClientRect();
@@ -170,33 +205,41 @@ export default function WhyChooseUsSection() {
   }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    isDraggingRef.current = true;
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    setIsDragging(true);
     updateSliderFromClientX(e.clientX);
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!stageRef.current) return;
-    const rect = stageRef.current.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width - 0.5;
-    const relY = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(relX * 24);
-    mouseY.set(relY * 24);
+  // Robust global window drag listeners so drag never breaks or gets stuck
+  useEffect(() => {
+    if (!isDragging) return;
 
-    if (isDraggingRef.current) {
+    const handlePointerMove = (e: PointerEvent) => {
       updateSliderFromClientX(e.clientX);
-    }
-  };
+    };
 
-  const handlePointerUp = (e: React.PointerEvent) => {
-    isDraggingRef.current = false;
-    (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
-  };
+    const handlePointerUp = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointercancel", handlePointerUp);
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointercancel", handlePointerUp);
+    };
+  }, [isDragging, updateSliderFromClientX]);
+
+  // Reactive lens opacities based on sliderPct
+  const legacyOpacity = Math.max(0.4, Math.min(1, 0.4 + (sliderPct / 100) * 0.6));
+  const qriousOpacity = Math.max(0.4, Math.min(1, 0.4 + ((100 - sliderPct) / 100) * 0.6));
 
   return (
     <section
       id="why-choose-us"
-      className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-100 dark:border-neutral-800 relative transition-colors duration-200 overflow-hidden isolate"
+      className="py-16 sm:py-24 bg-transparent border-b border-neutral-200/80 dark:border-white/[0.08] relative transition-colors duration-200 isolate"
     >
       {/* Precision Crosshair Reticle Matrix (Reduced Density & Whisper-Quiet Opacity) */}
       <div className="absolute inset-0 pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_75%_60%_at_50%_50%,#000_30%,transparent_90%)] opacity-30 dark:opacity-25">
@@ -216,239 +259,257 @@ export default function WhyChooseUsSection() {
         </svg>
       </div>
 
-      {/* Subtle Atmospheric Ambient Glow (Stripe / Animos style) */}
+      {/* Jimo-Style Concentric Coordinate Depth Rings */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/10" />
+        <div className="absolute inset-[20%] rounded-full border border-dashed border-neutral-400/20 dark:border-white/[0.06]" />
+        <div className="absolute inset-[40%] rounded-full border border-neutral-400/15 dark:border-white/[0.04]" />
+        <div className="absolute inset-[60%] rounded-full border border-dashed border-neutral-400/10 dark:border-white/[0.03]" />
+      </div>
+
+      {/* Subtle Atmospheric Ambient Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1000px] h-[350px] bg-gradient-to-r from-blue-500/8 via-indigo-500/8 to-purple-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
-        {/* ============================================================== */}
-        {/* SECTION HEADER: MINIMALIST & BOLD (NO CARDS) */}
-        {/* ============================================================== */}
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs mb-4 backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
-            <span>The Enterprise Engineering Difference</span>
+      {/* Sticky Scroll-Driven Experience Container */}
+      <div ref={containerRef} className="relative h-[260vh] sm:h-[290vh] w-full">
+        {/* Sticky Viewport Window */}
+        <div className="sticky top-16 sm:top-20 max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 flex flex-col justify-between py-4">
+          
+          {/* ============================================================== */}
+          {/* SECTION HEADER: MINIMALIST & BOLD (EXACT ORIGINAL DESIGN) */}
+          {/* ============================================================== */}
+          <ScrollReveal className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-[2px] bg-[#f8f9fa] dark:bg-[#121217] border border-neutral-200/80 dark:border-white/[0.08] text-xs font-semibold text-[#09090b] dark:text-[#f8f9fa] shadow-2xs mb-3 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+              <span>The Enterprise Engineering Difference</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight leading-[1.14] mb-3">
+              Why Enterprise Leaders Choose <br className="hidden sm:inline" />
+              Qrious Tech Over Legacy Agencies
+            </h2>
+
+            <p className="text-neutral-500 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+              Scroll down to explore each architectural dimension, or drag the lens to inspect the difference between traditional outsourcing and dedicated AI pods.
+            </p>
+          </ScrollReveal>
+
+          {/* ============================================================== */}
+          {/* OPEN CAPABILITY SELECTOR (EXACT ORIGINAL DESIGN) */}
+          {/* ============================================================== */}
+          <div className="flex items-center justify-start sm:justify-center overflow-x-auto no-scrollbar gap-2 pb-3 mb-6 sm:mb-8 border-b border-neutral-200/80 dark:border-white/[0.08]">
+            {DIMENSIONS.map((dim, idx) => {
+              const isActive = activeTabIdx === idx;
+              return (
+                <button
+                  key={dim.id}
+                  type="button"
+                  onClick={() => handleTabClick(idx)}
+                  className={`relative px-4 py-2 rounded-[2px] text-xs font-mono transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
+                    isActive
+                      ? "text-[#09090b] dark:text-[#f8f9fa] font-bold"
+                      : "text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeDimensionGlider"
+                      className="absolute inset-0 bg-[#f8f9fa] dark:bg-[#121217] rounded-[2px] border border-neutral-200/80 dark:border-white/[0.08] shadow-2xs"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                    />
+                  )}
+                  <span className="relative z-10 text-[10px] text-neutral-400 font-mono">
+                    {dim.number}
+                  </span>
+                  <span className="relative z-10">{dim.label}</span>
+                </button>
+              );
+            })}
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-black dark:text-white tracking-tight leading-[1.14] mb-4">
-            Why Enterprise Leaders Choose <br className="hidden sm:inline" />
-            Qrious Tech Over Legacy Agencies
-          </h2>
+          {/* Active Dimension Headline (Exact Original Design with AnimatePresence) */}
+          <div className="max-w-4xl mx-auto text-center mb-6 sm:mb-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeDim.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span className="text-[11px] font-mono uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-1.5">
+                  {activeDim.tagline}
+                </span>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] tracking-tight">
+                  {activeDim.headline}
+                </h3>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Drag or slide with your cursor to inspect the architectural difference between traditional offshore outsourcing and dedicated, production-grade AI pods.
-          </p>
-        </ScrollReveal>
+          {/* ============================================================== */}
+          {/* INTERACTIVE SPLIT COMPARISON LENS WITH WORKING DRAG */}
+          {/* ============================================================== */}
+          <div
+            ref={stageRef}
+            onPointerDown={handlePointerDown}
+            className="relative w-full max-w-5xl mx-auto select-none touch-none py-6 sm:py-8 cursor-ew-resize"
+          >
+            {/* Subtle Stage Boundary Guide (Clean Top & Bottom Hairline) */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-200/80 dark:via-white/[0.08] to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-200/80 dark:via-white/[0.08] to-transparent pointer-events-none" />
 
-        {/* ============================================================== */}
-        {/* OPEN CAPABILITY SELECTOR (NO CARD BOXES!) */}
-        {/* ============================================================== */}
-        <div className="flex items-center justify-start sm:justify-center overflow-x-auto no-scrollbar gap-2 pb-4 mb-8 sm:mb-12 border-b border-neutral-100 dark:border-neutral-800">
-          {DIMENSIONS.map((dim, idx) => {
-            const isActive = activeTabIdx === idx;
-            return (
-              <button
-                key={dim.id}
-                type="button"
-                onClick={() => setActiveTabIdx(idx)}
-                className={`relative px-4 py-2.5 rounded-[2px] text-xs font-mono transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
-                  isActive
-                    ? "text-black dark:text-white font-bold"
-                    : "text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200"
+            {/* Precision Architectural Crosshairs */}
+            <span className="absolute -top-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+            <span className="absolute -top-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+            <span className="absolute -top-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
+
+            {/* Interactive Split Grid */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeDim.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+              >
+                {/* ------------------------------------------------------------ */}
+                {/* LEFT SIDE: TRADITIONAL OUTSOURCING (Muted, Grayscale) */}
+                {/* ------------------------------------------------------------ */}
+                <div
+                  style={{ opacity: legacyOpacity }}
+                  className="space-y-5 transition-opacity duration-150"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500 font-bold flex items-center space-x-2">
+                      <XCircle className="w-4 h-4 text-neutral-400" />
+                      <span>{activeDim.legacy.title}</span>
+                    </span>
+                    <span className="text-xs font-mono text-neutral-400">
+                      {activeDim.legacy.metricLabel}
+                    </span>
+                  </div>
+
+                  <div className="text-3xl sm:text-4xl font-extrabold font-mono text-neutral-400 dark:text-neutral-500 tracking-tight">
+                    {activeDim.legacy.metric}
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal">
+                    {activeDim.legacy.description}
+                  </p>
+
+                  {/* Dynamic Motion Graphic: Legacy Pipeline Stagnation */}
+                  <div className="pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] space-y-3">
+                    <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">
+                      Workflow Bottleneck Flow:
+                    </span>
+                    <div className="space-y-2">
+                      {activeDim.legacy.flow.map((step, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center space-x-2.5 text-xs font-mono text-neutral-400 dark:text-neutral-500"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                          <span>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* ------------------------------------------------------------ */}
+                {/* RIGHT SIDE: QRIOUS TECH AI ENGINEERING PODS (Vibrant, Bold) */}
+                {/* ------------------------------------------------------------ */}
+                <div
+                  style={{ opacity: qriousOpacity }}
+                  className="space-y-5 transition-opacity duration-150"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold flex items-center space-x-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                      <span>{activeDim.qrious.title}</span>
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-[2px] bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-500/20">
+                      {activeDim.qrious.badge}
+                    </span>
+                  </div>
+
+                  <div className="text-3xl sm:text-4xl font-extrabold font-mono text-[#09090b] dark:text-[#f8f9fa] tracking-tight flex items-baseline space-x-3">
+                    <span>{activeDim.qrious.metric}</span>
+                    <span className="text-xs font-sans text-neutral-400 font-medium">
+                      {activeDim.qrious.metricLabel}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
+                    {activeDim.qrious.description}
+                  </p>
+
+                  {/* Dynamic Motion Graphic: High-Velocity AI Pod Flow */}
+                  <div className="pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] space-y-3">
+                    <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-wider block font-semibold">
+                      Accelerated Autonomous Pipeline:
+                    </span>
+                    <div className="space-y-2">
+                      {activeDim.qrious.flow.map((step, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center space-x-2.5 text-xs font-mono text-[#09090b] dark:text-[#f8f9fa] font-medium"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                          <span>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* ============================================================ */}
+            {/* FULLY FUNCTIONAL DRAG DIVIDER (EXACT ORIGINAL DESIGN) */}
+            {/* ============================================================ */}
+            <div
+              className="absolute top-0 bottom-0 pointer-events-none hidden lg:block"
+              style={{ left: `${sliderPct}%` }}
+            >
+              {/* Vertical Laser Divider */}
+              <div className="absolute top-0 bottom-0 -left-px w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+
+              {/* Draggable Center Pill with Motion Indicator */}
+              <div
+                onPointerDown={handlePointerDown}
+                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] bg-[#09090b] text-white dark:bg-[#f8f9fa] dark:text-[#09090b] text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize transition-transform duration-150 ${
+                  isDragging ? "scale-110 shadow-2xl ring-2 ring-blue-500" : "shadow-xl hover:scale-105"
                 }`}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeDimensionGlider"
-                    className="absolute inset-0 bg-neutral-100 dark:bg-white/[0.08] rounded-[2px] border border-neutral-200/90 dark:border-white/15 shadow-2xs"
-                    transition={{ type: "spring", stiffness: 450, damping: 35 }}
-                  />
-                )}
-                <span className="relative z-10 text-[10px] text-neutral-400 font-mono">
-                  {dim.number}
-                </span>
-                <span className="relative z-10">{dim.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Dimension Headline (Open on Page) */}
-        <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-12">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeDim.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <span className="text-[11px] font-mono uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-2">
-                {activeDim.tagline}
-              </span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-black dark:text-white tracking-tight">
-                {activeDim.headline}
-              </h3>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* ============================================================== */}
-        {/* INTERACTIVE CURSOR-MANIPULATED GRAPHIC (NO CARDS!) */}
-        {/* ============================================================== */}
-        <div
-          ref={stageRef}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          className="relative w-full max-w-5xl mx-auto select-none touch-none py-6 sm:py-10 cursor-ew-resize"
-        >
-          {/* Subtle Stage Boundary Guide (Clean Top & Bottom Hairline) */}
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent pointer-events-none" />
-
-          {/* Vercel-Style Precision Architectural Crosshairs (Structural Corner & Center Divider Accents Only) */}
-          <span className="absolute -top-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-          <span className="absolute -top-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-          <span className="absolute -top-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-          <span className="absolute -bottom-2 left-4 sm:left-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-          <span className="absolute -bottom-2 right-4 sm:right-0 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-mono text-[11px] text-neutral-400/80 dark:text-neutral-500/80 select-none pointer-events-none">+</span>
-
-          {/* Interactive Split Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            {/* ------------------------------------------------------------ */}
-            {/* LEFT SIDE: TRADITIONAL OUTSOURCING (Muted, Grayscale) */}
-            {/* ------------------------------------------------------------ */}
-            <motion.div
-              style={{
-                opacity: useTransform(
-                  useMotionValue(sliderPct),
-                  [10, 50, 90],
-                  [1, 0.85, 0.4]
-                )
-              }}
-              className="space-y-6"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500 font-bold flex items-center space-x-2">
-                  <XCircle className="w-4 h-4 text-neutral-400" />
-                  <span>{activeDim.legacy.title}</span>
-                </span>
-                <span className="text-xs font-mono text-neutral-400">
-                  {activeDim.legacy.metricLabel}
-                </span>
+                <MoveHorizontal className="w-3 h-3 text-blue-400 dark:text-blue-600" />
+                <span>DRAG</span>
               </div>
-
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-neutral-400 dark:text-neutral-500 tracking-tight">
-                {activeDim.legacy.metric}
-              </div>
-
-              <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal">
-                {activeDim.legacy.description}
-              </p>
-
-              {/* Dynamic Motion Graphic: Legacy Pipeline Stagnation */}
-              <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
-                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">
-                  Workflow Bottleneck Flow:
-                </span>
-                <div className="space-y-2">
-                  {activeDim.legacy.flow.map((step, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center space-x-2.5 text-xs font-mono text-neutral-400 dark:text-neutral-500"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                      <span>{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* ------------------------------------------------------------ */}
-            {/* RIGHT SIDE: QRIOUS TECH AI ENGINEERING PODS (Vibrant, Bold) */}
-            {/* ------------------------------------------------------------ */}
-            <motion.div
-              style={{
-                opacity: useTransform(
-                  useMotionValue(sliderPct),
-                  [10, 50, 90],
-                  [0.4, 0.85, 1]
-                )
-              }}
-              className="space-y-6"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span>{activeDim.qrious.title}</span>
-                </span>
-                <span className="px-2.5 py-0.5 rounded-[2px] bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-500/20">
-                  {activeDim.qrious.badge}
-                </span>
-              </div>
-
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-black dark:text-white tracking-tight flex items-baseline space-x-3">
-                <span>{activeDim.qrious.metric}</span>
-                <span className="text-xs font-sans text-neutral-400 font-medium">
-                  {activeDim.qrious.metricLabel}
-                </span>
-              </div>
-
-              <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
-                {activeDim.qrious.description}
-              </p>
-
-              {/* Dynamic Motion Graphic: High-Velocity AI Pod Flow */}
-              <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
-                <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-wider block font-semibold">
-                  Accelerated Autonomous Pipeline:
-                </span>
-                <div className="space-y-2">
-                  {activeDim.qrious.flow.map((step, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center space-x-2.5 text-xs font-mono text-black dark:text-neutral-200 font-medium"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                      <span>{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* ============================================================ */}
-          {/* INTERACTIVE CURSOR MANIPULATOR DIVIDER (MOTION & SPRING) */}
-          {/* ============================================================ */}
-          <div
-            className="absolute top-0 bottom-0 pointer-events-none hidden lg:block"
-            style={{ left: `${sliderPct}%` }}
-          >
-            {/* Vertical Laser Divider */}
-            <div className="absolute top-0 bottom-0 -left-px w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
-
-            {/* Draggable Center Pill with Motion Indicator */}
-            <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-1.5 px-3 py-1.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black shadow-xl text-[10px] font-mono font-bold tracking-wider pointer-events-auto cursor-ew-resize">
-              <MoveHorizontal className="w-3 h-3 text-blue-400 dark:text-blue-600" />
-              <span>DRAG</span>
             </div>
           </div>
-        </div>
 
-        {/* Cursor Manipulation Helper Notice */}
-        <div className="text-center mt-4 mb-16 text-[11px] font-mono text-neutral-400">
-          ⚡ Move or drag horizontally to manipulate the architectural comparison lens
+          {/* Cursor Manipulation Helper Notice */}
+          <div className="text-center mt-3 text-[11px] font-mono text-neutral-400 flex items-center justify-center space-x-2">
+            <span>⚡ Move or drag horizontally to manipulate the architectural comparison lens</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">Scroll to explore all 5 dimensions</span>
+            <span>↓</span>
+          </div>
         </div>
+      </div>
 
-        {/* ============================================================== */}
-        {/* OPEN 4 STAT PILLARS (NO ENCLOSING CARD BOXES) */}
-        {/* ============================================================== */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-neutral-100 dark:border-neutral-800/80">
+      {/* ============================================================== */}
+      {/* 4 STAT PILLARS (EXACT ORIGINAL DESIGN) */}
+      {/* ============================================================== */}
+      <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-neutral-200/80 dark:border-white/[0.08]">
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               5.4x
             </div>
             <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
@@ -460,7 +521,7 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               0%
             </div>
             <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
@@ -472,7 +533,7 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               99.8%
             </div>
             <div className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-1">
@@ -484,10 +545,10 @@ export default function WhyChooseUsSection() {
           </div>
 
           <div>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white font-mono tracking-tight mb-1.5">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#09090b] dark:text-[#f8f9fa] font-mono tracking-tight mb-1.5">
               100%
             </div>
-            <div className="text-xs font-bold text-black dark:text-white uppercase tracking-wider mb-1">
+            <div className="text-xs font-bold text-[#09090b] dark:text-[#f8f9fa] uppercase tracking-wider mb-1">
               In-House Staff
             </div>
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug">
