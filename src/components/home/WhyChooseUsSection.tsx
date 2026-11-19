@@ -198,6 +198,24 @@ export default function WhyChooseUsSection() {
       id="why-choose-us"
       className="py-20 lg:py-28 2xl:py-36 bg-transparent border-b border-neutral-100 dark:border-neutral-800 relative transition-colors duration-200 overflow-hidden isolate"
     >
+      {/* Precision Crosshair Reticle Matrix (Reduced Density & Whisper-Quiet Opacity) */}
+      <div className="absolute inset-0 pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_75%_60%_at_50%_50%,#000_30%,transparent_90%)] opacity-30 dark:opacity-25">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="crosshair-pattern" width="72" height="72" patternUnits="userSpaceOnUse">
+              <path
+                d="M 36 32 L 36 40 M 32 36 L 40 36"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                className="text-neutral-400 dark:text-neutral-500"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#crosshair-pattern)" />
+        </svg>
+      </div>
+
       {/* Subtle Atmospheric Ambient Glow (Stripe / Animos style) */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1000px] h-[350px] bg-gradient-to-r from-blue-500/8 via-indigo-500/8 to-purple-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
 
