@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import HeroInteractiveCanvas from "./HeroInteractiveCanvas";
 import HeroInteractiveConsole from "./HeroInteractiveConsole";
@@ -140,53 +138,6 @@ export default function HeroSection() {
             />
           ))}
         </div>
-
-        {/* Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="relative inline-flex flex-col sm:flex-row items-center justify-center gap-3.5 z-10"
-        >
-          {/* Subtle atmospheric glow orb */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] 2xl:w-[720px] h-[220px] 2xl:h-[300px] bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 dark:from-blue-600/15 dark:via-indigo-600/15 dark:to-sky-600/15 blur-[100px] 2xl:blur-[130px] rounded-full pointer-events-none -z-10" />
-
-          {/* Primary Button with Precision Kinetic Hover Animation */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="w-full sm:w-auto"
-          >
-            <Link
-              href="/case-studies"
-              className="group relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 2xl:px-10 2xl:py-4.5 rounded-[2px] bg-[#09090b] text-white dark:bg-white dark:text-[#09090b] hover:text-white dark:hover:text-white text-[14px] 2xl:text-base font-semibold transition-all duration-300 shadow-md dark:shadow-[0_0_24px_rgba(255,255,255,0.18)] border border-black/10 dark:border-white/20"
-            >
-              <span className="relative z-20 flex items-center space-x-2">
-                <span>Explore AI Solutions &amp; Case Studies</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-              </span>
-              {/* Refined Enterprise Electric Cobalt Expansion */}
-              <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-blue-600 dark:bg-blue-600 pointer-events-none" />
-            </Link>
-          </motion.div>
-
-          {/* Secondary Button with Clean Architecture Border */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="w-full sm:w-auto"
-          >
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-7 py-3.5 2xl:px-9 2xl:py-4.5 rounded-[2px] bg-white dark:bg-white/[0.04] text-[#09090b] dark:text-white border border-neutral-200/90 dark:border-white/10 hover:border-neutral-900 dark:hover:border-white/30 hover:bg-neutral-50 dark:hover:bg-white/[0.08] transition-colors duration-200 text-[14px] 2xl:text-base font-semibold shadow-xs backdrop-blur-sm"
-            >
-              <span>Schedule Architecture Discovery</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
-          </motion.div>
-        </motion.div>
 
         {/* Interactive AI Architecture Command Console (Vercel & Stripe style with 3D Parallax & Live Node Telemetry) */}
         <HeroInteractiveConsole />

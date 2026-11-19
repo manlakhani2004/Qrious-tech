@@ -27,20 +27,13 @@ export default function Footer() {
           {/* Left Column: Brand & Contacts */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <Link href="/" className="inline-block group py-0.5">
+              <Link href="/" className="inline-block group py-0.5" aria-label="Qrious Tech Home">
                 <Image
-                  src="/images/qrious-tech-team-logo.png"
-                  alt="Qrious Tech Team LLP"
-                  width={240}
-                  height={36}
-                  className="h-8 sm:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden"
-                />
-                <Image
-                  src="/images/qrious-tech-team-logo-dark.png"
-                  alt="Qrious Tech Team LLP"
-                  width={240}
-                  height={36}
-                  className="h-8 sm:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
+                  src="/images/qt-logo/mark.png"
+                  alt="Qrious Tech"
+                  width={48}
+                  height={48}
+                  className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                 />
               </Link>
               <p className="mt-4 text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed max-w-sm">
