@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Terminal, Copy, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import HeroInteractiveCanvas from "./HeroInteractiveCanvas";
 import HeroInteractiveConsole from "./HeroInteractiveConsole";
@@ -10,6 +10,15 @@ import HeroInteractiveConsole from "./HeroInteractiveConsole";
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCommand = (cmd: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(cmd);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   // Clear, direct AI headers focused on providing AI to businesses
   const heroSlides = [
@@ -77,6 +86,37 @@ export default function HeroSection() {
               }}
               className="max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto"
             >
+              {/* Kiro-Style "What's New" Live Radar Ticker */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: -10 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                  }
+                }}
+                className="mb-3.5 inline-block"
+              >
+                <Link
+                  href="/services/ai-ml-development"
+                  className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-white/[0.05] border border-neutral-200/90 dark:border-white/10 text-xs font-mono hover:border-purple-500/50 dark:hover:border-purple-400/50 transition-all duration-200 group backdrop-blur-md"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <span className="font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider text-[10.5px]">
+                    What’s New
+                  </span>
+                  <span className="text-neutral-300 dark:text-neutral-700">|</span>
+                  <span className="text-neutral-700 dark:text-neutral-300 font-sans font-medium text-[11.5px]">
+                    Autonomous Swarms v4.2 • 14-Day Working POC
+                  </span>
+                  <ArrowRight className="w-3 h-3 text-neutral-400 group-hover:translate-x-0.5 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-all" />
+                </Link>
+              </motion.div>
+
               {/* Pillar Badge */}
               <motion.div
                 variants={{
@@ -165,26 +205,30 @@ export default function HeroSection() {
           {/* Subtle cyan/blue glow orb */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] 2xl:w-[720px] h-[220px] 2xl:h-[300px] bg-gradient-to-r from-cyan-200/50 via-blue-200/40 to-purple-200/50 dark:from-cyan-900/20 dark:via-blue-900/20 dark:to-purple-900/20 blur-[90px] 2xl:blur-[120px] rounded-full pointer-events-none -z-10" />
 
-          {/* Primary Button with Motion.dev Spring Physics */}
+          {/* Primary Button with Kiro Liquid Expanding Bubble Hover Animation */}
           <motion.div
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             className="w-full sm:w-auto"
           >
             <Link
               href="/case-studies"
-              className="w-full sm:w-auto group inline-flex items-center justify-center space-x-2 px-8 py-3.5 2xl:px-10 2xl:py-4.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-[14px] 2xl:text-base font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors duration-200 shadow-md dark:shadow-[0_0_24px_rgba(255,255,255,0.18)]"
+              className="group relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 2xl:px-10 2xl:py-4.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black hover:text-white dark:hover:text-white text-[14px] 2xl:text-base font-semibold transition-all duration-300 shadow-md dark:shadow-[0_0_24px_rgba(255,255,255,0.18)] border border-black/10 dark:border-white/20"
             >
-              <span>Explore AI Solutions &amp; Case Studies</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              <span className="relative z-20 flex items-center space-x-2">
+                <span>Explore AI Solutions &amp; Case Studies</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </span>
+              {/* Kiro Signature Radial Expansion Bubble */}
+              <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-purple-600 dark:bg-purple-600 pointer-events-none" />
             </Link>
           </motion.div>
 
           {/* Secondary Button with Motion.dev Spring Physics */}
           <motion.div
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             className="w-full sm:w-auto"
           >
@@ -196,6 +240,35 @@ export default function HeroSection() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </motion.div>
+        </motion.div>
+
+        {/* Kiro-Style Interactive Quick CLI / SDK Install Command Pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-mono text-neutral-500 dark:text-neutral-400"
+        >
+          <div className="flex items-center space-x-2 px-3 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-black/60 border border-neutral-200/90 dark:border-white/10 shadow-xs backdrop-blur-sm">
+            <Terminal className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500 shrink-0" />
+            <span className="text-neutral-400 dark:text-neutral-600 select-none">$</span>
+            <span className="text-neutral-800 dark:text-neutral-200 font-medium">curl -fsSL https://qtech.ai/install | bash</span>
+            <button
+              onClick={() => handleCopyCommand("curl -fsSL https://qtech.ai/install | bash")}
+              className="p-1 rounded-[2px] hover:bg-neutral-200 dark:hover:bg-white/10 text-neutral-600 dark:text-neutral-300 transition-colors ml-1 cursor-pointer"
+              title="Copy install command"
+              aria-label="Copy CLI command"
+            >
+              {copied ? (
+                <Check className="w-3.5 h-3.5 text-emerald-500" />
+              ) : (
+                <Copy className="w-3.5 h-3.5" />
+              )}
+            </button>
+          </div>
+          <span className="text-[11px] text-neutral-400 dark:text-neutral-500 hidden sm:inline">
+            Production Pods • 100% Client IP Ownership
+          </span>
         </motion.div>
 
         {/* Interactive AI Architecture Command Console (Vercel & Stripe style with 3D Parallax & Live Node Telemetry) */}

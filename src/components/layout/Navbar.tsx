@@ -35,7 +35,9 @@ import {
   Code2,
   Star,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Search,
+  Command
 } from "lucide-react";
 
 export default function Navbar() {
@@ -44,8 +46,24 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+      if (e.key === "Escape") {
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -280,42 +298,38 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-3 sm:top-4 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300">
-      <div className="max-w-6xl 2xl:max-w-7xl mx-auto">
-        <div
-          className={`pointer-events-auto rounded-[2px] transition-all duration-300 relative ${
-            scrolled
-              ? "bg-white/90 dark:bg-[#0c0c0e]/90 backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.12] shadow-[0_12px_36px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.6)] py-2 sm:py-2.5 px-4 sm:px-6"
-              : "bg-white/80 dark:bg-[#0c0c0e]/80 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.09] shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2.5 sm:py-3 px-4 sm:px-6"
-          }`}
-        >
-          {/* Specular highlight border at top */}
-          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent rounded-[2px] pointer-events-none" />
+    <header className="sticky top-0 z-50 w-full transition-all duration-300 font-sans">
+      <div
+        className={`w-full transition-all duration-300 border-b ${
+          scrolled
+            ? "bg-white/90 dark:bg-[#070709]/90 backdrop-blur-xl border-neutral-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
+            : "bg-white/70 dark:bg-[#070709]/70 backdrop-blur-md border-neutral-200/50 dark:border-white/[0.04] py-3 sm:py-3.5"
+        }`}
+      >
+        <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
+          {/* Authentic Qrious Tech Brand Logo */}
+          <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5">
+            <Image
+              src="/images/qrious-tech-team-logo.png"
+              alt="Qrious Tech Team LLP"
+              width={220}
+              height={32}
+              priority
+              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden"
+            />
+            <Image
+              src="/images/qrious-tech-team-logo-dark.png"
+              alt="Qrious Tech Team LLP"
+              width={220}
+              height={32}
+              priority
+              className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
+            />
+          </Link>
 
-          <div className="flex items-center justify-between">
-            {/* Authentic Qrious Tech Brand Logo */}
-            <Link href="/" className="flex items-center group shrink-0 transition-opacity hover:opacity-90 py-0.5">
-              <Image
-                src="/images/qrious-tech-team-logo.png"
-                alt="Qrious Tech Team LLP"
-                width={220}
-                height={32}
-                priority
-                className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden"
-              />
-              <Image
-                src="/images/qrious-tech-team-logo-dark.png"
-                alt="Qrious Tech Team LLP"
-                width={220}
-                height={32}
-                priority
-                className="h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
-              />
-            </Link>
-
-            {/* Desktop Navigation with Motion.dev Fluid Shared Layout Pill */}
-            <nav
-              className="hidden lg:flex items-center space-x-1 xl:space-x-1.5"
+          {/* Desktop Navigation: Centered with Kiro.dev Glider Hover Animation */}
+          <nav
+            className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 absolute left-1/2 -translate-x-1/2"
               onMouseLeave={() => {
                 setHoveredNav(null);
                 handleMouseLeave();
@@ -754,26 +768,46 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* Right Floating Actions: Theme Toggle + Schedule AI Discovery CTA with Motion Spring */}
-          <div className="hidden lg:flex items-center space-x-2.5">
-            <ThemeToggle />
-            <motion.div
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          {/* Right Actions: Kiro-Style Command+K Search + Theme Toggle + Liquid Expanding Bubble CTA Button */}
+          <div className="hidden lg:flex items-center space-x-3">
+            {/* Command+K Search Trigger (Kiro style) */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="flex items-center space-x-2 px-2.5 py-1.5 rounded-[2px] bg-neutral-100/90 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/10 text-xs text-neutral-500 dark:text-neutral-400 hover:border-neutral-300 dark:hover:border-white/20 transition-all font-mono cursor-pointer"
+              title="Quick Search (⌘K)"
             >
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center space-x-2 px-5 py-2.5 rounded-[2px] bg-black text-white dark:bg-white dark:text-black text-xs font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-md transition-all border border-black/10 dark:border-white/20"
-              >
-                <span>Schedule AI Discovery</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-              </Link>
-            </motion.div>
+              <Search className="w-3.5 h-3.5 text-neutral-500 dark:text-neutral-400" />
+              <span className="text-[11px] uppercase tracking-wider font-semibold">Search</span>
+              <kbd className="text-[10px] bg-neutral-200/70 dark:bg-white/10 px-1 py-0.5 rounded-[2px] text-neutral-600 dark:text-neutral-300">
+                ⌘K
+              </kbd>
+            </button>
+
+            <ThemeToggle />
+
+            {/* Kiro.dev Signature Radial Expansion CTA Button */}
+            <Link
+              href="/contact"
+              className="group relative overflow-hidden px-4.5 py-2 rounded-[2px] text-xs font-mono font-bold tracking-wider uppercase bg-black text-white dark:bg-white dark:text-black hover:text-white transition-all duration-300 border border-black/10 dark:border-white/20 shadow-xs flex items-center space-x-1.5"
+            >
+              <span className="relative z-20 flex items-center space-x-1.5">
+                <span>Schedule Discovery</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              {/* Kiro Liquid Bubble Animation */}
+              <span className="absolute inset-0 z-10 translate-y-[50%] scale-0 rounded-full transition-transform duration-350 ease-out group-hover:scale-x-[180%] group-hover:scale-y-[250%] bg-purple-600 dark:bg-purple-600 pointer-events-none" />
+            </Link>
           </div>
 
-          {/* Mobile Menu Button + ThemeToggle */}
+          {/* Mobile Actions: Search + ThemeToggle + Hamburger */}
           <div className="lg:hidden flex items-center space-x-2">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2 rounded-[2px] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -957,7 +991,101 @@ export default function Navbar() {
             </div>
           </div>
         )}
-      </div>
+
+      {/* Kiro-Style Interactive Command Palette Dialog */}
+      {searchOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[100] flex items-start justify-center pt-20 sm:pt-28 px-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            className="w-full max-w-xl rounded-[2px] bg-white dark:bg-[#0f0f12] border border-neutral-200 dark:border-white/10 shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Search Input Bar */}
+            <div className="flex items-center px-4 py-3.5 border-b border-neutral-200 dark:border-white/10">
+              <Search className="w-4 h-4 text-neutral-400 dark:text-neutral-500 shrink-0 mr-3" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search AI solutions, case studies, industries, services..."
+                className="w-full bg-transparent text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:outline-hidden font-medium"
+                autoFocus
+              />
+              <button
+                onClick={() => setSearchOpen(false)}
+                className="text-[11px] font-mono px-1.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/10 text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+              >
+                ESC
+              </button>
+            </div>
+
+            {/* Search Results / Quick Suggestions */}
+            <div className="max-h-[380px] overflow-y-auto p-2 space-y-1">
+              <div className="px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                {searchQuery ? "Matching Results" : "Quick Navigation"}
+              </div>
+
+              {[
+                { title: "Autonomous AI Agents", category: "AI Solutions", href: "/services/ai-ml-development", icon: Brain },
+                { title: "Zero-Leakage Private RAG", category: "AI Solutions", href: "/services/ai-ml-development", icon: ShieldCheck },
+                { title: "Custom AI Software & Web Apps", category: "Services", href: "/services/web-development", icon: Globe },
+                { title: "Microsoft Fabric & BI Lakehouse", category: "Services", href: "/services/data-visualization", icon: BarChart3 },
+                { title: "Salesforce Multi-Cloud & Agentforce", category: "Services", href: "/services/salesforce-development", icon: CloudLightning },
+                { title: "Healthcare & HIPAA Pods", category: "Industry", href: "/industries/healthcare", icon: Stethoscope },
+                { title: "FinTech & Secure Banking", category: "Industry", href: "/industries/finance", icon: Landmark },
+                { title: "HCM & Workforce Dispatch", category: "Industry", href: "/industries/hcm", icon: Briefcase },
+                { title: "All 37 Enterprise Case Studies", category: "Work", href: "/case-studies", icon: FolderGit2 },
+                { title: "Dedicated Pods & Methodology", category: "Process", href: "/how-we-work", icon: Workflow },
+                { title: "Schedule Discovery Session", category: "Contact", href: "/contact", icon: Sparkles }
+              ]
+                .filter((item) =>
+                  !searchQuery ||
+                  item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  item.category.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+                .map((item, idx) => {
+                  const ItemIcon = item.icon;
+                  return (
+                    <Link
+                      key={idx}
+                      href={item.href}
+                      onClick={() => setSearchOpen(false)}
+                      className="flex items-center justify-between px-3 py-2.5 rounded-[2px] hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors group cursor-pointer"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="w-7 h-7 rounded-[2px] bg-neutral-100 dark:bg-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                          <ItemIcon className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white">
+                          {item.title}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-neutral-100 dark:bg-white/5 text-neutral-500 dark:text-neutral-400">
+                          {item.category}
+                        </span>
+                        <ArrowRight className="w-3.5 h-3.5 text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                    </Link>
+                  );
+                })}
+            </div>
+
+            {/* Footer with keyboard hints */}
+            <div className="px-4 py-2.5 border-t border-neutral-100 dark:border-white/5 bg-neutral-50/50 dark:bg-white/[0.02] flex items-center justify-between text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">
+              <div className="flex items-center space-x-3">
+                <span>Navigate <kbd className="px-1 py-0.5 rounded-[2px] bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">↑↓</kbd></span>
+                <span>Select <kbd className="px-1 py-0.5 rounded-[2px] bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">↵</kbd></span>
+              </div>
+              <span>Close <kbd className="px-1 py-0.5 rounded-[2px] bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">esc</kbd></span>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
